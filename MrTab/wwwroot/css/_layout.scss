@@ -1,0 +1,176 @@
+﻿@import '_colors.scss';
+
+.white-area {
+    height: $White-Area-Height;
+    background: $White-Area-Background;
+    width: 100vw;
+}
+
+.white-area-margin {
+    $top: 20px;
+    margin-top: -1 * ($White-Area-Height - $top);
+}
+
+@media only screen and (max-width : 764px) {
+    .white-area-margin {
+        $top: 64px;
+        margin-top: -1 * ($White-Area-Height - $top);
+    }
+}
+
+@media only screen and (max-device-width : 764px) {
+    .white-area-margin {
+        $top: 64px;
+        margin-top: -1 * ($White-Area-Height - $top);
+    }
+}
+
+
+.space {
+    width: 100vw;
+    height: 4vw;
+}
+
+.space-double {
+    width: 100vw;
+    height: 8vw;
+}
+
+.space-half {
+    width: 100vw;
+    height: 2vw;
+}
+
+@media only screen and (max-device-width : 480px) {
+    .space-half {
+        width: 100vw;
+        height: 3vh
+    }
+
+    .space {
+        width: 100vw;
+        height: 6vh;
+    }
+
+    .space-double {
+        width: 100vw;
+        height: 9vh;
+    }
+
+    .space-bottom-nav {
+        width: 100vw;
+        height: 64px;
+    }
+}
+
+$nav-height: 80px;
+
+.space-nav {
+    width: 100vw;
+    height: $nav-height;
+}
+
+/*#region Alignment */
+
+@mixin column() {
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center;
+}
+
+@mixin row {
+    display: flex;
+    flex-direction: row;
+}
+
+.row {
+    @include row();
+}
+
+@mixin row-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.row-reverse {
+    @include row-reverse();
+}
+
+@mixin column {
+    display: flex;
+    flex-direction: column;
+}
+
+.column {
+    @include column();
+}
+
+@mixin column-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.column-reverse {
+    @include column-reverse();
+}
+
+@for $var from 1 to 10 {
+    .flex-#{$var} {
+        flex: $var;
+    }
+}
+
+.flex-auto {
+    flex: auto;
+}
+
+
+.fillwidth {
+    min-width: 100%;
+    height: auto;
+}
+
+.fillheight {
+    min-height: 100%;
+    width: auto;
+}
+
+/*#endregion */
+
+@mixin grid($width) {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 1em;
+    grid-template-columns: repeat(auto-fill, minmax($width, 1fr));
+}
+
+@mixin grid-gap($width, $gap) {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: $gap;
+    grid-template-columns: repeat(auto-fit, minmax($width, 1fr));
+}
+
+.full-width {
+    width: 100vw;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.overflow-visible {
+    overflow: visible !important;
+}
+
+.overflow-hidden {
+    overflow: hidden !important;
+}
+
+.text-center {
+    text-align: center !important
+}

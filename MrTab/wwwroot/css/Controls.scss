@@ -1,0 +1,9 @@
+﻿@import '_colors.scss';
+@import '_popupCroppit.scss';
+@import '_starRating.scss';
+@import '_layout.scss';
+
+button, .js-upload, input[type=file] {
+    cursor: pointer;
+    outline: none;
+}

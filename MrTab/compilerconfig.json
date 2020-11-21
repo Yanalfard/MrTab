@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/Controls.css",
+    "inputFile": "wwwroot/css/Controls.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Global.css",
+    "inputFile": "wwwroot/css/Global.scss"
+  }
+]
