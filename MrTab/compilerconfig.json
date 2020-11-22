@@ -6,5 +6,13 @@
   {
     "outputFile": "wwwroot/css/Global.css",
     "inputFile": "wwwroot/css/Global.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Pages/Index.css",
+    "inputFile": "wwwroot/css/Pages/Index.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/uikit.css",
+    "inputFile": "wwwroot/css/uikit.scss"
   }
 ]

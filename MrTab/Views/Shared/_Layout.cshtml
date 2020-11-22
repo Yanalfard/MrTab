@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="@(ViewBag.Description ?? "جستجو رستوران به صورت آنلاین")">
+    <meta name="keywords" content="@(ViewBag.Keywords ?? "جستجو، رستوران، غذا، آنلاین، امتیاز دهی")">
+
+    <title>@(ViewBag.Title ?? "مستر فود")</title>
+
+    <!--Css-->
+    <link href="~/css/croppie.css" rel="stylesheet" />
+    <link href="~/css/uikit.min.css" rel="stylesheet" />
+    <link href="~/css/Global.min.css" rel="stylesheet" />
+    <link href="~/css/Controls.min.css" rel="stylesheet" />
+
+    @RenderSection("Styles")
+
+</head>
+<body>
+
+    <!-- #region nav-header -->
+
+    <div class="nav-header-invis row-reverse uk-box-shadow-medium">
+        <nav class="nav-header-right uk-margin-auto-vertical row-reverse uk-margin-auto-left">
+            <a href="" class="logo uk-margin-left btn-icon">
+                <span uk-icon="logo-angular"></span>
+            </a>
+            <a href="" class="btn-icon">
+                <span>خانه</span>
+                <span uk-icon="home"></span>
+            </a>
+            <a href="" class="btn-icon">
+                <span>درباره ما</span>
+                <span uk-icon="information-circle"></span>
+            </a>
+        </nav>
+        <div class="nav-header-left row uk-margin-auto-right">
+            <button class="btn btn-round btn-primary">
+                ثبت نام
+            </button>
+            <button class="btn btn-round btn-secondary uk-margin-left">
+                ورود
+            </button>
+        </div>
+    </div>
+
+    <!-- #endregion -->
+
+   
+        @RenderBody()
+
+
+    <!--Static Js-->
+    <script src="~/js/uikit.min.js"></script>
+    <script src="~/js/uikit-icons.js"></script>
+    <script src="~/js/croppie.js"></script>
+
+    <!--Page Dependant Js-->
+    @RenderSection("Scripts", false)
+
+</body>
+</html>

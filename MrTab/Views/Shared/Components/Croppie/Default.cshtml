@@ -1,0 +1,15 @@
+﻿@model MrTab.ViewComponents.CroppieViewComponent.MyClass
+
+<label>Width</label>
+<h3>
+    @Model.Width
+</h3>
+<label>Height</label>
+<h3>
+    @Model.Height
+</h3>
+
+@*
+    //How to call
+    @await Component.InvokeAsync("Croppie", new { width = 209, height = 200 })
+*@

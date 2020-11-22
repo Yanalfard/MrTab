@@ -3,7 +3,95 @@
 @import '_starRating.scss';
 @import '_layout.scss';
 
-button, .js-upload, input[type=file] {
+button, a, a:hover .js-upload, input[type=file] {
     cursor: pointer;
     outline: none;
+    text-decoration: none !important;
+}
+
+.trans-2s, .btn-icon {
+    @include trans(.2s);
+}
+
+.btn-icon {
+    color: lighten($Text,16%);
+}
+
+.btn-icon:hover {
+    color: darken($Text,8%);
+}
+
+.btn {
+    @include border-radius(4px,4px,4px,4px);
+    padding: 8px 12px;
+    min-width: 100px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.btn-white {
+    color: black;
+    background: white;
+    border: 0;
+    font-size: 16px;
+}
+
+.btn-round {
+    @include border-radius(42px,42px,42px,42px);
+}
+
+.btn-primary {
+    border: none;
+    background: rgb(255,172,47);
+    background: -moz-linear-gradient(135deg, rgba(255,172,47,1) 0%, rgba(254,191,54,1) 100%);
+    background: -webkit-linear-gradient(135deg, rgba(255,172,47,1) 0%, rgba(254,191,54,1) 100%);
+    background: linear-gradient(135deg, rgba(255,172,47,1) 0%, rgba(254,191,54,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffac2f",endColorstr="#febf36",GradientType=1);
+    box-shadow: 0px 6px 16px 0px rgba(255,189,47,0.5);
+    color: white;
+}
+
+.btn-primary:hover {
+    $percent: 6%;
+    background: lighten(rgb(255,172,47),$percent);
+    background: -moz-linear-gradient(135deg, lighten(rgba(255,172,47,1),$percent) 0%, lighten(rgba(254,191,54,1),$percent) 100%);
+    background: -webkit-linear-gradient(135deg, lighten(rgba(255,172,47,1),$percent) 0%, lighten(rgba(254,191,54,1),$percent) 100%);
+    background: linear-gradient(135deg, lighten(rgba(255,172,47,1),$percent) 0%, lighten(rgba(254,191,54,1),$percent) 100%);
+}
+
+.btn-secondary {
+    border: none;
+    background: #EDEDED;
+    color: $Text;
+}
+
+.btn-secondary:hover {
+    background: darken(#EDEDED,6%);
+}
+
+.nav-header, .nav-header-invis {
+    padding: 16px;
+    background: $NavBackground;
+    position: fixed;
+    width: calc(100vw - 32px);
+
+    &-right {
+        margin-right: 14px;
+
+        > a {
+            margin-left: 12px;
+
+            > .uk-icon {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    }
+
+    &-left {
+    }
+}
+
+.nav-bottom {
+    background: $NavBackground;
 }

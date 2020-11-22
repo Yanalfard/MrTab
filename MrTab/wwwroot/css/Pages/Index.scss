@@ -1,0 +1,85 @@
+﻿@import '../_colors.scss';
+@import '../_layout.scss';
+
+.nav-header-invis {
+    background: transparent;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+    * {
+        color: black !important;
+    }
+
+    .btn-primary {
+        background: white;
+    }
+
+    .btn-secondary {
+        background: transparent;
+    }
+}
+
+.hero {
+    height: 560px;
+    background-image: url('../../resources/svg/herobackground.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include border-radius(0,0,32px,32px);
+
+    * {
+        color: black;
+    }
+
+    .hero-alternate {
+        @include row-reverse;
+    }
+
+    &-image {
+        img {
+            margin-left: 16px;
+        }
+    }
+
+    &-text {
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .hero {
+        padding-bottom: 20px;
+        height: calc(100vh - 20px);
+        @include border-radius(0,0,0,0);
+
+        .hero-alternate {
+            @include column-reverse;
+        }
+
+        &-image {
+            img {
+                margin: auto;
+                width: 72vw;
+            }
+        }
+
+        &-text {
+            > div {
+                margin: 80px auto 20px auto !important;
+
+                h1 {
+                    font-size: 24px;
+                }
+
+                h2 {
+                    font-size: 32px;
+                }
+
+                button {
+                    margin-top: 8px !important;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

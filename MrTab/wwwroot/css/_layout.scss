@@ -1,76 +1,4 @@
-﻿@import '_colors.scss';
-
-.white-area {
-    height: $White-Area-Height;
-    background: $White-Area-Background;
-    width: 100vw;
-}
-
-.white-area-margin {
-    $top: 20px;
-    margin-top: -1 * ($White-Area-Height - $top);
-}
-
-@media only screen and (max-width : 764px) {
-    .white-area-margin {
-        $top: 64px;
-        margin-top: -1 * ($White-Area-Height - $top);
-    }
-}
-
-@media only screen and (max-device-width : 764px) {
-    .white-area-margin {
-        $top: 64px;
-        margin-top: -1 * ($White-Area-Height - $top);
-    }
-}
-
-
-.space {
-    width: 100vw;
-    height: 4vw;
-}
-
-.space-double {
-    width: 100vw;
-    height: 8vw;
-}
-
-.space-half {
-    width: 100vw;
-    height: 2vw;
-}
-
-@media only screen and (max-device-width : 480px) {
-    .space-half {
-        width: 100vw;
-        height: 3vh
-    }
-
-    .space {
-        width: 100vw;
-        height: 6vh;
-    }
-
-    .space-double {
-        width: 100vw;
-        height: 9vh;
-    }
-
-    .space-bottom-nav {
-        width: 100vw;
-        height: 64px;
-    }
-}
-
-$nav-height: 80px;
-
-.space-nav {
-    width: 100vw;
-    height: $nav-height;
-}
-
-/*#region Alignment */
+﻿/*#region Alignment */
 
 @mixin column() {
     display: flex;
@@ -118,7 +46,7 @@ $nav-height: 80px;
     @include column-reverse();
 }
 
-@for $var from 1 to 10 {
+@for $var from 1 to 12 {
     .flex-#{$var} {
         flex: $var;
     }
@@ -126,17 +54,6 @@ $nav-height: 80px;
 
 .flex-auto {
     flex: auto;
-}
-
-
-.fillwidth {
-    min-width: 100%;
-    height: auto;
-}
-
-.fillheight {
-    min-height: 100%;
-    width: auto;
 }
 
 /*#endregion */
@@ -153,24 +70,4 @@ $nav-height: 80px;
     grid-template-rows: auto;
     grid-gap: $gap;
     grid-template-columns: repeat(auto-fit, minmax($width, 1fr));
-}
-
-.full-width {
-    width: 100vw;
-}
-
-.full-height {
-    height: 100vh;
-}
-
-.overflow-visible {
-    overflow: visible !important;
-}
-
-.overflow-hidden {
-    overflow: hidden !important;
-}
-
-.text-center {
-    text-align: center !important
 }
