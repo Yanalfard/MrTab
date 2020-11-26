@@ -3,7 +3,7 @@
 @import '_starRating.scss';
 @import '_layout.scss';
 
-.nav-header, .nav-header-invis {
+.nav-header {
     padding: 16px;
     background: $NavBackground;
     position: fixed;
@@ -14,6 +14,7 @@
 
         > a {
             margin-left: 12px;
+            @include row;
 
             > .uk-icon {
                 width: 28px;
@@ -23,6 +24,16 @@
     }
 
     &-left {
+        .btn {
+            font-size: 15px;
+            padding: 6px 12px;
+        }
+    }
+}
+
+@media only screen and (max-device-width : 512px) {
+    .nav-header, .space-nav-header {
+        display: none !important
     }
 }
 
@@ -137,22 +148,23 @@ button, a, a:hover .js-upload, input[type=file] {
 
 /*#region Form */
 
+@mixin inputmat {
+    background: #E9E9E9;
+    @include border-radius(10px,10px,10px,10px);
+    padding: 8px 12px;
+    border: 0;
+    font-size: 16px;
+    color: #202020;
+}
+
+.form-group-bg {
+    @include inputmat;
+    background-color: #E9E9E9;
+}
+
 .form-group {
     margin-bottom: 14px;
     @include column;
-
-    @mixin inputmat {
-        background: #E9E9E9;
-        @include border-radius(10px,10px,10px,10px);
-        padding: 8px 12px;
-        border: 0;
-        font-size: 16px;
-        color: #202020;
-    }
-
-    .form-group-bg {
-        @include inputmat;
-    }
 
     .input-label {
         font-size: 16px;
@@ -166,6 +178,7 @@ button, a, a:hover .js-upload, input[type=file] {
 
     .input-invis {
         background: transparent;
+        border: 0;
     }
 
     .input-error {
@@ -179,6 +192,13 @@ button, a, a:hover .js-upload, input[type=file] {
     margin-top: auto;
     @include row-reverse;
     align-self: flex-end;
+}
+
+/*#endregion */
+
+/*#region off-canvas */
+
+#Side-Menu {
 }
 
 /*#endregion */

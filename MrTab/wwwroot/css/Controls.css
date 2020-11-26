@@ -234,18 +234,27 @@ backdrop-filter: saturate(80%);
   flex: auto; }
 
 /*#endregion */
-.nav-header, .nav-header-invis {
+.nav-header {
   padding: 16px;
   background: #fff;
   position: fixed;
   width: calc(100vw - 32px); }
-  .nav-header-right, .nav-header-invis-right {
+  .nav-header-right {
     margin-right: 14px; }
-    .nav-header-right > a, .nav-header-invis-right > a {
-      margin-left: 12px; }
-      .nav-header-right > a > .uk-icon, .nav-header-invis-right > a > .uk-icon {
+    .nav-header-right > a {
+      margin-left: 12px;
+      display: flex;
+      flex-direction: row; }
+      .nav-header-right > a > .uk-icon {
         width: 28px;
         height: 28px; }
+  .nav-header-left .btn {
+    font-size: 15px;
+    padding: 6px 12px; }
+
+@media only screen and (max-device-width: 512px) {
+  .nav-header, .space-nav-header {
+    display: none !important; } }
 
 .nav-bottom {
   background: #fff;
@@ -347,22 +356,24 @@ button, a, a:hover .js-upload, input[type=file] {
   color: #505050; }
 
 /*#region Form */
+.form-group-bg {
+  background: #E9E9E9;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+  padding: 8px 12px;
+  border: 0;
+  font-size: 16px;
+  color: #202020;
+  background-color: #E9E9E9; }
+
 .form-group {
   margin-bottom: 14px;
   display: flex;
   flex-direction: column; }
-  .form-group .form-group-bg {
-    background: #E9E9E9;
-    -moz-border-radius: 10px 10px 10px 10px;
-    -webkit-border-radius: 10px 10px 10px 10px;
-    border-radius: 10px 10px 10px 10px;
-    /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
-    padding: 8px 12px;
-    border: 0;
-    font-size: 16px;
-    color: #202020; }
   .form-group .input-label {
     font-size: 16px;
     color: #4D4D4D;
@@ -380,7 +391,8 @@ button, a, a:hover .js-upload, input[type=file] {
     font-size: 16px;
     color: #202020; }
   .form-group .input-invis {
-    background: transparent; }
+    background: transparent;
+    border: 0; }
   .form-group .input-error {
     margin-top: 8px;
     color: #DA4B1E;
@@ -392,4 +404,6 @@ button, a, a:hover .js-upload, input[type=file] {
   flex-direction: row-reverse;
   align-self: flex-end; }
 
+/*#endregion */
+/*#region off-canvas */
 /*#endregion */
