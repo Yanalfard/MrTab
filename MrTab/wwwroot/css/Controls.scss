@@ -15,6 +15,8 @@ button, a, a:hover .js-upload, input[type=file] {
 
 .btn-icon {
     color: lighten($Text,16%);
+    background: transparent;
+    border: none;
 }
 
 .btn-icon:hover {
@@ -22,7 +24,7 @@ button, a, a:hover .js-upload, input[type=file] {
 }
 
 .btn {
-    @include border-radius(4px,4px,4px,4px);
+    @include border-radius(6px,6px,6px,6px);
     padding: 8px 12px;
     min-width: 100px;
     text-align: center;
@@ -95,3 +97,4 @@ button, a, a:hover .js-upload, input[type=file] {
 .nav-bottom {
     background: $NavBackground;
 }
+

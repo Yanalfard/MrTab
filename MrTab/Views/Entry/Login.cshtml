@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "ورود";
+    ViewBag.BodyClass = "entry-2";
+    Layout = "~/Views/Shared/_EntryLayout.cshtml";
+}
+
+<form class="column">
+
+    <div class="form-group">
+        <label class="input-label" for="tel">شماره تلفن</label>
+        <input class="input" type="tel" name="tel" placeholder="..." />
+        <span class="input-error">این فیلد اشتباه وارد شده است</span>
+    </div>
+
+    <div class="form-group">
+        <label class="input-label" for="password">گذرواژه</label>
+        <input class="input" type="tel" name="password" placeholder="..." />
+        <span class="input-error">این فیلد اشتباه وارد شده است</span>
+    </div>
+
+    <div class="form-group">
+        <a href="/Entry/ForgotPassword" class="anchor">
+            رمز عبور خود را فراموش کرده اید؟
+        </a>
+    </div>
+
+    <div class="row-reverse uk-margin-top">
+        <button class="btn btn-primary">ورود</button>
+        <a href="/Entry/Register" class="btn btn-secondary uk-margin-right">ثبت نام</a>
+    </div>
+
+</form>

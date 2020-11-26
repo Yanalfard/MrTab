@@ -9,9 +9,15 @@
 
     <title>@(ViewBag.Title ?? "مستر فود")</title>
 
+    <!--PWA-->
+    @*<meta name="apple-mobile-web-app-status-bar" content="#E73434" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#E73434" />
+        <meta name="theme-color" content="#E73434" />
+        <link rel="manifest" href="~/manifest.json" />*@
+
     <!--Css-->
-    <link href="~/css/croppie.css" rel="stylesheet" />
     <link href="~/css/uikit.min.css" rel="stylesheet" />
+    <link href="~/css/croppie.css" rel="stylesheet" />
     <link href="~/css/Global.min.css" rel="stylesheet" />
     <link href="~/css/Controls.min.css" rel="stylesheet" />
 
@@ -48,9 +54,9 @@
 
     <!-- #endregion -->
 
-   
-        @RenderBody()
+    @RenderBody()
 
+    @*<script src="~/app.js"></script>*@
 
     <!--Static Js-->
     <script src="~/js/uikit.min.js"></script>

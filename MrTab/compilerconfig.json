@@ -14,5 +14,9 @@
   {
     "outputFile": "wwwroot/css/uikit.css",
     "inputFile": "wwwroot/css/uikit.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Pages/Entry.css",
+    "inputFile": "wwwroot/css/Pages/Entry.scss"
   }
 ]

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "ثبت نام";
+    ViewBag.BodyClass = "entry-1";
+    Layout = "~/Views/Shared/_EntryLayout.cshtml";
+}
+
+<form class="column">
+
+    <div class="form-group">
+        <label class="input-label" for="tel">شماره تلفن</label>
+        <input class="input" type="tel" name="tel" placeholder="..." />
+        <span class="input-error">این فیلد اشتباه وارد شده است</span>
+    </div>
+
+    <div class="form-group">
+        <label class="input-label" for="password">گذرواژه</label>
+        <input class="input" type="password" name="password" placeholder="..." />
+        <span class="input-error">این فیلد اشتباه وارد شده است</span>
+    </div>
+
+    <div class="row-reverse uk-margin-top">
+        <button class="btn btn-primary">ثبت نام</button>
+        <a href="/Entry/Login" class="btn btn-secondary uk-margin-right">ورود</a>
+    </div>
+
+</form>
+

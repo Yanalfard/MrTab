@@ -246,15 +246,17 @@ button, a, a:hover .js-upload, input[type=file] {
   transition: all ease 0.2s; }
 
 .btn-icon {
-  color: #797979; }
+  color: #797979;
+  background: transparent;
+  border: none; }
 
 .btn-icon:hover {
   color: #3c3c3c; }
 
 .btn {
-  -moz-border-radius: 4px 4px 4px 4px;
-  -webkit-border-radius: 4px 4px 4px 4px;
-  border-radius: 4px 4px 4px 4px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px;
   /* -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;*/

@@ -22,6 +22,8 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\app.js" />
+    <None Include="wwwroot\sw.js" />
   </ItemGroup>
 
   <ItemGroup>

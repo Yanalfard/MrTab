@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="@(ViewBag.Description ?? "جستجو رستوران به صورت آنلاین")">
+    <meta name="keywords" content="@(ViewBag.Keywords ?? "جستجو، رستوران، غذا، آنلاین، امتیاز دهی")">
+
+    <title>@(ViewBag.Title ?? "مستر فود")</title>
+
+    <!--Css-->
+    <link href="~/css/uikit.min.css" rel="stylesheet" />
+    <link href="~/css/Global.min.css" rel="stylesheet" />
+    <link href="~/css/Controls.min.css" rel="stylesheet" />
+    <link href="~/css/Pages/Entry.min.css" rel="stylesheet" />
+
+</head>
+<body class="@(ViewBag.BodyClass)">
+
+    <div class="entry-wrapper column">
+
+        <header class="row-reverse uk-margin-bottom">
+            <h1 class="uk-h3 uk-margin-auto-left uk-margin-remove">
+                @(ViewBag.Title ?? "تیتر")
+            </h1>
+            <button class="btn-icon uk-margin-auto-right" onclick="window.history.back()">
+                <span uk-icon="nav-chevron-back"></span>
+            </button>
+        </header>
+
+        @RenderBody()
+
+    </div>
+
+    <!--Static Js-->
+    <script src="~/js/uikit.min.js"></script>
+    <script src="~/js/uikit-icons.js"></script>
+
+    <!--Page Dependant Js-->
+    @RenderSection("Scripts", false)
+
+</body>
+</html>
