@@ -79,23 +79,23 @@ $ScrollbarHandle: $white-dark;
 
 @mixin shadow-more {
     $shadowColor: rgba(0,0,0,.20);
-    -moz-box-shadow: $shadowColor 0 0 1.0vw;
-    -webkit-box-shadow: $shadowColor 0 0 1.0vw;
-    box-shadow: $shadowColor 0 0 1.0vw;
+    -moz-box-shadow: $shadowColor 0 0 24px;
+    -webkit-box-shadow: $shadowColor 0 0 24px;
+    box-shadow: $shadowColor 0 0 24px;
 }
 
 @mixin shadow-more-hov {
-    $shadowColor: rgba(0, 0, 0, 0.32);
-    -moz-box-shadow: $shadowColor 0 0 2.0vw;
-    -webkit-box-shadow: $shadowColor 0 0 2.0vw;
-    box-shadow: $shadowColor 0 0 2.0vw;
+    $shadowColor: rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: $shadowColor 0 0 28px;
+    -webkit-box-shadow: $shadowColor 0 0 28px;
+    box-shadow: $shadowColor 0 0 28px;
 }
 
 @mixin shadow-mega {
-    $shadowColor: rgba(0, 0, 0, 0.38);
-    -moz-box-shadow: $shadowColor 0 0px 2vw;
-    -webkit-box-shadow: $shadowColor 0 0px 2vw;
-    box-shadow: $shadowColor 0 0px 2vw;
+    $shadowColor: rgba(0, 0, 0, 0.32);
+    -moz-box-shadow: $shadowColor 0 0px 28px;
+    -webkit-box-shadow: $shadowColor 0 0px 28px;
+    box-shadow: $shadowColor 0 0px 28px;
 }
 
 /*#endregion */
@@ -137,7 +137,6 @@ $ScrollbarHandle: $white-dark;
 @mixin mat() {
     background: $CardBackground;
     @include border-radius(8px,8px,8px,8px);
-    border: 1px solid #D4D4D4;
 }
 
 @mixin cancel() {

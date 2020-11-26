@@ -21,6 +21,10 @@ body, .entry-1, .entry-2, .entry-3 {
     background-image: url('/resources/svg/Entry_3.svg');
 }
 
+.entry-header {
+    margin-bottom: 20px;
+}
+
 .main-container {
     overflow-y: hidden !important;
     @include column;
@@ -28,16 +32,53 @@ body, .entry-1, .entry-2, .entry-3 {
 
 .entry-wrapper {
     overflow-y: hidden !important;
+    @include column;
+
+    form {
+        height: 100%;
+        @include column;
+        flex: 1;
+    }
+}
+
+.bottom-image {
+    width: 100%;
+    height: auto;
 }
 
 @media only screen and (max-device-width : 480px) {
     .entry-wrapper {
         $wrapper-padding: 24px;
         padding: $wrapper-padding;
-        width: calc(100vw - $wrapper-padding - $wrapper-padding);
-        height: calc(100vh - $wrapper-padding - $wrapper-padding);
+        width: calc(100vw - 48px);
+        height: calc(100vh - 48px);
     }
 }
+
+@media only screen and (min-device-width : 480px) {
+    body {
+        display: flex;
+        background: #efefef;
+        background-image: url('/resources/svg/jiggly-doot.svg');
+        background-repeat: repeat;
+    }
+
+    .entry-wrapper {
+        width: 400px;
+        margin: auto;
+        background-image: none;
+        padding: 24px;
+        @include mat;
+        @include shadow-mega;
+        min-height: 460px;
+    }
+
+    .entry-header {
+        margin-bottom: 28px;
+    }
+}
+
+/*#region Form */
 
 .form-group {
     margin-bottom: 14px;
@@ -76,3 +117,11 @@ body, .entry-1, .entry-2, .entry-3 {
         font-size: 14px;
     }
 }
+
+.button-panel {
+    margin-top: auto;
+    @include row-reverse;
+    align-self: flex-end;
+}
+
+/*#endregion */

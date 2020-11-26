@@ -16,11 +16,11 @@
     <link href="~/css/Pages/Entry.min.css" rel="stylesheet" />
 
 </head>
-<body class="@(ViewBag.BodyClass)">
+<body class="">
 
-    <div class="entry-wrapper column">
+    <div class="@(ViewBag.BodyClass) entry-wrapper column">
 
-        <header class="row-reverse uk-margin-bottom">
+        <header class="entry-header row-reverse">
             <h1 class="uk-h3 uk-margin-auto-left uk-margin-remove">
                 @(ViewBag.Title ?? "تیتر")
             </h1>

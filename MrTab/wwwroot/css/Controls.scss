@@ -59,6 +59,7 @@ button, a, a:hover .js-upload, input[type=file] {
     background: -moz-linear-gradient(135deg, lighten(rgba(255,172,47,1),$percent) 0%, lighten(rgba(254,191,54,1),$percent) 100%);
     background: -webkit-linear-gradient(135deg, lighten(rgba(255,172,47,1),$percent) 0%, lighten(rgba(254,191,54,1),$percent) 100%);
     background: linear-gradient(135deg, lighten(rgba(255,172,47,1),$percent) 0%, lighten(rgba(254,191,54,1),$percent) 100%);
+    color: white;
 }
 
 .btn-secondary {
@@ -69,6 +70,7 @@ button, a, a:hover .js-upload, input[type=file] {
 
 .btn-secondary:hover {
     background: darken(#EDEDED,6%);
+    color: $Text;
 }
 
 .nav-header, .nav-header-invis {

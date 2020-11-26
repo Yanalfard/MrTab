@@ -73,8 +73,7 @@ img {
   border-radius: 8px 8px 8px 8px;
   /* -moz-border-radius: 0;
     -webkit-border-radius: 0;
-    border-radius: 0;*/
-  border: 1px solid #D4D4D4; }
+    border-radius: 0;*/ }
 
 .white {
   background: #fff; }

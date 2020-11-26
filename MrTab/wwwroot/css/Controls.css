@@ -293,7 +293,8 @@ button, a, a:hover .js-upload, input[type=file] {
   background: #ffb84e;
   background: -moz-linear-gradient(135deg, #ffb84e 0%, #fec954 100%);
   background: -webkit-linear-gradient(135deg, #ffb84e 0%, #fec954 100%);
-  background: linear-gradient(135deg, #ffb84e 0%, #fec954 100%); }
+  background: linear-gradient(135deg, #ffb84e 0%, #fec954 100%);
+  color: white; }
 
 .btn-secondary {
   border: none;
@@ -301,7 +302,8 @@ button, a, a:hover .js-upload, input[type=file] {
   color: #505050; }
 
 .btn-secondary:hover {
-  background: #dedede; }
+  background: #dedede;
+  color: #505050; }
 
 .nav-header, .nav-header-invis {
   padding: 16px;
