@@ -58,17 +58,121 @@
 
     @RenderBody()
 
-    @*<script src="~/app.js"></script>*@
+    <!-- #region Footer -->
+
+    <footer class="footer column">
+        <ul class="footer-counters uk-box-shadow-large">
+            <li>
+                <div class="row-reverse counter">
+                    <img src="~/resources/svg/Footer/Footer_Comment.svg" width="64" height="64" alt="Comments" />
+                    <div class="comments column">
+                        <strong>12,000</strong>
+                        <span>نظر</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="row-reverse counter">
+                    <img src="~/resources/svg/Footer/Footer_Heart.svg" width="64" height="64" alt="Likes" />
+                    <div class="likes column">
+                        <strong>20,000</strong>
+                        <span>پسند</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="row-reverse counter">
+                    <img src="~/resources/svg/Footer/Footer_User.svg" width="64" height="64" alt="Users" />
+                    <div class="users column">
+                        <strong>6,000</strong>
+                        <span>کاربر</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="row-reverse counter">
+                    <img src="~/resources/svg/Footer/Footer_ChefHat.svg" width="64" height="64" alt="Restaurants" />
+                    <div class="resaurants column">
+                        <strong>4,000</strong>
+                        <span>رستوران</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="footer-body">
+            <li>
+                <div class="footer-body-login column">
+                    <h3>ورود به سایت</h3>
+                    <form class="column">
+                        <input dir="rtl" class="input-fade btn-round uk-margin-bottom" type="tel" placeholder="شماره تلفن" />
+                        <input dir="rtl" class="input-fade btn-round uk-margin-bottom" type="password" placeholder="گذرواژه" />
+                        <button class="btn btn-primary btn-round uk-margin-auto-left">
+                            ورود
+                        </button>
+                    </form>
+                </div>
+            </li>
+            <li>
+                <div class="footer-body-about uk-margin-left column">
+                    <h3>نام سایت و لوگو</h3>
+                    <p class="uk-margin-remove">
+                        فودیسم یه شبکه اجتماعی رستوران گردی و کافه گردی که بهت کمک میکنه بهترین خوردنی فروشی های اطرافت رو پیدا کنی و دیگه هیچوقت غذای بد نخوری
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="footer-body-menu column">
+                    <h3>منوی اصلی</h3>
+                    <div class="row-reverse">
+                        <div class="column">
+                            <a href="">خانه</a>
+                            <a href="">درباره</a>
+                            <a href="">جستجو</a>
+                            <a href="">پنل کاربری</a>
+                        </div>
+                        <div class="column uk-margin-right">
+                            <a href="">ورود</a>
+                            <a href="">ثبت نام</a>
+                            <a href="">دریافت اپلیکیشن</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="footer-social row-reverse">
+            <span>
+                تمامی حقوق مادی و معنوی این وب سایت برای
+                <a href="">نام سایت</a>
+                محفوظ می باشد
+            </span>
+            <div class="row">
+                <a href="" class="social">
+                    <span uk-icon="logo-pinterest"></span>
+                </a>
+                <a href="" class="social">
+                    <span uk-icon="logo-linkedin"></span>
+                </a>
+                <a href="" class="social row-reverse">
+                    <span uk-icon="logo-instagram"></span>
+                    <span>اینستاگرام</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- #endregion -->
 
     <partial name="/Views/Shared/_MobileNav.cshtml">
 
-    <!--Static Js-->
-    <script src="~/js/uikit.min.js"></script>
-    <script src="~/js/uikit-icons.js"></script>
-    <script src="~/js/croppie.js"></script>
+        @*<script src="~/app.js"></script>*@
 
-    <!--Page Dependant Js-->
-    @RenderSection("Scripts", false)
+        <!--Static Js-->
+        <script src="~/js/uikit.min.js"></script>
+        <script src="~/js/uikit-icons.js"></script>
+        <script src="~/js/croppie.js"></script>
+
+        <!--Page Dependant Js-->
+        @RenderSection("Scripts", false)
 
 </body>
 </html>

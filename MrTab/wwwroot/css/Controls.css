@@ -407,3 +407,142 @@ button, a, a:hover .js-upload, input[type=file] {
 /*#endregion */
 /*#region off-canvas */
 /*#endregion */
+/*#region Footer */
+.gray-link, footer a {
+  color: #bfbfbf;
+  -moz-transition: all ease 0.2s;
+  -o-transition: all ease 0.2s;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s; }
+
+.gray-link:hover, footer a:hover {
+  color: #FEBA2E; }
+
+.footer-counters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background: #fff;
+  margin: 0;
+  padding: 10px 0 42px 0;
+  -moz-border-radius: 28px 28px 0 0;
+  -webkit-border-radius: 28px 28px 0 0;
+  border-radius: 28px 28px 0 0;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/ }
+  .footer-counters > li {
+    display: flex;
+    flex-direction: column; }
+    .footer-counters > li > .counter {
+      padding: 10px 0;
+      margin: auto !important; }
+      .footer-counters > li > .counter .column {
+        margin: auto 16px auto 0; }
+  .footer-counters .comments, .footer-counters .comments * {
+    color: #FFCA43; }
+  .footer-counters .likes, .footer-counters .likes * {
+    color: #F94646; }
+  .footer-counters .users, .footer-counters .users * {
+    color: #9FA09E; }
+  .footer-counters .resaurants, .footer-counters .resaurants * {
+    color: #96D1F3; }
+
+.footer-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr .8fr;
+  background: #231F20;
+  padding: 28px 24px;
+  margin: -28px 0 0 0;
+  -moz-border-radius: 28px 28px 0 0;
+  -webkit-border-radius: 28px 28px 0 0;
+  border-radius: 28px 28px 0 0;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 24px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 24px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 24px; }
+  .footer-body h3 {
+    color: #fff; }
+  .footer-body p, .footer-body .footer-text {
+    color: #B5B5B5; }
+  .footer-body li {
+    display: flex;
+    flex-direction: column; }
+    .footer-body li > .column {
+      margin: 0 auto; }
+  .footer-body .input-fade {
+    background: #282325;
+    padding: 8px 20px;
+    font-size: 14px;
+    border: 0;
+    color: #fff;
+    min-width: 25vw; }
+    .footer-body .input-fade ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #4E4545;
+      opacity: 1;
+      /* Firefox */ }
+    .footer-body .input-fade :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: #4E4545; }
+    .footer-body .input-fade ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: #4E4545; }
+  .footer-body .btn-primary {
+    -moz-box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
+    padding: 8px; }
+
+.footer-social {
+  padding: 16px 28px;
+  background: #1E1A1B; }
+  .footer-social * {
+    color: #BDBDBD; }
+
+@media only screen and (max-device-width: 512px) {
+  .footer-counters {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr; }
+  .footer-body {
+    display: flex !important;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    background: #231F20;
+    padding: 28px 24px;
+    margin: -28px 0 0 0;
+    -moz-border-radius: 28px 28px 0 0;
+    -webkit-border-radius: 28px 28px 0 0;
+    border-radius: 28px 28px 0 0;
+    /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 24px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 24px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 24px; }
+    .footer-body li {
+      display: flex;
+      flex-direction: column; }
+      .footer-body li > .column {
+        margin: 0 0 0 auto !important; } }
+
+@media only screen and (max-width: 724px) {
+  .footer-counters {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr; }
+  .footer-body {
+    display: flex !important;
+    -ms-flex-direction: column-reverse;
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    padding: 28px 24px;
+    margin: -28px 0 0 0; }
+  .footer li {
+    display: flex;
+    flex-direction: column; }
+    .footer li > .column {
+      margin: 0 0 20px 0 !important; } }
+
+/*#endregion */
