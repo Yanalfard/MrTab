@@ -118,6 +118,14 @@ $ScrollbarHandle: $white-dark;
     border-radius: 0;*/
 }
 
+@mixin filter($filters) {
+    filter: $filters;
+    -webkit-filter: $filters;
+    -moz-filter: $filters;
+    -o-filter: $filters;
+    -ms-filter: $filters;
+}
+
 @mixin gradient($primary,$secondary,$angle) {
     background-color: $primary;
     background-image: -moz-linear-gradient($angle, $primary, $secondary);

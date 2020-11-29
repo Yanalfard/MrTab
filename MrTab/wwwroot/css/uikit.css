@@ -4476,9 +4476,9 @@ select.uk-form-width-xsmall {
   /* 4 */
   box-sizing: border-box;
   max-width: 200px;
-  padding: 3px 6px;
+  padding: 4px 6px;
   /* 5 */
-  background: #666;
+  background: #111;
   border-radius: 2px;
   color: #fff;
   font-size: 12px; }

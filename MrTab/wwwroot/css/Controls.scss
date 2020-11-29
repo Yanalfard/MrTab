@@ -8,6 +8,7 @@
     background: $NavBackground;
     position: fixed;
     width: calc(100vw - 32px);
+    z-index:1000;
 
     &-right {
         margin-right: 14px;
@@ -215,6 +216,8 @@ button, a, a:hover .js-upload, input[type=file] {
 }
 
 .footer {
+    margin-top: 20px;
+
     &-counters {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
