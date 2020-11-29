@@ -477,7 +477,11 @@ button, a, a:hover .js-upload, input[type=file] {
     font-size: 14px;
     border: 0;
     color: #fff;
-    min-width: 25vw; }
+    min-width: 25vw;
+    -moz-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s; }
     .footer-body .input-fade ::placeholder {
       /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: #4E4545;
@@ -489,6 +493,8 @@ button, a, a:hover .js-upload, input[type=file] {
     .footer-body .input-fade ::-ms-input-placeholder {
       /* Microsoft Edge */
       color: #4E4545; }
+  .footer-body .input-fade:focus {
+    background: #383134; }
   .footer-body .btn-primary {
     -moz-box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
@@ -497,9 +503,19 @@ button, a, a:hover .js-upload, input[type=file] {
 
 .footer-social {
   padding: 16px 28px;
-  background: #1E1A1B; }
+  background: #1E1A1B;
+  display: flex;
+  flex-direction: row; }
   .footer-social * {
     color: #BDBDBD; }
+  .footer-social .media {
+    margin-right: auto; }
+    .footer-social .media .social {
+      padding: 10px;
+      background: #282325;
+      margin-right: 12px; }
+    .footer-social .media .social:hover {
+      background: #383134; }
 
 @media only screen and (max-device-width: 512px) {
   .footer-counters {
@@ -543,6 +559,20 @@ button, a, a:hover .js-upload, input[type=file] {
     display: flex;
     flex-direction: column; }
     .footer li > .column {
-      margin: 0 0 20px 0 !important; } }
+      margin: 0 0 20px 0 !important; }
+  .footer-social {
+    -ms-flex-direction: column !important;
+    -webkit-flex-direction: column !important;
+    flex-direction: column !important; }
+    .footer-social .media {
+      margin-top: 20px;
+      margin-right: auto;
+      margin-left: auto; }
+      .footer-social .media .social {
+        padding: 10px;
+        background: #282325;
+        margin-right: 12px; }
+      .footer-social .media .social:hover {
+        background: #383134; } }
 
 /*#endregion */

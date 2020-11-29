@@ -21,7 +21,7 @@ body, .entry-1, .entry-2, .entry-3 {
 }
 
 .entry-header {
-    margin-bottom: 20px;
+    margin-bottom: 12px !important;
 }
 
 .main-container {
@@ -45,15 +45,22 @@ body, .entry-1, .entry-2, .entry-3 {
     height: auto;
 }
 
+//phone
 @media only screen and (max-device-width : 480px) {
     .entry-wrapper {
         $wrapper-padding: 24px;
         padding: $wrapper-padding;
         width: calc(100vw - 48px);
         height: calc(100vh - 48px);
+        margin-bottom: 12px !important;
+    }
+
+    .button-panel {
+        margin-top: 24px !important;
     }
 }
 
+//desktop
 @media only screen and (min-device-width : 480px) {
     body {
         display: flex;

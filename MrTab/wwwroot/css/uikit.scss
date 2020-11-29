@@ -68,8 +68,15 @@ body {
 }
 
 .space-nav-bottom {
+    display: none;
     width: 100vw;
     height: $nav-bottom-height;
+}
+
+@media only screen and (max-device-width: 524px) {
+    .space-nav-bottom {
+        display: block;
+    }
 }
 
 .space {

@@ -94,7 +94,7 @@ body, .entry-1, .entry-2, .entry-3 {
   background-image: url("/resources/svg/Entry_3.svg"); }
 
 .entry-header {
-  margin-bottom: 20px; }
+  margin-bottom: 12px !important; }
 
 .main-container {
   overflow-y: hidden !important;
@@ -119,7 +119,10 @@ body, .entry-1, .entry-2, .entry-3 {
   .entry-wrapper {
     padding: 24px;
     width: calc(100vw - 48px);
-    height: calc(100vh - 48px); } }
+    height: calc(100vh - 48px);
+    margin-bottom: 12px !important; }
+  .button-panel {
+    margin-top: 24px !important; } }
 
 @media only screen and (min-device-width: 480px) {
   body {

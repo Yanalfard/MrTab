@@ -286,7 +286,13 @@ button, a, a:hover .js-upload, input[type=file] {
             color: #fff;
             min-width: 25vw;
             @include placeholder(#4E4545);
+            @include trans(.3s);
         }
+
+        .input-fade:focus {
+            background: lighten( #282325, 6%);
+        }
+
 
         .btn-primary {
             @include shadow-medium;
@@ -297,13 +303,27 @@ button, a, a:hover .js-upload, input[type=file] {
     &-social {
         padding: 16px 28px;
         background: #1E1A1B;
+        @include row;
 
         * {
             color: #BDBDBD;
         }
 
-        .social {
+        .credits {
+        }
 
+        .media {
+            margin-right: auto;
+
+            .social {
+                padding: 10px;
+                background: #282325;
+                margin-right: 12px;
+            }
+
+            .social:hover {
+                background: lighten(#282325,6%);
+            }
         }
     }
 }
@@ -337,7 +357,6 @@ button, a, a:hover .js-upload, input[type=file] {
     }
 }
 
-
 @media only screen and (max-width: 724px) {
     .footer {
         &-counters {
@@ -359,6 +378,28 @@ button, a, a:hover .js-upload, input[type=file] {
 
             > .column {
                 margin: 0 0 20px 0 !important;
+            }
+        }
+
+        &-social {
+            -ms-flex-direction: column !important;
+            -webkit-flex-direction: column !important;
+            flex-direction: column !important;
+
+            .media {
+                margin-top: 20px;
+                margin-right: auto;
+                margin-left: auto;
+
+                .social {
+                    padding: 10px;
+                    background: #282325;
+                    margin-right: 12px;
+                }
+
+                .social:hover {
+                    background: lighten(#282325,6%);
+                }
             }
         }
     }

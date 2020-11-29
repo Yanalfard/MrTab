@@ -89,8 +89,13 @@ body {
   height: 70px; }
 
 .space-nav-bottom {
+  display: none;
   width: 100vw;
   height: 65px; }
+
+@media only screen and (max-device-width: 524px) {
+  .space-nav-bottom {
+    display: block; } }
 
 .space {
   width: 100vw;
