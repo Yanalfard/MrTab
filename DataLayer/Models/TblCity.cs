@@ -23,5 +23,4 @@ namespace DataLayer.Models
         [InverseProperty(nameof(TblRestaurant.City))]
         public virtual ICollection<TblRestaurant> TblRestaurants { get; set; }
     }
-
 }
