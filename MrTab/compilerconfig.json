@@ -1,0 +1,26 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/Controls.css",
+    "inputFile": "wwwroot/css/Controls.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Global.css",
+    "inputFile": "wwwroot/css/Global.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Pages/Index.css",
+    "inputFile": "wwwroot/css/Pages/Index.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/uikit.css",
+    "inputFile": "wwwroot/css/uikit.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Pages/Entry.css",
+    "inputFile": "wwwroot/css/Pages/Entry.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Pages/Restaurant.css",
+    "inputFile": "wwwroot/css/Pages/Restaurant.scss"
+  }
+]

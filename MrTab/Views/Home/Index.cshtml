@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "نام وبسایت";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/css/Pages/Index.min.css" rel="stylesheet" />
+}
+
+<div class="hero column">
+    <div class="hero-alternate uk-margin-auto-vertical">
+        <div class="hero-navi row">
+            <a href="" uk-icon="icon:person-circle-outline;ratio:1" class="button-icon"></a>
+            <a href="" uk-icon="icon:logo-angular;ratio:1" class="button-icon uk-margin-auto-left"></a>
+        </div>
+        <div class="hero-splash uk-margin-auto-vertical">
+            <h1 class="uk-h1  uk-margin-small-bottom">
+                دنبال یه جای خوب برای
+                <br />
+                وقت گذروندن می گردی؟
+            </h1>
+            <h2 class="uk-h1 uk-margin-remove-top">
+                <strong dir="rtl"> جای درستی اومدی...</strong>
+            </h2>
+        </div>
+        <img src="~/resources/svg/LookingForFood.svg"
+             class="hero-image uk-margin-auto-right"
+             width="430" height="386" alt="Hero image, man looking for food" />
+        <button class="hero-button btn btn-white uk-margin-top">دست به کار شو</button>
+    </div>
+</div>
+
+<div class="space-double"></div>
+<div class="space-double"></div>
+<div class="space-double"></div>
+<div class="space-double"></div>
+<div class="space-double"></div>
+<div class="space-double"></div>
+
+<!-- This is a button toggling the modal -->
+<button uk-toggle="target: #my-id" type="button">OI</button>
+
+<!-- This is the modal -->
+<div id="my-id" uk-modal>
+    <div class="popup-croppie column uk-margin-auto">
+        <div class="controls uk-width-1-1 row ">
+            <input type="file" id="files" onchange="fileSelected(this)" class="display-none">
+            <label class="button-icon" for="files">
+                <span uk-icon="image"></span>
+            </label>
+            <button class="button-icon" onclick="crop()">
+                <span uk-icon="crop"></span>
+            </button>
+            @*<button class="button-icon uk-margin-auto-left" onclick="window.history.back()">
+                        <span uk-icon="close"></span>
+                </button>*@
+            <button class="button-icon uk-margin-auto-left uk-modal-close">
+                <span uk-icon="close"></span>
+            </button>
+        </div>
+        <img src="~/resources/svg/Image.svg" id="item" />
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        const opt = {
+            viewport: {
+                width: 120,
+                height: 100,
+                //Valid type values:'square' 'circle'
+                type: 'square'
+            }
+        }
+        var c;
+        function fileSelected(input) {
+            if (input.files[0] == null) return;
+
+            if (c != undefined) {
+                const popup = document.getElementsByClassName('popup-croppie')[0];
+                c.destroy();
+            }
+
+            var image = new Image();
+            image.src = input.value;
+
+            var reader = new FileReader();
+            reader.onload = function () {
+                var dataURL = reader.result;
+                var output = document.getElementById('item');
+                output.src = dataURL;
+                c = new Croppie(document.getElementById('item'), opt);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        //Returns the Base64 string of a WebP image
+        function crop() {
+            try {
+                c.result({ type: 'base64', size: 'viewport', format: 'webp', quality: 1, circle: false }).then(i => {
+                    //var image = new Image();
+                    //image.src = i;
+                    //document.getElementById('content').appendChild(image);
+                    //console.log(i);
+                    return i;
+                });
+            }
+            catch{
+                UIkit.notification('لطفا یک عکس انتخاب کنید');
+            }
+        }
+    </script>
+}

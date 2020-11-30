@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MrTab", "MrTab\MrTab.csproj", "{082F648D-7DA2-4BB4-A1CE-7A6444352400}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{44FBC0E8-4E61-4FA2-BACD-7FA6E6D9D398}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{44FBC0E8-4E61-4FA2-BACD-7FA6E6D9D398}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{4BADD810-0852-4FD1-9602-BD1FEB14F583}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{4BADD810-0852-4FD1-9602-BD1FEB14F583}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

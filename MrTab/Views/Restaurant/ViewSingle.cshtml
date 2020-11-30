@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "ورود";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/css/Pages/Restaurant.min.css" rel="stylesheet" />
+}
+
+<!-- #region Banner -->
+
+<div class="image-container uk-box-shadow-large ">
+    <img class="banner-image" width="500" height="350" src="~/resources/png/GoodFather.png" alt="Restaurant Banner" />
+</div>
+
+<div class="banner uk-margin-medium-bottom">
+    <div class="banner-logo">
+        <div class="row-reverse">
+            <div uk-lightbox>
+                <a href="/resources/png/food_3.png" data-caption="نام رستوران" data-alt="Restaurant Logo">
+                    <img class="logo uk-box-shadow-medium"
+                         src="/resources/png/food_3.png" width="100" height="100" alt="Restaurant Logo" />
+                </a>
+            </div>
+            <div class="column">
+                <h1 class="uk-h3">
+                    رستوران بسیار بسیار گران قیمت
+                </h1>
+                <div class="star-container uk-margin-auto-right banner-material row" uk-tooltip="2.5" dir="rtl">
+                    <div class="Stars" style="--rating:  2.5" aria-label="Rating of this product is 2.3 out of 5."></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="banner-info">
+        <div class="column">
+            <div class="row">
+                <h3 class="uk-margin-remove uk-h5 row banner-material">
+                    <i uk-icon="call"></i>
+                    <span class="uk-margin-small-left">021 861 28 640</span>
+                </h3>
+                <h3 class="uk-margin-small-left uk-margin-remove-vertical uk-h5 row banner-material">
+                    <i uk-icon="time-outline"></i>
+                    <span class="uk-margin-small-left">7:30 تا 22:30</span>
+                </h3>
+            </div>
+            <p class="banner-material uk-margin-small-top uk-margin-auto-left uk-margin-remove-bottom">
+                <span uk-icon="location-sharp"></span>
+                تبریز - ایل گلی - کوی فردوس - خیابان ایل گلی - رستوران پدر خوب
+            </p>
+        </div>
+    </div>
+    <div class="banner-action column">
+        <div class="row uk-margin-auto-top">
+            <a href="" uk-tooltip="آپلود عکس" class="banner-material uk-margin-small-right" uk-icon="image"></a>
+            <a href="" uk-tooltip="گزارش مشکل" class="banner-material uk-margin-auto-right" uk-icon="megaphone-outline"></a>
+            <a href="" uk-tooltip="پیج اینستاگرام" class="banner-material" uk-icon="logo-instagram"></a>
+        </div>
+    </div>
+</div>
+
+
+<!-- #endregion -->
+<!-- #region User Photos -->
+<!-- #endregion -->
+<!-- #region Menu -->
+<!-- #endregion -->
+<!-- #region Info -->
+<!-- #endregion -->
+<!-- #region Comment Section -->
+<!-- #endregion -->

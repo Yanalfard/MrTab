@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="@(ViewBag.Description ?? "جستجو رستوران به صورت آنلاین")">
+    <meta name="keywords" content="@(ViewBag.Keywords ?? "جستجو، رستوران، غذا، آنلاین، امتیاز دهی")">
+
+    <title>@(ViewBag.Title ?? "مستر فود")</title>
+
+    <!--PWA-->
+    @*<meta name="apple-mobile-web-app-status-bar" content="#E73434" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#E73434" />
+        <meta name="theme-color" content="#E73434" />
+        <link rel="manifest" href="~/manifest.json" />*@
+
+    <!--Css-->
+    <link href="~/css/uikit.min.css" rel="stylesheet" />
+    <link href="~/css/croppie.css" rel="stylesheet" />
+    <link href="~/css/Global.min.css" rel="stylesheet" />
+    <link href="~/css/Controls.min.css" rel="stylesheet" />
+
+    @RenderSection("Styles")
+
+</head>
+<body>
+
+    <!-- #region nav-header -->
+
+    <div class="nav-header row-reverse uk-box-shadow-medium">
+        <nav class="nav-header-right uk-margin-auto-vertical row-reverse uk-margin-auto-left">
+            <a href="" class="logo uk-margin-left btn-icon">
+                <span uk-icon="logo-angular"></span>
+            </a>
+            <a href="" class="btn-icon">
+                <span>خانه</span>
+                <span uk-icon="home"></span>
+            </a>
+            <a href="" class="btn-icon">
+                <span>درباره ما</span>
+                <span uk-icon="information-circle"></span>
+            </a>
+        </nav>
+        <div class="nav-header-left row uk-margin-auto-right">
+            <button class="btn btn-round btn-primary">
+                ثبت نام
+            </button>
+            <button class="btn btn-round btn-secondary uk-margin-left">
+                ورود
+            </button>
+        </div>
+    </div>
+
+    <div class="space-nav-header"></div>
+
+    <!-- #endregion -->
+
+    @RenderBody()
+
+    <!-- #region Footer -->
+
+    <footer class="footer column">
+        <ul class="footer-counters uk-box-shadow-large">
+            <li>
+                <div class="row-reverse counter">
+                    <img src="~/resources/svg/Footer/Footer_Comment.svg" width="64" height="64" alt="Comments" />
+                    <div class="comments column">
+                        <strong>12,000</strong>
+                        <span>نظر</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="row-reverse counter">
+                    <img src="~/resources/svg/Footer/Footer_Heart.svg" width="64" height="64" alt="Likes" />
+                    <div class="likes column">
+                        <strong>20,000</strong>
+                        <span>پسند</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="row-reverse counter">
+                    <img src="~/resources/svg/Footer/Footer_User.svg" width="64" height="64" alt="Users" />
+                    <div class="users column">
+                        <strong>6,000</strong>
+                        <span>کاربر</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="row-reverse counter">
+                    <img src="~/resources/svg/Footer/Footer_ChefHat.svg" width="64" height="64" alt="Restaurants" />
+                    <div class="resaurants column">
+                        <strong>4,000</strong>
+                        <span>رستوران</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="footer-body">
+            <li>
+                <div class="footer-body-login column">
+                    <h3>ورود به سایت</h3>
+                    <form class="column">
+                        <input dir="rtl" class="input-fade btn-round uk-margin-bottom" type="tel" placeholder="شماره تلفن" />
+                        <input dir="rtl" class="input-fade btn-round uk-margin-bottom" type="password" placeholder="گذرواژه" />
+                        <button class="btn btn-primary btn-round uk-margin-auto-left">
+                            ورود
+                        </button>
+                    </form>
+                </div>
+            </li>
+            <li>
+                <div class="footer-body-about uk-margin-left column">
+                    <h3>نام سایت و لوگو</h3>
+                    <p class="uk-margin-remove">
+                        یه شبکه اجتماعی رستوران گردی و کافه گردی که بهت کمک میکنه بهترین خوردنی فروشی های اطرافت رو پیدا کنی و دیگه هیچوقت غذای بد نخوری
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="footer-body-menu column">
+                    <h3>منوی اصلی</h3>
+                    <div class="row-reverse">
+                        <div class="column">
+                            <a href="">خانه</a>
+                            <a href="">درباره</a>
+                            <a href="">جستجو</a>
+                            <a href="">پنل کاربری</a>
+                        </div>
+                        <div class="column uk-margin-right">
+                            <a href="">ورود</a>
+                            <a href="">ثبت نام</a>
+                            <a href="">دریافت اپلیکیشن</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="footer-social row-reverse">
+            <span class="credits">
+                تمامی حقوق مادی و معنوی این وب سایت برای
+                <a href="">نام سایت</a>
+                محفوظ می باشد
+            </span>
+            <div class="media row">
+                <a href="" class="social btn-round">
+                    <span uk-icon="logo-pinterest"></span>
+                </a>
+                <a href="" class="social btn-round">
+                    <span uk-icon="logo-linkedin"></span>
+                </a>
+                <a href="" class="social btn-round row-reverse">
+                    <span class="uk-margin-small-right" uk-icon="logo-instagram"></span>
+                    <span class="uk-margin-small-right uk-margin-small-left">اینستاگرام</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- #endregion -->
+    <div class="space-nav-bottom"></div>
+    <partial name="/Views/Shared/_MobileNav.cshtml">
+
+        @*<script src="~/app.js"></script>*@
+
+        <!--Static Js-->
+        <script src="~/js/uikit.min.js"></script>
+        <script src="~/js/uikit-icons.js"></script>
+        <script src="~/js/croppie.js"></script>
+        <script src="~/js/persianDigits.js"></script>
+        <script src="~/js/ImageLoadFailed.js"></script>
+        <script src="~/js/CopyText.js"></script>
+
+        <!--Page Dependant Js-->
+        @RenderSection("Scripts", false)
+
+</body>
+</html>

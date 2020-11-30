@@ -1,0 +1,85 @@
+﻿@import '../_colors.scss';
+@import '../_layout.scss';
+
+body, .entry-1, .entry-2, .entry-3 {
+    background: white;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+}
+
+.entry-1 {
+    background-image: url('/resources/svg/Entry_1.svg');
+}
+
+.entry-2 {
+    background-image: url('/resources/svg/Entry_2.svg');
+}
+
+.entry-3 {
+    background-image: url('/resources/svg/Entry_3.svg');
+}
+
+.entry-header {
+    margin-bottom: 12px !important;
+}
+
+.main-container {
+    overflow-y: hidden !important;
+    @include column;
+}
+
+.entry-wrapper {
+    overflow-y: hidden !important;
+    @include column;
+
+    form {
+        height: 100%;
+        @include column;
+        flex: 1;
+    }
+}
+
+.bottom-image {
+    width: 100%;
+    height: auto;
+}
+
+//phone
+@media only screen and (max-device-width : 480px) {
+    .entry-wrapper {
+        $wrapper-padding: 24px;
+        padding: $wrapper-padding;
+        width: calc(100vw - 48px);
+        height: calc(100vh - 48px);
+        margin-bottom: 12px !important;
+    }
+
+    .button-panel {
+        margin-top: 24px !important;
+    }
+}
+
+//desktop
+@media only screen and (min-device-width : 480px) {
+    body {
+        display: flex;
+        background: #efefef;
+        background-image: url('/resources/svg/jiggly-doot.svg');
+        background-repeat: repeat;
+    }
+
+    .entry-wrapper {
+        width: 400px;
+        margin: auto;
+        background-image: none;
+        padding: 24px;
+        @include mat;
+        @include shadow-mega;
+        min-height: 460px;
+    }
+
+    .entry-header {
+        margin-bottom: 28px;
+    }
+}

@@ -1,0 +1,150 @@
+﻿/*#region name*/
+/*#endregion */
+/*#region Global */
+/*#endregion */
+/*#region difficulty */
+/*#endregion */
+/*#region Card*/
+/*#endregion */
+/*#region Scrollbar */
+/*#endregion */
+/*#region shadow */
+/*#endregion */
+/*#region Material  */
+/*#endregion */
+/*
+backdrop-filter: blur(2px);
+backdrop-filter: brightness(60%);
+backdrop-filter: contrast(40%);
+backdrop-filter: drop-shadow(4px 4px 10px blue);
+backdrop-filter: grayscale(30%);
+backdrop-filter: hue-rotate(120deg);
+backdrop-filter: invert(70%);
+backdrop-filter: opacity(20%);
+backdrop-filter: sepia(90%);
+backdrop-filter: saturate(80%);
+*/
+/*#region Alignment */
+.row {
+  display: flex;
+  flex-direction: row; }
+
+.row-reverse {
+  display: flex;
+  flex-direction: row-reverse; }
+
+.column {
+  display: flex;
+  flex-direction: column; }
+
+.column-reverse {
+  display: flex;
+  flex-direction: column-reverse; }
+
+.flex-1 {
+  flex: 1; }
+
+.flex-2 {
+  flex: 2; }
+
+.flex-3 {
+  flex: 3; }
+
+.flex-4 {
+  flex: 4; }
+
+.flex-5 {
+  flex: 5; }
+
+.flex-6 {
+  flex: 6; }
+
+.flex-7 {
+  flex: 7; }
+
+.flex-8 {
+  flex: 8; }
+
+.flex-9 {
+  flex: 9; }
+
+.flex-10 {
+  flex: 10; }
+
+.flex-11 {
+  flex: 11; }
+
+.flex-auto {
+  flex: auto; }
+
+/*#endregion */
+body, .entry-1, .entry-2, .entry-3 {
+  background: white;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain; }
+
+.entry-1 {
+  background-image: url("/resources/svg/Entry_1.svg"); }
+
+.entry-2 {
+  background-image: url("/resources/svg/Entry_2.svg"); }
+
+.entry-3 {
+  background-image: url("/resources/svg/Entry_3.svg"); }
+
+.entry-header {
+  margin-bottom: 12px !important; }
+
+.main-container {
+  overflow-y: hidden !important;
+  display: flex;
+  flex-direction: column; }
+
+.entry-wrapper {
+  overflow-y: hidden !important;
+  display: flex;
+  flex-direction: column; }
+  .entry-wrapper form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1; }
+
+.bottom-image {
+  width: 100%;
+  height: auto; }
+
+@media only screen and (max-device-width: 480px) {
+  .entry-wrapper {
+    padding: 24px;
+    width: calc(100vw - 48px);
+    height: calc(100vh - 48px);
+    margin-bottom: 12px !important; }
+  .button-panel {
+    margin-top: 24px !important; } }
+
+@media only screen and (min-device-width: 480px) {
+  body {
+    display: flex;
+    background: #efefef;
+    background-image: url("/resources/svg/jiggly-doot.svg");
+    background-repeat: repeat; }
+  .entry-wrapper {
+    width: 400px;
+    margin: auto;
+    background-image: none;
+    padding: 24px;
+    background: #fff;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    border-radius: 8px 8px 8px 8px;
+    /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+    -moz-box-shadow: rgba(0, 0, 0, 0.32) 0 0px 28px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.32) 0 0px 28px;
+    box-shadow: rgba(0, 0, 0, 0.32) 0 0px 28px;
+    min-height: 460px; }
+  .entry-header {
+    margin-bottom: 28px; } }

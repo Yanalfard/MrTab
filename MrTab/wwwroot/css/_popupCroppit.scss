@@ -1,0 +1,55 @@
+﻿@import '_colors.scss';
+
+.cr-slider-wrap {
+    margin: 0 !important;
+    padding: 6px 0;
+    background: white;
+    width: 100% !important;
+    @include border-radius(0,0,12px,12px);
+}
+
+.croppie-container {
+    z-index: 100;
+    margin: auto;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(4px);
+    min-height: 420px;
+}
+
+.popup-croppie {
+    display: flex;
+    width: 320px;
+    height: 420px;
+
+    #item {
+        background: white;
+        @include border-radius(0,0,12px,12px);
+        width: 100%;
+    }
+
+    .controls {
+        @include border-radius(12px,12px,0,0);
+        background: white;
+        -moz-box-shadow: 0 0 12px rgba(0,0,0,.24);
+        -webkit-box-shadow: 0 0 12px rgba(0,0,0,.24);
+        box-shadow: 0 0 12px rgba(0,0,0,.24);
+        z-index: 110;
+
+        .button-icon {
+            cursor: pointer;
+            height: 52px;
+            width: 52px;
+            background: none;
+            border: none;
+            border-radius: 0;
+            display: flex;
+
+            > span {
+                margin: auto;
+                width: 24px;
+                height: 24px;
+                color: #333;
+            }
+        }
+    }
+}
