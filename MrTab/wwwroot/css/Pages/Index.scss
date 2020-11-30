@@ -81,7 +81,6 @@
                 h2 {
                     font-size: 28px !important;
                 }
-
             }
         }
 
@@ -89,5 +88,31 @@
             margin: auto !important;
             font-size: 18px;
         }
+    }
+}
+
+.parallax-download {
+    $height: 350px;
+    height: $height;
+    background-image: url('/resources/jpg/Coffee.jpg');
+
+    h1, p {
+        color: white;
+        text-align: center;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.50);
+    }
+
+    .parralax-content {
+        z-index: 100;
+    }
+
+    .parralax-overlay-blur {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.20);
+        backdrop-filter: blur(5px);
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.5) inset;
+        height: $height;
+        width: 100%;
+        z-index: 80;
     }
 }

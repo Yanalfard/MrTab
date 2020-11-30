@@ -237,7 +237,7 @@ backdrop-filter: saturate(80%);
 /*#endregion */
 .nav-header {
   padding: 16px;
-  background: #fff;
+  background: #231F20;
   position: fixed;
   width: calc(100vw - 32px);
   z-index: 1000; }
@@ -259,7 +259,7 @@ backdrop-filter: saturate(80%);
     display: none !important; } }
 
 .nav-bottom {
-  background: #fff;
+  background: #231F20;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -298,6 +298,11 @@ button, a, a:hover .js-upload, input[type=file] {
   transition: all ease 0.2s; }
 
 .btn-icon {
+  color: #797979;
+  background: transparent;
+  border: none; }
+
+.btn-icon-darkglass {
   color: #797979;
   background: transparent;
   border: none; }
@@ -341,12 +346,57 @@ button, a, a:hover .js-upload, input[type=file] {
   box-shadow: 0px 6px 16px 0px rgba(255, 189, 47, 0.5);
   color: white; }
 
+.btn-primary-lowglow {
+  box-shadow: 0px 6px 12px 0px rgba(255, 189, 47, 0.25) !important; }
+
 .btn-primary:hover {
   background: #ffb84e;
   background: -moz-linear-gradient(135deg, #ffb84e 0%, #fec954 100%);
   background: -webkit-linear-gradient(135deg, #ffb84e 0%, #fec954 100%);
   background: linear-gradient(135deg, #ffb84e 0%, #fec954 100%);
   color: white; }
+
+.input-darkglass {
+  background: #2e282a;
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 0;
+  color: #eee;
+  -moz-transition: all ease 0.3s;
+  -o-transition: all ease 0.3s;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s; }
+  .input-darkglass ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #4E4545;
+    opacity: 1;
+    /* Firefox */ }
+  .input-darkglass :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #4E4545; }
+  .input-darkglass ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #4E4545; }
+
+.input-darkglass:focus {
+  background: #383134;
+  color: #fff; }
+
+.material-darkglass {
+  background: #2e282a; }
+
+.material-darkglass:focus, .btn-darkglass:hover {
+  background: #383134;
+  color: white; }
+
+.btn-darkglass {
+  border: none;
+  background: #2e282a;
+  color: #959595;
+  -moz-transition: all ease 0.3s;
+  -o-transition: all ease 0.3s;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s; }
 
 .btn-secondary {
   border: none;
@@ -372,6 +422,10 @@ button, a, a:hover .js-upload, input[type=file] {
   color: #202020;
   background-color: #E9E9E9; }
 
+.input-invis {
+  background: transparent;
+  border: 0; }
+
 .form-group {
   margin-bottom: 14px;
   display: flex;
@@ -392,9 +446,6 @@ button, a, a:hover .js-upload, input[type=file] {
     border: 0;
     font-size: 16px;
     color: #202020; }
-  .form-group .input-invis {
-    background: transparent;
-    border: 0; }
   .form-group .input-error {
     margin-top: 8px;
     color: #DA4B1E;
@@ -475,29 +526,7 @@ button, a, a:hover .js-upload, input[type=file] {
       .footer-body li > .column {
         margin: 0 auto; }
     .footer-body .input-fade {
-      background: #282325;
-      padding: 8px 20px;
-      font-size: 14px;
-      border: 0;
-      color: #fff;
-      min-width: 25vw;
-      -moz-transition: all ease 0.3s;
-      -o-transition: all ease 0.3s;
-      -webkit-transition: all ease 0.3s;
-      transition: all ease 0.3s; }
-      .footer-body .input-fade ::placeholder {
-        /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: #4E4545;
-        opacity: 1;
-        /* Firefox */ }
-      .footer-body .input-fade :-ms-input-placeholder {
-        /* Internet Explorer 10-11 */
-        color: #4E4545; }
-      .footer-body .input-fade ::-ms-input-placeholder {
-        /* Microsoft Edge */
-        color: #4E4545; }
-    .footer-body .input-fade:focus {
-      background: #383134; }
+      min-width: 25vw; }
     .footer-body .btn-primary {
       -moz-box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
       -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;

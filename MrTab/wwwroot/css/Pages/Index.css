@@ -141,3 +141,21 @@ backdrop-filter: saturate(80%);
     .hero .hero-button {
       margin: auto !important;
       font-size: 18px; } }
+
+.parallax-download {
+  height: 350px;
+  background-image: url("/resources/jpg/Coffee.jpg"); }
+  .parallax-download h1, .parallax-download p {
+    color: white;
+    text-align: center;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); }
+  .parallax-download .parralax-content {
+    z-index: 100; }
+  .parallax-download .parralax-overlay-blur {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5) inset;
+    height: 350px;
+    width: 100%;
+    z-index: 80; }

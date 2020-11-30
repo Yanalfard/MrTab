@@ -8,7 +8,7 @@
     background: $NavBackground;
     position: fixed;
     width: calc(100vw - 32px);
-    z-index:1000;
+    z-index: 1000;
 
     &-right {
         margin-right: 14px;
@@ -93,6 +93,12 @@ button, a, a:hover .js-upload, input[type=file] {
     border: none;
 }
 
+.btn-icon-darkglass {
+    color: lighten($Text,16%);
+    background: transparent;
+    border: none;
+}
+
 .btn-icon:hover {
     color: darken($Text,8%);
 }
@@ -127,6 +133,10 @@ button, a, a:hover .js-upload, input[type=file] {
     color: white;
 }
 
+.btn-primary-lowglow {
+    box-shadow: 0px 6px 12px 0px rgba(255,189,47,0.25) !important;
+}
+
 .btn-primary:hover {
     $percent: 6%;
     background: lighten(rgb(255,172,47),$percent);
@@ -134,6 +144,37 @@ button, a, a:hover .js-upload, input[type=file] {
     background: -webkit-linear-gradient(135deg, lighten(rgba(255,172,47,1),$percent) 0%, lighten(rgba(254,191,54,1),$percent) 100%);
     background: linear-gradient(135deg, lighten(rgba(255,172,47,1),$percent) 0%, lighten(rgba(254,191,54,1),$percent) 100%);
     color: white;
+}
+
+.input-darkglass {
+    background: $darkglass;
+    padding: 8px 20px;
+    font-size: 14px;
+    border: 0;
+    color: #eee;
+    @include placeholder(#4E4545);
+    @include trans(.3s);
+}
+
+.input-darkglass:focus {
+    background: $darkglass-hover;
+    color: #fff;
+}
+
+.material-darkglass {
+    background: $darkglass;
+}
+
+.material-darkglass:focus, .btn-darkglass:hover {
+    background: $darkglass-hover;
+    color:white;
+}
+
+.btn-darkglass {
+    border: none;
+    background: $darkglass;
+    color: #959595;
+    @include trans(.3s);
 }
 
 .btn-secondary {
@@ -163,6 +204,11 @@ button, a, a:hover .js-upload, input[type=file] {
     background-color: #E9E9E9;
 }
 
+.input-invis {
+    background: transparent;
+    border: 0;
+}
+
 .form-group {
     margin-bottom: 14px;
     @include column;
@@ -175,11 +221,6 @@ button, a, a:hover .js-upload, input[type=file] {
 
     .input {
         @include inputmat;
-    }
-
-    .input-invis {
-        background: transparent;
-        border: 0;
     }
 
     .input-error {
@@ -282,20 +323,8 @@ button, a, a:hover .js-upload, input[type=file] {
         }
 
         .input-fade {
-            background: #282325;
-            padding: 8px 20px;
-            font-size: 14px;
-            border: 0;
-            color: #fff;
             min-width: 25vw;
-            @include placeholder(#4E4545);
-            @include trans(.3s);
         }
-
-        .input-fade:focus {
-            background: lighten( #282325, 6%);
-        }
-
 
         .btn-primary {
             @include shadow-medium;

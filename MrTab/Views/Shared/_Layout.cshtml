@@ -24,7 +24,7 @@
     @RenderSection("Styles")
 
 </head>
-<body>
+<body style="">
 
     <!-- #region nav-header -->
 
@@ -42,18 +42,22 @@
                 <span uk-icon="information-circle"></span>
             </a>
         </nav>
+
         <div class="nav-header-left row uk-margin-auto-right">
-            <button class="btn btn-round btn-primary">
+            <button class="btn btn-round btn-primary btn-primary-lowglow">
                 ثبت نام
             </button>
-            <button class="btn btn-round btn-secondary uk-margin-left">
+            <button class="btn btn-round btn-darkglass uk-margin-left">
                 ورود
             </button>
+            <div class="material-darkglass uk-margin-left btn-round row">
+                <button uk-icon="search-outline" class="btn-icon uk-margin-small-left uk-margin-small-right"></button>
+                <input class="input-darkglass input-invis btn-round row flex-1" type="search" aria-label="جستجوی رستوران" />
+            </div>
         </div>
     </div>
 
     <div class="space-nav-header"></div>
-
     <!-- #endregion -->
 
     @RenderBody()
@@ -104,9 +108,9 @@
                 <div class="footer-body-login column">
                     <h3>ورود به سایت</h3>
                     <form class="column">
-                        <input dir="rtl" class="input-fade btn-round uk-margin-bottom" type="tel" placeholder="شماره تلفن" />
-                        <input dir="rtl" class="input-fade btn-round uk-margin-bottom" type="password" placeholder="گذرواژه" />
-                        <button class="btn btn-primary btn-round uk-margin-auto-left">
+                        <input dir="rtl" class="input-darkglass input-fade btn-round uk-margin-bottom" type="tel" placeholder="شماره تلفن" />
+                        <input dir="rtl" class="input-darkglass input-fade btn-round uk-margin-bottom" type="password" placeholder="گذرواژه" />
+                        <button class="btn btn-primary btn-primary-lowglow btn-round uk-margin-auto-left">
                             ورود
                         </button>
                     </form>

@@ -79,7 +79,7 @@ backdrop-filter: saturate(80%);
 
 /*#endregion */
 body, .entry-1, .entry-2, .entry-3 {
-  background: white;
+  background-color: #333;
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: contain; }

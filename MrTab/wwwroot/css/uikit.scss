@@ -37,17 +37,16 @@ html {
     }
     /* Track */
     ::-webkit-scrollbar-track {
-        background: darken($Background,6%);
+        background: $darkglass;
     }
     /* Handle */
     ::-webkit-scrollbar-thumb {
-        background: darken($Background,16%);
-        @include border-radius(16px,16px,16px,16px);
+        background: $darkglass-hover;
         @include shadow-mild;
     }
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-        background: darken($Background,24%);
+        background: lighten($darkglass-hover,8%);
     }
 }
 /*
@@ -110,7 +109,25 @@ body {
         height: 12px;
     }
 }
+/* clears the ‘X’ from Internet Explorer */
+input[type=search]::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+}
 
+input[type=search]::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+}
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
 /*#endregion */
 /* Links
  ========================================================================== */
