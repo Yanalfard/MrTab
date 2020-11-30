@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Services.Repositories
 {
-public class MainRepo<TEntity> : IMainRepo<TEntity> where TEntity : class
+    public class MainRepo<TEntity> : IMainRepo<TEntity> where TEntity : class
     {
         private MrTabContext _context;
         private DbSet<TEntity> _dbSet;

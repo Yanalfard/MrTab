@@ -22,6 +22,7 @@ namespace Services.Services
         private MainRepo<TblComment> _comment;
         private MainRepo<TblWorkTime> _workTimes;
         private MainRepo<TblMealType> _mealType;
+        private MainRepo<TblConfig> _config;
 
         public MainRepo<TblReport> Report => _report ??= new MainRepo<TblReport>(_context);
         public MainRepo<TblCity> City => _city ??= new MainRepo<TblCity>(_context);
@@ -36,6 +37,7 @@ namespace Services.Services
         public MainRepo<TblComment> Comment => _comment ??= new MainRepo<TblComment>(_context);
         public MainRepo<TblWorkTime> WorkTime => _workTimes ??= new MainRepo<TblWorkTime>(_context);
         public MainRepo<TblMealType> MealType => _mealType ??= new MainRepo<TblMealType>(_context);
+        public MainRepo<TblConfig> Config => _config ??= new MainRepo<TblConfig>(_context);
 
         public void Dispose()
         {

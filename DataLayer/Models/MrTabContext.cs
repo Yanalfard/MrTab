@@ -18,6 +18,7 @@ namespace DataLayer.Models
         public virtual DbSet<TblCatagory> TblCatagories { get; set; }
         public virtual DbSet<TblCity> TblCities { get; set; }
         public virtual DbSet<TblComment> TblComments { get; set; }
+        public virtual DbSet<TblConfig> TblConfigs { get; set; }
         public virtual DbSet<TblFood> TblFoods { get; set; }
         public virtual DbSet<TblFoodType> TblFoodTypes { get; set; }
         public virtual DbSet<TblImage> TblImages { get; set; }
@@ -34,7 +35,7 @@ namespace DataLayer.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=103.216.62.27;Initial Catalog=MrTab;User ID=Yanal;Password=1710ahmad.fard");
+                optionsBuilder.UseSqlServer("Data Source=103.216.62.27;Initial Catalog=MrTab;Persist Security Info=True;User ID=Yanal;Password=1710ahmad.fard");
             }
         }
 
