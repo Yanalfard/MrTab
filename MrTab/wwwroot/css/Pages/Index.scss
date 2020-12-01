@@ -118,15 +118,14 @@
 }
 
 .grid-categories {
-    $gap: 16px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: $gap;
+    grid-gap: 16px;
     grid-template-areas: "kebab kebab doner mexico" "breakfast romantic pizza pizza" "breakfast chicken chicken vegan";
 
     .category {
-        border: 12px solid #fff;
+        border: 10px solid #fff;
         box-sizing: border-box;
         display: flex;
         background-repeat: no-repeat !important;
@@ -137,53 +136,140 @@
         width: 100%;
         @include border-radius(16px,16px,16px,16px);
         @include shadow-mild;
-        @include trans(.4s);
+        overflow: hidden;
 
         h3 {
-            padding: 16px;
-            margin: auto;
-            color: white;
-            text-shadow: 0 0 4px #000;
-        }
-
-        h3::after {
+            display: flex;
+            width: 100%;
             height: 100%;
-            min-height: calc(25vw - 56px);
+            text-shadow: 0 0 4px #000;
+            color: white;
+            @include trans(.4s);
+            background: rgba(0,0,0,.4);
+
+            span {
+                margin: auto;
+            }
         }
     }
 
     .category:hover {
+        h3 {
+            background: rgba(0,0,0,.0);
+        }
     }
 }
 
 .category:nth-child(1) {
     grid-area: kebab;
+    background-image: url(../../resources/png/food_1.png);
 }
 
 .category:nth-child(2) {
     grid-area: doner;
+    background-image: url(../../resources/png/food_3.png);
 }
 
 .category:nth-child(3) {
     grid-area: mexico;
+    background-image: url(../../resources/png/food_4.png);
 }
 
 .category:nth-child(4) {
     grid-area: breakfast;
+    background-image: url(../../resources/png/food_5.png);
 }
 
 .category:nth-child(5) {
     grid-area: romantic;
+    background-image: url(../../resources/png/food_5.png);
 }
 
 .category:nth-child(6) {
     grid-area: pizza;
+    background-image: url(../../resources/png/food_4.png);
 }
 
 .category:nth-child(7) {
     grid-area: chicken;
+    background-image: url(../../resources/png/food_3.png);
 }
 
 .category:nth-child(8) {
     grid-area: vegan;
+    background-image: url(../../resources/png/food_1.png);
+}
+
+$rest-block-width: 250px;
+$rest-block-height: $rest-block-width + 150px;
+
+.rest-block {
+    width: $rest-block-width;
+    height: $rest-block-height;
+    background: #fff;
+    @include shadow-medium;
+    @include border-radius(16px,16px,16px,16px);
+    position: relative;
+
+    > label {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: white;
+        @include border-radius(32px,32px,32px,32px);
+        color: $primary;
+        padding: 6px 12px;
+    }
+
+    > img {
+        width: $rest-block-width;
+        height: $rest-block-width;
+        @include border-radius(16px,16px,16px,16px);
+    }
+
+    > .info {
+        padding: 10px 14px;
+        @include column;
+        height: $rest-block-height - $rest-block-width;
+
+        > h4 {
+            color: #333;
+            font-size: 18px;
+            height: 51px;
+            margin: 0 auto;
+            margin-bottom: 8px;
+            text-align: center;
+            direction: rtl;
+            @include max-line(2);
+        }
+
+        > .star-container {
+            margin: 8px auto;
+            @include row;
+        }
+
+        > h6 {
+            color: #9B9B9B;
+            font-size: 15px;
+            white-space: nowrap;
+            text-overflow: clip;
+            overflow: hidden;
+        }
+    }
+}
+
+.carousel {
+    padding: 20px 0;
+
+    uk-position-center-left, uk-position-center-right {
+        background:#fff;
+    }
+
+    li {
+        display: flex;
+    }
+}
+
+.carousel .rest-block {
+    margin: auto;
 }

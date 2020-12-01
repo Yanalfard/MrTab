@@ -167,7 +167,7 @@ backdrop-filter: saturate(80%);
   grid-gap: 16px;
   grid-template-areas: "kebab kebab doner mexico" "breakfast romantic pizza pizza" "breakfast chicken chicken vegan"; }
   .grid-categories .category {
-    border: 12px solid #fff;
+    border: 10px solid #fff;
     box-sizing: border-box;
     display: flex;
     background-repeat: no-repeat !important;
@@ -185,39 +185,127 @@ backdrop-filter: saturate(80%);
     -moz-box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
     box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
-    -moz-transition: all ease 0.4s;
-    -o-transition: all ease 0.4s;
-    -webkit-transition: all ease 0.4s;
-    transition: all ease 0.4s; }
+    overflow: hidden; }
     .grid-categories .category h3 {
-      padding: 16px;
-      margin: auto;
-      color: white;
-      text-shadow: 0 0 4px #000; }
-    .grid-categories .category h3::after {
+      display: flex;
+      width: 100%;
       height: 100%;
-      min-height: calc(25vw - 56px); }
+      text-shadow: 0 0 4px #000;
+      color: white;
+      -moz-transition: all ease 0.4s;
+      -o-transition: all ease 0.4s;
+      -webkit-transition: all ease 0.4s;
+      transition: all ease 0.4s;
+      background: rgba(0, 0, 0, 0.4); }
+      .grid-categories .category h3 span {
+        margin: auto; }
+  .grid-categories .category:hover h3 {
+    background: transparent; }
 
 .category:nth-child(1) {
-  grid-area: kebab; }
+  grid-area: kebab;
+  background-image: url(../../resources/png/food_1.png); }
 
 .category:nth-child(2) {
-  grid-area: doner; }
+  grid-area: doner;
+  background-image: url(../../resources/png/food_3.png); }
 
 .category:nth-child(3) {
-  grid-area: mexico; }
+  grid-area: mexico;
+  background-image: url(../../resources/png/food_4.png); }
 
 .category:nth-child(4) {
-  grid-area: breakfast; }
+  grid-area: breakfast;
+  background-image: url(../../resources/png/food_5.png); }
 
 .category:nth-child(5) {
-  grid-area: romantic; }
+  grid-area: romantic;
+  background-image: url(../../resources/png/food_5.png); }
 
 .category:nth-child(6) {
-  grid-area: pizza; }
+  grid-area: pizza;
+  background-image: url(../../resources/png/food_4.png); }
 
 .category:nth-child(7) {
-  grid-area: chicken; }
+  grid-area: chicken;
+  background-image: url(../../resources/png/food_3.png); }
 
 .category:nth-child(8) {
-  grid-area: vegan; }
+  grid-area: vegan;
+  background-image: url(../../resources/png/food_1.png); }
+
+.rest-block {
+  width: 250px;
+  height: 400px;
+  background: #fff;
+  -moz-box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
+  -moz-border-radius: 16px 16px 16px 16px;
+  -webkit-border-radius: 16px 16px 16px 16px;
+  border-radius: 16px 16px 16px 16px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+  position: relative; }
+  .rest-block > label {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: white;
+    -moz-border-radius: 32px 32px 32px 32px;
+    -webkit-border-radius: 32px 32px 32px 32px;
+    border-radius: 32px 32px 32px 32px;
+    /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+    color: #FEB432;
+    padding: 6px 12px; }
+  .rest-block > img {
+    width: 250px;
+    height: 250px;
+    -moz-border-radius: 16px 16px 16px 16px;
+    -webkit-border-radius: 16px 16px 16px 16px;
+    border-radius: 16px 16px 16px 16px;
+    /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/ }
+  .rest-block > .info {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    height: 150px; }
+    .rest-block > .info > h4 {
+      color: #333;
+      font-size: 18px;
+      height: 51px;
+      margin: 0 auto;
+      margin-bottom: 8px;
+      text-align: center;
+      direction: rtl;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      /* number of lines to show */
+      -webkit-box-orient: vertical; }
+    .rest-block > .info > .star-container {
+      margin: 8px auto;
+      display: flex;
+      flex-direction: row; }
+    .rest-block > .info > h6 {
+      color: #9B9B9B;
+      font-size: 15px;
+      white-space: nowrap;
+      text-overflow: clip;
+      overflow: hidden; }
+
+.carousel {
+  padding: 20px 0; }
+  .carousel uk-position-center-left, .carousel uk-position-center-right {
+    background: #fff; }
+  .carousel li {
+    display: flex; }
+
+.carousel .rest-block {
+  margin: auto; }
