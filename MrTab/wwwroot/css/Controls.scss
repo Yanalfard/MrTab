@@ -3,12 +3,17 @@
 @import '_starRating.scss';
 @import '_layout.scss';
 
+.trans-2s, .btn-icon, .btn-icon-darkglass, .btn-primary, .btn-primary:hover {
+    @include trans(.2s);
+}
+
 .nav-header {
     padding: 16px;
     background: $NavBackground;
     position: fixed;
     width: calc(100vw - 32px);
     z-index: 1000;
+    border-bottom: 2px solid #2B2728;
 
     &-right {
         margin-right: 14px;
@@ -83,17 +88,7 @@ button, a, a:hover .js-upload, input[type=file] {
     text-decoration: none !important;
 }
 
-.trans-2s, .btn-icon {
-    @include trans(.2s);
-}
-
 .btn-icon {
-    color: lighten($Text,16%);
-    background: transparent;
-    border: none;
-}
-
-.btn-icon-darkglass {
     color: lighten($Text,16%);
     background: transparent;
     border: none;
@@ -124,11 +119,7 @@ button, a, a:hover .js-upload, input[type=file] {
 
 .btn-primary {
     border: none;
-    background: rgb(255,172,47);
-    background: -moz-linear-gradient(135deg, rgba(255,172,47,1) 0%, rgba(254,191,54,1) 100%);
-    background: -webkit-linear-gradient(135deg, rgba(255,172,47,1) 0%, rgba(254,191,54,1) 100%);
-    background: linear-gradient(135deg, rgba(255,172,47,1) 0%, rgba(254,191,54,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffac2f",endColorstr="#febf36",GradientType=1);
+    background: #FEB432;
     box-shadow: 0px 6px 16px 0px rgba(255,189,47,0.5);
     color: white;
 }
@@ -138,11 +129,8 @@ button, a, a:hover .js-upload, input[type=file] {
 }
 
 .btn-primary:hover {
-    $percent: 6%;
-    background: lighten(rgb(255,172,47),$percent);
-    background: -moz-linear-gradient(135deg, lighten(rgba(255,172,47,1),$percent) 0%, lighten(rgba(254,191,54,1),$percent) 100%);
-    background: -webkit-linear-gradient(135deg, lighten(rgba(255,172,47,1),$percent) 0%, lighten(rgba(254,191,54,1),$percent) 100%);
-    background: linear-gradient(135deg, lighten(rgba(255,172,47,1),$percent) 0%, lighten(rgba(254,191,54,1),$percent) 100%);
+    background: lighten(#FEB432, 8%);
+    box-shadow: 0px 6px 16px 0px rgba(255,189,47,0.8);
     color: white;
 }
 
@@ -156,18 +144,24 @@ button, a, a:hover .js-upload, input[type=file] {
     @include trans(.3s);
 }
 
-.input-darkglass:focus {
-    background: $darkglass-hover;
-    color: #fff;
-}
-
 .material-darkglass {
     background: $darkglass;
 }
 
-.material-darkglass:focus, .btn-darkglass:hover {
+.material-darkglass:focus, .btn-darkglass:hover, .input-darkglass:focus {
     background: $darkglass-hover;
-    color:white;
+    color: white;
+}
+
+.btn-icon-darkglass:hover {
+    color: white;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,.4));
+}
+
+.btn-icon-darkglass {
+    color: #b6b6b6;
+    background: transparent;
+    border: none;
 }
 
 .btn-darkglass {

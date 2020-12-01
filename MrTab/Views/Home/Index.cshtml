@@ -7,35 +7,42 @@
     <link href="~/css/Pages/Index.min.css" rel="stylesheet" />
 }
 
-<div class="hero column">
-    <div class="hero-alternate uk-margin-auto-vertical">
-        <div class="hero-navi row">
-            <a href="" uk-icon="icon:person-circle-outline;ratio:1" class="button-icon"></a>
-            <a href="" uk-icon="icon:logo-angular;ratio:1" class="button-icon uk-margin-auto-left"></a>
-        </div>
-        <div class="hero-splash uk-margin-auto-vertical">
-            <h1 class="uk-h1  uk-margin-small-bottom">
-                دنبال یه جای خوب برای
-                <br />
-                وقت گذروندن می گردی؟
-            </h1>
-            <h2 class="uk-h1 uk-margin-remove-top">
-                <strong dir="rtl"> جای درستی اومدی...</strong>
-            </h2>
-        </div>
-        <img src="~/resources/svg/LookingForFood.svg"
-             class="hero-image uk-margin-auto-right"
-             width="430" height="386" alt="Hero image, man looking for food" />
-        <button class="hero-button btn btn-white uk-margin-top">دست به کار شو</button>
+<partial name="Hero" />
+
+<div class="uk-container">
+    <!-- #region Grid -->
+
+    <div class="grid-categories">
+        <a class="category" style="background-image: url(../../resources/png/food_1.png);">
+            <h3>کباب</h3>
+        </a>
+        <a class="category" style="background-image: url(../../resources/png/food_5.png);">
+            <h3>دونر</h3>
+        </a>
+        <a class="category" style="background-image: url(../../resources/png/food_3.png);">
+            <h3>غذای مکزیکی</h3>
+        </a>
+        <a class="category" style="background-image: url(../../resources/png/food_4.png);">
+            <h3>صبحانه دبش</h3>
+        </a>
+        <a class="category" style="background-image: url(../../resources/png/food_1.png);">
+            <h3>فضای رمانتیک</h3>
+        </a>
+        <a class="category" style="background-image: url(../../resources/png/food_5.png);">
+            <h3>پیتزا و فست فود</h3>
+        </a>
+        <a class="category" style="background-image: url(../../resources/png/food_3.png);">
+            <h3>مرغ سوخاری</h3>
+        </a>
+        <a class="category" style="background-image: url(../../resources/png/food_4.png);">
+            <h3>غذای ویگن</h3>
+        </a>
     </div>
+
+    <!-- #endregion -->
 </div>
 
-<div class="space-double"></div>
-<div class="space-double"></div>
-<div class="space-double"></div>
-<div class="space-double"></div>
-<div class="space-double"></div>
-<div class="space-double"></div>
+<!-- #region Parallax -->
 
 <div class="parallax-download uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex uk-flex-top"
      uk-parallax="bgy: -300">
@@ -52,8 +59,9 @@
     </div>
 </div>
 
+<!-- #endregion -->
 <!-- This is a button toggling the modal -->
-<button uk-toggle="target: #my-id" type="button">OI</button>
+<button class="btn btn-primary" uk-toggle="target: #my-id" type="button">OI</button>
 
 <!-- This is the modal -->
 <div id="my-id" uk-modal>

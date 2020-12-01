@@ -1,18 +1,6 @@
 ﻿@charset "UTF-8";
 /*#region name*/
 /*#endregion */
-/*#region Global */
-/*#endregion */
-/*#region difficulty */
-/*#endregion */
-/*#region Card*/
-/*#endregion */
-/*#region Scrollbar */
-/*#endregion */
-/*#region shadow */
-/*#endregion */
-/*#region Material  */
-/*#endregion */
 /*
 backdrop-filter: blur(2px);
 backdrop-filter: brightness(60%);
@@ -25,6 +13,18 @@ backdrop-filter: opacity(20%);
 backdrop-filter: sepia(90%);
 backdrop-filter: saturate(80%);
 */
+/*#region Global */
+/*#endregion */
+/*#region difficulty */
+/*#endregion */
+/*#region Card*/
+/*#endregion */
+/*#region Scrollbar */
+/*#endregion */
+/*#region shadow */
+/*#endregion */
+/*#region Material  */
+/*#endregion */
 @font-face {
   font-family: 'iranyekan';
   src: url("../fonts/iranyekan.ttf") format("truetype"); }
@@ -59,14 +59,14 @@ html {
   html ::-webkit-scrollbar {
     width: 14px; }
   html ::-webkit-scrollbar-track {
-    background: #2e282a; }
+    background: #322B2D; }
   html ::-webkit-scrollbar-thumb {
-    background: #383134;
+    background: #423a3e;
     -moz-box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
     box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px; }
   html ::-webkit-scrollbar-thumb:hover {
-    background: #4e4448; }
+    background: #584d52; }
 
 /*
  * Remove the margin in all browsers.

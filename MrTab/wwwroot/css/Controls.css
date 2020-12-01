@@ -1,18 +1,6 @@
 ﻿@charset "UTF-8";
 /*#region name*/
 /*#endregion */
-/*#region Global */
-/*#endregion */
-/*#region difficulty */
-/*#endregion */
-/*#region Card*/
-/*#endregion */
-/*#region Scrollbar */
-/*#endregion */
-/*#region shadow */
-/*#endregion */
-/*#region Material  */
-/*#endregion */
 /*
 backdrop-filter: blur(2px);
 backdrop-filter: brightness(60%);
@@ -25,20 +13,20 @@ backdrop-filter: opacity(20%);
 backdrop-filter: sepia(90%);
 backdrop-filter: saturate(80%);
 */
+/*#region Global */
+/*#endregion */
+/*#region difficulty */
+/*#endregion */
+/*#region Card*/
+/*#endregion */
+/*#region Scrollbar */
+/*#endregion */
+/*#region shadow */
+/*#endregion */
+/*#region Material  */
+/*#endregion */
 /*#region name*/
 /*#endregion */
-/*#region Global */
-/*#endregion */
-/*#region difficulty */
-/*#endregion */
-/*#region Card*/
-/*#endregion */
-/*#region Scrollbar */
-/*#endregion */
-/*#region shadow */
-/*#endregion */
-/*#region Material  */
-/*#endregion */
 /*
 backdrop-filter: blur(2px);
 backdrop-filter: brightness(60%);
@@ -51,6 +39,18 @@ backdrop-filter: opacity(20%);
 backdrop-filter: sepia(90%);
 backdrop-filter: saturate(80%);
 */
+/*#region Global */
+/*#endregion */
+/*#region difficulty */
+/*#endregion */
+/*#region Card*/
+/*#endregion */
+/*#region Scrollbar */
+/*#endregion */
+/*#region shadow */
+/*#endregion */
+/*#region Material  */
+/*#endregion */
 .cr-slider-wrap {
   margin: 0 !important;
   padding: 6px 0;
@@ -235,12 +235,19 @@ backdrop-filter: saturate(80%);
   flex: auto; }
 
 /*#endregion */
+.trans-2s, .btn-icon, .btn-icon-darkglass, .btn-primary, .btn-primary:hover {
+  -moz-transition: all ease 0.2s;
+  -o-transition: all ease 0.2s;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s; }
+
 .nav-header {
   padding: 16px;
   background: #231F20;
   position: fixed;
   width: calc(100vw - 32px);
-  z-index: 1000; }
+  z-index: 1000;
+  border-bottom: 2px solid #2B2728; }
   .nav-header-right {
     margin-right: 14px; }
     .nav-header-right > a {
@@ -291,18 +298,7 @@ button, a, a:hover .js-upload, input[type=file] {
   outline: none;
   text-decoration: none !important; }
 
-.trans-2s, .btn-icon {
-  -moz-transition: all ease 0.2s;
-  -o-transition: all ease 0.2s;
-  -webkit-transition: all ease 0.2s;
-  transition: all ease 0.2s; }
-
 .btn-icon {
-  color: #797979;
-  background: transparent;
-  border: none; }
-
-.btn-icon-darkglass {
   color: #797979;
   background: transparent;
   border: none; }
@@ -338,11 +334,7 @@ button, a, a:hover .js-upload, input[type=file] {
 
 .btn-primary {
   border: none;
-  background: #ffac2f;
-  background: -moz-linear-gradient(135deg, #ffac2f 0%, #febf36 100%);
-  background: -webkit-linear-gradient(135deg, #ffac2f 0%, #febf36 100%);
-  background: linear-gradient(135deg, #ffac2f 0%, #febf36 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffac2f",endColorstr="#febf36",GradientType=1);
+  background: #FEB432;
   box-shadow: 0px 6px 16px 0px rgba(255, 189, 47, 0.5);
   color: white; }
 
@@ -350,14 +342,12 @@ button, a, a:hover .js-upload, input[type=file] {
   box-shadow: 0px 6px 12px 0px rgba(255, 189, 47, 0.25) !important; }
 
 .btn-primary:hover {
-  background: #ffb84e;
-  background: -moz-linear-gradient(135deg, #ffb84e 0%, #fec954 100%);
-  background: -webkit-linear-gradient(135deg, #ffb84e 0%, #fec954 100%);
-  background: linear-gradient(135deg, #ffb84e 0%, #fec954 100%);
+  background: #fec35b;
+  box-shadow: 0px 6px 16px 0px rgba(255, 189, 47, 0.8);
   color: white; }
 
 .input-darkglass {
-  background: #2e282a;
+  background: #322B2D;
   padding: 8px 20px;
   font-size: 14px;
   border: 0;
@@ -378,20 +368,25 @@ button, a, a:hover .js-upload, input[type=file] {
     /* Microsoft Edge */
     color: #4E4545; }
 
-.input-darkglass:focus {
-  background: #383134;
-  color: #fff; }
-
 .material-darkglass {
-  background: #2e282a; }
+  background: #322B2D; }
 
-.material-darkglass:focus, .btn-darkglass:hover {
-  background: #383134;
+.material-darkglass:focus, .btn-darkglass:hover, .input-darkglass:focus {
+  background: #423a3e;
   color: white; }
+
+.btn-icon-darkglass:hover {
+  color: white;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4)); }
+
+.btn-icon-darkglass {
+  color: #b6b6b6;
+  background: transparent;
+  border: none; }
 
 .btn-darkglass {
   border: none;
-  background: #2e282a;
+  background: #322B2D;
   color: #959595;
   -moz-transition: all ease 0.3s;
   -o-transition: all ease 0.3s;

@@ -5,8 +5,8 @@ $Background: #EDEDED;
 $nav-header-height: 70px;
 $nav-bottom-height: 65px;
 
-$darkglass: #2e282a;
-$darkglass-hover: #383134;
+$darkglass: #322B2D;
+$darkglass-hover: #423a3e;
 
 $white: #fff;
 $white-mid: #EBEBEB;
@@ -16,17 +16,27 @@ $black: #404040;
 $black-mid: #5B5B5B;
 $black-light: #848484;
 
-$primary: #F94646;
-$primary-dark: #e53434;
-$primary-light: #ff6767;
-$accent: #55ACEE;
-$accent-light: #85c7f8;
+$primary: #FEB432;
+$primary-dark: #eaa327;
+$primary-light: #febe4f;
 
 /*#endregion */
 
+/*
+backdrop-filter: blur(2px);
+backdrop-filter: brightness(60%);
+backdrop-filter: contrast(40%);
+backdrop-filter: drop-shadow(4px 4px 10px blue);
+backdrop-filter: grayscale(30%);
+backdrop-filter: hue-rotate(120deg);
+backdrop-filter: invert(70%);
+backdrop-filter: opacity(20%);
+backdrop-filter: sepia(90%);
+backdrop-filter: saturate(80%);
+*/
+
 /*#region Global */
 $NavBackground: #231F20;
-$link: $accent;
 $Title: #424242;
 $Title-secondary: #6B6B6B;
 $Text: #505050;
@@ -182,15 +192,3 @@ $ScrollbarHandle: $white-dark;
     }
 }
 
-/*
-backdrop-filter: blur(2px);
-backdrop-filter: brightness(60%);
-backdrop-filter: contrast(40%);
-backdrop-filter: drop-shadow(4px 4px 10px blue);
-backdrop-filter: grayscale(30%);
-backdrop-filter: hue-rotate(120deg);
-backdrop-filter: invert(70%);
-backdrop-filter: opacity(20%);
-backdrop-filter: sepia(90%);
-backdrop-filter: saturate(80%);
-*/

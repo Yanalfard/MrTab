@@ -1,17 +1,5 @@
 ﻿/*#region name*/
 /*#endregion */
-/*#region Global */
-/*#endregion */
-/*#region difficulty */
-/*#endregion */
-/*#region Card*/
-/*#endregion */
-/*#region Scrollbar */
-/*#endregion */
-/*#region shadow */
-/*#endregion */
-/*#region Material  */
-/*#endregion */
 /*
 backdrop-filter: blur(2px);
 backdrop-filter: brightness(60%);
@@ -24,6 +12,18 @@ backdrop-filter: opacity(20%);
 backdrop-filter: sepia(90%);
 backdrop-filter: saturate(80%);
 */
+/*#region Global */
+/*#endregion */
+/*#region difficulty */
+/*#endregion */
+/*#region Card*/
+/*#endregion */
+/*#region Scrollbar */
+/*#endregion */
+/*#region shadow */
+/*#endregion */
+/*#region Material  */
+/*#endregion */
 .center {
   text-align: center;
   align-content: center;

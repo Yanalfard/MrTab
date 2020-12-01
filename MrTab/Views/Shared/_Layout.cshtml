@@ -28,16 +28,16 @@
 
     <!-- #region nav-header -->
 
-    <div class="nav-header row-reverse uk-box-shadow-medium">
+    <div class="nav-header row-reverse uk-box-shadow-large">
         <nav class="nav-header-right uk-margin-auto-vertical row-reverse uk-margin-auto-left">
-            <a href="" class="logo uk-margin-left btn-icon">
+            <a href="" class="logo uk-margin-left btn-icon-darkglass">
                 <span uk-icon="logo-angular"></span>
             </a>
-            <a href="" class="btn-icon">
+            <a href="" class="btn-icon-darkglass">
                 <span>خانه</span>
                 <span uk-icon="home"></span>
             </a>
-            <a href="" class="btn-icon">
+            <a href="" class="btn-icon-darkglass">
                 <span>درباره ما</span>
                 <span uk-icon="information-circle"></span>
             </a>
@@ -51,8 +51,11 @@
                 ورود
             </button>
             <div class="material-darkglass uk-margin-left btn-round row">
-                <button uk-icon="search-outline" class="btn-icon uk-margin-small-left uk-margin-small-right"></button>
-                <input class="input-darkglass input-invis btn-round row flex-1" type="search" aria-label="جستجوی رستوران" />
+                <button uk-icon="search-outline" aria-label="جستجو"
+                        class="btn-icon-darkglass uk-margin-small-left uk-margin-small-right"></button>
+                <input class="input-darkglass input-invis btn-round row flex-1"
+                       placeholder="جستجو..." dir="rtl"
+                       type="search" aria-label="جستجوی رستوران" />
             </div>
         </div>
     </div>

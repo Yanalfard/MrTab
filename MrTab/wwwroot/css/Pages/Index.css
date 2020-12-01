@@ -1,17 +1,5 @@
 ﻿/*#region name*/
 /*#endregion */
-/*#region Global */
-/*#endregion */
-/*#region difficulty */
-/*#endregion */
-/*#region Card*/
-/*#endregion */
-/*#region Scrollbar */
-/*#endregion */
-/*#region shadow */
-/*#endregion */
-/*#region Material  */
-/*#endregion */
 /*
 backdrop-filter: blur(2px);
 backdrop-filter: brightness(60%);
@@ -24,6 +12,18 @@ backdrop-filter: opacity(20%);
 backdrop-filter: sepia(90%);
 backdrop-filter: saturate(80%);
 */
+/*#region Global */
+/*#endregion */
+/*#region difficulty */
+/*#endregion */
+/*#region Card*/
+/*#endregion */
+/*#region Scrollbar */
+/*#endregion */
+/*#region shadow */
+/*#endregion */
+/*#region Material  */
+/*#endregion */
 /*#region Alignment */
 .row {
   display: flex;
@@ -159,3 +159,65 @@ backdrop-filter: saturate(80%);
     height: 350px;
     width: 100%;
     z-index: 80; }
+
+.grid-categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  grid-template-areas: "kebab kebab doner mexico" "breakfast romantic pizza pizza" "breakfast chicken chicken vegan"; }
+  .grid-categories .category {
+    border: 12px solid #fff;
+    box-sizing: border-box;
+    display: flex;
+    background-repeat: no-repeat !important;
+    background-position: center;
+    background-size: cover;
+    min-height: calc(25vw - 56px);
+    height: 100%;
+    width: 100%;
+    -moz-border-radius: 16px 16px 16px 16px;
+    -webkit-border-radius: 16px 16px 16px 16px;
+    border-radius: 16px 16px 16px 16px;
+    /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+    -moz-box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
+    -moz-transition: all ease 0.4s;
+    -o-transition: all ease 0.4s;
+    -webkit-transition: all ease 0.4s;
+    transition: all ease 0.4s; }
+    .grid-categories .category h3 {
+      padding: 16px;
+      margin: auto;
+      color: white;
+      text-shadow: 0 0 4px #000; }
+    .grid-categories .category h3::after {
+      height: 100%;
+      min-height: calc(25vw - 56px); }
+
+.category:nth-child(1) {
+  grid-area: kebab; }
+
+.category:nth-child(2) {
+  grid-area: doner; }
+
+.category:nth-child(3) {
+  grid-area: mexico; }
+
+.category:nth-child(4) {
+  grid-area: breakfast; }
+
+.category:nth-child(5) {
+  grid-area: romantic; }
+
+.category:nth-child(6) {
+  grid-area: pizza; }
+
+.category:nth-child(7) {
+  grid-area: chicken; }
+
+.category:nth-child(8) {
+  grid-area: vegan; }
