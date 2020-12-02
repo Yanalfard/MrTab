@@ -160,6 +160,24 @@
     }
 }
 
+@media only screen and (max-width: 930px) {
+    .grid-categories {
+        grid-template-areas: "kebab kebab doner" "breakfast romantic pizza" "breakfast chicken vegan" "mexico chicken vegan" !important;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 8px;
+
+        .category {
+            border: 5px solid #fff;
+            min-height: calc(30vw - 56px);
+
+            h3 {
+                font-size: 16px;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
 .category:nth-child(1) {
     grid-area: kebab;
     background-image: url(../../resources/png/food_1.png);
@@ -198,78 +216,4 @@
 .category:nth-child(8) {
     grid-area: vegan;
     background-image: url(../../resources/png/food_1.png);
-}
-
-$rest-block-width: 250px;
-$rest-block-height: $rest-block-width + 150px;
-
-.rest-block {
-    width: $rest-block-width;
-    height: $rest-block-height;
-    background: #fff;
-    @include shadow-medium;
-    @include border-radius(16px,16px,16px,16px);
-    position: relative;
-
-    > label {
-        position: absolute;
-        top: 14px;
-        right: 14px;
-        background: white;
-        @include border-radius(32px,32px,32px,32px);
-        color: $primary;
-        padding: 6px 12px;
-    }
-
-    > img {
-        width: $rest-block-width;
-        height: $rest-block-width;
-        @include border-radius(16px,16px,16px,16px);
-    }
-
-    > .info {
-        padding: 10px 14px;
-        @include column;
-        height: $rest-block-height - $rest-block-width;
-
-        > h4 {
-            color: #333;
-            font-size: 18px;
-            height: 51px;
-            margin: 0 auto;
-            margin-bottom: 8px;
-            text-align: center;
-            direction: rtl;
-            @include max-line(2);
-        }
-
-        > .star-container {
-            margin: 8px auto;
-            @include row;
-        }
-
-        > h6 {
-            color: #9B9B9B;
-            font-size: 15px;
-            white-space: nowrap;
-            text-overflow: clip;
-            overflow: hidden;
-        }
-    }
-}
-
-.carousel {
-    padding: 20px 0;
-
-    uk-position-center-left, uk-position-center-right {
-        background:#fff;
-    }
-
-    li {
-        display: flex;
-    }
-}
-
-.carousel .rest-block {
-    margin: auto;
 }

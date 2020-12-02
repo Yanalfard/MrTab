@@ -202,6 +202,18 @@ backdrop-filter: saturate(80%);
   .grid-categories .category:hover h3 {
     background: transparent; }
 
+@media only screen and (max-width: 930px) {
+  .grid-categories {
+    grid-template-areas: "kebab kebab doner" "breakfast romantic pizza" "breakfast chicken vegan" "mexico chicken vegan" !important;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 8px; }
+    .grid-categories .category {
+      border: 5px solid #fff;
+      min-height: calc(30vw - 56px); }
+      .grid-categories .category h3 {
+        font-size: 16px;
+        white-space: nowrap; } }
+
 .category:nth-child(1) {
   grid-area: kebab;
   background-image: url(../../resources/png/food_1.png); }
@@ -233,79 +245,3 @@ backdrop-filter: saturate(80%);
 .category:nth-child(8) {
   grid-area: vegan;
   background-image: url(../../resources/png/food_1.png); }
-
-.rest-block {
-  width: 250px;
-  height: 400px;
-  background: #fff;
-  -moz-box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
-  box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
-  -moz-border-radius: 16px 16px 16px 16px;
-  -webkit-border-radius: 16px 16px 16px 16px;
-  border-radius: 16px 16px 16px 16px;
-  /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
-  position: relative; }
-  .rest-block > label {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    background: white;
-    -moz-border-radius: 32px 32px 32px 32px;
-    -webkit-border-radius: 32px 32px 32px 32px;
-    border-radius: 32px 32px 32px 32px;
-    /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
-    color: #FEB432;
-    padding: 6px 12px; }
-  .rest-block > img {
-    width: 250px;
-    height: 250px;
-    -moz-border-radius: 16px 16px 16px 16px;
-    -webkit-border-radius: 16px 16px 16px 16px;
-    border-radius: 16px 16px 16px 16px;
-    /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/ }
-  .rest-block > .info {
-    padding: 10px 14px;
-    display: flex;
-    flex-direction: column;
-    height: 150px; }
-    .rest-block > .info > h4 {
-      color: #333;
-      font-size: 18px;
-      height: 51px;
-      margin: 0 auto;
-      margin-bottom: 8px;
-      text-align: center;
-      direction: rtl;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      /* number of lines to show */
-      -webkit-box-orient: vertical; }
-    .rest-block > .info > .star-container {
-      margin: 8px auto;
-      display: flex;
-      flex-direction: row; }
-    .rest-block > .info > h6 {
-      color: #9B9B9B;
-      font-size: 15px;
-      white-space: nowrap;
-      text-overflow: clip;
-      overflow: hidden; }
-
-.carousel {
-  padding: 20px 0; }
-  .carousel uk-position-center-left, .carousel uk-position-center-right {
-    background: #fff; }
-  .carousel li {
-    display: flex; }
-
-.carousel .rest-block {
-  margin: auto; }

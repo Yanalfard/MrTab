@@ -1,7 +1,7 @@
 ﻿@import '_colors.scss';
+@import '_layout.scss';
 @import '_popupCroppit.scss';
 @import '_starRating.scss';
-@import '_layout.scss';
 
 .trans-2s, .btn-icon, .btn-icon-darkglass, .btn-primary, .btn-primary:hover {
     @include trans(.2s);
@@ -432,3 +432,103 @@ button, a, a:hover .js-upload, input[type=file] {
 }
 
 /*#endregion */
+
+$rest-block-width: 250px;
+$rest-block-height: $rest-block-width + 150px;
+
+.rest-block {
+    width: $rest-block-width;
+    height: $rest-block-height;
+    background: #fff;
+    @include shadow-medium;
+    @include border-radius(16px,16px,16px,16px);
+    position: relative;
+
+    > label {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: white;
+        @include border-radius(32px,32px,32px,32px);
+        color: $primary;
+        padding: 6px 12px;
+    }
+
+    > img {
+        width: $rest-block-width;
+        height: $rest-block-width;
+        @include border-radius(16px,16px,16px,16px);
+    }
+
+    > .info {
+        padding: 10px 14px;
+        @include column;
+        height: $rest-block-height - $rest-block-width;
+
+        > h4 {
+            color: #333;
+            font-size: 18px;
+            height: 51px;
+            margin: 0 auto;
+            margin-bottom: 8px;
+            text-align: center;
+            direction: rtl;
+            @include max-line(2);
+        }
+
+        > .star-container {
+            margin: 8px auto;
+            @include row;
+        }
+
+        > h6 {
+            color: #9B9B9B;
+            font-size: 15px;
+            white-space: nowrap;
+            text-overflow: clip;
+            overflow: hidden;
+        }
+    }
+}
+
+.carousel {
+    padding: 20px 0;
+
+    .uk-position-center-left, .uk-position-center-right {
+        background: #fff;
+        color: $Text;
+        padding: 16px;
+        @include border-radius(16px,16px,16px,16px);
+        @include shadow-mild;
+    }
+
+    li {
+        display: flex;
+    }
+}
+
+.carousel .rest-block {
+    margin: auto;
+}
+
+.tag {
+    background: $darkglass;
+    padding: 12px 20px;
+    color: white;
+    font-size: 16px;
+    @include border-radius(50px,50px,50px,50px);
+    justify-self: start;
+    display: flex;
+    margin: 0 auto;
+}
+
+.tag::before {
+    content: " ";
+    margin: auto 0;
+    margin-left: 8px;
+    height: 18px;
+    width: 18px;
+    background: $primary;
+    @include border-radius(12px,12px,12px,12px);
+    @include subtle-glow(transparentize($primary,.5));
+}

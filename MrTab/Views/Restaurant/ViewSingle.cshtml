@@ -5,6 +5,9 @@
 
 @section Styles {
     <link href="~/css/Pages/Restaurant.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin="" />
 }
 
 <!-- #region Banner -->
@@ -61,11 +64,274 @@
 
 
 <!-- #endregion -->
-<!-- #region User Photos -->
-<!-- #endregion -->
-<!-- #region Menu -->
-<!-- #endregion -->
-<!-- #region Info -->
-<!-- #endregion -->
+<div class="uk-container">
+    <!-- #region User Photos -->
+
+    <div class="carousel carousel-image uk-position-relative uk-visible-toggle" tabindex="-1" uk-slider>
+        <h4 class="uk-margin-remove-top">
+            عکس های کاربران
+        </h4>
+        <ul uk-lightbox class="uk-slider-items
+            uk-child-width-1-3-at-s
+            uk-child-width-1-4-at-m
+            uk-child-width-1-5-at-l
+            uk-child-width-1-6-at-xl">
+            <li>
+                <a href="/resources/png/food_1.png"><img src="~/resources/png/food_1.png" width="220" height="220" alt="عکس از رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/food_3.png"><img src="~/resources/png/food_1.png" width="220" height="220" alt="عکس از رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/food_4.png"><img src="~/resources/png/food_1.png" width="220" height="220" alt="عکس از رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/food_5.png"><img src="~/resources/png/food_1.png" width="220" height="220" alt="عکس از رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/food_1.png"><img src="~/resources/png/food_1.png" width="220" height="220" alt="عکس از رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/food_3.png"><img src="~/resources/png/food_1.png" width="220" height="220" alt="عکس از رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/food_4.png"><img src="~/resources/png/food_1.png" width="220" height="220" alt="عکس از رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/food_5.png"><img src="~/resources/png/food_1.png" width="220" height="220" alt="عکس از رستوران" /></a>
+            </li>
+        </ul>
+
+        <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
+    </div>
+
+    <!-- #endregion -->
+    <!-- #region Menu -->
+
+    <div class="carousel carousel-image carousel-menu uk-box-shadow-medium
+         uk-position-relative uk-visible-toggle" tabindex="-1" uk-slider>
+
+        <h4 class="uk-margin-remove-top">
+            منو رستوران
+        </h4>
+
+        <ul uk-lightbox class="uk-slider-items
+            uk-child-width-1-3-at-s
+            uk-child-width-1-4-at-m
+            uk-child-width-1-5-at-l
+            uk-child-width-1-6-at-xl">
+            <li>
+                <a href="/resources/png/Menu_1.png"><img src="~/resources/png/Menu_1.png" width="220" height="365" alt="عکس از منو رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/Menu_2.png"><img src="~/resources/png/Menu_2.png" width="220" height="365" alt="عکس از منو رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/Menu_3.png"><img src="~/resources/png/Menu_3.png" width="220" height="365" alt="عکس از منو رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/Menu_1.png"><img src="~/resources/png/Menu_1.png" width="220" height="365" alt="عکس از منو رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/Menu_1.png"><img src="~/resources/png/Menu_1.png" width="220" height="365" alt="عکس از منو رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/Menu_2.png"><img src="~/resources/png/Menu_2.png" width="220" height="365" alt="عکس از منو رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/Menu_3.png"><img src="~/resources/png/Menu_3.png" width="220" height="365" alt="عکس از منو رستوران" /></a>
+            </li>
+            <li>
+                <a href="/resources/png/Menu_1.png"><img src="~/resources/png/Menu_1.png" width="220" height="365" alt="عکس از منو رستوران" /></a>
+            </li>
+        </ul>
+
+        <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
+    </div>
+
+    <!-- #endregion -->
+    <!-- #region Info -->
+    <div class="info uk-margin-medium-top">
+        <div class="mat meals">
+            <h5 class="uk-h4">غذا ها</h5>
+            <ul class="row-reverse uk-flex-wrap">
+                <li>
+                    <a>پیتزا</a>
+                </li>
+                <li>
+                    <a>پیتزا</a>
+                </li>
+                <li>
+                    <a>پیتزا</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mat foodstyle">
+            <h5 class="uk-h4">سبک غذایی</h5>
+            <ul class="row-reverse uk-flex-wrap">
+                <li>
+                    <a>پیتزا</a>
+                </li>
+                <li>
+                    <a>پیتزا</a>
+                </li>
+                <li>
+                    <a>پیتزا</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mat scores">
+            <h5 class="uk-h4">امتیاز ها</h5>
+            <div class="row-reverse uk-flex-wrap">
+                <!-- #region Gauge -->
+
+                <div class="progress-ring-container" percentage="32">
+                    <svg class="progress-ring"
+                         width="120"
+                         height="120">
+                        <circle class="progress-ring__circle"
+                                fill="transparent"
+                                r="56"
+                                cx="60"
+                                cy="60" />
+                    </svg>
+                    <div class="text">
+                        <div class="column">
+                            <p>
+                                32
+                            </p>
+                            <label>
+                                کیفیت و طعم
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #endregion -->
+                <!-- #region Gauge -->
+
+                <div class="progress-ring-container" percentage="64">
+                    <svg class="progress-ring"
+                         width="120"
+                         height="120">
+                        <circle class="progress-ring__circle"
+                                fill="transparent"
+                                r="56"
+                                cx="60"
+                                cy="60" />
+                    </svg>
+                    <div class="text">
+                        <div class="column">
+                            <p>
+                                64
+                            </p>
+                            <label>
+                                دکوراسیون و محیط
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #endregion -->
+                <!-- #region Gauge -->
+
+                <div class="progress-ring-container" percentage="75">
+                    <svg class="progress-ring"
+                         width="120"
+                         height="120">
+                        <circle class="progress-ring__circle"
+                                fill="transparent"
+                                r="56"
+                                cx="60"
+                                cy="60" />
+                    </svg>
+                    <div class="text">
+                        <div class="column">
+                            <p>
+                                75
+                            </p>
+                            <label>
+                                سرویس و کارکنان
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #endregion -->
+                <!-- #region Gauge -->
+
+                <div class="progress-ring-container" percentage="90">
+                    <svg class="progress-ring"
+                         width="120"
+                         height="120">
+                        <circle class="progress-ring__circle"
+                                fill="transparent"
+                                r="56"
+                                cx="60"
+                                cy="60" />
+                    </svg>
+                    <div class="text">
+                        <div class="column">
+                            <p>
+                                90
+                            </p>
+                            <label>
+                                ارزش نسبت به قیمت
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #endregion -->
+            </div>
+        </div>
+        <div class="mat options">
+            <h5 class="uk-h4">امکانات</h5>
+        </div>
+        <div id="myMap" class="mat map">
+
+        </div>
+    </div>
+    <!-- #endregion -->
+</div>
+
 <!-- #region Comment Section -->
 <!-- #endregion -->
+
+@section Scripts{
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+
+    <script>
+        var mymap = L.map('myMap').setView([51.505, -0.09], 13);
+    </script>
+
+    <script>
+        const circles = document.getElementsByClassName('progress-ring__circle');
+        let counter = 0;
+        for (let circle of circles) {
+
+            var radius = circle.r.baseVal.value;
+            var circumference = radius * 2 * Math.PI;
+
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = `${circumference}`;
+
+            function setProgress(percent) {
+                const offset = circumference - percent / 100 * circumference;
+                circle.style.strokeDashoffset = offset;
+            }
+
+            const percentage =
+                document.getElementsByClassName('progress-ring-container')[counter]
+                    .getAttribute("percentage");
+            setProgress(parseInt(percentage));
+
+            counter++;
+        }
+    </script>
+
+}

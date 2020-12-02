@@ -157,7 +157,7 @@ $ScrollbarHandle: $white-dark;
 
 @mixin mat() {
     background: $CardBackground;
-    @include border-radius(8px,8px,8px,8px);
+    @include border-radius(16px,16px,16px,16px);
 }
 
 @mixin cancel() {

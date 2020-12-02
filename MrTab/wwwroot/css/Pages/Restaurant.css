@@ -78,6 +78,83 @@ backdrop-filter: saturate(80%);
   flex: auto; }
 
 /*#endregion */
+/*#region name*/
+/*#endregion */
+/*
+backdrop-filter: blur(2px);
+backdrop-filter: brightness(60%);
+backdrop-filter: contrast(40%);
+backdrop-filter: drop-shadow(4px 4px 10px blue);
+backdrop-filter: grayscale(30%);
+backdrop-filter: hue-rotate(120deg);
+backdrop-filter: invert(70%);
+backdrop-filter: opacity(20%);
+backdrop-filter: sepia(90%);
+backdrop-filter: saturate(80%);
+*/
+/*#region Global */
+/*#endregion */
+/*#region difficulty */
+/*#endregion */
+/*#region Card*/
+/*#endregion */
+/*#region Scrollbar */
+/*#endregion */
+/*#region shadow */
+/*#endregion */
+/*#region Material  */
+/*#endregion */
+.progress-ring-container {
+  display: flex;
+  position: relative; }
+  .progress-ring-container .progress-ring .progress-ring__circle {
+    stroke: #FEB432;
+    transition: 0.35s stroke-dashoffset;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    stroke-linecap: round;
+    stroke-width: 5px;
+    -webkit-filter: drop-shadow(0px 0px 12px rgba(254, 180, 50, 0.5));
+    filter: drop-shadow(0px 0px 12px rgba(254, 180, 50, 0.5)); }
+  .progress-ring-container .text {
+    position: absolute;
+    height: 120px;
+    width: 120px;
+    display: flex;
+    z-index: 20; }
+    .progress-ring-container .text .column {
+      margin: auto !important;
+      z-index: 30; }
+      .progress-ring-container .text .column p {
+        width: 120px;
+        text-align: center !important;
+        font-size: 50px;
+        margin: 0 !important;
+        color: #FEB432;
+        font-size: 32px; }
+      .progress-ring-container .text .column label {
+        color: #AEAEAE;
+        font-size: 11px;
+        margin: 0 auto !important;
+        margin-top: -8px !important;
+        margin-bottom: 12px !important;
+        width: 80px;
+        text-align: center; }
+  .progress-ring-container .text:before {
+    position: absolute;
+    z-index: 10;
+    margin: 15px;
+    width: 90px;
+    height: 90px;
+    content: "";
+    background: #F3F3F3;
+    -moz-border-radius: 100% 100% 100% 100%;
+    -webkit-border-radius: 100% 100% 100% 100%;
+    border-radius: 100% 100% 100% 100%;
+    /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/ }
+
 .banner {
   height: 350px;
   width: 100%;
@@ -158,3 +235,98 @@ backdrop-filter: saturate(80%);
     -moz-filter: blur(4px) brightness(50%);
     -o-filter: blur(4px) brightness(50%);
     -ms-filter: blur(4px) brightness(50%); }
+
+.carousel-image img {
+  margin: auto;
+  -moz-border-radius: 12px 12px 12px 12px;
+  -webkit-border-radius: 12px 12px 12px 12px;
+  border-radius: 12px 12px 12px 12px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+  -moz-box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px; }
+
+.carousel-image .uk-dotnav {
+  background-color: #E2E2E2;
+  padding: 6px 0;
+  -moz-border-radius: 16px 16px 16px 16px;
+  -webkit-border-radius: 16px 16px 16px 16px;
+  border-radius: 16px 16px 16px 16px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+  width: 100%;
+  margin-left: auto; }
+  .carousel-image .uk-dotnav a {
+    margin: auto;
+    background-color: #C4C4C4;
+    border: 0;
+    width: 14px;
+    height: 14px; }
+  .carousel-image .uk-dotnav .uk-active > a {
+    background-color: #A3A3A3;
+    width: 20px;
+    height: 20px; }
+
+.carousel-menu {
+  border: 16px solid #fff;
+  background: #fff;
+  -moz-border-radius: 16px 16px 16px 16px;
+  -webkit-border-radius: 16px 16px 16px 16px;
+  border-radius: 16px 16px 16px 16px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+  padding: 0; }
+  .carousel-menu .uk-dotnav {
+    margin: 0 auto; }
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  grid-template-areas: "foodstyle meals" "scores options" "map map"; }
+  .info .mat:not(.map) {
+    padding: 20px;
+    -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); }
+  .info .meals a, .info .foodstyle a {
+    border: 2px #FEB432 solid;
+    color: #FEB432;
+    padding: 4px 24px;
+    margin-left: 16px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border-radius: 20px 20px 20px 20px;
+    /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+    -moz-transition: all ease 0.4s;
+    -o-transition: all ease 0.4s;
+    -webkit-transition: all ease 0.4s;
+    transition: all ease 0.4s; }
+  .info .meals a:hover, .info .foodstyle a:hover {
+    -moz-box-shadow: rgba(254, 180, 50, 0.6) 0 6px 16px;
+    -webkit-box-shadow: rgba(254, 180, 50, 0.6) 0 6px 16px;
+    box-shadow: rgba(254, 180, 50, 0.6) 0 6px 16px;
+    background: #FEB432;
+    color: #fff; }
+  .info .meals {
+    grid-area: meals; }
+  .info .foodstyle {
+    grid-area: foodstyle; }
+  .info .scores {
+    grid-area: scores; }
+    .info .scores .progress-ring-container {
+      margin: auto; }
+  .info .options {
+    grid-area: options; }
+  .info .map {
+    grid-area: map;
+    -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); }

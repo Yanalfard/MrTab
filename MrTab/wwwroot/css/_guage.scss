@@ -1,0 +1,65 @@
+﻿@import '_colors.scss';
+
+.progress-ring-container {
+    display: flex;
+    position: relative;
+
+    .progress-ring {
+
+        .progress-ring__circle {
+            stroke: $primary;
+            transition: 0.35s stroke-dashoffset;
+            // axis compensation
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            stroke-linecap: round;
+            stroke-width: 5px;
+            -webkit-filter: drop-shadow( 0px 0px 12px transparentize($primary,.5));
+            filter: drop-shadow(0px 0px 12px transparentize($primary,.5));
+        }
+    }
+
+    .text {
+        position: absolute;
+        height: 120px;
+        width: 120px;
+        display: flex;
+        z-index: 20;
+
+
+        .column {
+            margin: auto !important;
+            z-index: 30;
+
+            p {
+                width: 120px;
+                text-align: center !important;
+                font-size: 50px;
+                margin: 0 !important;
+                color: $primary;
+                font-size: 32px;
+            }
+
+            label {
+                color: #AEAEAE;
+                font-size: 11px;
+                margin: 0 auto !important;
+                margin-top: -8px !important;
+                margin-bottom: 12px !important;
+                width: 80px;
+                text-align: center;
+            }
+        }
+    }
+
+    .text:before {
+        position: absolute;
+        z-index: 10;
+        margin: 15px;
+        width: 90px;
+        height: 90px;
+        content: "";
+        background: #F3F3F3;
+        @include border-radius(100%,100%,100%,100%);
+    }
+}
