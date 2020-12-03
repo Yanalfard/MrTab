@@ -2935,7 +2935,9 @@ select.uk-form-width-xsmall {
 .uk-close {
   color: #999;
   transition: 0.1s ease-in-out;
-  transition-property: color, opacity; }
+  transition-property: color, opacity;
+  position: absolute;
+  cursor: pointer; }
 
 /* Hover + Focus */
 .uk-close:hover,
@@ -3770,7 +3772,8 @@ select.uk-form-width-xsmall {
   background: rgba(0, 0, 0, 0.6);
   /* 6 */
   opacity: 0;
-  transition: opacity 0.15s linear; }
+  transition: opacity 0.15s linear;
+  backdrop-filter: blur(5px); }
 
 /* Phone landscape and bigger */
 @media (min-width: 640px) {
@@ -3860,8 +3863,15 @@ select.uk-form-width-xsmall {
 /* Sections
  ========================================================================== */
 .uk-modal-body {
+  position: relative;
   display: flow-root;
-  padding: 30px 30px; }
+  padding: 30px 30px;
+  -moz-border-radius: 32px 32px 32px 32px;
+  -webkit-border-radius: 32px 32px 32px 32px;
+  border-radius: 32px 32px 32px 32px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/ }
 
 .uk-modal-header {
   display: flow-root;

@@ -8,6 +8,79 @@
     <link href="~/css/Packages/leaflet.min.css" rel="stylesheet" />
 }
 
+<!-- #region Modals -->
+<!-- This is the modal -->
+<div id="Modal-Comment" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <form class="column">
+            <h2 class="uk-h4">ثبت نظر</h2>
+            <span class="uk-modal-close" uk-close></span>
+            <div class="form-group">
+                <textarea dir="rtl" placeholder="نظر شما..." name="txtComment"></textarea>
+            </div>
+            <div class="uk-margin-auto uk-margin-small-top center column">
+                <div class="column">
+                    <label class="uk-margin-auto">دکوراسیون و محیط</label>
+                    <div class="row-reverse star-container">
+                        <span class="star-cb-group">
+                            <input type="radio" id="decor-5" name="decor" value="5" /><label for="decor-5">5</label>
+                            <input type="radio" id="decor-4" name="decor" value="4" /><label for="decor-4">4</label>
+                            <input type="radio" id="decor-3" name="decor" value="3" /><label for="decor-3">3</label>
+                            <input type="radio" id="decor-2" name="decor" value="2" /><label for="decor-2">2</label>
+                            <input type="radio" id="decor-1" name="decor" value="1" /><label for="decor-1">1</label>
+                            <input type="radio" id="decor-0" name="decor" value="0" class="star-cb-clear" /><label for="decor-0">0</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="column">
+                    <label class="uk-margin-auto">دکوراسیون و محیط</label>
+                    <div class="row-reverse  star-container">
+                        <span class="star-cb-group">
+                            <input type="radio" id="taste-5" name="taste" value="5" /><label for="taste-5">5</label>
+                            <input type="radio" id="taste-4" name="taste" value="4" /><label for="taste-4">4</label>
+                            <input type="radio" id="taste-3" name="taste" value="3" /><label for="taste-3">3</label>
+                            <input type="radio" id="taste-2" name="taste" value="2" /><label for="taste-2">2</label>
+                            <input type="radio" id="taste-1" name="taste" value="1" /><label for="taste-1">1</label>
+                            <input type="radio" id="taste-0" name="taste" value="0" class="star-cb-clear" /><label for="taste-0">0</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="column">
+                    <label class="uk-margin-auto">دکوراسیون و محیط</label>
+                    <div class="row-reverse  star-container">
+                        <span class="star-cb-group">
+                            <input type="radio" id="staff-5" name="staff" value="5" /><label for="staff-5">5</label>
+                            <input type="radio" id="staff-4" name="staff" value="4" /><label for="staff-4">4</label>
+                            <input type="radio" id="staff-3" name="staff" value="3" /><label for="staff-3">3</label>
+                            <input type="radio" id="staff-2" name="staff" value="2" /><label for="staff-2">2</label>
+                            <input type="radio" id="staff-1" name="staff" value="1" /><label for="staff-1">1</label>
+                            <input type="radio" id="staff-0" name="staff" value="0" class="star-cb-clear" /><label for="staff-0">0</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="column">
+                    <label class="uk-margin-auto">دکوراسیون و محیط</label>
+                    <div class="row-reverse  star-container">
+                        <span class="star-cb-group">
+                            <input type="radio" id="price-5" name="price" value="5" /><label for="price-5">5</label>
+                            <input type="radio" id="price-4" name="price" value="4" /><label for="price-4">4</label>
+                            <input type="radio" id="price-3" name="price" value="3" /><label for="price-3">3</label>
+                            <input type="radio" id="price-2" name="price" value="2" /><label for="price-2">2</label>
+                            <input type="radio" id="price-1" name="price" value="1" /><label for="price-1">1</label>
+                            <input type="radio" id="price-0" name="price" value="0" class="star-cb-clear" /><label for="price-0">0</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="button-panel uk-margin-top uk-margin-auto">
+                <div class="btn btn-round btn-primary">ثبت</div>
+                <div class="btn btn-round btn-secondary uk-margin-small-right uk-modal-close">بازگشت</div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- #endregion -->
 <!-- #region Banner -->
 
 <div class="image-container uk-box-shadow-large ">
@@ -511,6 +584,10 @@
 
             counter++;
         }
+    </script>
+
+    <script>
+        UIkit.modal(document.getElementById('Modal-Comment')).show();
     </script>
 
 }

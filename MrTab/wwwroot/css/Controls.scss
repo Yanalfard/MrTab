@@ -52,7 +52,7 @@
 
 .nav-bottom {
     background: $CardBackground;
-    z-index:500;
+    z-index: 500;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -103,7 +103,7 @@ button, a, a:hover .js-upload, input[type=file] {
 }
 
 .btn-icon:hover {
-    color:$primary;
+    color: $primary;
 }
 
 .btn {
@@ -112,6 +112,7 @@ button, a, a:hover .js-upload, input[type=file] {
     min-width: 100px;
     text-align: center;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .btn-white {
@@ -183,6 +184,7 @@ button, a, a:hover .js-upload, input[type=file] {
     border: none;
     background: #EDEDED;
     color: $Text;
+    @include trans(.2s);
 }
 
 .btn-secondary:hover {
@@ -236,6 +238,28 @@ button, a, a:hover .js-upload, input[type=file] {
     margin-top: auto;
     @include row-reverse;
     align-self: flex-end;
+}
+
+textarea {
+    background: #f4f4f4;
+    resize: vertical;
+    padding: 16px;
+    font-size: 15px;
+    @include placeholder(#C0C0C0);
+    border: 0;
+    @include border-radius(16px,16px,16px,16px);
+    color: $Text;
+    min-height: 32px;
+    @include trans(.4s);
+    -moz-transition-property: background-color;
+    -o-transition-property: background-color;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+}
+
+textarea:focus {
+    background: #e6e6e6;
+    color: #000;
 }
 
 /*#endregion */

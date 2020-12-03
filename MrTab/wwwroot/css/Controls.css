@@ -205,7 +205,7 @@ backdrop-filter: saturate(80%);
       width: 1em;
       white-space: nowrap;
       cursor: pointer;
-      font-size: 3rem; }
+      font-size: 32px; }
       .star-container .star-cb-group > input + label:before {
         font-family: Times;
         display: inline-block;
@@ -323,7 +323,8 @@ button, a, a:hover .js-upload, input[type=file] {
   padding: 8px 12px;
   min-width: 100px;
   text-align: center;
-  font-size: 14px; }
+  font-size: 14px;
+  cursor: pointer; }
 
 .btn-white {
   color: black;
@@ -403,7 +404,11 @@ button, a, a:hover .js-upload, input[type=file] {
 .btn-secondary {
   border: none;
   background: #EDEDED;
-  color: #505050; }
+  color: #505050;
+  -moz-transition: all ease 0.2s;
+  -o-transition: all ease 0.2s;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s; }
 
 .btn-secondary:hover {
   background: #dedede;
@@ -458,6 +463,44 @@ button, a, a:hover .js-upload, input[type=file] {
   display: flex;
   flex-direction: row-reverse;
   align-self: flex-end; }
+
+textarea {
+  background: #f4f4f4;
+  resize: vertical;
+  padding: 16px;
+  font-size: 15px;
+  border: 0;
+  -moz-border-radius: 16px 16px 16px 16px;
+  -webkit-border-radius: 16px 16px 16px 16px;
+  border-radius: 16px 16px 16px 16px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+  color: #505050;
+  min-height: 32px;
+  -moz-transition: all ease 0.4s;
+  -o-transition: all ease 0.4s;
+  -webkit-transition: all ease 0.4s;
+  transition: all ease 0.4s;
+  -moz-transition-property: background-color;
+  -o-transition-property: background-color;
+  -webkit-transition-property: background-color;
+  transition-property: background-color; }
+  textarea ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #C0C0C0;
+    opacity: 1;
+    /* Firefox */ }
+  textarea :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #C0C0C0; }
+  textarea ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #C0C0C0; }
+
+textarea:focus {
+  background: #e6e6e6;
+  color: #000; }
 
 /*#endregion */
 /*#region off-canvas */
