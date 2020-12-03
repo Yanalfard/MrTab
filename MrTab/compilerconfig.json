@@ -22,5 +22,9 @@
   {
     "outputFile": "wwwroot/css/Pages/Restaurant.css",
     "inputFile": "wwwroot/css/Pages/Restaurant.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Packages/leaflet.css",
+    "inputFile": "wwwroot/css/Packages/leaflet.scss"
   }
 ]

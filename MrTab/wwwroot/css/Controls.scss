@@ -7,6 +7,13 @@
     @include trans(.2s);
 }
 
+.mat {
+    padding: 20px;
+    -moz-box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
 .nav-header {
     padding: 16px;
     background: $NavBackground;
@@ -44,7 +51,8 @@
 }
 
 .nav-bottom {
-    background: $NavBackground;
+    background: $CardBackground;
+    z-index:500;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -95,7 +103,7 @@ button, a, a:hover .js-upload, input[type=file] {
 }
 
 .btn-icon:hover {
-    color: darken($Text,8%);
+    color:$primary;
 }
 
 .btn {

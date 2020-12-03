@@ -5,9 +5,7 @@
 
 @section Styles {
     <link href="~/css/Pages/Restaurant.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-          crossorigin="" />
+    <link href="~/css/Packages/leaflet.min.css" rel="stylesheet" />
 }
 
 <!-- #region Banner -->
@@ -16,7 +14,7 @@
     <img class="banner-image" width="500" height="350" src="~/resources/png/GoodFather.png" alt="Restaurant Banner" />
 </div>
 
-<div class="banner uk-margin-medium-bottom">
+<div class="banner uk-margin-small-bottom">
     <div class="banner-logo">
         <div class="row-reverse">
             <div uk-lightbox>
@@ -29,7 +27,7 @@
                 <h1 class="uk-h3">
                     رستوران بسیار بسیار گران قیمت
                 </h1>
-                <div class="star-container uk-margin-auto-right banner-material row" uk-tooltip="2.5" dir="rtl">
+                <div class="star-container uk-margin-auto-top uk-margin-auto-right banner-material row" uk-tooltip="2.5" dir="rtl">
                     <div class="Stars" style="--rating:  2.5" aria-label="Rating of this product is 2.3 out of 5."></div>
                 </div>
             </div>
@@ -37,7 +35,7 @@
     </div>
     <div class="banner-info">
         <div class="column">
-            <div class="row">
+            <div class="alternate">
                 <h3 class="uk-margin-remove uk-h5 row banner-material">
                     <i uk-icon="call"></i>
                     <span class="uk-margin-small-left">021 861 28 640</span>
@@ -47,7 +45,7 @@
                     <span class="uk-margin-small-left">7:30 تا 22:30</span>
                 </h3>
             </div>
-            <p class="banner-material uk-margin-small-top uk-margin-auto-left uk-margin-remove-bottom">
+            <p class="banner-material uk-margin-small-top uk-margin-remove-bottom">
                 <span uk-icon="location-sharp"></span>
                 تبریز - ایل گلی - کوی فردوس - خیابان ایل گلی - رستوران پدر خوب
             </p>
@@ -62,8 +60,8 @@
     </div>
 </div>
 
-
 <!-- #endregion -->
+
 <div class="uk-container">
     <!-- #region User Photos -->
 
@@ -153,10 +151,10 @@
 
     <!-- #endregion -->
     <!-- #region Info -->
-    <div class="info uk-margin-medium-top">
+    <div class="info mat-margin-top">
         <div class="mat meals">
             <h5 class="uk-h4">غذا ها</h5>
-            <ul class="row-reverse uk-flex-wrap">
+            <ul class="auto-row uk-padding-remove">
                 <li>
                     <a>پیتزا</a>
                 </li>
@@ -170,7 +168,22 @@
         </div>
         <div class="mat foodstyle">
             <h5 class="uk-h4">سبک غذایی</h5>
-            <ul class="row-reverse uk-flex-wrap">
+            <ul class="auto-row uk-padding-remove">
+                <li>
+                    <a>پیتزا</a>
+                </li>
+                <li>
+                    <a>پیتزا</a>
+                </li>
+                <li>
+                    <a>پیتزا</a>
+                </li>
+                <li>
+                    <a>پیتزا</a>
+                </li>
+                <li>
+                    <a>پیتزا</a>
+                </li>
                 <li>
                     <a>پیتزا</a>
                 </li>
@@ -184,7 +197,7 @@
         </div>
         <div class="mat scores">
             <h5 class="uk-h4">امتیاز ها</h5>
-            <div class="row-reverse uk-flex-wrap">
+            <div class="container uk-flex-wrap">
                 <!-- #region Gauge -->
 
                 <div class="progress-ring-container" percentage="32">
@@ -289,27 +302,193 @@
         </div>
         <div class="mat options">
             <h5 class="uk-h4">امکانات</h5>
+            <ul>
+                <li>
+                    <span uk-icon="checkmark-circle"></span>
+                    <span>فضای باز</span>
+                </li>
+                <li>
+                    <span uk-icon="checkmark-circle"></span>
+                    <span>سیگار آزاد</span>
+                </li>
+                <li>
+                    <span uk-icon="checkmark-circle"></span>
+                    <span>دستشویی</span>
+                </li>
+                <li>
+                    <span uk-icon="checkmark-circle"></span>
+                    <span>دستشویی</span>
+                </li>
+            </ul>
         </div>
-        <div id="myMap" class="mat map">
+        <div id="mapid" class="mat map">
 
         </div>
     </div>
     <!-- #endregion -->
+    <!-- #region Comment Section -->
+
+    <div class="comment-section mat mat-margin-top">
+        <div class="row-reverse uk-margin-small-bottom">
+            <h4 class="uk-h3 uk-margin-remove">نظرات کاربران</h4>
+            <button class="row-reverse btn btn-primary btn-round uk-margin-auto-right">
+                <span uk-icon="chatbox-ellipses" class="uk-margin-small-left"></span>
+                ثبت نظر
+            </button>
+        </div>
+
+        <!-- #region Comment -->
+
+        <div class="comment">
+            <div class="user">
+                <img src="~/resources/jpg/Coffee.jpg" class="btn-round" width="50" height="50" alt="عکس کاربر" />
+                <div>
+                    <label class="name">مهتاب دادسرشت</label>
+                    <span class="date">4 ماه پیش</span>
+                </div>
+            </div>
+            <p class="content">
+                قيمت ها كمي بالاست اما واقعا مي ارزه،خيلي خيلي خوشمزه و پرحجم بود غذاهاشون،محيطش هم خيلي زيباست و همه كاركنان هم بسيار خوش اخلاق هستن
+            </p>
+            <div class="action">
+                <button class="btn-icon" uk-icon="information-circle"></button>
+                <button class="btn-icon uk-margin-small-right" uk-icon="heart-outline">
+                    <span>16</span>
+                </button>
+                <button class="btn-icon uk-margin-auto-right" uk-icon="megaphone-outline"></button>
+            </div>
+        </div>
+
+        <!-- #endregion -->
+        <!-- #region Comment -->
+
+        <div class="comment">
+            <div class="user">
+                <img src="~/resources/jpg/Coffee.jpg" class="btn-round" width="50" height="50" alt="عکس کاربر" />
+                <div>
+                    <label class="name">مهتاب دادسرشت</label>
+                    <span class="date">4 ماه پیش</span>
+                </div>
+            </div>
+            <p class="content">
+                قيمت ها كمي بالاست اما واقعا مي ارزه،خيلي خيلي خوشمزه و پرحجم بود غذاهاشون،محيطش هم خيلي زيباست و همه كاركنان هم بسيار خوش اخلاق هستن
+            </p>
+            <div class="action">
+                <button class="btn-icon" uk-icon="information-circle"></button>
+                <button class="btn-icon uk-margin-small-right" uk-icon="heart-outline">
+                    <span>16</span>
+                </button>
+                <button class="btn-icon uk-margin-auto-right" uk-icon="megaphone-outline"></button>
+            </div>
+        </div>
+
+        <!-- #endregion -->
+        <!-- #region Comment -->
+
+        <div class="comment">
+            <div class="user">
+                <img src="~/resources/jpg/Coffee.jpg" class="btn-round" width="50" height="50" alt="عکس کاربر" />
+                <div>
+                    <label class="name">مهتاب دادسرشت</label>
+                    <span class="date">4 ماه پیش</span>
+                </div>
+            </div>
+            <p class="content">
+                قيمت ها كمي بالاست اما واقعا مي ارزه، خيلي خيلي خوشمزه و پرحجم بود غذاهاشون،محيطش هم خيلي زيباست و همه كاركنان هم بسيار خوش اخلاق هستن
+            </p>
+            <div class="action">
+                <button class="btn-icon" uk-icon="information-circle"></button>
+                <button class="btn-icon uk-margin-small-right" uk-icon="heart-outline">
+                    <span>16</span>
+                </button>
+                <button class="btn-icon uk-margin-auto-right" uk-icon="megaphone-outline"></button>
+            </div>
+        </div>
+
+        <!-- #endregion -->
+        <!-- #region Comment -->
+
+        <div class="comment">
+            <div class="user">
+                <img src="~/resources/jpg/Coffee.jpg" class="btn-round" width="50" height="50" alt="عکس کاربر" />
+                <div>
+                    <label class="name">مهتاب دادسرشت</label>
+                    <span class="date">4 ماه پیش</span>
+                </div>
+            </div>
+            <p class="content">
+                قيمت ها كمي بالاست اما واقعا مي ارزه،خيلي خيلي خوشمزه و پرحجم بود غذاهاشون،محيطش هم خيلي زيباست و همه كاركنان هم بسيار خوش اخلاق هستن
+            </p>
+            <div class="action">
+                <button class="btn-icon" uk-icon="information-circle"></button>
+                <button class="btn-icon uk-margin-small-right" uk-icon="heart-outline">
+                    <span>16</span>
+                </button>
+                <button class="btn-icon uk-margin-auto-right" uk-icon="megaphone-outline"></button>
+            </div>
+        </div>
+
+        <!-- #endregion -->
+
+    </div>
+
+    <!-- #endregion -->
 </div>
 
-<!-- #region Comment Section -->
-<!-- #endregion -->
-
 @section Scripts{
+
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
             crossorigin=""></script>
 
     <script>
-        var mymap = L.map('myMap').setView([51.505, -0.09], 13);
+
+        try {
+            var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                maxZoom: 18,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1
+            }).addTo(mymap);
+
+            L.marker([51.5, -0.09]).addTo(mymap)
+                .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+
+            L.circle([51.508, -0.11], 500, {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5
+            }).addTo(mymap).bindPopup("I am a circle.");
+
+            L.polygon([
+                [51.509, -0.08],
+                [51.503, -0.06],
+                [51.51, -0.047]
+            ]).addTo(mymap).bindPopup("I am a polygon.");
+
+
+            var popup = L.popup();
+
+            function onMapClick(e) {
+                popup
+                    .setLatLng(e.latlng)
+                    .setContent("You clicked the map at " + e.latlng.toString())
+                    .openOn(mymap);
+            }
+
+            mymap.on('click', onMapClick);
+        } catch (e) {
+
+        }
+
     </script>
 
-    <script>
+    <script name="Gauge">
         const circles = document.getElementsByClassName('progress-ring__circle');
         let counter = 0;
         for (let circle of circles) {
