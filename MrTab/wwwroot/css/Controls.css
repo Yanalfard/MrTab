@@ -259,6 +259,8 @@ backdrop-filter: saturate(80%);
     .nav-header-right .logo {
       width: 28px;
       height: 28px; }
+    .nav-header-right #NavMenu {
+      display: none; }
     .nav-header-right > a {
       margin-left: 12px;
       display: flex;
@@ -270,7 +272,7 @@ backdrop-filter: saturate(80%);
         height: 28px; }
   .nav-header-left .btn {
     font-size: 15px;
-    padding: 4px 12px; }
+    padding: 8px 12px; }
 
 .show-on-mobile {
   display: none; }
@@ -283,7 +285,7 @@ backdrop-filter: saturate(80%);
     display: none !important; } }
 
 @media only screen and (min-width: 500px) and (max-width: 780px) {
-  .show-on-mobile {
+  .show-on-mobile, #NavMenu {
     display: block !important; }
   .hide-on-mobile {
     display: none !important; } }
@@ -347,7 +349,10 @@ button, a, a:hover .js-upload, input[type=file] {
   min-width: 100px;
   text-align: center;
   font-size: 14px;
-  cursor: pointer; }
+  cursor: pointer;
+  white-space: nowrap; }
+  .btn span {
+    white-space: nowrap; }
 
 .btn-white {
   color: black;
@@ -449,8 +454,18 @@ button, a, a:hover .js-upload, input[type=file] {
   padding: 8px 12px;
   border: 0;
   font-size: 16px;
-  color: #202020;
-  background-color: #E9E9E9; }
+  color: #5a5a5a; }
+  .form-group-bg ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #c8c8c8;
+    opacity: 1;
+    /* Firefox */ }
+  .form-group-bg :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #c8c8c8; }
+  .form-group-bg ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #c8c8c8; }
 
 .input-invis {
   background: transparent;
@@ -475,7 +490,18 @@ button, a, a:hover .js-upload, input[type=file] {
     padding: 8px 12px;
     border: 0;
     font-size: 16px;
-    color: #202020; }
+    color: #5a5a5a; }
+    .form-group .input ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #c8c8c8;
+      opacity: 1;
+      /* Firefox */ }
+    .form-group .input :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: #c8c8c8; }
+    .form-group .input ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: #c8c8c8; }
   .form-group .input-error {
     margin-top: 8px;
     color: #DA4B1E;
@@ -734,8 +760,10 @@ textarea:focus {
       margin: 8px auto;
       display: flex;
       flex-direction: row; }
-    .rest-block > .info > h6 {
+    .rest-block > .info > address {
+      direction: ltr;
       color: #9B9B9B;
+      margin: 0;
       font-size: 15px;
       white-space: nowrap;
       text-overflow: clip;
@@ -761,6 +789,15 @@ textarea:focus {
 
 .carousel .rest-block {
   margin: auto; }
+
+.rest-grid {
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  direction: rtl; }
+  .rest-grid > .rest-block {
+    margin: auto; }
 
 .tag {
   background: #322B2D;

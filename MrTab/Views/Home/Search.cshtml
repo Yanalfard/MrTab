@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "جستجوی رستوران";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/css/Pages/Search.min.css" rel="stylesheet" />
+}
+
+<div class="uk-container column">
+
+    <!-- #region Searchbar -->
+
+    <form class="searchbar">
+        <input type="text" class="form-group-bg searchbar-margin-left" placeholder="نام رستوران" aria-label="نام رستوران" />
+        <button type="button" uk-toggle="#Modal-City" aria-label="انتخاب شهر"
+                class="form-group-bg row-reverse searchbar-margin-left">
+            <span uk-icon="location-outline"></span>
+            <span>انتخاب شهر</span>
+        </button>
+        <button type="button" uk-toggle="#Modal-FoodType" aria-label="انتخاب نوع غذا"
+                class="form-group-bg row-reverse searchbar-margin-left">
+            <span class="uk-margin-small-left" uk-icon="grid-outline"></span>
+            <span>نوع غذا</span>
+        </button>
+        <button class="btn btn-primary" aria-label="جسنجو رستوران">
+            <span uk-icon="search"></span>
+        </button>
+    </form>
+
+    <!-- #endregion -->
+    <!-- #region Grid -->
+
+    <div class="rest-grid">
+
+        <partial name="_RestaurantBlock" />
+        <partial name="_RestaurantBlock" />
+        <partial name="_RestaurantBlock" />
+
+        <partial name="_RestaurantBlock" />
+        <partial name="_RestaurantBlock" />
+        <partial name="_RestaurantBlock" />
+
+        <partial name="_RestaurantBlock" />
+        <partial name="_RestaurantBlock" />
+
+    </div>
+
+    <!-- #endregion -->
+
+</div>
+
+@section Scripts {
+
+}

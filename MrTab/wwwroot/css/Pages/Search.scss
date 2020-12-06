@@ -1,0 +1,91 @@
+﻿@import '../_colors.scss';
+@import '../_layout.scss';
+
+#txtSearch {
+    display: none;
+}
+
+.searchbar {
+    padding: 16px;
+    @include mat;
+    @include border-radius(24px,24px,24px,24px);
+    @include shadow-more;
+    @include row-reverse;
+    margin: 32px auto;
+    width: calc(100% - 32px);
+
+    > input[type=text] {
+        width: 100%;
+        @include trans(.3s);
+    }
+
+    button:not(.btn-primary) {
+        min-width: 132px;
+        @include trans(.3s);
+    }
+
+    button:hover:not(.btn-primary), input[type=text]:focus {
+        background: darken(#E9E9E9,6%);
+    }
+
+    .btn-primary {
+        @include border-radius(10px,10px,10px,10px);
+        width: 70px;
+        min-width: 70px;
+    }
+
+    .searchbar-margin-left {
+        margin-left: 15px;
+    }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 640px) {
+    .searchbar {
+        button:not(.btn-primary) {
+            min-width: 28px + 24px;
+            display: flex;
+
+            span:not(.uk-icon) {
+                display: none
+            }
+
+            .uk-icon {
+                margin: auto !important;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 400px) {
+    .searchbar {
+        padding: 8px;
+        -moz-border-radius: 12px;
+        -webkit-border-radius: 12px;
+        border-radius: 12px;
+        width: calc(100% - 16px);
+
+
+        button:not(.btn-primary) {
+            min-width: 24px + 24px;
+            display: flex;
+
+            span:not(.uk-icon) {
+                display: none
+            }
+
+            .uk-icon {
+                margin: auto !important;
+            }
+        }
+
+        .btn-primary {
+            @include border-radius(10px,10px,10px,10px);
+            width: 48px;
+            min-width: 48px;
+        }
+
+        .searchbar-margin-left {
+            margin-left: 8px;
+        }
+    }
+}

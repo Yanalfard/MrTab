@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\Pages\Search.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\uikit.min.css" />
   </ItemGroup>
 

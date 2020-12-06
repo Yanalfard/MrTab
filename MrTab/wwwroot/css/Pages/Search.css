@@ -1,0 +1,165 @@
+﻿/*#region name*/
+/*#endregion */
+/*
+backdrop-filter: blur(2px);
+backdrop-filter: brightness(60%);
+backdrop-filter: contrast(40%);
+backdrop-filter: drop-shadow(4px 4px 10px blue);
+backdrop-filter: grayscale(30%);
+backdrop-filter: hue-rotate(120deg);
+backdrop-filter: invert(70%);
+backdrop-filter: opacity(20%);
+backdrop-filter: sepia(90%);
+backdrop-filter: saturate(80%);
+*/
+/*#region Global */
+/*#endregion */
+/*#region difficulty */
+/*#endregion */
+/*#region Card*/
+/*#endregion */
+/*#region Scrollbar */
+/*#endregion */
+/*#region shadow */
+/*#endregion */
+/*#region Material  */
+/*#endregion */
+/*#region Alignment */
+.row {
+  display: flex;
+  flex-direction: row; }
+
+.row-reverse {
+  display: flex;
+  flex-direction: row-reverse; }
+
+.column {
+  display: flex;
+  flex-direction: column; }
+
+.column-reverse {
+  display: flex;
+  flex-direction: column-reverse; }
+
+.flex-1 {
+  flex: 1; }
+
+.flex-2 {
+  flex: 2; }
+
+.flex-3 {
+  flex: 3; }
+
+.flex-4 {
+  flex: 4; }
+
+.flex-5 {
+  flex: 5; }
+
+.flex-6 {
+  flex: 6; }
+
+.flex-7 {
+  flex: 7; }
+
+.flex-8 {
+  flex: 8; }
+
+.flex-9 {
+  flex: 9; }
+
+.flex-10 {
+  flex: 10; }
+
+.flex-11 {
+  flex: 11; }
+
+.flex-auto {
+  flex: auto; }
+
+/*#endregion */
+#txtSearch {
+  display: none; }
+
+.searchbar {
+  padding: 16px;
+  background: #fff;
+  -moz-border-radius: 16px 16px 16px 16px;
+  -webkit-border-radius: 16px 16px 16px 16px;
+  border-radius: 16px 16px 16px 16px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+  -moz-border-radius: 24px 24px 24px 24px;
+  -webkit-border-radius: 24px 24px 24px 24px;
+  border-radius: 24px 24px 24px 24px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 24px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 24px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 24px;
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 32px auto;
+  width: calc(100% - 32px); }
+  .searchbar > input[type=text] {
+    width: 100%;
+    -moz-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s; }
+  .searchbar button:not(.btn-primary) {
+    min-width: 132px;
+    -moz-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s; }
+  .searchbar button:hover:not(.btn-primary), .searchbar input[type=text]:focus {
+    background: #dadada; }
+  .searchbar .btn-primary {
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+    width: 70px;
+    min-width: 70px; }
+  .searchbar .searchbar-margin-left {
+    margin-left: 15px; }
+
+@media only screen and (min-width: 400px) and (max-width: 640px) {
+  .searchbar button:not(.btn-primary) {
+    min-width: 52px;
+    display: flex; }
+    .searchbar button:not(.btn-primary) span:not(.uk-icon) {
+      display: none; }
+    .searchbar button:not(.btn-primary) .uk-icon {
+      margin: auto !important; } }
+
+@media only screen and (min-width: 0px) and (max-width: 400px) {
+  .searchbar {
+    padding: 8px;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    width: calc(100% - 16px); }
+    .searchbar button:not(.btn-primary) {
+      min-width: 48px;
+      display: flex; }
+      .searchbar button:not(.btn-primary) span:not(.uk-icon) {
+        display: none; }
+      .searchbar button:not(.btn-primary) .uk-icon {
+        margin: auto !important; }
+    .searchbar .btn-primary {
+      -moz-border-radius: 10px 10px 10px 10px;
+      -webkit-border-radius: 10px 10px 10px 10px;
+      border-radius: 10px 10px 10px 10px;
+      /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+      width: 48px;
+      min-width: 48px; }
+    .searchbar .searchbar-margin-left {
+      margin-left: 8px; } }

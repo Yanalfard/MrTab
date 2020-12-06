@@ -30,6 +30,10 @@
             height: 28px;
         }
 
+        #NavMenu {
+            display: none;
+        }
+
         > a {
             margin-left: 12px;
             @include row;
@@ -48,7 +52,7 @@
     &-left {
         .btn {
             font-size: 15px;
-            padding: 4px 12px;
+            padding: 8px 12px;
         }
     }
 }
@@ -61,7 +65,7 @@
     display: block;
 }
 
-@media only screen and (max-device-width: 512px){
+@media only screen and (max-device-width: 512px) {
 
     .nav-header, .space-nav-header {
         display: none !important;
@@ -70,7 +74,7 @@
 
 @media only screen and (min-width: 500px) and ( max-width : 780px) {
 
-    .show-on-mobile {
+    .show-on-mobile, #NavMenu {
         display: block !important;
     }
 
@@ -130,7 +134,7 @@
 }
 
 @media only screen and (min-device-width : 512px) {
-    
+
     .nav-bottom {
         display: none
     }
@@ -159,6 +163,11 @@ button, a, a:hover .js-upload, input[type=file] {
     text-align: center;
     font-size: 14px;
     cursor: pointer;
+    white-space: nowrap;
+
+    span {
+        white-space: nowrap;
+    }
 }
 
 .btn-white {
@@ -246,12 +255,12 @@ button, a, a:hover .js-upload, input[type=file] {
     padding: 8px 12px;
     border: 0;
     font-size: 16px;
-    color: #202020;
+    color: #5a5a5a;
+    @include placeholder(#c8c8c8);
 }
 
 .form-group-bg {
     @include inputmat;
-    background-color: #E9E9E9;
 }
 
 .input-invis {
@@ -511,9 +520,6 @@ textarea:focus {
 
 /*#endregion */
 
-$rest-block-width: 250px;
-$rest-block-height: $rest-block-width + 150px;
-
 .rest-block {
     width: $rest-block-width;
     height: $rest-block-height;
@@ -559,8 +565,10 @@ $rest-block-height: $rest-block-width + 150px;
             @include row;
         }
 
-        > h6 {
+        > address {
+            direction:ltr;
             color: #9B9B9B;
+            margin:0;
             font-size: 15px;
             white-space: nowrap;
             text-overflow: clip;
@@ -587,6 +595,15 @@ $rest-block-height: $rest-block-width + 150px;
 
 .carousel .rest-block {
     margin: auto;
+}
+
+.rest-grid {
+    @include grid-gap($rest-block-width, 24px);
+    direction: rtl;
+
+    > .rest-block {
+        margin: auto;
+    }
 }
 
 .tag {

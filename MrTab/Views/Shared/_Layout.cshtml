@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html>
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,25 +24,26 @@
     @RenderSection("Styles")
 
 </head>
-<body style="">
+<body>
 
     <!-- #region nav-header -->
 
     <div class="nav-header row-reverse uk-box-shadow-large">
         <nav class="nav-header-right uk-margin-auto-vertical row-reverse uk-margin-auto-left">
-            <a href="" class="logo uk-margin-left btn-icon-darkglass">
+            <a href="#" class="logo uk-margin-left btn-icon-darkglass" aria-label="خانه">
                 <img src="~/resources/svg/Footer/Footer_ChefHat.svg" width="28" height="28" alt="لوگو وبسایت" />
             </a>
-            <a href="#Side-Menu" id="NavMenu" uk-toggle class="btn-icon-darkglass show-on-mobile">
+            <a href="#Side-Menu" id="NavMenu" aria-label="منو سایت" 
+               uk-toggle class="btn-icon-darkglass display-none show-on-mobile">
                 <span uk-icon="icon:menu-outline;ratio:1.65"></span>
             </a>
-            <a href="" class="btn-icon-darkglass">
+            <a href="#" class="btn-icon-darkglass" aria-label="خانه">
                 <span class="hide-on-mobile">خانه</span>
-                <span uk-icon="icon:home;ratio:1.65"></span>
+                <span uk-icon="icon:home;ratio:1.65" class="display-none"></span>
             </a>
-            <a href="" class="btn-icon-darkglass">
+            <a href="#" class="btn-icon-darkglass" aria-label="درباره ما">
                 <span class="hide-on-mobile">درباره ما</span>
-                <span uk-icon="icon:information-circle;ratio:1.65"></span>
+                <span uk-icon="icon:information-circle;ratio:1.65" class="display-none"></span>
             </a>
         </nav>
 
@@ -114,8 +115,10 @@
                 <div class="footer-body-login column">
                     <h3>ورود به سایت</h3>
                     <form class="column">
-                        <input dir="rtl" class="input-darkglass input-fade btn-round uk-margin-bottom" type="tel" placeholder="شماره تلفن" />
-                        <input dir="rtl" class="input-darkglass input-fade btn-round uk-margin-bottom" type="password" placeholder="گذرواژه" />
+                        <input dir="rtl" class="input-darkglass input-fade btn-round uk-margin-bottom"
+                               type="tel" placeholder="شماره تلفن" aria-label="شماره تلفن"/>
+                        <input dir="rtl" class="input-darkglass input-fade btn-round uk-margin-bottom"
+                               type="password" placeholder="گذرواژه" aria-label="گذرواژه"/>
                         <button class="btn btn-primary btn-primary-lowglow btn-round uk-margin-auto-left">
                             ورود
                         </button>
@@ -135,15 +138,15 @@
                     <h3>منوی اصلی</h3>
                     <div class="row-reverse">
                         <div class="column">
-                            <a href="">خانه</a>
-                            <a href="">درباره</a>
-                            <a href="">جستجو</a>
-                            <a href="">پنل کاربری</a>
+                            <a href="#">خانه</a>
+                            <a href="#">درباره</a>
+                            <a href="#">جستجو</a>
+                            <a href="#">پنل کاربری</a>
                         </div>
                         <div class="column uk-margin-right">
-                            <a href="">ورود</a>
-                            <a href="">ثبت نام</a>
-                            <a href="">دریافت اپلیکیشن</a>
+                            <a href="#">ورود</a>
+                            <a href="#">ثبت نام</a>
+                            <a href="#">دریافت اپلیکیشن</a>
                         </div>
                     </div>
                 </div>
@@ -152,17 +155,17 @@
         <div class="footer-social row-reverse">
             <span class="credits">
                 تمامی حقوق مادی و معنوی این وب سایت برای
-                <a href="">نام سایت</a>
+                <a href="#">نام سایت</a>
                 محفوظ می باشد
             </span>
             <div class="media row">
-                <a href="" class="social btn-round">
+                <a href="#" class="social btn-round" aria-label="پینترست">
                     <span uk-icon="logo-pinterest"></span>
                 </a>
-                <a href="" class="social btn-round">
+                <a href="#" class="social btn-round" aria-label="لینکدین">
                     <span uk-icon="logo-linkedin"></span>
                 </a>
-                <a href="" class="social btn-round row-reverse">
+                <a href="#" class="social btn-round row-reverse">
                     <span class="uk-margin-small-right" uk-icon="logo-instagram"></span>
                     <span class="uk-margin-small-right uk-margin-small-left">اینستاگرام</span>
                 </a>

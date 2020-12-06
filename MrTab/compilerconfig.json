@@ -26,5 +26,9 @@
   {
     "outputFile": "wwwroot/css/Packages/leaflet.css",
     "inputFile": "wwwroot/css/Packages/leaflet.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Pages/Search.css",
+    "inputFile": "wwwroot/css/Pages/Search.scss"
   }
 ]
