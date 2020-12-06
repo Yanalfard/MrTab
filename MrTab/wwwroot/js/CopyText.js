@@ -1,4 +1,4 @@
-﻿function fallbackCopyTextToClipboard(text) {
+﻿function copy(text , message) {
     var textArea = document.createElement("textarea");
     textArea.value = text;
 
@@ -17,4 +17,8 @@
     }
 
     document.body.removeChild(textArea);
+
+    if (message === undefined || message === null) return;
+
+    UIkit.notification(message);
 }

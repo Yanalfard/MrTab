@@ -115,3 +115,6 @@ img {
 .fillheight {
   min-height: 100%;
   width: auto; }
+
+.background-transparent {
+  background-color: transparent !important; }

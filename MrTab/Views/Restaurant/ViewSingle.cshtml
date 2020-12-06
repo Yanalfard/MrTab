@@ -9,7 +9,7 @@
 }
 
 <!-- #region Modals -->
-<!-- This is the modal -->
+
 <div id="Modal-Comment" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
         <form class="column">
@@ -80,6 +80,68 @@
     </div>
 </div>
 
+<div id="Modal-Report" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <form class="column">
+            <h2 class="uk-h4 uk-margin-auto-left">این ویدیو چه مشکلی دارد؟</h2>
+            <span class="uk-modal-close" uk-close></span>
+            <ul>
+                <li class="uk-form-controls">
+                    <label>این مکان موقتا بسته شده است</label>
+                    <input type="radio" class=" uk-radio" name="report" value="" id="" />
+                </li>
+                <li class="uk-form-controls uk-margin-small-top">
+                    <label>این مکان تکراری است</label>
+                    <input type="radio" class="uk-radio" name="report" value="" id="" />
+                </li>
+                <li class="uk-form-controls uk-margin-small-top">
+                    <label>این مکان وجود ندارد</label>
+                    <input type="radio" class="uk-radio" name="report" value="" id="" />
+                </li>
+                <li class="uk-form-controls uk-margin-small-top">
+                    <label>وجود اشکال در اطلاعات مکان</label>
+                    <input type="radio" class="uk-radio" name="report" value="" id="" />
+                </li>
+            </ul>
+            <label for="Other" class="uk-margin-small-bottom" dir="rtl">مشکل دیگر</label>
+            <div class="form-group">
+                <textarea dir="rtl" placeholder="لحاظ کنید..." name="txtComment"></textarea>
+            </div>
+            <div class="button-panel uk-margin-top uk-margin-auto">
+                <div class="btn btn-round btn-primary">ثبت</div>
+                <div class="btn btn-round btn-secondary uk-margin-small-right uk-modal-close">بازگشت</div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!-- #region Croppie -->
+
+<div id="Croppie" uk-modal>
+    <div class="uk-modal-dialog background-transparent uk-flex">
+        <div class="popup-croppie column uk-margin-auto">
+            <div class="controls uk-width-1-1 row ">
+                <input type="file" id="files" onchange="fileSelected(this)" class="display-none">
+                <label class="button-icon" for="files">
+                    <span uk-icon="image"></span>
+                </label>
+                <button class="button-icon" onclick="crop()">
+                    <span uk-icon="crop"></span>
+                </button>
+                @*<button class="button-icon uk-margin-auto-left" onclick="window.history.back()">
+                                <span uk-icon="close"></span>
+                    </button>*@
+                <button class="button-icon uk-margin-auto-left uk-modal-close">
+                    <span uk-icon="close"></span>
+                </button>
+            </div>
+            <img src="~/resources/svg/Image.svg" id="item" />
+        </div>
+    </div>
+</div>
+
+<!-- #endregion -->
 <!-- #endregion -->
 <!-- #region Banner -->
 
@@ -109,16 +171,19 @@
     <div class="banner-info">
         <div class="column">
             <div class="alternate">
-                <h3 class="uk-margin-remove uk-h5 row banner-material">
+                <h3 class="uk-margin-remove clickable uk-h5 row banner-material"
+                    onclick="copy('021 861 28 640','شماره تلفن کپی شد')">
                     <i uk-icon="call"></i>
                     <span class="uk-margin-small-left">021 861 28 640</span>
                 </h3>
-                <h3 class="uk-margin-small-left uk-margin-remove-vertical uk-h5 row banner-material">
+                <h3 class="uk-margin-small-left clickable uk-margin-remove-vertical uk-h5 row banner-material"
+                    onclick="copy('7:30 تا 22:30','زمان کاری کپی شد')">
                     <i uk-icon="time-outline"></i>
                     <span class="uk-margin-small-left">7:30 تا 22:30</span>
                 </h3>
             </div>
-            <p class="banner-material uk-margin-small-top uk-margin-remove-bottom">
+            <p class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom"
+               onclick="copy('تبریز - ایل گلی - کوی فردوس - خیابان ایل گلی - رستوران پدر خوب','آدرس کپی شد')">
                 <span uk-icon="location-sharp"></span>
                 تبریز - ایل گلی - کوی فردوس - خیابان ایل گلی - رستوران پدر خوب
             </p>
@@ -126,9 +191,11 @@
     </div>
     <div class="banner-action column">
         <div class="row uk-margin-auto-top">
-            <a href="" uk-tooltip="آپلود عکس" class="banner-material uk-margin-small-right" uk-icon="image"></a>
-            <a href="" uk-tooltip="گزارش مشکل" class="banner-material uk-margin-auto-right" uk-icon="megaphone-outline"></a>
-            <a href="" uk-tooltip="پیج اینستاگرام" class="banner-material" uk-icon="logo-instagram"></a>
+            <a href="#Croppie" uk-tooltip="آپلود عکس" uk-toggle class="banner-material clickable uk-margin-small-right" uk-icon="image"></a>
+            <a href="#Modal-Report" uk-tooltip="گزارش مشکل" uk-toggle class="banner-material clickable uk-margin-auto-right" uk-icon="megaphone-outline"></a>
+            <span uk-tooltip="اشتراک گذاری رستوران" class="banner-material uk-margin-small-right clickable" uk-icon="share-social-outline"
+                  onclick="copy(window.location.href,'لینک صفحه کپی شد')"></span>
+            <a href="https://www.instagram.com/mr.foodtbz/?hl=en" uk-tooltip="پیج اینستاگرام" class="banner-material clickable" uk-icon="logo-instagram"></a>
         </div>
     </div>
 </div>
@@ -136,6 +203,7 @@
 <!-- #endregion -->
 
 <div class="uk-container">
+
     <!-- #region User Photos -->
 
     <div class="carousel carousel-image uk-position-relative uk-visible-toggle" tabindex="-1" uk-slider>
@@ -404,7 +472,7 @@
     <div class="comment-section mat mat-margin-top">
         <div class="row-reverse uk-margin-small-bottom">
             <h4 class="uk-h3 uk-margin-remove">نظرات کاربران</h4>
-            <button class="row-reverse btn btn-primary btn-round uk-margin-auto-right">
+            <button uk-toggle="#Modal-Comment" type="button" class="row-reverse btn btn-primary btn-round uk-margin-auto-right">
                 <span uk-icon="chatbox-ellipses" class="uk-margin-small-left"></span>
                 ثبت نظر
             </button>
@@ -506,6 +574,7 @@
     </div>
 
     <!-- #endregion -->
+
 </div>
 
 @section Scripts{
@@ -587,7 +656,55 @@
     </script>
 
     <script>
-        UIkit.modal(document.getElementById('Modal-Comment')).show();
+        //UIkit.modal(document.getElementById('Modal-Report')).show();
+    </script>
+
+    <script name="Upload Image">
+        const opt = {
+            viewport: {
+                width: 220,
+                height: 220,
+                //Valid type values:'square' 'circle'
+                type: 'square'
+            }
+        }
+        var c;
+        function fileSelected(input) {
+            if (input.files[0] == null) return;
+
+            if (c != undefined) {
+                const popup = document.getElementsByClassName('popup-croppie')[0];
+                c.destroy();
+            }
+
+            var image = new Image();
+            image.src = input.value;
+
+            var reader = new FileReader();
+            reader.onload = function () {
+                var dataURL = reader.result;
+                var output = document.getElementById('item');
+                output.src = dataURL;
+                c = new Croppie(document.getElementById('item'), opt);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        //Returns the Base64 string of a WebP image
+        function crop() {
+            try {
+                c.result({ type: 'base64', size: 'viewport', format: 'png', quality: 1, circle: false }).then(i => {
+                    //var image = new Image();
+                    //image.src = i;
+                    //document.getElementById('content').appendChild(image);
+                    //console.log(i);
+                    return i;
+                });
+            }
+            catch{
+                UIkit.notification('لطفا یک عکس انتخاب کنید');
+            }
+        }
     </script>
 
 }
