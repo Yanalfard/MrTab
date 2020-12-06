@@ -256,20 +256,43 @@ backdrop-filter: saturate(80%);
   border-bottom: 2px solid #2B2728; }
   .nav-header-right {
     margin-right: 14px; }
+    .nav-header-right .logo {
+      width: 28px;
+      height: 28px; }
     .nav-header-right > a {
       margin-left: 12px;
       display: flex;
       flex-direction: row; }
+      .nav-header-right > a > * {
+        margin: auto auto; }
       .nav-header-right > a > .uk-icon {
         width: 28px;
         height: 28px; }
   .nav-header-left .btn {
     font-size: 15px;
-    padding: 6px 12px; }
+    padding: 4px 12px; }
+
+.show-on-mobile {
+  display: none; }
+
+.hide-on-mobile {
+  display: block; }
 
 @media only screen and (max-device-width: 512px) {
   .nav-header, .space-nav-header {
     display: none !important; } }
+
+@media only screen and (min-width: 500px) and (max-width: 780px) {
+  .show-on-mobile {
+    display: block !important; }
+  .hide-on-mobile {
+    display: none !important; } }
+
+@media only screen and (min-width: 50px) and (max-width: 580px) {
+  .nav-header #txtSearch button {
+    margin: 5px !important; }
+  .nav-header #txtSearch input {
+    display: none; } }
 
 .nav-bottom {
   background: #fff;

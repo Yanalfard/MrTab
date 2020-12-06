@@ -31,26 +31,29 @@
     <div class="nav-header row-reverse uk-box-shadow-large">
         <nav class="nav-header-right uk-margin-auto-vertical row-reverse uk-margin-auto-left">
             <a href="" class="logo uk-margin-left btn-icon-darkglass">
-                <span uk-icon="logo-angular"></span>
+                <img src="~/resources/svg/Footer/Footer_ChefHat.svg" width="28" height="28" alt="لوگو وبسایت" />
+            </a>
+            <a href="#Side-Menu" id="NavMenu" uk-toggle class="btn-icon-darkglass show-on-mobile">
+                <span uk-icon="icon:menu-outline;ratio:1.65"></span>
             </a>
             <a href="" class="btn-icon-darkglass">
-                <span>خانه</span>
-                <span uk-icon="home"></span>
+                <span class="hide-on-mobile">خانه</span>
+                <span uk-icon="icon:home;ratio:1.65"></span>
             </a>
             <a href="" class="btn-icon-darkglass">
-                <span>درباره ما</span>
-                <span uk-icon="information-circle"></span>
+                <span class="hide-on-mobile">درباره ما</span>
+                <span uk-icon="icon:information-circle;ratio:1.65"></span>
             </a>
         </nav>
 
         <div class="nav-header-left row uk-margin-auto-right">
-            <button class="btn btn-round btn-primary btn-primary-lowglow">
+            <button id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
                 ثبت نام
             </button>
-            <button class="btn btn-round btn-darkglass uk-margin-left">
+            <button id="btnLogin" class="btn btn-round btn-darkglass uk-margin-left hide-on-mobile">
                 ورود
             </button>
-            <div class="material-darkglass uk-margin-left btn-round row">
+            <div id="txtSearch" class="material-darkglass uk-margin-left btn-round row">
                 <button uk-icon="search-outline" aria-label="جستجو"
                         class="btn-icon-darkglass uk-margin-small-left uk-margin-small-right"></button>
                 <input class="input-darkglass input-invis btn-round row flex-1"
