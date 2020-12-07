@@ -42,7 +42,7 @@
             margin-top: auto;
             margin-bottom: auto;
             margin-left: 12px;
-            white-space:nowrap;
+            white-space: nowrap;
             @include row;
 
             > * {
@@ -69,8 +69,8 @@
         }
 
         .btn {
-            font-size: 15px;
             padding: 8px 12px;
+            min-width: 75px;
         }
     }
 }
@@ -175,11 +175,12 @@ button, a, a:hover .js-upload, input[type=file] {
 }
 
 .btn {
+    display: inline-block;
     @include border-radius(6px,6px,6px,6px);
     padding: 8px 12px;
     min-width: 100px;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
     white-space: nowrap;
 

@@ -30,33 +30,34 @@
 
     <div class="nav-header row-reverse uk-box-shadow-large">
         <nav class="nav-header-right uk-margin-auto-vertical row-reverse uk-margin-auto-left">
-            <a href="#" class="logo margin-header-left btn-icon-darkglass" aria-label="خانه">
+            <a href="/" class="logo margin-header-left btn-icon-darkglass" aria-label="خانه">
                 <img src="~/resources/svg/BurgerKing.svg" width="42" height="42" alt="لوگو وبسایت" />
             </a>
             <a href="#Side-Menu" id="NavMenu" aria-label="منو سایت"
                uk-toggle class="btn-icon-darkglass display-none show-on-mobile">
                 <span uk-icon="icon:menu-outline;ratio:1.65"></span>
             </a>
-            <a href="#" class="btn-icon-darkglass" aria-label="خانه">
+            <a href="/" class="btn-icon-darkglass" aria-label="خانه">
                 <span class="hide-on-mobile">خانه</span>
                 <span uk-icon="icon:home;ratio:1.65" class="display-none"></span>
             </a>
             <a href="#" class="btn-icon-darkglass" aria-label="درباره ما">
                 <span class="hide-on-mobile">درباره ما</span>
                 <span uk-icon="icon:information-circle;ratio:1.65" class="display-none"></span>
-            </a><a href="#" class="btn-icon-darkglass" aria-label="درباره ما">
-                <span class="hide-on-mobile">درباره ما</span>
+            </a>
+            <a href="#" class="btn-icon-darkglass" aria-label="درباره ما">
+                <span class="hide-on-mobile">منو آیتم</span>
                 <span uk-icon="icon:information-circle;ratio:1.65" class="display-none"></span>
             </a>
         </nav>
 
         <div class="nav-header-left row uk-margin-auto-right">
-            <button id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
+            <a href="/Entry/Register" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
                 ثبت نام
-            </button>
-            <button id="btnLogin" class="btn btn-round btn-darkglass margin-header-left hide-on-mobile">
+            </a>
+            <a href="/Entry/Login" id="btnLogin" class="btn btn-round btn-darkglass margin-header-left hide-on-mobile">
                 ورود
-            </button>
+            </a>
             <button id="btnLocation" uk-icon="location-outline"
                     class="btn btn-round btn-darkglass margin-header-left" type="button" uk-toggle="#Modal-Location">
                 تبریز

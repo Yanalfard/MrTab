@@ -17,7 +17,12 @@ namespace MrTab.Controllers
         {
             return View();
         }
-         public IActionResult Search()
+        public IActionResult Search()
+        {
+            return View();
+        
+        }
+        public IActionResult Profile()
         {
             return View();
         }

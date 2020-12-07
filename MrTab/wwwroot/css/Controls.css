@@ -283,8 +283,8 @@ backdrop-filter: saturate(80%);
     .nav-header-left .btn-icon-darkglass svg {
       margin: auto; }
   .nav-header-left .btn {
-    font-size: 15px;
-    padding: 8px 12px; }
+    padding: 8px 12px;
+    min-width: 75px; }
 
 .show-on-mobile {
   display: none; }
@@ -351,6 +351,7 @@ button, a, a:hover .js-upload, input[type=file] {
   color: #FEB432; }
 
 .btn {
+  display: inline-block;
   -moz-border-radius: 6px 6px 6px 6px;
   -webkit-border-radius: 6px 6px 6px 6px;
   border-radius: 6px 6px 6px 6px;
@@ -360,7 +361,7 @@ button, a, a:hover .js-upload, input[type=file] {
   padding: 8px 12px;
   min-width: 100px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   white-space: nowrap; }
   .btn span {

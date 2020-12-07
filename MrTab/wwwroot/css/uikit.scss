@@ -156,7 +156,7 @@ p {
  */
 a,
 .uk-link {
-    color: $primary;
+    color: #3f8bd8;
     text-decoration: none;
     cursor: pointer;
 }
@@ -7719,6 +7719,7 @@ ul.uk-nav-sub {
 .uk-text-default {
     font-size: 16px;
     line-height: 1.5;
+    color:$Text;
 }
 /* Weight modifier
  ========================================================================== */
@@ -7786,7 +7787,7 @@ ul.uk-nav-sub {
 }
 
 .uk-text-danger {
-    color: #f0506e !important;
+    color: #e23636 !important;
 }
 /* Background modifier
  ========================================================================== */
