@@ -22,12 +22,16 @@
     z-index: 1000;
     border-bottom: 2px solid #2B2728;
 
+    .margin-header-left {
+        margin-left: 12px;
+    }
+
     &-right {
         margin-right: 14px;
 
         .logo {
-            width: 28px;
-            height: 28px;
+            width: 42px;
+            height: 42px;
         }
 
         #NavMenu {
@@ -35,7 +39,10 @@
         }
 
         > a {
+            margin-top: auto;
+            margin-bottom: auto;
             margin-left: 12px;
+            white-space:nowrap;
             @include row;
 
             > * {
@@ -45,11 +52,22 @@
             > .uk-icon {
                 width: 28px;
                 height: 28px;
+                margin-top: auto;
+                margin-bottom: auto;
             }
         }
     }
 
     &-left {
+        .btn-icon-darkglass {
+            min-width: 32px !important;
+            display: flex;
+
+            svg {
+                margin: auto;
+            }
+        }
+
         .btn {
             font-size: 15px;
             padding: 8px 12px;
@@ -72,7 +90,7 @@
     }
 }
 
-@media only screen and (min-width: 500px) and ( max-width : 780px) {
+@media only screen and (min-width: 0px) and ( max-width : 780px) {
 
     .show-on-mobile, #NavMenu {
         display: block !important;
@@ -423,6 +441,8 @@ textarea:focus {
         }
 
         .credits {
+            margin-top: auto;
+            margin-bottom: auto;
         }
 
         .media {
@@ -475,6 +495,7 @@ textarea:focus {
         &-counters {
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr;
+            @include border-radius(12px,12px,0,0);
         }
 
         &-body {
@@ -484,6 +505,7 @@ textarea:focus {
             flex-direction: column-reverse;
             padding: 28px 24px;
             margin: -28px 0 0 0;
+            @include border-radius(12px,12px,0,0);
         }
 
         li {
@@ -566,9 +588,9 @@ textarea:focus {
         }
 
         > address {
-            direction:ltr;
+            direction: ltr;
             color: #9B9B9B;
-            margin:0;
+            margin: 0;
             font-size: 15px;
             white-space: nowrap;
             text-overflow: clip;
@@ -626,4 +648,32 @@ textarea:focus {
     background: $primary;
     @include border-radius(12px,12px,12px,12px);
     @include subtle-glow(transparentize($primary,.5));
+}
+
+.even-taglist {
+
+    .tag-grid {
+        width: 100%;
+        @include grid-gap(100px,12px);
+        direction: rtl;
+
+        .even-tag {
+            width: 100%;
+            border: 2px $primary solid;
+            color: $primary;
+            padding: 4px 24px;
+            @include border-radius(20px,20px,20px,20px);
+            @include trans(.4s);
+            display: block;
+            background: transparent;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .even-tag:hover {
+            @include subtle-glow(transparentize($primary,.4));
+            background: $primary;
+            color: #fff;
+        }
+    }
 }

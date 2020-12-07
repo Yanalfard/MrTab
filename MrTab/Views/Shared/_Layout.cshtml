@@ -30,10 +30,10 @@
 
     <div class="nav-header row-reverse uk-box-shadow-large">
         <nav class="nav-header-right uk-margin-auto-vertical row-reverse uk-margin-auto-left">
-            <a href="#" class="logo uk-margin-left btn-icon-darkglass" aria-label="خانه">
-                <img src="~/resources/svg/Footer/Footer_ChefHat.svg" width="28" height="28" alt="لوگو وبسایت" />
+            <a href="#" class="logo margin-header-left btn-icon-darkglass" aria-label="خانه">
+                <img src="~/resources/svg/BurgerKing.svg" width="42" height="42" alt="لوگو وبسایت" />
             </a>
-            <a href="#Side-Menu" id="NavMenu" aria-label="منو سایت" 
+            <a href="#Side-Menu" id="NavMenu" aria-label="منو سایت"
                uk-toggle class="btn-icon-darkglass display-none show-on-mobile">
                 <span uk-icon="icon:menu-outline;ratio:1.65"></span>
             </a>
@@ -44,6 +44,9 @@
             <a href="#" class="btn-icon-darkglass" aria-label="درباره ما">
                 <span class="hide-on-mobile">درباره ما</span>
                 <span uk-icon="icon:information-circle;ratio:1.65" class="display-none"></span>
+            </a><a href="#" class="btn-icon-darkglass" aria-label="درباره ما">
+                <span class="hide-on-mobile">درباره ما</span>
+                <span uk-icon="icon:information-circle;ratio:1.65" class="display-none"></span>
             </a>
         </nav>
 
@@ -51,10 +54,14 @@
             <button id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
                 ثبت نام
             </button>
-            <button id="btnLogin" class="btn btn-round btn-darkglass uk-margin-left hide-on-mobile">
+            <button id="btnLogin" class="btn btn-round btn-darkglass margin-header-left hide-on-mobile">
                 ورود
             </button>
-            <div id="txtSearch" class="material-darkglass uk-margin-left btn-round row">
+            <button id="btnLocation" uk-icon="location-outline"
+                    class="btn btn-round btn-darkglass margin-header-left" type="button" uk-toggle="#Modal-Location">
+                تبریز
+            </button>
+            <div id="txtSearch" class="material-darkglass margin-header-left btn-round row">
                 <button uk-icon="search-outline" aria-label="جستجو"
                         class="btn-icon-darkglass uk-margin-small-left uk-margin-small-right"></button>
                 <input class="input-darkglass input-invis btn-round row flex-1"
@@ -65,6 +72,54 @@
     </div>
 
     <div class="space-nav-header"></div>
+    <!-- #endregion -->
+    <!-- #region Location -->
+
+    <div id="Modal-Location" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <form class="column">
+                <h2 class="uk-h4">انتخاب شهر</h2>
+                <span class="uk-modal-close" uk-close></span>
+                <div class="form-group">
+                    <input type="text" class="form-group-bg"
+                           dir="rtl" placeholder="جستجو..."
+                           aria-label="جستجو شهر" name="txtSearch" />
+                </div>
+                <div class="even-taglist column uk-margin-small-top">
+                    <ul class="tag-grid uk-padding-remove">
+                        <li>
+                            <button class="even-tag">تبریز</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">تهران</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">مراغه</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">زنچان</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">قزوین</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">ارومیه</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">سراب</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">بناب</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="button-panel uk-margin-top uk-margin-auto">
+                    <div class="btn btn-round btn-secondary uk-modal-close">بازگشت</div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- #endregion -->
 
     @RenderBody()
@@ -116,9 +171,9 @@
                     <h3>ورود به سایت</h3>
                     <form class="column">
                         <input dir="rtl" class="input-darkglass input-fade btn-round uk-margin-bottom"
-                               type="tel" placeholder="شماره تلفن" aria-label="شماره تلفن"/>
+                               type="tel" placeholder="شماره تلفن" aria-label="شماره تلفن" />
                         <input dir="rtl" class="input-darkglass input-fade btn-round uk-margin-bottom"
-                               type="password" placeholder="گذرواژه" aria-label="گذرواژه"/>
+                               type="password" placeholder="گذرواژه" aria-label="گذرواژه" />
                         <button class="btn btn-primary btn-primary-lowglow btn-round uk-margin-auto-left">
                             ورود
                         </button>

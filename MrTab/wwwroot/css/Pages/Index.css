@@ -202,7 +202,7 @@ backdrop-filter: saturate(80%);
   .grid-categories .category:hover h3 {
     background: transparent; }
 
-@media only screen and (max-width: 930px) {
+@media only screen and (min-width: 432px) and (max-width: 930px) {
   .grid-categories {
     grid-template-areas: "kebab kebab doner" "breakfast romantic pizza" "breakfast chicken vegan" "mexico chicken vegan" !important;
     grid-template-columns: 1fr 1fr 1fr;
@@ -212,6 +212,18 @@ backdrop-filter: saturate(80%);
       min-height: calc(30vw - 56px); }
       .grid-categories .category h3 {
         font-size: 16px;
+        white-space: nowrap; } }
+
+@media only screen and (min-width: 0) and (max-width: 432px) {
+  .grid-categories {
+    grid-template-areas: "kebab doner" "breakfast romantic" "pizza chicken" "mexico vegan" !important;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px; }
+    .grid-categories .category {
+      border: 5px solid #fff;
+      min-height: calc(32vw); }
+      .grid-categories .category h3 {
+        font-size: 15px;
         white-space: nowrap; } }
 
 .category:nth-child(1) {

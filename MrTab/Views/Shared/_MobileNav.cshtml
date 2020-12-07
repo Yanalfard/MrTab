@@ -14,7 +14,7 @@
         </form>
         <ul class="uk-list">
             <li>
-                <a href="#" class="uk-h4">خانه</a>
+                <a href="/" class="uk-h4">خانه</a>
             </li>
             <li>
                 <a href="#" class="uk-h4">درباره</a>
@@ -23,10 +23,10 @@
                 <a href="#" class="uk-h4">پروفایل</a>
             </li>
             <li>
-                <a href="#" class="uk-h4">تغییر مکان</a>
+                <a href="#Modal-Location" class="uk-h4" uk-toggle>تغییر مکان</a>
             </li>
             <li>
-                <a href="#" class="uk-h4">جستجو</a>
+                <a href="/Home/search" class="uk-h4">جستجو</a>
             </li>
         </ul>
         <button class="btn btn-primary btn-round">
@@ -36,10 +36,11 @@
     </div>
 </div>
 
+<!-- Mobile navigation -->
 <nav class="nav-bottom">
     <ul class="row">
         <li>
-            <a href="#">
+            <a href="/Home/Search">
                 <span uk-icon="icon:search;ratio:1.375;"></span>
             </a>
         </li>
@@ -49,7 +50,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="#Modal-Location" uk-toggle>
                 <span uk-icon="icon:location-outline;ratio:1.375;"></span>
             </a>
         </li>

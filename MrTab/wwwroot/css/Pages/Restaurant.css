@@ -365,6 +365,8 @@ backdrop-filter: saturate(80%);
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
   grid-template-areas: "foodstyle meals" "scores options" "map map"; }
+  .info .meals {
+    grid-area: meals; }
   .info .meals, .info .foodstyle {
     -ms-flex-wrap: wrap-reverse;
     -webkit-flex-wrap: wrap-reverse;
@@ -394,15 +396,16 @@ backdrop-filter: saturate(80%);
       -o-transition: all ease 0.4s;
       -webkit-transition: all ease 0.4s;
       transition: all ease 0.4s;
-      display: block; }
+      display: block;
+      background: transparent;
+      cursor: pointer;
+      text-align: center; }
     .info .meals a:hover, .info .foodstyle a:hover {
       -moz-box-shadow: rgba(254, 180, 50, 0.6) 0 6px 16px;
       -webkit-box-shadow: rgba(254, 180, 50, 0.6) 0 6px 16px;
       box-shadow: rgba(254, 180, 50, 0.6) 0 6px 16px;
       background: #FEB432;
       color: #fff; }
-  .info .meals {
-    grid-area: meals; }
   .info .foodstyle {
     grid-area: foodstyle; }
   .info .scores {

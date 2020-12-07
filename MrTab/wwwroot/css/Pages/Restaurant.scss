@@ -211,6 +211,9 @@ $card-margin: 16px;
     grid-gap: $card-margin;
     grid-template-areas: "foodstyle meals" "scores options" "map map";
 
+    .meals {
+        grid-area: meals;
+    }
 
     .meals, .foodstyle {
         -ms-flex-wrap: wrap-reverse;
@@ -237,6 +240,9 @@ $card-margin: 16px;
             @include border-radius(20px,20px,20px,20px);
             @include trans(.4s);
             display: block;
+            background: transparent;
+            cursor: pointer;
+            text-align: center;
         }
 
         a:hover {
@@ -244,10 +250,6 @@ $card-margin: 16px;
             background: $primary;
             color: #fff;
         }
-    }
-
-    .meals {
-        grid-area: meals;
     }
 
     .foodstyle {
