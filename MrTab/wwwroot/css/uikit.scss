@@ -441,10 +441,6 @@ h6,
 }
 /* Lists
  ========================================================================== */
-ul,
-ol {
-    padding-left: 30px;
-}
 /*
  * Reset margin for nested lists
  */
@@ -1941,7 +1937,8 @@ select.uk-form-width-xsmall {
 .uk-radio:checked:focus,
 .uk-checkbox:checked:focus,
 .uk-checkbox:indeterminate:focus {
-    background-color: darken($primary,6%);;
+    background-color: darken($primary,6%);
+    ;
 }
 /*
  * Icons
@@ -2249,7 +2246,8 @@ select.uk-form-width-xsmall {
 /* OnClick + Active */
 .uk-button-primary:active,
 .uk-button-primary.uk-active {
-    background-color: darken($primary,6%);;
+    background-color: darken($primary,6%);
+    ;
     color: #fff;
 }
 /*
@@ -3143,7 +3141,7 @@ select.uk-form-width-xsmall {
     transition: 0.1s ease-in-out;
     transition-property: color, opacity;
     position: absolute;
-    cursor:pointer;
+    cursor: pointer;
 }
 /* Hover + Focus */
 .uk-close:hover,
@@ -4068,6 +4066,10 @@ select.uk-form-width-xsmall {
     transform: translateY(-100px);
     transition: 0.3s linear;
     transition-property: opacity, transform;
+}
+
+.uk-modal-dialog.uk-flex.background-transparent {
+    width: 320px;
 }
 /*
  * Open
@@ -7719,7 +7721,7 @@ ul.uk-nav-sub {
 .uk-text-default {
     font-size: 16px;
     line-height: 1.5;
-    color:$Text;
+    color: $Text;
 }
 /* Weight modifier
  ========================================================================== */

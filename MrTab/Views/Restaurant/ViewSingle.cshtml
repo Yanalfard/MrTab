@@ -116,13 +116,46 @@
     </div>
 </div>
 
+<div id="Modal-Report-Comment" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <form class="column">
+            <h2 class="uk-h4 uk-margin-auto-left">این نظر چه مشکلی دارد؟</h2>
+            <span class="uk-modal-close" uk-close></span>
+            <ul>
+                <li class="uk-form-controls">
+                    <label>لحن و کلمات مبتذل</label>
+                    <input type="radio" class=" uk-radio" name="report" value="" id="" />
+                </li>
+                <li class="uk-form-controls uk-margin-small-top">
+                    <label>بحث درباره موضوعات نامربوط</label>
+                    <input type="radio" class="uk-radio" name="report" value="" id="" />
+                </li>
+                <li class="uk-form-controls uk-margin-small-top">
+                    <label>فرستنده ربات است</label>
+                    <input type="radio" class="uk-radio" name="report" value="" id="" />
+                </li>
+            </ul>
+            <label for="Other" class="uk-margin-small-bottom" dir="rtl">مشکل دیگر</label>
+            <div class="form-group">
+                <textarea dir="rtl" placeholder="لحاظ کنید..." name="txtComment"></textarea>
+            </div>
+            <div class="button-panel uk-margin-top uk-margin-auto">
+                <div class="btn btn-round btn-primary">ثبت</div>
+                <div class="btn btn-round btn-secondary uk-margin-small-right uk-modal-close">بازگشت</div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
 <!-- #region Croppie -->
 
 <div id="Croppie" uk-modal>
     <div class="uk-modal-dialog background-transparent uk-flex">
         <div class="popup-croppie column uk-margin-auto">
             <div class="controls uk-width-1-1 row ">
-                <input type="file" id="files" onchange="fileSelected(this)" class="display-none">
+                <input type="file" id="files" accept="image/*" onchange="fileSelected(this)" class="display-none">
                 <label class="button-icon" for="files">
                     <span uk-icon="image"></span>
                 </label>
@@ -496,7 +529,8 @@
                 <button class="btn-icon uk-margin-small-right" uk-icon="heart-outline">
                     <span>16</span>
                 </button>
-                <button class="btn-icon uk-margin-auto-right" uk-icon="megaphone-outline"></button>
+                <button class="btn-icon uk-margin-auto-right" uk-toggle="#Modal-Report-Comment"
+                        type="button" uk-icon="megaphone-outline"></button>
             </div>
         </div>
 
@@ -519,30 +553,8 @@
                 <button class="btn-icon uk-margin-small-right" uk-icon="heart-outline">
                     <span>16</span>
                 </button>
-                <button class="btn-icon uk-margin-auto-right" uk-icon="megaphone-outline"></button>
-            </div>
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Comment -->
-
-        <div class="comment">
-            <div class="user">
-                <img src="~/resources/jpg/Coffee.jpg" class="btn-round" width="50" height="50" alt="عکس کاربر" />
-                <div>
-                    <label class="name">مهتاب دادسرشت</label>
-                    <span class="date">4 ماه پیش</span>
-                </div>
-            </div>
-            <p class="content">
-                قيمت ها كمي بالاست اما واقعا مي ارزه، خيلي خيلي خوشمزه و پرحجم بود غذاهاشون،محيطش هم خيلي زيباست و همه كاركنان هم بسيار خوش اخلاق هستن
-            </p>
-            <div class="action">
-                <button class="btn-icon" uk-icon="information-circle"></button>
-                <button class="btn-icon uk-margin-small-right" uk-icon="heart-outline">
-                    <span>16</span>
-                </button>
-                <button class="btn-icon uk-margin-auto-right" uk-icon="megaphone-outline"></button>
+                <button class="btn-icon uk-margin-auto-right" uk-toggle="#Modal-Report-Comment"
+                        type="button" uk-icon="megaphone-outline"></button>
             </div>
         </div>
 
@@ -565,7 +577,32 @@
                 <button class="btn-icon uk-margin-small-right" uk-icon="heart-outline">
                     <span>16</span>
                 </button>
-                <button class="btn-icon uk-margin-auto-right" uk-icon="megaphone-outline"></button>
+                <button class="btn-icon uk-margin-auto-right" uk-toggle="#Modal-Report-Comment"
+                        type="button" uk-icon="megaphone-outline"></button>
+            </div>
+        </div>
+
+        <!-- #endregion -->
+        <!-- #region Comment -->
+
+        <div class="comment">
+            <div class="user">
+                <img src="~/resources/jpg/Coffee.jpg" class="btn-round" width="50" height="50" alt="عکس کاربر" />
+                <div>
+                    <label class="name">مهتاب دادسرشت</label>
+                    <span class="date">4 ماه پیش</span>
+                </div>
+            </div>
+            <p class="content">
+                قيمت ها كمي بالاست اما واقعا مي ارزه،خيلي خيلي خوشمزه و پرحجم بود غذاهاشون،محيطش هم خيلي زيباست و همه كاركنان هم بسيار خوش اخلاق هستن
+            </p>
+            <div class="action">
+                <button class="btn-icon" uk-icon="information-circle"></button>
+                <button class="btn-icon uk-margin-small-right" uk-icon="heart-outline">
+                    <span>16</span>
+                </button>
+                <button class="btn-icon uk-margin-auto-right" uk-toggle="#Modal-Report-Comment"
+                        type="button" uk-icon="megaphone-outline"></button>
             </div>
         </div>
 

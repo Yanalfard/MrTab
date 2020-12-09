@@ -431,10 +431,6 @@ h6,
 
 /* Lists
  ========================================================================== */
-ul,
-ol {
-  padding-left: 30px; }
-
 /*
  * Reset margin for nested lists
  */
@@ -3828,6 +3824,9 @@ select.uk-form-width-xsmall {
   transform: translateY(-100px);
   transition: 0.3s linear;
   transition-property: opacity, transform; }
+
+.uk-modal-dialog.uk-flex.background-transparent {
+  width: 320px; }
 
 /*
  * Open

@@ -110,3 +110,10 @@ img {
 .background-transparent{
     background-color:transparent!important;
 }
+
+*:focus , *:active , *:hover {
+    -webkit-tap-highlight-color: rgba(255, 164, 0, 0.16);
+    outline: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}

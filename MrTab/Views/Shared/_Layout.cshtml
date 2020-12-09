@@ -10,10 +10,10 @@
     <title>@(ViewBag.Title ?? "مستر فود")</title>
 
     <!--PWA-->
-    @*<meta name="apple-mobile-web-app-status-bar" content="#E73434" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="#E73434" />
-        <meta name="theme-color" content="#E73434" />
-        <link rel="manifest" href="~/manifest.json" />*@
+    <meta name="apple-mobile-web-app-status-bar" content="#E73434" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#E73434" />
+    <meta name="theme-color" content="#E73434" />
+    <link rel="manifest" href="~/manifest.json" />
 
     <!--Css-->
     <link href="~/css/uikit.min.css" rel="stylesheet" />
@@ -233,14 +233,14 @@
     <div class="space-nav-bottom"></div>
     <partial name="/Views/Shared/_MobileNav.cshtml">
 
-        @*<script src="~/app.js"></script>*@
+        <script src="~/app.js"></script>
 
         <!--Static Js-->
         <script src="~/js/uikit.min.js"></script>
         <script src="~/js/uikit-icons.js"></script>
         <script src="~/js/croppie.js"></script>
         <script src="~/js/persianDigits.js"></script>
-        <script src="~/js/ImageLoadFailed.js"></script>
+        @*<script src="~/js/ImageLoadFailed.js"></script>*@
         <script src="~/js/CopyText.js"></script>
 
         <!--Page Dependant Js-->

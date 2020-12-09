@@ -14,11 +14,11 @@
     <div class="uk-modal-dialog background-transparent uk-flex">
         <div class="popup-croppie column uk-margin-auto">
             <div class="controls uk-width-1-1 row ">
-                <input type="file" id="files" onchange="fileSelected(this)" class="display-none">
+                <input type="file" id="files" accept="image/*" onchange="fileSelected(this)" class="display-none">
                 <label class="button-icon" for="files">
                     <span uk-icon="image"></span>
                 </label>
-                <button class="button-icon" onclick="">
+                <button class="button-icon" onclick="crop()">
                     <span uk-icon="crop"></span>
                 </button>
                 @*<button class="button-icon uk-margin-auto-left" onclick="window.history.back()">
@@ -34,6 +34,7 @@
 </div>
 
 <!-- #endregion -->
+
 
 <div id="Modal-ChangePass" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
@@ -208,13 +209,12 @@
         function fileSelected(input) {
             if (input.files[0] == null) return;
 
+
             if (c != undefined) {
                 const popup = document.getElementsByClassName('popup-croppie')[0];
-                c.destroy();
+                c.element.innerHTML = `<img src="/resources/svg/Image.svg" id="item">`
+                //c.destroy();
             }
-
-            var image = new Image();
-            image.src = input.value;
 
             var reader = new FileReader();
             reader.onload = function () {
@@ -242,6 +242,5 @@
             }
         }
     </script>
-
 
 }
