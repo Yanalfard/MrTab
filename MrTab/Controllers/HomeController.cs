@@ -27,5 +27,10 @@ namespace MrTab.Controllers
             return View();
         }
 
+        public IActionResult ToRestaurant()
+        {
+            return View();
+        }
+
     }
 }

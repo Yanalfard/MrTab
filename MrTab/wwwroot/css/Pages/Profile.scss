@@ -27,29 +27,29 @@
             object-position: center;
         }
 
-        #btnUploadImage {
-            right: 0;
-            bottom: 0;
-            position: absolute;
-            width: 52px;
-            height: 52px;
-            @include border-radius(24px,24px,24px,24px);
-            border: 5px #fff solid;
-            display: flex;
-            -ms-align-content: center;
-            -webkit-align-content: center;
-            align-content: center;
-            background-color: #EFEFEF;
-
-            span, span:hover {
-                margin: auto;
-                color: #BFBFBF;
-            }
-        }
-
         #btnUploadImage:hover {
             background-color: darken(#EFEFEF,4%);
         }
+    }
+}
+
+#btnUploadImage, .btn-upload {
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    @include border-radius(24px,24px,24px,24px);
+    border: 5px #fff solid;
+    display: flex;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center;
+    background-color: #EFEFEF;
+
+    span, span:hover {
+        margin: auto;
+        color: #BFBFBF;
     }
 }
 
@@ -61,11 +61,18 @@
             @include column;
 
             .profile-image {
-                margin:auto!important;
+                margin: auto !important;
             }
 
-            .data-group {
-                margin-top: 12px;
+            .column {
+                margin-right: 0 !important;
+
+                .data-group {
+                    margin-top: 16px;
+                    background: #EFEFEF;
+                    padding: 20px;
+                    @include border-radius(20px,20px,20px,20px);
+                }
             }
         }
     }
@@ -84,5 +91,32 @@
     .data-value {
         font-size: 24px;
         color: #656565;
+    }
+}
+
+.input-tiny {
+    width: 70px;
+}
+
+.inputs-grid {
+    @include grid(140px);
+    grid-gap: 16px;
+}
+
+.upload-image {
+    position: relative;
+    margin: 28px 0;
+
+    img {
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
+        @include border-radius(12px,12px,12px,12px);
+    }
+
+    .btn-upload {
+        bottom: -24px !important;
+        right: 24px !important;
     }
 }

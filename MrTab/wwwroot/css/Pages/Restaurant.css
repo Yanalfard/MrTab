@@ -530,9 +530,6 @@ backdrop-filter: saturate(80%);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
       min-height: 36vh; } }
 
-.mat-margin-top {
-  margin-top: 16px; }
-
 .leaflet-control-attribution {
   display: none; }
 

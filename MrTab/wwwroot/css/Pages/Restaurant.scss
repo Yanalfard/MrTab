@@ -2,8 +2,6 @@
 @import '../_layout.scss';
 @import '../_guage.scss';
 
-$banner-height: 350px;
-$card-margin: 16px;
 
 .banner {
     height: $banner-height;
@@ -460,10 +458,6 @@ $card-margin: 16px;
             min-height: 36vh;
         }
     }
-}
-
-.mat-margin-top {
-    margin-top: $card-margin;
 }
 
 .leaflet-control-attribution {
