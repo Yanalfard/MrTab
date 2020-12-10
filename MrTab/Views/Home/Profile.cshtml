@@ -77,7 +77,7 @@
     </div>
 </div>
 
-<div id="Modal-Tel" uk-modal>
+<div id="Modal-ChangeTel" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
         <form class="column">
             <h2 class="uk-h4 uk-margin-auto-left">تغییر شماره تلفن</h2>
@@ -116,27 +116,27 @@
             <div class="mat uk-box-shadow-large">
                 <ul class="column uk-list">
                     <li>
-                        <a href="#" class="uk-text-default">
+                        <a href="#Modal-ChangePassword" class="uk-text-default">
                             تغییر رمز
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="uk-text-default">
+                        <a href="#Modal-ChangeName" class="uk-text-default">
                             تغییر نام
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="uk-text-default">
+                        <a href="#Modal-ChangeTel" class="uk-text-default">
                             تغییر شماره تلفن
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="uk-text-default">
+                        <a href="/Home/ToRestaurant" class="uk-text-default">
                             تبدیل حساب به رستوران
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="uk-text-danger">خروج</a>
+                        <a href="/" class="uk-text-danger">خروج</a>
                     </li>
                 </ul>
             </div>
@@ -155,7 +155,7 @@
                 <div class="data-group" name="dName">
                     <label class="data-label">نام و نام خانوادگی</label>
                     <div class="uk-inline">
-                        <button class="btn-icon uk-margin-small-right" aria-label="ویرایش نام"
+                        <button class="btn-icon uk-margin-small-right" uk-toggle="#Modal-ChangeName" type="button" aria-label="ویرایش نام"
                                 uk-icon="create-outline"></button>
                         <text class="data-value">صدرا محمدی</text>
                     </div>
@@ -164,7 +164,7 @@
                 <div class="data-group" name="dTel">
                     <label class="data-label">شماره تلفن</label>
                     <div class="uk-inline">
-                        <button class="btn-icon uk-margin-small-right" aria-label="ویرایش شماره تلفن"
+                        <button class="btn-icon uk-margin-small-right" uk-toggle="#Modal-ChangeTel" type="button" aria-label="ویرایش شماره تلفن"
                                 uk-icon="create-outline"></button>
                         <text class="data-value">0935 593 29 30</text>
                     </div>
@@ -181,9 +181,9 @@
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
             </p>
             <div class="button-panel uk-margin-auto">
-                <button class="btn btn-primary">
+                <a href="/Home/ToRestaurant" class="btn btn-primary">
                     تشکیل رستوران
-                </button>
+                </a>
             </div>
         </div>
     </div>

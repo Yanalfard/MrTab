@@ -679,7 +679,19 @@ textarea:focus {
     }
 }
 
-
 .mat-margin-top {
     margin-top: $card-margin;
+}
+
+.popup-ios {
+    background-color: #FFAC2F;
+    padding: 0 !important;
+
+    * {
+        color: #000;
+    }
+
+    img {
+        height: calc(100vh - 280px);
+    }
 }

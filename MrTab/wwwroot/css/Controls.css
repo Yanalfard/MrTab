@@ -894,3 +894,11 @@ textarea:focus {
 
 .mat-margin-top {
   margin-top: 16px; }
+
+.popup-ios {
+  background-color: #FFAC2F;
+  padding: 0 !important; }
+  .popup-ios * {
+    color: #000; }
+  .popup-ios img {
+    height: calc(100vh - 280px); }

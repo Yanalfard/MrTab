@@ -10,9 +10,11 @@
     <title>@(ViewBag.Title ?? "مستر فود")</title>
 
     <!--PWA-->
-    <meta name="apple-mobile-web-app-status-bar" content="#E73434" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="#E73434" />
-    <meta name="theme-color" content="#E73434" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/resources/png/Mobile/icon_192.png">
+    <meta name="msapplication-TileColor" content="#FFAC2F">
+    <meta name="apple-mobile-web-app-status-bar" content="#FFAC2F" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#FFAC2F" />
+    <meta name="theme-color" content="#FFAC2F" />
     <link rel="manifest" href="~/manifest.json" />
 
     <!--Css-->
@@ -45,10 +47,6 @@
                 <span class="hide-on-mobile">درباره ما</span>
                 <span uk-icon="icon:information-circle;ratio:1.65" class="display-none"></span>
             </a>
-            <a href="#" class="btn-icon-darkglass" aria-label="درباره ما">
-                <span class="hide-on-mobile">منو آیتم</span>
-                <span uk-icon="icon:information-circle;ratio:1.65" class="display-none"></span>
-            </a>
         </nav>
 
         <div class="nav-header-left row uk-margin-auto-right">
@@ -63,7 +61,7 @@
                 تبریز
             </button>
             <div id="txtSearch" class="material-darkglass margin-header-left btn-round row">
-                <button uk-icon="search-outline" aria-label="جستجو"
+                <button onclick="window.location='/Home/Search'" uk-icon="search-outline" aria-label="جستجو"
                         class="btn-icon-darkglass uk-margin-small-left uk-margin-small-right"></button>
                 <input class="input-darkglass input-invis btn-round row flex-1"
                        placeholder="جستجو..." dir="rtl"
@@ -73,54 +71,6 @@
     </div>
 
     <div class="space-nav-header"></div>
-    <!-- #endregion -->
-    <!-- #region Location -->
-
-    <div id="Modal-Location" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body">
-            <form class="column">
-                <h2 class="uk-h4">انتخاب شهر</h2>
-                <span class="uk-modal-close" uk-close></span>
-                <div class="form-group">
-                    <input type="text" class="form-group-bg"
-                           dir="rtl" placeholder="جستجو..."
-                           aria-label="جستجو شهر" name="txtSearch" />
-                </div>
-                <div class="even-taglist column uk-margin-small-top">
-                    <ul class="tag-grid uk-padding-remove">
-                        <li>
-                            <button class="even-tag">تبریز</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">تهران</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">مراغه</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">زنچان</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">قزوین</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">ارومیه</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">سراب</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">بناب</button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="button-panel uk-margin-top uk-margin-auto">
-                    <div class="btn btn-round btn-secondary uk-modal-close">بازگشت</div>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <!-- #endregion -->
 
     @RenderBody()
@@ -230,9 +180,70 @@
     </footer>
 
     <!-- #endregion -->
+
+    <div id="Modal-PopupIos" class="popup-ios" uk-modal>
+        <div class="column uk-padding">
+            <button class="uk-modal-close btn-icon uk-margin-auto-right" uk-icon="icon:close;ratio:1.5" aria-label="بستن"></button>
+            <h2 class="uk-h3 center">دانلود اپلیکیشن موبایل</h2>
+            <h3 class="uk-h5 center uk-margin-bottom">برای دریافت اپ موبایل مرنامه را به صفحه اصلی اضافه کنید</h3>
+            <img class="uk-margin-auto" src="~/resources/svg/Iphone.svg" />
+            <span class="btn-icon uk-margin-auto" uk-icon="icon:arrow-down-circle;ratio:3"></span>
+        </div>
+    </div>
+
+    <!-- #region Location -->
+
+    <div id="Modal-Location" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <form class="column">
+                <h2 class="uk-h4">انتخاب شهر</h2>
+                <span class="uk-modal-close" uk-close></span>
+                <div class="form-group">
+                    <input type="text" class="form-group-bg"
+                           dir="rtl" placeholder="جستجو..."
+                           aria-label="جستجو شهر" name="txtSearch" />
+                </div>
+                <div class="even-taglist column uk-margin-small-top">
+                    <ul class="tag-grid uk-padding-remove">
+                        <li>
+                            <button class="even-tag">تبریز</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">تهران</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">مراغه</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">زنچان</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">قزوین</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">ارومیه</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">سراب</button>
+                        </li>
+                        <li>
+                            <button class="even-tag">بناب</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="button-panel uk-margin-top uk-margin-auto">
+                    <div class="btn btn-round btn-secondary uk-modal-close">بازگشت</div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- #endregion -->
+
     <div class="space-nav-bottom"></div>
     <partial name="/Views/Shared/_MobileNav.cshtml">
 
+        <!-- PWA -->
         <script src="~/app.js"></script>
 
         <!--Static Js-->
@@ -242,7 +253,6 @@
         <script src="~/js/persianDigits.js"></script>
         @*<script src="~/js/ImageLoadFailed.js"></script>*@
         <script src="~/js/CopyText.js"></script>
-
         <!--Page Dependant Js-->
         @RenderSection("Scripts", false)
 
