@@ -46,7 +46,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
     } catch { }
 });
 
-
 function btnDownloadClick(e) {
 
     if (isInStandaloneMode) {
