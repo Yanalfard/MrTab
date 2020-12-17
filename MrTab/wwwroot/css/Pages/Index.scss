@@ -160,15 +160,35 @@
     }
 }
 
-@media only screen and (min-width: 432px) and (max-width: 930px) {
+@media only screen and (min-width: 930px)  {
     .grid-categories {
-        grid-template-areas: "kebab kebab doner" "breakfast romantic pizza" "breakfast chicken vegan" "mexico chicken vegan" !important;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: "kebab kebab doner mexico" "breakfast romantic pizza pizza" "breakfast chicken chicken vegan";
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 160px 160px 160px;
         grid-gap: 8px;
 
         .category {
             border: 5px solid #fff;
-            min-height: calc(30vw - 56px);
+            min-height: 160px;
+
+            h3 {
+                font-size: 16px;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 432px) and (max-width: 930px) {
+    .grid-categories {
+        grid-template-areas: "kebab kebab doner" "breakfast romantic pizza" "breakfast chicken vegan" "mexico chicken vegan" !important;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 100px 100px 100px 100px;
+        grid-gap: 8px;
+
+        .category {
+            border: 5px solid #fff;
+            min-height: 100px;
 
             h3 {
                 font-size: 16px;
@@ -195,7 +215,6 @@
         }
     }
 }
-
 
 .category:nth-child(1) {
     grid-area: kebab;

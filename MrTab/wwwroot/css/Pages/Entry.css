@@ -84,6 +84,9 @@ body, .entry-1, .entry-2, .entry-3 {
   background-position: bottom;
   background-size: contain; }
 
+body {
+  background-color: #303030 !important; }
+
 .entry-1 {
   background-image: url("/resources/svg/Entry_1.svg"); }
 
