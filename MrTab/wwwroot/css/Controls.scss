@@ -568,6 +568,10 @@ textarea:focus {
         width: $rest-block-width;
         height: $rest-block-width;
         @include border-radius(16px,16px,16px,16px);
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
     }
 
     > .info {
@@ -744,7 +748,6 @@ textarea:focus {
     }
 }
 
-
 @media only screen and (max-device-width : 550px) {
     .carousel {
         padding: 0 0 12px 0;
@@ -799,7 +802,6 @@ textarea:focus {
         }
     }
 }
-
 
 /*oi*/
 
@@ -865,7 +867,6 @@ textarea:focus {
     }
 }
 
-
 .carousel .rest-block {
     margin: auto;
 }
@@ -876,6 +877,19 @@ textarea:focus {
 
     > .rest-block {
         margin: auto;
+    }
+}
+
+@media only screen and (max-device-width : 551px) {
+    $rest-block-width: 150px;
+
+    .rest-grid {
+        @include grid-gap($rest-block-width, 8px);
+        direction: rtl;
+
+        > .rest-block {
+            margin: auto;
+        }
     }
 }
 

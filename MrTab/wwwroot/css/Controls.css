@@ -767,7 +767,11 @@ textarea:focus {
     border-radius: 16px 16px 16px 16px;
     /* -moz-border-radius: 0;
     -webkit-border-radius: 0;
-    border-radius: 0;*/ }
+    border-radius: 0;*/
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center; }
   .rest-block > .info {
     padding: 10px 14px;
     display: flex;
@@ -1083,6 +1087,16 @@ textarea:focus {
   direction: rtl; }
   .rest-grid > .rest-block {
     margin: auto; }
+
+@media only screen and (max-device-width: 551px) {
+  .rest-grid {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    direction: rtl; }
+    .rest-grid > .rest-block {
+      margin: auto; } }
 
 .even-taglist .tag-grid {
   width: 100%;

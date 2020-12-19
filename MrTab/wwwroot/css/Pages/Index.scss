@@ -36,6 +36,35 @@
         grid-area: button;
         margin-left: auto;
         margin-bottom: auto;
+        background: white;
+        @include border-radius(12px,12px,12px,12px);
+        padding: 12px;
+
+        .category-drop {
+            background: #fff;
+            @include border-radius(12px,12px,12px,12px);
+            @include shadow-more;
+            height: auto;
+            max-height: 200px;
+            z-index: 999;
+            overflow: hidden;
+
+            li {
+                padding: 8px 12px 8px 0;
+                @include trans(.4s);
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -webkit-user-select: none;
+                user-select: none;
+                color: #333;
+                cursor: pointer;
+                max-width: 136px;
+            }
+
+            li:hover {
+                background: #eee;
+            }
+        }
     }
 }
 
@@ -58,18 +87,21 @@
         }
 
         .hero-image {
+            max-height: 200px;
             margin: auto;
-            width: 95%;
         }
 
         .hero-splash {
             margin: auto auto !important;
+            max-height: 144px;
 
             h1 {
+                margin: 4px auto !important;
                 font-size: 30px !important;
             }
 
             h2 {
+                margin: 4px auto !important;
                 font-size: 34px !important;
             }
 
@@ -160,7 +192,7 @@
     }
 }
 
-@media only screen and (min-width: 930px)  {
+@media only screen and (min-width: 930px) {
     .grid-categories {
         grid-template-areas: "kebab kebab doner mexico" "breakfast romantic pizza pizza" "breakfast chicken chicken vegan";
         grid-template-columns: 1fr 1fr 1fr 1fr;

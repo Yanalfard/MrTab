@@ -41,6 +41,7 @@ namespace MrTab
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();

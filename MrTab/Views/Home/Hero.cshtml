@@ -17,6 +17,68 @@
         <img src="~/resources/svg/LookingForFood.svg"
              class="hero-image uk-margin-auto-right"
              width="430" height="386" alt="Hero image, man looking for food" />
-        <button onclick="window.location='/Entry/Login'" class="hero-button btn btn-white uk-margin-top">دست به کار شو</button>
+        <form class="hero-button row uk-box-shadow-small uk-box-shadow-hover-large">
+            <button uk-icon="search" class="flex-auto" aria-label="جستجو"></button>
+            <input type="text" id="txtCategory" oninput="txtTypeChanged(this.value)" class="input-invis flex-1" dir="rtl" aria-label="نوع رستوران" placeholder="نوع رستوران" />
+            <div class="category-drop" uk-drop="mode: click; pos: bottom-justify">
+                <ul class="uk-margin-remove" id="drop"></ul>
+            </div>
+            <input type="text" class="input-invis flex-3" dir="rtl"  aria-label="جستجو" placeholder="جستجو..." />
+        </form>
     </div>
 </div>
+
+<script>
+
+    //const categories = fetch().then(i => i);
+    //const categories = [
+    //    {
+    //        id: 1,
+    //        name: 'کافه',
+    //    },
+    //    {
+    //        id: 2,
+    //        name: 'رستوران',
+    //    },
+    //    {
+    //        id: 3,
+    //        name: 'فست فود',
+    //    },
+    //    {
+    //        id: 4,
+    //        name: 'دونر',
+    //    },
+    //    {
+    //        id: 5,
+    //        name: 'نوتلا',
+    //    }
+    //];
+
+    const categories = [
+        'کافه',
+        'رستوران',
+        'فست فود',
+        'دونر',
+        'نوتلا'
+    ];
+
+    function txtTypeChanged(val) {
+        const drop = document.getElementById('drop');
+
+        UIkit.drop(document.getElementsByClassName('category-drop')[0]).show();
+
+        drop.innerHTML = '';
+        for (let cat of categories.filter(i => i.includes(val))) {
+            const li = document.createElement('li');
+            li.innerText = cat;
+            li.addEventListener('click', () => {
+                document.getElementById('txtCategory').value = cat;
+                UIkit.drop(document.getElementsByClassName('category-drop')[0]).hide(0);
+            });
+            drop.appendChild(li);
+        }
+        if (drop.children.length == 0) {
+            UIkit.drop(document.getElementsByClassName('category-drop')[0]).hide(0);
+        }
+    }
+</script>
