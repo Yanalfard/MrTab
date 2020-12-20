@@ -82,5 +82,5 @@ function btnDownloadClick(e) {
 if (isSafari && isIos) {
     setInterval(() => {
         UIkit.modal(document.getElementById('Modal-PopupIos')).show();
-    }, 60000 * 2);
+    }, 60000 * 5);
 }

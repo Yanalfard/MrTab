@@ -157,6 +157,27 @@
     }
 }
 
+.carousel {
+    padding: 0;
+    margin-top: 32px;
+    @include border-radius(16px,16px,16px,16px);
+    @include trans(.2s);
+
+    .uk-slider-items {
+        li {
+            display: flex;
+        }
+    }
+
+    .uk-dotnav li {
+        display: flex;
+
+        a {
+            margin: auto 0;
+        }
+    }
+}
+
 .carousel-image {
     a {
         margin: auto;

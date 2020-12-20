@@ -311,6 +311,26 @@ backdrop-filter: saturate(80%);
     -webkit-border-radius: 0;
     border-radius: 0;*/ } }
 
+.carousel {
+  padding: 0;
+  margin-top: 32px;
+  -moz-border-radius: 16px 16px 16px 16px;
+  -webkit-border-radius: 16px 16px 16px 16px;
+  border-radius: 16px 16px 16px 16px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+  -moz-transition: all ease 0.2s;
+  -o-transition: all ease 0.2s;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s; }
+  .carousel .uk-slider-items li {
+    display: flex; }
+  .carousel .uk-dotnav li {
+    display: flex; }
+    .carousel .uk-dotnav li a {
+      margin: auto 0; }
+
 .carousel-image a {
   margin: auto; }
 
