@@ -2,7 +2,6 @@
 @import '../_layout.scss';
 @import '../_guage.scss';
 
-
 .banner {
     height: $banner-height;
     width: 100%;
@@ -526,6 +525,108 @@
 
         .action {
             @include row-reverse;
+        }
+    }
+}
+
+.actions-adrift {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 600;
+    background: rgba(0,0,0,.72);
+    @include border-radius(32px,32px,32px,32px);
+    backdrop-filter: blur(6px);
+    display: flex;
+
+    ul {
+        @include row;
+        grid-gap: 6px;
+        margin: 0;
+        margin-left: auto;
+        padding: 8px;
+
+        li {
+            button {
+                background: transparent;
+                border: 0;
+                @include row-reverse;
+                @include trans(.3s);    
+                @include border-radius(32px,32px,32px,32px);
+                padding: 6px 12px;
+                color: #fff;
+
+                .uk-icon {
+                    margin-left: 4px;
+                }
+            }
+
+            button:hover {
+                background-color: rgba(255, 255, 255, 0.18);
+            }
+        }
+    }
+}
+
+@media only screen and (max-device-width : 550px) {
+    .actions-adrift {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        right: 24px;
+
+        ul {
+            @include row;
+            grid-gap: 6px;
+            margin: 0;
+            margin-left: auto;
+            padding: 6px;
+
+            li {
+                button {
+                    -ms-flex-direction: column !important;
+                    -webkit-flex-direction: column !important;
+                    flex-direction: column !important;
+                    padding: 4px 10px;
+                    color: #fff;
+
+                    .uk-icon {
+                        margin-left: 0;
+                        align-self: center;
+
+                        svg {
+                            width: 18px;
+                            height: 18px;
+                        }
+                    }
+
+                    span {
+                        font-size: 10px;
+                    }
+                }
+
+                button:hover {
+                    background-color: transparentize(#fff,.85);
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-device-width : 420px) {
+    .actions-adrift {
+        position: fixed;
+        bottom: $nav-bottom-height + 24px;
+        right: 24px;
+        left: 24px;
+
+        ul {
+            margin: 0;
+            width: 100%;
+
+            li {
+                margin: auto;
+            }
         }
     }
 }

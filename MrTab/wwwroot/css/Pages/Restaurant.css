@@ -588,3 +588,88 @@ backdrop-filter: saturate(80%);
   .comment-section .comment .action {
     display: flex;
     flex-direction: row-reverse; }
+
+.actions-adrift {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 600;
+  background: rgba(0, 0, 0, 0.72);
+  -moz-border-radius: 32px 32px 32px 32px;
+  -webkit-border-radius: 32px 32px 32px 32px;
+  border-radius: 32px 32px 32px 32px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+  backdrop-filter: blur(6px);
+  display: flex; }
+  .actions-adrift ul {
+    display: flex;
+    flex-direction: row;
+    grid-gap: 6px;
+    margin: 0;
+    margin-left: auto;
+    padding: 8px; }
+    .actions-adrift ul li button {
+      background: transparent;
+      border: 0;
+      display: flex;
+      flex-direction: row-reverse;
+      -moz-transition: all ease 0.3s;
+      -o-transition: all ease 0.3s;
+      -webkit-transition: all ease 0.3s;
+      transition: all ease 0.3s;
+      -moz-border-radius: 32px 32px 32px 32px;
+      -webkit-border-radius: 32px 32px 32px 32px;
+      border-radius: 32px 32px 32px 32px;
+      /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+      padding: 6px 12px;
+      color: #fff; }
+      .actions-adrift ul li button .uk-icon {
+        margin-left: 4px; }
+    .actions-adrift ul li button:hover {
+      background-color: rgba(255, 255, 255, 0.18); }
+
+@media only screen and (max-device-width: 550px) {
+  .actions-adrift {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    right: 24px; }
+    .actions-adrift ul {
+      display: flex;
+      flex-direction: row;
+      grid-gap: 6px;
+      margin: 0;
+      margin-left: auto;
+      padding: 6px; }
+      .actions-adrift ul li button {
+        -ms-flex-direction: column !important;
+        -webkit-flex-direction: column !important;
+        flex-direction: column !important;
+        padding: 4px 10px;
+        color: #fff; }
+        .actions-adrift ul li button .uk-icon {
+          margin-left: 0;
+          align-self: center; }
+          .actions-adrift ul li button .uk-icon svg {
+            width: 18px;
+            height: 18px; }
+        .actions-adrift ul li button span {
+          font-size: 10px; }
+      .actions-adrift ul li button:hover {
+        background-color: rgba(255, 255, 255, 0.15); } }
+
+@media only screen and (max-device-width: 420px) {
+  .actions-adrift {
+    position: fixed;
+    bottom: 89px;
+    right: 24px;
+    left: 24px; }
+    .actions-adrift ul {
+      margin: 0;
+      width: 100%; }
+      .actions-adrift ul li {
+        margin: auto; } }

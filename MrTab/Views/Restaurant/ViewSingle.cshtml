@@ -8,6 +8,35 @@
     <link href="~/css/Packages/leaflet.min.css" rel="stylesheet" />
 }
 
+<div class="actions-adrift"  uk-scrollspy="cls:uk-animation-slide-bottom-medium">
+    <ul>
+        <li>
+            <button type="button" uk-toggle="#Croppie">
+                <span uk-icon="image"></span>
+                <span>آپلود عکس</span>
+            </button>
+        </li>
+        <li>
+            <button type="button" uk-toggle="#Modal-Comment">
+                <span uk-icon="chatbox-ellipses"></span>
+                <span>ثبت نظر</span>
+            </button>
+        </li>
+        <li>
+            <button type="button" uk-toggle="#Modal-Report">
+                <span uk-icon="megaphone"></span>
+                <span>گزارش مکان</span>
+            </button>
+        </li>
+        <li>
+            <button onclick="copy(window.location.href,'لینک صفحه کپی شد')">
+                <span uk-icon="share-social"></span>
+                <span>اشتراک گزاری</span>
+            </button>
+        </li>
+    </ul>
+</div>
+
 <!-- #region Modals -->
 
 <div id="Modal-Comment" uk-modal>
