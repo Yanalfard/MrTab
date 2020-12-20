@@ -20,7 +20,10 @@ namespace MrTab.Controllers
         public IActionResult Search()
         {
             return View();
-        
+        }
+        public IActionResult CategoryView()
+        {
+            return View();
         }
         public IActionResult Profile()
         {
@@ -31,6 +34,5 @@ namespace MrTab.Controllers
         {
             return View();
         }
-
     }
 }

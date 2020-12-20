@@ -1,0 +1,108 @@
+﻿/*#region name*/
+/*#endregion */
+/*
+backdrop-filter: blur(2px);
+backdrop-filter: brightness(60%);
+backdrop-filter: contrast(40%);
+backdrop-filter: drop-shadow(4px 4px 10px blue);
+backdrop-filter: grayscale(30%);
+backdrop-filter: hue-rotate(120deg);
+backdrop-filter: invert(70%);
+backdrop-filter: opacity(20%);
+backdrop-filter: sepia(90%);
+backdrop-filter: saturate(80%);
+*/
+/*#region Global */
+/*#endregion */
+/*#region difficulty */
+/*#endregion */
+/*#region Card*/
+/*#endregion */
+/*#region Scrollbar */
+/*#endregion */
+/*#region shadow */
+/*#endregion */
+/*#region Material  */
+/*#endregion */
+/*#region Alignment */
+.row {
+  display: flex;
+  flex-direction: row; }
+
+.row-reverse {
+  display: flex;
+  flex-direction: row-reverse; }
+
+.column {
+  display: flex;
+  flex-direction: column; }
+
+.column-reverse {
+  display: flex;
+  flex-direction: column-reverse; }
+
+.flex-1 {
+  flex: 1; }
+
+.flex-2 {
+  flex: 2; }
+
+.flex-3 {
+  flex: 3; }
+
+.flex-4 {
+  flex: 4; }
+
+.flex-5 {
+  flex: 5; }
+
+.flex-6 {
+  flex: 6; }
+
+.flex-7 {
+  flex: 7; }
+
+.flex-8 {
+  flex: 8; }
+
+.flex-9 {
+  flex: 9; }
+
+.flex-10 {
+  flex: 10; }
+
+.flex-11 {
+  flex: 11; }
+
+.flex-auto {
+  flex: auto; }
+
+/*#endregion */
+.banner {
+  height: 280px;
+  -moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.5) inset;
+  -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.5) inset;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.5) inset; }
+  .banner .column {
+    height: 100%;
+    width: 100%; }
+    .banner .column .banner-text {
+      margin: auto !important;
+      height: auto;
+      width: 80%;
+      color: white;
+      padding: 24px; }
+      .banner .column .banner-text * {
+        color: white;
+        text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.7); }
+
+.rest-grid {
+  background-color: #fcf5e9;
+  border: 4px solid white;
+  padding: 20px 0;
+  -moz-border-radius: 24px 24px 24px 24px;
+  -webkit-border-radius: 24px 24px 24px 24px;
+  border-radius: 24px 24px 24px 24px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/ }

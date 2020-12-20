@@ -34,5 +34,9 @@
   {
     "outputFile": "wwwroot/css/Pages/Profile.css",
     "inputFile": "wwwroot/css/Pages/Profile.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Pages/CategoryView.css",
+    "inputFile": "wwwroot/css/Pages/CategoryView.scss"
   }
 ]
