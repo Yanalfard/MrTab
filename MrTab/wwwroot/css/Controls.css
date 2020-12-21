@@ -342,7 +342,7 @@ backdrop-filter: saturate(80%);
           font-size: 13px;
           text-align: center; }
 
-@media only screen and (min-device-width: 512px) {
+@media only screen and (min-device-width: 513px) {
   .nav-bottom {
     display: none; } }
 
@@ -585,7 +585,7 @@ textarea:focus {
   left: 20px;
   top: 20px; }
 
-#Side-Menu .image-container {
+#Side-Menu .profile-image-container {
   margin: auto;
   -moz-border-radius: 100% 100% 100% 100%;
   -webkit-border-radius: 100% 100% 100% 100%;
@@ -594,7 +594,7 @@ textarea:focus {
     -webkit-border-radius: 0;
     border-radius: 0;*/
   overflow: hidden; }
-  #Side-Menu .image-container .profile-image {
+  #Side-Menu .profile-image-container .profile-image {
     background-color: #E9E9E9;
     width: 120px;
     height: 120px;

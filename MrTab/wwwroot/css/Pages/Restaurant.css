@@ -367,6 +367,20 @@ backdrop-filter: saturate(80%);
     width: 20px;
     height: 20px; }
 
+@media only screen and (min-device-width: 400px) and (max-device-width: 512px) {
+  .carousel-image .uk-slider-items li {
+    width: 33.33% !important; }
+    .carousel-image .uk-slider-items li img {
+      width: 120px;
+      height: 120px; } }
+
+@media only screen and (max-device-width: 400px) {
+  .carousel-image .uk-slider-items li {
+    width: 50% !important; }
+    .carousel-image .uk-slider-items li img {
+      width: 120px;
+      height: 120px; } }
+
 .carousel-menu {
   border: 16px solid #fff;
   background: #fff;
@@ -379,6 +393,20 @@ backdrop-filter: saturate(80%);
   padding: 0; }
   .carousel-menu .uk-dotnav {
     margin: 0 auto; }
+
+@media only screen and (min-device-width: 390px) and (max-device-width: 524px) {
+  .carousel-menu .uk-slider-items li {
+    width: 33.33%; }
+  .carousel-menu .uk-slider-items img {
+    width: auto;
+    max-height: 50vh; } }
+
+@media only screen and (max-device-width: 390px) {
+  .carousel-menu .uk-slider-items li {
+    width: 50%; }
+  .carousel-menu .uk-slider-items img {
+    width: auto;
+    max-height: 50vh; } }
 
 .info {
   display: grid;
@@ -591,8 +619,6 @@ backdrop-filter: saturate(80%);
 
 .actions-adrift {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
   z-index: 600;
   background: rgba(0, 0, 0, 0.72);
   -moz-border-radius: 32px 32px 32px 32px;
@@ -626,25 +652,28 @@ backdrop-filter: saturate(80%);
     -webkit-border-radius: 0;
     border-radius: 0;*/
       padding: 6px 12px;
-      color: #fff; }
+      color: #fff;
+      white-space: nowrap; }
       .actions-adrift ul li button .uk-icon {
         margin-left: 4px; }
     .actions-adrift ul li button:hover {
       background-color: rgba(255, 255, 255, 0.18); }
 
-@media only screen and (max-device-width: 550px) {
+@media only screen and (min-device-width: 550px) {
   .actions-adrift {
-    position: fixed;
-    bottom: 24px;
     right: 24px;
-    right: 24px; }
-    .actions-adrift ul {
-      display: flex;
-      flex-direction: row;
-      grid-gap: 6px;
-      margin: 0;
-      margin-left: auto;
-      padding: 6px; }
+    bottom: 24px; } }
+
+@media only screen and (max-device-width: 550px) {
+  .actions-adrift ul {
+    display: flex;
+    flex-direction: row;
+    grid-gap: 6px;
+    margin: 0;
+    padding: 6px;
+    width: 100%; }
+    .actions-adrift ul li {
+      margin: auto; }
       .actions-adrift ul li button {
         -ms-flex-direction: column !important;
         -webkit-flex-direction: column !important;
@@ -662,14 +691,45 @@ backdrop-filter: saturate(80%);
       .actions-adrift ul li button:hover {
         background-color: rgba(255, 255, 255, 0.15); } }
 
-@media only screen and (max-device-width: 420px) {
+@media only screen and (min-device-width: 512px) and (max-device-width: 550px) {
   .actions-adrift {
-    position: fixed;
-    bottom: 89px;
     right: 24px;
-    left: 24px; }
+    left: 24px;
+    bottom: 24px; } }
+
+@media only screen and (max-device-width: 512px) {
+  .actions-adrift {
+    right: 24px;
+    left: 24px;
+    bottom: 89px; } }
+
+@media only screen and (max-device-width: 350px) {
+  .actions-adrift {
+    left: 16px;
+    right: 16px;
+    bottom: 81px; }
     .actions-adrift ul {
+      display: flex;
+      flex-direction: row;
+      grid-gap: 4px;
       margin: 0;
+      padding: 4px;
       width: 100%; }
       .actions-adrift ul li {
-        margin: auto; } }
+        margin: auto; }
+        .actions-adrift ul li button {
+          -ms-flex-direction: column !important;
+          -webkit-flex-direction: column !important;
+          flex-direction: column !important;
+          padding: 4px 10px;
+          color: #fff; }
+          .actions-adrift ul li button .uk-icon {
+            margin-left: 0;
+            align-self: center; }
+            .actions-adrift ul li button .uk-icon svg {
+              width: 16px;
+              height: 16px; }
+          .actions-adrift ul li button span {
+            font-size: 8px; }
+        .actions-adrift ul li button:hover {
+          background-color: rgba(255, 255, 255, 0.15); } }

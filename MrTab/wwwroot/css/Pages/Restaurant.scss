@@ -212,6 +212,36 @@
     }
 }
 
+@media only screen and (min-device-width : 400px) and (max-device-width : 512px) {
+    .carousel-image {
+        .uk-slider-items {
+            li {
+                width: 33.33% !important;
+
+                img {
+                    width: 120px;
+                    height: 120px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-device-width : 400px) {
+    .carousel-image {
+        .uk-slider-items {
+            li {
+                width: 50% !important;
+
+                img {
+                    width: 120px;
+                    height: 120px;
+                }
+            }
+        }
+    }
+}
+
 .carousel-menu {
     border: 16px solid #fff;
     background: #fff;
@@ -220,6 +250,37 @@
 
     .uk-dotnav {
         margin: 0 auto;
+    }
+}
+
+@media only screen and (min-device-width : 390px) and (max-device-width : 524px) {
+    .carousel-menu {
+
+        .uk-slider-items {
+            li {
+                width: 33.33%;
+            }
+
+            img {
+                width: auto;
+                max-height: 50vh;
+            }
+        }
+    }
+}
+
+@media only screen and (max-device-width : 390px) {
+    .carousel-menu {
+        .uk-slider-items {
+            li {
+                width: 50%;
+            }
+
+            img {
+                width: auto;
+                max-height: 50vh;
+            }
+        }
     }
 }
 
@@ -531,8 +592,6 @@
 
 .actions-adrift {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
     z-index: 600;
     background: rgba(0,0,0,.72);
     @include border-radius(32px,32px,32px,32px);
@@ -551,10 +610,11 @@
                 background: transparent;
                 border: 0;
                 @include row-reverse;
-                @include trans(.3s);    
+                @include trans(.3s);
                 @include border-radius(32px,32px,32px,32px);
                 padding: 6px 12px;
                 color: #fff;
+                white-space: nowrap;
 
                 .uk-icon {
                     margin-left: 4px;
@@ -568,21 +628,25 @@
     }
 }
 
+@media only screen and (min-device-width : 550px) {
+    .actions-adrift {
+        right: 24px;
+        bottom: 24px;
+    }
+}
+
 @media only screen and (max-device-width : 550px) {
     .actions-adrift {
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        right: 24px;
-
         ul {
             @include row;
             grid-gap: 6px;
             margin: 0;
-            margin-left: auto;
             padding: 6px;
+            width: 100%;
 
             li {
+                margin: auto;
+
                 button {
                     -ms-flex-direction: column !important;
                     -webkit-flex-direction: column !important;
@@ -613,19 +677,63 @@
     }
 }
 
-@media only screen and (max-device-width : 420px) {
+@media only screen and (min-device-width : 512px) and (max-device-width : 550px) {
     .actions-adrift {
-        position: fixed;
-        bottom: $nav-bottom-height + 24px;
         right: 24px;
         left: 24px;
+        bottom: 24px;
+    }
+}
+
+@media only screen and (max-device-width : 512px) {
+    .actions-adrift {
+        right: 24px;
+        left: 24px;
+        bottom: $nav-bottom-height + 24px;
+    }
+}
+
+@media only screen and (max-device-width : 350px) {
+    .actions-adrift {
+        left: 16px;
+        right: 16px;
+        bottom: $nav-bottom-height + 16px;
 
         ul {
+            @include row;
+            grid-gap: 4px;
             margin: 0;
+            padding: 4px;
             width: 100%;
 
             li {
                 margin: auto;
+
+                button {
+                    -ms-flex-direction: column !important;
+                    -webkit-flex-direction: column !important;
+                    flex-direction: column !important;
+                    padding: 4px 10px;
+                    color: #fff;
+
+                    .uk-icon {
+                        margin-left: 0;
+                        align-self: center;
+
+                        svg {
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+
+                    span {
+                        font-size: 8px;
+                    }
+                }
+
+                button:hover {
+                    background-color: transparentize(#fff,.85);
+                }
             }
         }
     }

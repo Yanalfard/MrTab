@@ -163,7 +163,7 @@
     }
 }
 
-@media only screen and (min-device-width : 512px) {
+@media only screen and (min-device-width : 513px) {
 
     .nav-bottom {
         display: none
@@ -365,7 +365,7 @@ textarea:focus {
         top: 20px;
     }
 
-    .image-container {
+    .profile-image-container {
         margin: auto;
         @include border-radius(100%,100%,100%,100%);
         overflow: hidden;
