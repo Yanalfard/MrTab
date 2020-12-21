@@ -175,7 +175,8 @@
     <div class="profile mat mat-margin-top uk-box-shadow-medium">
         <div class="column">
             <h3 class="uk-margin-auto">تشکیل رستوران</h3>
-            <img src="~/resources/svg/MakeARestaurant.svg" />
+            <img src="~/resources/svg/undraw_cooking_lyxy.svg" class="uk-margin-auto" width="240" />
+            @*<img src="~/resources/svg/MakeARestaurant.svg" />*@
             <p class="uk-grid-margin-medium text-center">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
             </p>
@@ -189,9 +190,7 @@
 
 </div>
 
-<div class="space-double"></div>
-<div class="space-double"></div>
-<div class="space-double"></div>
+<div class="space"></div>
 
 @section Scripts{
 
@@ -236,7 +235,7 @@
                     return i;
                 });
             }
-            catch{
+            catch {
                 UIkit.notification('لطفا یک عکس انتخاب کنید');
             }
         }

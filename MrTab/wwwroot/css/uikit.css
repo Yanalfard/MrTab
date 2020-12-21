@@ -3625,6 +3625,8 @@ select.uk-form-width-xsmall {
   /* 3 */
   box-sizing: border-box;
   width: 280px; }
+  .uk-drop ul {
+    margin-bottom: 0; }
 
 /* Show */
 .uk-drop.uk-open {

@@ -253,7 +253,8 @@ backdrop-filter: saturate(80%);
   position: fixed;
   width: calc(100vw - 32px);
   z-index: 1000;
-  border-bottom: 2px solid #2B2728; }
+  border-bottom: 2px solid #2B2728;
+  opacity: 1 !important; }
   .nav-header .margin-header-left {
     margin-left: 12px; }
   .nav-header-right {
