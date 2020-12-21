@@ -56,26 +56,52 @@
 
 <!-- #endregion -->
 
+<form class="search-filter mat">
+    <button id="btnSearch" class="btn btn-primary" aria-label="جسنجو رستوران">
+        <span uk-icon="search"></span>
+    </button>
+    <button id="btnFood" type="button" uk-toggle="#Modal-Food" aria-label="انتخاب نوع غذا"
+            class="form-group-bg row-reverse searchbar-margin-left">
+        <span class="uk-margin-small-left" uk-icon="grid-outline"></span>
+        <span>نوع غذا</span>
+    </button>
+    <div id="selectOrder" class="form-group-bg">
+        <select class="form-group-bg uk-padding-remove" dir="rtl">
+            <option>مرتب کردن</option>
+            <option>خیزان بر اساس امتیاز</option>
+            <option>افتان بر اساس امتیاز</option>
+        </select>
+    </div>
+    <button id="btnCity" type="button" uk-toggle="#Modal-Location" aria-label="انتخاب شهر"
+            class="form-group-bg row-reverse searchbar-margin-left">
+        <span uk-icon="location-outline"></span>
+        <span>شهر</span>
+    </button>
+    <input tabindex="1" id="txtType" type="text" class="form-group-bg" placeholder="نوع رستوران" value="" />
+    <input tabindex="2" id="txtName" type="text" class="form-group-bg" placeholder="نام مکان" value="" />
+</form>
+
+<div role="none" class="space-search uk-margin-medium-bottom"></div>
+
 <div class="uk-container column">
 
     <!-- #region Searchbar -->
-
-    <form class="searchbar">
-        <input type="text" class="form-group-bg searchbar-margin-left" placeholder="نام رستوران" aria-label="نام رستوران" />
-        <button type="button" uk-toggle="#Modal-Location" aria-label="انتخاب شهر"
-                class="form-group-bg row-reverse searchbar-margin-left">
-            <span uk-icon="location-outline"></span>
-            <span>انتخاب شهر</span>
-        </button>
-        <button type="button" uk-toggle="#Modal-Food" aria-label="انتخاب نوع غذا"
-                class="form-group-bg row-reverse searchbar-margin-left">
-            <span class="uk-margin-small-left" uk-icon="grid-outline"></span>
-            <span>نوع غذا</span>
-        </button>
-        <button class="btn btn-primary" aria-label="جسنجو رستوران">
-            <span uk-icon="search"></span>
-        </button>
-    </form>
+    @*<form class="searchbar">
+            <input type="text" class="form-group-bg searchbar-margin-left" placeholder="نام رستوران" aria-label="نام رستوران" />
+            <button type="button" uk-toggle="#Modal-Location" aria-label="انتخاب شهر"
+                    class="form-group-bg row-reverse searchbar-margin-left">
+                <span uk-icon="location-outline"></span>
+                <span>انتخاب شهر</span>
+            </button>
+            <button type="button" uk-toggle="#Modal-Food" aria-label="انتخاب نوع غذا"
+                    class="form-group-bg row-reverse searchbar-margin-left">
+                <span class="uk-margin-small-left" uk-icon="grid-outline"></span>
+                <span>نوع غذا</span>
+            </button>
+            <button class="btn btn-primary" aria-label="جسنجو رستوران">
+                <span uk-icon="search"></span>
+            </button>
+        </form>*@
 
     <!-- #endregion -->
     <!-- #region Grid -->

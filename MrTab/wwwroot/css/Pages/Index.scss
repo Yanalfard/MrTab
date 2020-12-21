@@ -7,6 +7,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    min-height: 500px;
 
     * {
         color: black;
@@ -40,6 +41,14 @@
         @include border-radius(12px,12px,12px,12px);
         padding: 12px;
 
+        button {
+            min-width: 24px;
+            max-width: 24px;
+            width: 24px;
+        }
+
+
+
         .category-drop {
             background: #fff;
             @include border-radius(12px,12px,12px,12px);
@@ -65,7 +74,6 @@
                 background: #eee;
             }
         }
-
     }
 }
 
@@ -123,6 +131,45 @@
         }
     }
 }
+
+@media only screen and (max-device-width: 420px) {
+    .hero {
+        .hero-button {
+            margin: auto !important;
+            font-size: 18px;
+            width: 80vw;
+
+            button {
+            }
+
+            #txtCategory {
+                max-width: 92px;
+            }
+
+            #txtSearcher {
+                max-width: 150px;
+                margin-left: auto;
+            }
+
+            .category-drop {
+
+                li {
+                    padding: 6px 8px 6px 0;
+                    @include trans(.4s);
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    -webkit-user-select: none;
+                    user-select: none;
+                    color: #333;
+                    cursor: pointer;
+                    max-width: 136px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
 
 .parallax-download {
     $height: 350px;

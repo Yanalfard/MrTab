@@ -684,6 +684,7 @@ textarea:focus {
         @include border-radius(8px,8px,8px,8px);
         position: relative;
 
+
         > label {
             position: absolute;
             top: 10px;
@@ -701,7 +702,8 @@ textarea:focus {
         }
 
         > .info {
-            padding: 6px 8px;
+            padding: 6px 8px 0 8px;
+            padding-bottom: 0 !important;
             @include column;
             height: $rest-block-height - $rest-block-width;
 
@@ -720,10 +722,12 @@ textarea:focus {
             > .star-container {
                 margin: 0 auto;
                 @include row;
+                max-height: 20px !important;
+                overflow: hidden;
 
                 .Stars {
                     height: unset;
-                    font-size: 19px !important;
+                    font-size: 17px !important;
                     margin: 2px 0;
                 }
             }
@@ -733,9 +737,8 @@ textarea:focus {
                 color: #9B9B9B;
                 margin: 0;
                 font-size: 11px;
+                min-height: 19px;
                 white-space: nowrap;
-                text-overflow: clip;
-                overflow: hidden;
                 @include max-line(1);
 
                 svg {

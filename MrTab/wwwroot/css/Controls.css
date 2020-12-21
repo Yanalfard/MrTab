@@ -168,11 +168,16 @@ backdrop-filter: saturate(80%);
   --star-color: #b5b5b5;
   --star-background: #fc0; }
 
+@font-face {
+  font-family: 'timesr';
+  src: url("../fonts/timesr.ttf") format("truetype");
+  font-display: swap; }
+
 .Stars {
   --percent: calc(var(--rating) / 5 * 100%);
   display: inline-block;
   font-size: var(--star-size);
-  font-family: Times;
+  font-family: timesr;
   line-height: 1;
   overflow-y: hidden;
   overflow-x: hidden;
@@ -194,7 +199,7 @@ backdrop-filter: saturate(80%);
   /* the hidden clearer */ }
   .star-container .star-cb-group * {
     font-size: 1rem;
-    font-family: Times; }
+    font-family: 'timesr'; }
   .star-container .star-cb-group > input {
     display: none; }
     .star-container .star-cb-group > input + label {
@@ -207,7 +212,7 @@ backdrop-filter: saturate(80%);
       cursor: pointer;
       font-size: 32px; }
       .star-container .star-cb-group > input + label:before {
-        font-family: Times;
+        font-family: 'timesr';
         display: inline-block;
         text-indent: -9999px;
         content: '★';
@@ -215,7 +220,7 @@ backdrop-filter: saturate(80%);
     .star-container .star-cb-group > input:checked ~ label:before,
     .star-container .star-cb-group > input + label:hover ~ label:before,
     .star-container .star-cb-group > input + label:hover:before {
-      font-family: Times;
+      font-family: 'timesr';
       content: '★';
       color: #fc0;
       text-shadow: 0 0 1px #333; }
@@ -900,7 +905,8 @@ textarea:focus {
     -webkit-border-radius: 0;
     border-radius: 0;*/ }
     .rest-block > .info {
-      padding: 6px 8px;
+      padding: 6px 8px 0 8px;
+      padding-bottom: 0 !important;
       display: flex;
       flex-direction: column;
       height: 80px; }
@@ -922,19 +928,20 @@ textarea:focus {
       .rest-block > .info > .star-container {
         margin: 0 auto;
         display: flex;
-        flex-direction: row; }
+        flex-direction: row;
+        max-height: 20px !important;
+        overflow: hidden; }
         .rest-block > .info > .star-container .Stars {
           height: unset;
-          font-size: 19px !important;
+          font-size: 17px !important;
           margin: 2px 0; }
       .rest-block > .info > address {
         direction: rtl;
         color: #9B9B9B;
         margin: 0;
         font-size: 11px;
+        min-height: 19px;
         white-space: nowrap;
-        text-overflow: clip;
-        overflow: hidden;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
