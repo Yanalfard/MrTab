@@ -8,7 +8,7 @@
     <link href="~/css/Packages/leaflet.min.css" rel="stylesheet" />
 }
 
-<div class="actions-adrift"  uk-scrollspy="cls:uk-animation-slide-bottom-medium">
+<div class="actions-adrift" uk-scrollspy="cls:uk-animation-slide-bottom-medium">
     <ul>
         <li>
             <button type="button" uk-toggle="#Croppie">
@@ -47,58 +47,34 @@
             <div class="form-group">
                 <textarea dir="rtl" placeholder="نظر شما..." name="txtComment"></textarea>
             </div>
-            <div class="uk-margin-auto uk-margin-small-top center column">
-                <div class="column">
-                    <label class="uk-margin-auto">دکوراسیون و محیط</label>
-                    <div class="row-reverse star-container">
-                        <span class="star-cb-group">
-                            <input type="radio" id="decor-5" name="decor" value="5" /><label for="decor-5">5</label>
-                            <input type="radio" id="decor-4" name="decor" value="4" /><label for="decor-4">4</label>
-                            <input type="radio" id="decor-3" name="decor" value="3" /><label for="decor-3">3</label>
-                            <input type="radio" id="decor-2" name="decor" value="2" /><label for="decor-2">2</label>
-                            <input type="radio" id="decor-1" name="decor" value="1" /><label for="decor-1">1</label>
-                            <input type="radio" id="decor-0" name="decor" value="0" class="star-cb-clear" /><label for="decor-0">0</label>
-                        </span>
+            <div class="uk-margin-small-top center column uk-width-1-1">
+                <div class="form-group">
+                    <div class="row uk-margin-small-bottom">
+                        <label class="uk-margin-auto-right uk-badge text-center" id="lblDecor">5</label>
+                        <label class="uk-margin-auto-left">دکوراسیون و محیط</label>
                     </div>
+                    <input class="input-range" oninput="document.getElementById('lblDecor').innerText = this.value" type="range" min="0" max="10" />
                 </div>
-                <div class="column">
-                    <label class="uk-margin-auto">دکوراسیون و محیط</label>
-                    <div class="row-reverse  star-container">
-                        <span class="star-cb-group">
-                            <input type="radio" id="taste-5" name="taste" value="5" /><label for="taste-5">5</label>
-                            <input type="radio" id="taste-4" name="taste" value="4" /><label for="taste-4">4</label>
-                            <input type="radio" id="taste-3" name="taste" value="3" /><label for="taste-3">3</label>
-                            <input type="radio" id="taste-2" name="taste" value="2" /><label for="taste-2">2</label>
-                            <input type="radio" id="taste-1" name="taste" value="1" /><label for="taste-1">1</label>
-                            <input type="radio" id="taste-0" name="taste" value="0" class="star-cb-clear" /><label for="taste-0">0</label>
-                        </span>
+                <div class="form-group">
+                    <div class="row uk-margin-small-bottom">
+                        <label class="uk-margin-auto-right uk-badge text-center" id="lblService">5</label>
+                        <label class="uk-margin-auto-left">سرویس و کارکنان</label>
                     </div>
+                    <input class="input-range" oninput="document.getElementById('lblService').innerText = this.value" type="range" min="0" max="10" />
                 </div>
-                <div class="column">
-                    <label class="uk-margin-auto">دکوراسیون و محیط</label>
-                    <div class="row-reverse  star-container">
-                        <span class="star-cb-group">
-                            <input type="radio" id="staff-5" name="staff" value="5" /><label for="staff-5">5</label>
-                            <input type="radio" id="staff-4" name="staff" value="4" /><label for="staff-4">4</label>
-                            <input type="radio" id="staff-3" name="staff" value="3" /><label for="staff-3">3</label>
-                            <input type="radio" id="staff-2" name="staff" value="2" /><label for="staff-2">2</label>
-                            <input type="radio" id="staff-1" name="staff" value="1" /><label for="staff-1">1</label>
-                            <input type="radio" id="staff-0" name="staff" value="0" class="star-cb-clear" /><label for="staff-0">0</label>
-                        </span>
+                <div class="form-group">
+                    <div class="row uk-margin-small-bottom">
+                        <label class="uk-margin-auto-right uk-badge text-center" id="lblPrice">5</label>
+                        <label class="uk-margin-auto-left">ارزش نسبت به قیمت</label>
                     </div>
+                    <input class="input-range" oninput="document.getElementById('lblPrice').innerText = this.value" type="range" min="0" max="10" />
                 </div>
-                <div class="column">
-                    <label class="uk-margin-auto">دکوراسیون و محیط</label>
-                    <div class="row-reverse  star-container">
-                        <span class="star-cb-group">
-                            <input type="radio" id="price-5" name="price" value="5" /><label for="price-5">5</label>
-                            <input type="radio" id="price-4" name="price" value="4" /><label for="price-4">4</label>
-                            <input type="radio" id="price-3" name="price" value="3" /><label for="price-3">3</label>
-                            <input type="radio" id="price-2" name="price" value="2" /><label for="price-2">2</label>
-                            <input type="radio" id="price-1" name="price" value="1" /><label for="price-1">1</label>
-                            <input type="radio" id="price-0" name="price" value="0" class="star-cb-clear" /><label for="price-0">0</label>
-                        </span>
+                <div class="form-group">
+                    <div class="row uk-margin-small-bottom">
+                        <label class="uk-margin-auto-right uk-badge text-center" id="lblQuality">5</label>
+                        <label class="uk-margin-auto-left">کیفیت و طعم</label>
                     </div>
+                    <input class="input-range" oninput="document.getElementById('lblQuality').innerText = this.value" type="range" min="0" max="10" />
                 </div>
             </div>
             <div class="button-panel uk-margin-top uk-margin-auto">
@@ -204,10 +180,9 @@
 
 <!-- #endregion -->
 <!-- #endregion -->
-
 <!-- #region Banner -->
 
-<div class="image-container uk-box-shadow-large ">
+<div class="image-container uk-box-shadow-large">
     <img class="banner-image" width="500" height="350" src="~/resources/png/GoodFather.png" alt="Restaurant Banner" />
 </div>
 
@@ -222,7 +197,7 @@
             </div>
             <div class="column">
                 <h1 class="uk-h3">
-                    پدر خوب 
+                    پدر خوب
                 </h1>
                 <div class="star-container uk-margin-auto-top uk-margin-auto-right banner-material row" uk-tooltip="2.5" dir="rtl">
                     <div class="Stars" style="--rating:  2.5" aria-label="Rating of this product is 2.3 out of 5."></div>
@@ -268,7 +243,7 @@
 
     <!-- #region User Photos -->
 
-    <div class="carousel carousel-image uk-position-relative uk-visible-toggle" tabindex="-1" uk-slider>
+    <div class="carousel carousel-image uk-position-relative uk-visible-toggle" uk-scrollspy="cls:uk-animation-fade" tabindex="-1" uk-slider>
         <h4 class="uk-margin-remove-top">
             عکس های کاربران
         </h4>
@@ -310,8 +285,8 @@
     <!-- #endregion -->
     <!-- #region Menu -->
 
-    <div class="carousel carousel-image carousel-menu uk-box-shadow-medium
-         uk-position-relative uk-visible-toggle" tabindex="-1" uk-slider>
+    <div class="carousel carousel-menu uk-box-shadow-medium
+         uk-position-relative uk-visible-toggle" uk-scrollspy="cls:uk-animation-fade" tabindex="-1" uk-slider>
 
         <h4 class="uk-margin-remove-top">
             منو رستوران
@@ -355,7 +330,7 @@
     <!-- #endregion -->
     <!-- #region Info -->
     <div class="info mat-margin-top">
-        <div class="mat meals">
+        <div class="mat meals" uk-scrollspy="cls:uk-animation-fade;delay:300">
             <h5 class="uk-h4">غذا ها</h5>
             <ul class="auto-row uk-padding-remove">
                 <li>
@@ -369,7 +344,7 @@
                 </li>
             </ul>
         </div>
-        <div class="mat foodstyle">
+        <div class="mat foodstyle" uk-scrollspy="cls:uk-animation-fade;delay:300">
             <h5 class="uk-h4">سبک غذایی</h5>
             <ul class="auto-row uk-padding-remove">
                 <li>
@@ -398,7 +373,7 @@
                 </li>
             </ul>
         </div>
-        <div class="mat scores">
+        <div class="mat scores" uk-scrollspy="cls:uk-animation-fade;delay:100">
             <h5 class="uk-h4">امتیاز ها</h5>
             <div class="container uk-flex-wrap">
                 <!-- #region Gauge -->
@@ -503,7 +478,7 @@
                 <!-- #endregion -->
             </div>
         </div>
-        <div class="mat options">
+        <div class="mat options" uk-scrollspy="cls:uk-animation-fade;delay:100">
             <h5 class="uk-h4">امکانات</h5>
             <ul>
                 <li>
@@ -524,7 +499,7 @@
                 </li>
             </ul>
         </div>
-        <div id="mapid" class="mat map">
+        <div id="mapid" class="mat map" uk-scrollspy="cls:uk-animation-fade;delay:200">
 
         </div>
     </div>
@@ -540,10 +515,13 @@
             </button>
         </div>
 
-        <partial name="_Comment" />
-        <partial name="_Comment" />
-        <partial name="_Comment" />
-        <partial name="_Comment" />
+        <ul class="uk-margin-remove uk-padding-remove">
+            <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" /></li>
+            <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" /></li>
+            <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" /></li>
+            <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" /></li>
+            <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" /></li>
+        </ul>
 
     </div>
 
@@ -675,7 +653,7 @@
                     return i;
                 });
             }
-            catch{
+            catch {
                 UIkit.notification('لطفا یک عکس انتخاب کنید');
             }
         }

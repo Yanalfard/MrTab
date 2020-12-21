@@ -914,7 +914,7 @@ textarea:focus {
 
 @media only screen and (min-device-width : 480px) and (max-device-width : 551px) {
     .rest-carousel .uk-slider-items li {
-        width: 33.33%!important;
+        width: 33.33% !important;
     }
 }
 
@@ -1005,4 +1005,47 @@ textarea:focus {
     img {
         height: calc(100vh - 280px);
     }
+}
+
+.input-range {
+    direction: rtl;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 14px;
+    @include border-radius(20px,20px,20px,20px);
+    -moz-box-shadow: 2px 2px 4px rgba(0,0,0,.05) inset;
+    -webkit-box-shadow: 2px 2px 4px rgba(0,0,0,.05) inset;
+    box-shadow: 2px 2px 4px rgba(0,0,0,.05) inset;
+    background: #F4F4F4;
+    outline: none;
+    @include trans(.3s);
+}
+
+.input-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: white;
+    @include shadow-mild;
+    border: 2px $primary solid;
+    cursor: pointer;
+    @include trans(.2s);
+}
+
+.input-range::-webkit-slider-thumb:hover {
+    background: $primary;
+    @include subtle-glow(transparentize($primary,.3));
+}
+
+.input-range::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    @include trans(.2s);
+    @include shadow-mild;
+    border: 2px $primary solid;
+    background: $primary;
+    cursor: pointer;
 }

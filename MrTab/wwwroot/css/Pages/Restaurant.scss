@@ -248,8 +248,37 @@
     @include border-radius(16px,16px,16px,16px);
     padding: 0;
 
+    a {
+        margin: auto;
+    }
+
+    img {
+        @include border-radius(12px,12px,12px,12px);
+        @include shadow-mild;
+    }
+
     .uk-dotnav {
-        margin: 0 auto;
+        background-color: #E2E2E2;
+        padding: 6px 0;
+        @include border-radius(16px,16px,16px,16px);
+        width: 100%;
+        margin-left: auto;
+
+        a {
+            margin: auto;
+            background-color: #C4C4C4;
+            border: 0;
+            width: 14px;
+            height: 14px;
+        }
+
+        .uk-active {
+            > a {
+                background-color: #A3A3A3;
+                width: 20px;
+                height: 20px;
+            }
+        }
     }
 }
 
@@ -263,6 +292,7 @@
 
             img {
                 width: auto;
+                height: unset;
                 max-height: 50vh;
             }
         }
@@ -278,6 +308,7 @@
 
             img {
                 width: auto;
+                height:unset;
                 max-height: 50vh;
             }
         }

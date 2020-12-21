@@ -5,25 +5,25 @@
                 <a href="" uk-icon="icon:logo-angular;ratio:1" class="button-icon uk-margin-auto-left"></a>
             </div>*@
         <div class="hero-splash uk-margin-auto-vertical">
-            <h1 class="uk-h1  uk-margin-small-bottom">
+            <h1 class="uk-h1  uk-margin-small-bottom" uk-scrollspy="cls:uk-animation-fade;delay:200">
                 دنبال یه جای خوب برای
                 <br />
                 وقت گذروندن می گردی؟
             </h1>
-            <h2 class="uk-h1 uk-margin-remove-top">
+            <h2 class="uk-h1 uk-margin-remove-top" uk-scrollspy="cls:uk-animation-fade;delay:1000">
                 <strong dir="rtl"> جای درستی اومدی...</strong>
             </h2>
         </div>
-        <img src="~/resources/svg/LookingForFood.svg"
+        <img src="~/resources/svg/LookingForFood.svg" uk-scrollspy="cls:uk-animation-fade;delay:200"
              class="hero-image uk-margin-auto-right"
              width="430" height="386" alt="Hero image, man looking for food" />
-        <form class="hero-button row uk-box-shadow-small uk-box-shadow-hover-large">
+        <form class="hero-button row uk-box-shadow-small uk-box-shadow-hover-large" uk-scrollspy="cls:uk-animation-fade;delay:1800">
             <button uk-icon="search" class="flex-auto" aria-label="جستجو"></button>
             <input type="text" id="txtCategory" oninput="txtTypeChanged(this.value)" class="input-invis flex-1" dir="rtl" aria-label="نوع رستوران" placeholder="نوع رستوران" />
             <div class="category-drop" uk-drop="mode: click; pos: bottom-justify">
                 <ul class="uk-margin-remove" id="drop"></ul>
             </div>
-            <input type="text" class="input-invis flex-3" dir="rtl"  aria-label="جستجو" placeholder="جستجو..." />
+            <input type="text" class="input-invis flex-3" dir="rtl" aria-label="جستجو" placeholder="جستجو..." />
         </form>
     </div>
 </div>
