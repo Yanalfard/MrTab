@@ -615,16 +615,40 @@ textarea:focus {
     -o-object-position: center;
     object-position: center; }
 
-#Side-Menu ul li a {
-  font-size: 19px;
-  color: #333; }
-  #Side-Menu ul li a svg {
-    margin-left: 8px;
-    align-self: center;
-    text-align: center; }
+#Side-Menu form button {
+  min-width: 24px; }
+  #Side-Menu form button span {
+    min-width: 24px; }
+    #Side-Menu form button span svg {
+      min-width: 24px; }
 
-#Side-Menu ul li a:active, #Side-Menu ul li a:hover {
-  color: #FEB432; }
+#Side-Menu form input {
+  max-width: 164px; }
+
+#Side-Menu ul {
+  direction: rtl; }
+  #Side-Menu ul li {
+    display: flex; }
+    #Side-Menu ul li a {
+      margin-left: auto;
+      display: flex;
+      font-size: 17px;
+      color: #333;
+      direction: ltr;
+      display: flex;
+      flex-direction: row-reverse; }
+      #Side-Menu ul li a .uk-icon {
+        margin-left: 8px; }
+        #Side-Menu ul li a .uk-icon svg {
+          align-self: center;
+          text-align: center; }
+      #Side-Menu ul li a span {
+        line-height: 24px;
+        margin: auto 0 auto auto; }
+    #Side-Menu ul li a:active, #Side-Menu ul li a:hover {
+      color: #FEB432; }
+  #Side-Menu ul li::before {
+    display: none; }
 
 #Side-Menu .copyright {
   color: #999; }

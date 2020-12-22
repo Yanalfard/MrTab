@@ -383,22 +383,60 @@ textarea:focus {
         }
     }
 
-    ul {
-        li {
-            a {
-                font-size: 19px;
-                color: #333;
+    form {
+        button {
+            min-width: 24px;
+
+            span {
+                min-width: 24px;
 
                 svg {
+                    min-width: 24px;
+                }
+            }
+        }
+
+        input {
+            max-width: 164px;
+        }
+    }
+
+    ul {
+        direction: rtl;
+
+        li {
+            display: flex;
+
+            a {
+                margin-left: auto;
+                display: flex;
+                font-size: 17px;
+                color: #333;
+                direction: ltr;
+                @include row-reverse;
+
+                .uk-icon {
                     margin-left: 8px;
-                    align-self: center;
-                    text-align: center;
+
+                    svg {
+                        align-self: center;
+                        text-align: center;
+                    }
+                }
+
+                span {
+                    line-height: 24px;
+                    margin: auto 0 auto auto;
                 }
             }
 
             a:active, a:hover {
                 color: $primary;
             }
+        }
+
+        li::before {
+            display: none;
         }
     }
 

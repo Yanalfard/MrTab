@@ -119,6 +119,10 @@ body {
   height: auto; }
 
 @media only screen and (max-device-width: 480px) {
+  body {
+    height: calc(100vh - 24px);
+    max-height: calc(100vh - 24px);
+    overflow: hidden !important; }
   .entry-wrapper {
     padding: 24px;
     width: calc(100vw - 48px);

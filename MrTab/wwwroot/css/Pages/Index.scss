@@ -134,6 +134,8 @@
 
 @media only screen and (max-device-width: 420px) {
     .hero {
+        height: calc(100vh - #{$nav-bottom-height + 20px}) !important;
+
         .hero-button {
             margin: auto !important;
             font-size: 18px;
@@ -170,7 +172,6 @@
     }
 }
 
-
 .parallax-download {
     $height: 350px;
     height: $height;
@@ -184,6 +185,19 @@
 
     .parralax-content {
         z-index: 100;
+
+        button {
+            span {
+                height: 24px;
+                line-height: 24px;
+                font-size: 17px;
+
+                svg {
+                    height: 24px;
+                    width: 24px;
+                }
+            }
+        }
     }
 
     .parralax-overlay-blur {
@@ -216,6 +230,7 @@
         width: 100%;
         @include border-radius(16px,16px,16px,16px);
         @include shadow-mild;
+        @include trans(.3s);
         overflow: hidden;
 
         h3 {

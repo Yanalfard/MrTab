@@ -2319,12 +2319,18 @@ select.uk-form-width-xsmall {
   /* 4 */
   border: 0;
   /* 5 */
-  background-color: #f8f8f8;
+  background-color: #E2E2E2;
   /* 6 */
   margin-bottom: 20px;
-  height: 15px;
+  height: 14px;
   border-radius: 500px;
-  overflow: hidden; }
+  overflow: hidden;
+  -moz-border-radius: 8px 8px 8px 8px;
+  -webkit-border-radius: 8px 8px 8px 8px;
+  border-radius: 8px 8px 8px 8px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/ }
 
 /* Add margin if adjacent element */
 * + .uk-progress {

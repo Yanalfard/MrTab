@@ -6,10 +6,11 @@ body, .entry-1, .entry-2, .entry-3 {
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: contain;
+    
 }
 
-body{
-    background-color:#303030!important;
+body {
+    background-color: #303030 !important;
 }
 
 .entry-1 {
@@ -51,6 +52,12 @@ body{
 
 //phone
 @media only screen and (max-device-width : 480px) {
+    body {
+        height: calc(100vh - 24px);
+        max-height: calc(100vh - 24px);
+        overflow: hidden !important;
+    }
+
     .entry-wrapper {
         $wrapper-padding: 24px;
         padding: $wrapper-padding;

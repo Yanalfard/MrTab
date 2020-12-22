@@ -2443,12 +2443,13 @@ select.uk-form-width-xsmall {
     /* 4 */
     border: 0;
     /* 5 */
-    background-color: #f8f8f8;
+    background-color: #E2E2E2;
     /* 6 */
     margin-bottom: 20px;
-    height: 15px;
+    height: 14px;
     border-radius: 500px;
     overflow: hidden;
+    @include border-radius(8px,8px,8px,8px);
 }
 /* Add margin if adjacent element */
 * + .uk-progress {
