@@ -29,6 +29,7 @@
 
     &-right {
         margin-right: 14px;
+        grid-gap: 18px;
 
         .logo {
             width: 42px;
@@ -42,7 +43,6 @@
         > a {
             margin-top: auto;
             margin-bottom: auto;
-            margin-left: 12px;
             white-space: nowrap;
             @include row;
 
@@ -852,13 +852,13 @@ textarea:focus {
         cursor: grabbing;
     }
 
+    .uk-dotnav {
+        li {
+            display: flex;
 
-
-    .uk-dotnav li {
-        display: flex;
-
-        a {
-            margin: auto 0;
+            a {
+                margin: auto 0;
+            }
         }
     }
 }

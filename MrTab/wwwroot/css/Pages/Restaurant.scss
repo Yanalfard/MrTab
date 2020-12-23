@@ -178,11 +178,15 @@
         }
     }
 
-    .uk-dotnav li {
-        display: flex;
+    .uk-dotnav {
+        margin-bottom: 0;
 
-        a {
-            margin: auto 0;
+        li {
+            display: flex;
+
+            a {
+                margin: auto 0;
+            }
         }
     }
 }
@@ -820,6 +824,48 @@
                 button:hover {
                     background-color: transparentize(#fff,.85);
                 }
+            }
+        }
+    }
+}
+
+.progbar {
+    ul {
+        @include column;
+        grid-gap: 8px;
+
+        li {
+            @include row-reverse;
+
+            label {
+                font-size: 14px;
+                color: #777;
+                min-width: 132px;
+            }
+
+            .prog {
+                @include row-reverse;
+                margin-right: 8px;
+                width: 100%;
+            }
+
+            .uk-progress {
+                margin: auto 0 auto 12px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-device-width : 400px) {
+    .progbar {
+        ul li {
+            -ms-flex-direction: column !important;
+            -webkit-flex-direction: column !important;
+            flex-direction: column !important;
+
+            label {
+                margin-bottom: 6px;
             }
         }
     }

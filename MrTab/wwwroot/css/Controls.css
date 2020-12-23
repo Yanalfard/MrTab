@@ -263,7 +263,8 @@ backdrop-filter: saturate(80%);
   .nav-header .margin-header-left {
     margin-left: 12px; }
   .nav-header-right {
-    margin-right: 14px; }
+    margin-right: 14px;
+    grid-gap: 18px; }
     .nav-header-right .logo {
       width: 42px;
       height: 42px; }
@@ -272,7 +273,6 @@ backdrop-filter: saturate(80%);
     .nav-header-right > a {
       margin-top: auto;
       margin-bottom: auto;
-      margin-left: 12px;
       white-space: nowrap;
       display: flex;
       flex-direction: row; }

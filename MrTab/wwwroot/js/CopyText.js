@@ -23,7 +23,7 @@
     UIkit.notification(message);
 }
 
-const isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches;
+let isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches;
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
 
@@ -36,15 +36,24 @@ window.addEventListener('beforeinstallprompt', (e) => {
         // Stash the event so it can be triggered later.
         deferredPrompt = e;
 
-        for (let addBtn of addButtons) {
-            if (isInStandaloneMode) {
-                addBtn.style.display = "none";
-            }
-            addBtn.addEventListener('click', btnDownloadClick);
-        }
-
     } catch { }
 });
+
+function hidePwaButtons() {
+    isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches;
+    if (!isInStandaloneMode) return;
+    for (let addBtn of addButtons) {
+        addBtn.style.display = "none";
+    }
+
+    const a = document.getElementsByClassName('parallax-download')[0];
+    if (a === undefined) return;
+    a.style.display = 'none';
+}
+
+setTimeout(() => {
+    hidePwaButtons()
+}, 200);
 
 function btnDownloadClick(e) {
 
@@ -72,6 +81,8 @@ function btnDownloadClick(e) {
     deferredPrompt.userChoice.then((choiceResult) => {
         if (choiceResult.outcome === 'accepted') {
             console.log('User accepted the A2HS prompt');
+            hidePwaButtons();
+            window.location.reload();
         } else {
             console.log('User dismissed the A2HS prompt');
         }
@@ -80,7 +91,11 @@ function btnDownloadClick(e) {
 }
 
 if (isSafari && isIos) {
-    setInterval(() => {
-        UIkit.modal(document.getElementById('Modal-PopupIos')).show();
-    }, 60000 * 5);
+    if (localStorage.getItem('HasShownPrompt') !== 'shown') {
+        setTimeout(() => {
+            UIkit.modal(document.getElementById('Modal-PopupIos')).show();
+            localStorage.setItem('HasShownPrompt', 'shown');
+
+        }, 30000);
+    }
 }

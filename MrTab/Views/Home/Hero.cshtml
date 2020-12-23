@@ -17,68 +17,63 @@
         <img src="~/resources/svg/LookingForFood.svg" uk-scrollspy="cls:uk-animation-fade;delay:200"
              class="hero-image uk-margin-auto-right"
              width="430" height="386" alt="Hero image, man looking for food" />
-        <form class="hero-button row uk-box-shadow-small uk-box-shadow-hover-large" uk-scrollspy="cls:uk-animation-fade;delay:1800">
-            <button uk-icon="search" class="flex-auto" aria-label="جستجو"></button>
-            <input type="text" id="txtCategory" oninput="txtTypeChanged(this.value)" class="input-invis flex-1" dir="rtl" aria-label="نوع رستوران" placeholder="نوع رستوران" />
-            <div class="category-drop" uk-drop="mode: click; pos: bottom-justify">
-                <ul class="uk-margin-remove" id="drop"></ul>
+        <div class="searcher">
+            <form class="hero-button row uk-box-shadow-small uk-box-shadow-hover-large" uk-scrollspy="cls:uk-animation-fade;delay:1800">
+                <button uk-icon="search" class="flex-auto" aria-label="جستجو"></button>
+                <input type="text" id="txtCategory" oninput="txtTypeChanged(this.value)" class="input-invis flex-1" dir="rtl" aria-label="نوع رستوران" placeholder="نوع رستوران" />
+                <div class="category-drop" uk-drop="mode: click; pos: top-justify">
+                    <ul class="uk-margin-remove" id="drop"></ul>
+                </div>
+                <div role="none" class="divider"></div>
+                <input type="text" id="txtSearcher" class="input-invis flex-3" dir="rtl" aria-label="جستجو" placeholder="جستجو..." />
+            </form>
+            <div class="category-slider uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
+                 uk-slider="autoplay:true;autoplay-interval: 2000">
+                <ul class="uk-slider-items uk-child-width-1-4-at-s uk-child-width-1-4-at-m uk-child-width-1-5-at-l">
+                    <li>
+                        <a href="">
+                            <img src="~/resources/svg/Category/chickenleg.svg" width="28" height="28" alt="" />
+                        </a>
+                        <span>پیتزا</span>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="~/resources/svg/Category/frenchfries.svg" width="28" height="28" alt="" />
+                        </a>
+                        <span>پیتزا</span>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="~/resources/svg/Category/hotdog.svg" width="28" height="28" alt="" />
+                        </a>
+                        <span>پیتزا</span>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="~/resources/svg/Category/noodles.svg" width="28" height="28" alt="" />
+                        </a>
+                        <span>پیتزا</span>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="~/resources/svg/Category/pizza.svg" width="28" height="28" alt="" />
+                        </a>
+                        <span>پیتزا</span>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="~/resources/svg/Category/burger.svg" width="28" height="28" alt="" />
+                        </a>
+                        <span>پیتزا</span>
+                    </li>
+                </ul>
+
+                <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+                <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
             </div>
-            <input type="text" id="txtSearcher" class="input-invis flex-3" dir="rtl" aria-label="جستجو" placeholder="جستجو..." />
-        </form>
+        </div>
     </div>
 </div>
-
-<script>
-
-    //const categories = fetch().then(i => i);
-    //const categories = [
-    //    {
-    //        id: 1,
-    //        name: 'کافه',
-    //    },
-    //    {
-    //        id: 2,
-    //        name: 'رستوران',
-    //    },
-    //    {
-    //        id: 3,
-    //        name: 'فست فود',
-    //    },
-    //    {
-    //        id: 4,
-    //        name: 'دونر',
-    //    },
-    //    {
-    //        id: 5,
-    //        name: 'نوتلا',
-    //    }
-    //];
-
-    const categories = [
-        'کافه',
-        'رستوران',
-        'فست فود',
-        'دونر',
-        'نوتلا'
-    ];
-
-    function txtTypeChanged(val) {
-        const drop = document.getElementById('drop');
-
-        UIkit.drop(document.getElementsByClassName('category-drop')[0]).show();
-
-        drop.innerHTML = '';
-        for (let cat of categories.filter(i => i.includes(val))) {
-            const li = document.createElement('li');
-            li.innerText = cat;
-            li.addEventListener('click', () => {
-                document.getElementById('txtCategory').value = cat;
-                UIkit.drop(document.getElementsByClassName('category-drop')[0]).hide(0);
-            });
-            drop.appendChild(li);
-        }
-        if (drop.children.length == 0) {
-            UIkit.drop(document.getElementsByClassName('category-drop')[0]).hide(0);
-        }
-    }
-</script>

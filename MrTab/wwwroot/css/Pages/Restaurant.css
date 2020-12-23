@@ -333,10 +333,12 @@ backdrop-filter: saturate(80%);
   transition: all ease 0.2s; }
   .carousel .uk-slider-items li {
     display: flex; }
-  .carousel .uk-dotnav li {
-    display: flex; }
-    .carousel .uk-dotnav li a {
-      margin: auto 0; }
+  .carousel .uk-dotnav {
+    margin-bottom: 0; }
+    .carousel .uk-dotnav li {
+      display: flex; }
+      .carousel .uk-dotnav li a {
+        margin: auto 0; }
 
 .carousel-image a {
   margin: auto; }
@@ -803,3 +805,31 @@ backdrop-filter: saturate(80%);
             font-size: 8px; }
         .actions-adrift ul li button:hover {
           background-color: rgba(255, 255, 255, 0.15); } }
+
+.progbar ul {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 8px; }
+  .progbar ul li {
+    display: flex;
+    flex-direction: row-reverse; }
+    .progbar ul li label {
+      font-size: 14px;
+      color: #777;
+      min-width: 132px; }
+    .progbar ul li .prog {
+      display: flex;
+      flex-direction: row-reverse;
+      margin-right: 8px;
+      width: 100%; }
+    .progbar ul li .uk-progress {
+      margin: auto 0 auto 12px;
+      width: 100%; }
+
+@media only screen and (max-device-width: 400px) {
+  .progbar ul li {
+    -ms-flex-direction: column !important;
+    -webkit-flex-direction: column !important;
+    flex-direction: column !important; }
+    .progbar ul li label {
+      margin-bottom: 6px; } }

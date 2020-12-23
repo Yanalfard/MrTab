@@ -14,28 +14,28 @@
     <!-- #region Grid -->
 
     <div class="grid-categories uk-margin-medium-top">
-        <a class="category" uk-scrollspy="cls:uk-animation-fade;delay:200">
+        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:200">
             <h3><span>کباب</span></h3>
         </a>
-        <a class="category" uk-scrollspy="cls:uk-animation-fade;delay:0">
+        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:0">
             <h3><span>دونر</span></h3>
         </a>
-        <a class="category" uk-scrollspy="cls:uk-animation-fade;delay:200">
+        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:200">
             <h3><span>غذای مکزیکی</span></h3>
         </a>
-        <a class="category" uk-scrollspy="cls:uk-animation-fade;delay:0">
+        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:0">
             <h3><span>صبحانه دبش</span></h3>
         </a>
-        <a class="category" uk-scrollspy="cls:uk-animation-fade;delay:200">
+        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:200">
             <h3><span>فضای رمانتیک</span></h3>
         </a>
-        <a class="category" uk-scrollspy="cls:uk-animation-fade;delay:0">
+        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:0">
             <h3><span>پیتزا و فست فود</span></h3>
         </a>
-        <a class="category" uk-scrollspy="cls:uk-animation-fade;delay:200">
+        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:200">
             <h3><span>مرغ سوخاری</span></h3>
         </a>
-        <a class="category" uk-scrollspy="cls:uk-animation-fade;delay:0">
+        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:0">
             <h3><span>غذای ویگن</span></h3>
         </a>
     </div>
@@ -72,5 +72,40 @@
 </div>
 
 @section Scripts {
+
+    <script>
+
+        const categories = [
+            'کافه',
+            'رستوران',
+            'فست فود',
+            'دونر',
+            'نوتلا'
+        ];
+
+        function txtTypeChanged(val) {
+            const drop = document.getElementById('drop');
+
+            UIkit.drop(document.getElementsByClassName('category-drop')[0]).show();
+
+            drop.innerHTML = '';
+            for (let cat of categories.filter(i => i.includes(val))) {
+                const li = document.createElement('li');
+                li.innerText = cat;
+                li.addEventListener('click', () => {
+                    document.getElementById('txtCategory').value = cat;
+                    UIkit.drop(document.getElementsByClassName('category-drop')[0]).hide(0);
+                });
+                drop.appendChild(li);
+            }
+            if (drop.children.length == 0) {
+                UIkit.drop(document.getElementsByClassName('category-drop')[0]).hide(0);
+            }
+        }
+
+        txtTypeChanged('');
+        UIkit.drop(document.getElementsByClassName('category-drop')[0]).hide(0);
+
+    </script>
 
 }
