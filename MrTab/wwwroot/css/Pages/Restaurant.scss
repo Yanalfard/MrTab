@@ -199,6 +199,12 @@
     img {
         @include border-radius(12px,12px,12px,12px);
         @include shadow-mild;
+        width: 220px;
+        height: 220px;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
     }
 
     .uk-dotnav {
@@ -269,6 +275,11 @@
     img {
         @include border-radius(12px,12px,12px,12px);
         @include shadow-mild;
+        height: 312px;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
     }
 
     .uk-dotnav {

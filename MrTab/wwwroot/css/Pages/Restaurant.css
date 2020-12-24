@@ -352,7 +352,13 @@ backdrop-filter: saturate(80%);
     border-radius: 0;*/
   -moz-box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
-  box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px; }
+  box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
+  width: 220px;
+  height: 220px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center; }
 
 .carousel-image .uk-dotnav {
   background-color: #E2E2E2;
@@ -411,7 +417,12 @@ backdrop-filter: saturate(80%);
     border-radius: 0;*/
     -moz-box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px; }
+    box-shadow: rgba(0, 0, 0, 0.12) 0 0px 12px;
+    height: 312px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center; }
   .carousel-menu .uk-dotnav {
     background-color: #E2E2E2;
     padding: 6px 0;
