@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using DataLayer.Models;
 
 #nullable disable
 
-namespace DataLayer.Models
+namespace MrTab.Models
 {
     public partial class TblCatagory
     {
@@ -14,7 +15,6 @@ namespace DataLayer.Models
 
         public int CatagoryId { get; set; }
         public string Name { get; set; }
-        public string ImageUrl { get; set; }
 
         public virtual ICollection<TblRestaurant> TblRestaurants { get; set; }
     }

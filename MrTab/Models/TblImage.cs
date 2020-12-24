@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace DataLayer.Models
+namespace MrTab.Models
 {
     public partial class TblImage
     {
