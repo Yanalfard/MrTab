@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace DataLayer.Models
+namespace MrTab.Models
 {
     public partial class MrTabContext : DbContext
     {
@@ -48,8 +48,6 @@ namespace DataLayer.Models
                 entity.HasKey(e => e.CatagoryId);
 
                 entity.ToTable("TblCatagory");
-
-                entity.Property(e => e.ImageUrl).HasMaxLength(500);
 
                 entity.Property(e => e.Name)
                     .IsRequired()

@@ -3,18 +3,17 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace DataLayer.Models
+namespace MrTab.Models
 {
-    public partial class TblCatagory
+    public partial class TblCity
     {
-        public TblCatagory()
+        public TblCity()
         {
             TblRestaurants = new HashSet<TblRestaurant>();
         }
 
-        public int CatagoryId { get; set; }
+        public int CityId { get; set; }
         public string Name { get; set; }
-        public string ImageUrl { get; set; }
 
         public virtual ICollection<TblRestaurant> TblRestaurants { get; set; }
     }

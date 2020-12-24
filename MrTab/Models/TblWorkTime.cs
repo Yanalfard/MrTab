@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace DataLayer.Models
+namespace MrTab.Models
 {
-    public partial class TblMealType
+    public partial class TblWorkTime
     {
-        public int MealTypeId { get; set; }
-        public string Name { get; set; }
+        public int WorkTimeId { get; set; }
+        public string Day { get; set; }
+        public string Time { get; set; }
         public int RestaurantId { get; set; }
 
         public virtual TblRestaurant Restaurant { get; set; }
