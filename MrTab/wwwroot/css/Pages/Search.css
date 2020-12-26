@@ -203,7 +203,7 @@ backdrop-filter: saturate(80%);
     grid-template-columns: 100px 1fr 1fr 1fr 1fr 2fr;
     grid-template-areas: "search order city food type name "; }
   .space-search {
-    width: 100vw;
+    width: 112vw;
     height: 94px; } }
 
 @media only screen and (min-width: 640px) and (max-width: 1050px) {
@@ -212,7 +212,7 @@ backdrop-filter: saturate(80%);
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "city type name" "search order food"; }
   .space-search {
-    width: 100vw;
+    width: 112vw;
     height: 160px; } }
 
 @media only screen and (max-width: 640px) {
@@ -226,7 +226,7 @@ backdrop-filter: saturate(80%);
     .search-filter .form-group {
       padding: 6px; }
   .space-search {
-    width: 100vw;
+    width: 112vw;
     height: 138px; } }
 
 @media only screen and (max-device-width: 480px) {

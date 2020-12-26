@@ -247,7 +247,7 @@ backdrop-filter: saturate(80%);
   transition: all ease 0.2s; }
 
 .mat {
-  padding: 20px;
+  padding: 16px;
   -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); }
@@ -256,7 +256,8 @@ backdrop-filter: saturate(80%);
   padding: 16px;
   background: #231F20;
   position: fixed;
-  width: calc(100vw - 32px);
+  left: 0;
+  right: 0;
   z-index: 1000;
   border-bottom: 2px solid #2B2728;
   opacity: 1 !important; }
