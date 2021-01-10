@@ -6,9 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MrTab.Areas.User.Controllers
 {
+    [Area("User")]
     public class UserController : Controller
     {
-        public IActionResult Profile()
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult ToRestaurant()
         {
             return View();
         }

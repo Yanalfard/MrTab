@@ -460,15 +460,24 @@ textarea:focus {
 }
 
 .footer {
+    background-image: url(../resources/png/Restaurant_3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include border-radius(28px,28px,0,0);
     margin-top: 20px;
+    /*margin-top: 64px;*/
+    z-index: 10;
 
     &-counters {
         display: grid;
+        /*display: none!important; // <-------------*/
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        background: #fff;
+        background: rgba(0,0,0,0.32);
+        backdrop-filter: blur(16px);
         margin: 0;
         padding: 10px 0 42px 0;
         @include border-radius(28px,28px,0,0);
+        z-index: 30;
 
         > li {
             @include column;
@@ -484,19 +493,23 @@ textarea:focus {
         }
 
         .comments, .comments * {
-            color: #FFCA43;
+            /*color: #FFCA43;*/
+            color: $primary;
         }
 
         .likes, .likes * {
-            color: #F94646;
+            /*color: #F94646;*/
+            color: $primary;
         }
 
         .users, .users * {
-            color: #9FA09E;
+            /*color: #9FA09E;*/
+            color: $primary;
         }
 
         .resaurants, .resaurants * {
-            color: #96D1F3;
+            /*color: #96D1F3;*/
+            color: $primary;
         }
     }
 
@@ -506,6 +519,7 @@ textarea:focus {
         background: #231F20;
         padding: 28px 24px;
         margin: -28px 0 0 0;
+        z-index: 50;
         @include border-radius(28px,28px,0,0);
         @include shadow-more;
 
