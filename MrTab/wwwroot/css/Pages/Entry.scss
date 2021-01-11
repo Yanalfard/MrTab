@@ -8,6 +8,10 @@ body, .entry-1, .entry-2, .entry-3 {
     background-size: contain;
 }
 
+html {
+    overflow-y: hidden !important;
+}
+
 body {
     background-color: #303030 !important;
 }
@@ -51,18 +55,24 @@ body {
 
 //phone
 @media only screen and (max-device-width : 480px) {
+    html {
+        background-color: #fff;
+    }
+
     body {
-        height: calc(100vh - 24px);
-        max-height: calc(100vh - 24px);
+        height: calc(112vh - 24px);
+        max-height: calc(112vh - 24px);
         overflow: hidden !important;
+        background-color: #fff;
     }
 
     .entry-wrapper {
         $wrapper-padding: 24px;
         padding: $wrapper-padding;
-        width: calc(100vw - 48px);
-        height: calc(100vh - 48px);
+        width: calc(112vw - 48px);
+        height: calc(112vh - 48px);
         margin-bottom: 12px !important;
+        background-color: #fff;
     }
 
     .button-panel {

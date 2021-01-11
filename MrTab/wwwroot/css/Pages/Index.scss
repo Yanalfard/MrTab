@@ -2,12 +2,13 @@
 @import '../_layout.scss';
 
 .hero {
-    height: calc(100vh - #{$nav-header-height});
+    height: calc(112vh - #{$nav-header-height});
     background-image: url('../../resources/svg/herobackground.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 500px;
+    margin: -1px;
 
     * {
         color: black;
@@ -153,7 +154,7 @@
 @media only screen and (max-width: 800px) {
     .hero {
         padding-bottom: 20px;
-        height: calc(100vh - #{$nav-bottom-height});
+        height: calc(112vh - #{$nav-bottom-height});
         @include border-radius(0,0,0,0);
 
         .hero-alternate {
@@ -169,7 +170,7 @@
         }
 
         .hero-image {
-            max-height: 210px;
+            max-height: calc(100vh - 400px);
             margin: auto;
         }
 
@@ -179,71 +180,98 @@
 
             h1 {
                 margin: 4px auto !important;
-                font-size: 30px !important;
+                font-size: 32px !important;
             }
 
             h2 {
                 margin: 4px auto !important;
-                font-size: 34px !important;
-            }
-
-            @media only screen and (max-device-width : 350px) {
-                h1 {
-                    font-size: 24px !important;
-                }
-
-                h2 {
-                    font-size: 28px !important;
-                }
+                font-size: 36px !important;
             }
         }
 
         .hero-button {
-            margin: auto !important;
+            margin: 12px auto auto auto !important;
             font-size: 18px;
         }
 
         .category-slider {
-            display: none;
+            margin: 16px auto 0 auto;
+
+            .uk-slider-items li {
+                width: 25%;
+            }
         }
     }
 }
 
 @media only screen and (max-device-width: 420px) {
     .hero {
-        height: calc(100vh - #{$nav-bottom-height + 20px}) !important;
+        height: calc(112vh - #{$nav-bottom-height + 20px}) !important;
 
-        .hero-button {
-            margin: auto !important;
-            font-size: 18px;
-            width: 80vw;
+        .searcher {
+            .hero-button {
+                margin: 8px auto auto auto !important;
+                font-size: 18px;
+                width: calc(100% - 24px);
 
-            button {
-            }
-
-            #txtCategory {
-                max-width: 92px;
-            }
-
-            #txtSearcher {
-                max-width: 140px;
-                margin-left: auto;
-            }
-
-            .category-drop {
-
-                li {
-                    padding: 6px 8px 6px 0;
-                    @include trans(.4s);
-                    -moz-user-select: none;
-                    -ms-user-select: none;
-                    -webkit-user-select: none;
-                    user-select: none;
-                    color: #333;
-                    cursor: pointer;
-                    max-width: 136px;
-                    font-size: 14px;
+                #txtCategory {
+                    max-width: 92px;
                 }
+
+                #txtSearcher {
+                    max-width: 132px !important;
+                    margin-left: auto;
+                }
+
+                .divider {
+                    margin-left: 6px;
+                }
+
+                .category-drop {
+
+                    li {
+                        padding: 6px 8px 6px 0;
+                        @include trans(.4s);
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        -webkit-user-select: none;
+                        user-select: none;
+                        color: #333;
+                        cursor: pointer;
+                        max-width: 136px;
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            .category-slider {
+                width: 100% !important;
+
+                .uk-slider-items li {
+                    width: 25%;
+                }
+            }
+        }
+
+        .hero-image {
+            max-height: calc(100vh - 400px);
+            margin: auto;
+        }
+
+
+        .hero-splash {
+            h1 {
+                font-size: 24px !important;
+            }
+
+            h2 {
+                font-size: 28px !important;
+            }
+        }
+
+        .category-slider {
+            .uk-position-center-right, .uk-position-center-left {
+                margin-top: 52px;
             }
         }
     }

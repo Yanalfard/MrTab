@@ -247,7 +247,7 @@ backdrop-filter: saturate(80%);
   transition: all ease 0.2s; }
 
 .mat {
-  padding: 20px;
+  padding: 16px;
   -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); }
@@ -256,7 +256,8 @@ backdrop-filter: saturate(80%);
   padding: 16px;
   background: #231F20;
   position: fixed;
-  width: calc(100vw - 32px);
+  left: 0;
+  right: 0;
   z-index: 1000;
   border-bottom: 2px solid #2B2728;
   opacity: 1 !important; }
@@ -666,11 +667,24 @@ textarea:focus {
   color: #FEBA2E; }
 
 .footer {
-  margin-top: 20px; }
+  background-image: url(../resources/png/Restaurant_3.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  -moz-border-radius: 28px 28px 0 0;
+  -webkit-border-radius: 28px 28px 0 0;
+  border-radius: 28px 28px 0 0;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+  margin-top: 20px;
+  /*margin-top: 64px;*/
+  z-index: 10; }
   .footer-counters {
     display: grid;
+    /*display: none!important; // <-------------*/
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    background: #fff;
+    background: rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(16px);
     margin: 0;
     padding: 10px 0 42px 0;
     -moz-border-radius: 28px 28px 0 0;
@@ -678,7 +692,8 @@ textarea:focus {
     border-radius: 28px 28px 0 0;
     /* -moz-border-radius: 0;
     -webkit-border-radius: 0;
-    border-radius: 0;*/ }
+    border-radius: 0;*/
+    z-index: 30; }
     .footer-counters > li {
       display: flex;
       flex-direction: column; }
@@ -688,19 +703,24 @@ textarea:focus {
         .footer-counters > li > .counter .column {
           margin: auto 16px auto 0; }
     .footer-counters .comments, .footer-counters .comments * {
-      color: #FFCA43; }
+      /*color: #FFCA43;*/
+      color: #FEB432; }
     .footer-counters .likes, .footer-counters .likes * {
-      color: #F94646; }
+      /*color: #F94646;*/
+      color: #FEB432; }
     .footer-counters .users, .footer-counters .users * {
-      color: #9FA09E; }
+      /*color: #9FA09E;*/
+      color: #FEB432; }
     .footer-counters .resaurants, .footer-counters .resaurants * {
-      color: #96D1F3; }
+      /*color: #96D1F3;*/
+      color: #FEB432; }
   .footer-body {
     display: grid;
     grid-template-columns: 1fr 1fr .8fr;
     background: #231F20;
     padding: 28px 24px;
     margin: -28px 0 0 0;
+    z-index: 50;
     -moz-border-radius: 28px 28px 0 0;
     -webkit-border-radius: 28px 28px 0 0;
     border-radius: 28px 28px 0 0;

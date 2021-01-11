@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+
+<html lang="fa">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset='utf-8'>
+    <title>@ViewData["Title"]</title>
+
+    <!-- plugins css -->
+    <link href="~/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!--tagsinput-->
+    <link href="~/admin/bootstrap/css/bootstrap-tagsinput.css" rel="stylesheet" />
+
+    <!-- font-icon-->
+    <link href="~/admin/Fonts/fontawesome/css/all.min.css" rel="stylesheet" />
+    <link href="~/admin/Fonts/fontawesome/css/fontawesome.min.css" rel="stylesheet" />
+
+    <!-- custom css-->
+    <link href="~/admin/Styles/style.css" rel="stylesheet" />
+    <link href="~/admin/Styles/style-rtl.css" rel="stylesheet" />
+
+    <!--Paging-->
+    <link href="~/admin/bootstrap/Paging/Paging.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="wrapper flex-div">
+        <div class="layout flex-div">
+            <!-- Side Nav START -->
+            <div class="side-nav" style="z-index:8500">
+                <div class="side-nav-inner">
+                    <div class="side-nav-logo">
+                        <a href="#">
+                            <img class="logo logo-dark" width="24" height="24" src="~/resources/svg/BurgerKing.svg" />
+                            <!--<div class="logo logo-dark" style="background-image: url('/img/admin/logo/logo.png')"></div>-->
+                        </a>
+                        <div class="mobile-toggle side-nav-toggle">
+                            <a href="#">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="side-nav-menu scrollable">
+                        <li class="nav-item active">
+                            <a href="/Admin/Home">
+                                <span class="icon-holder">
+                                    <i class="fas fa-home"></i>
+                                </span>
+                                <span class="title">داشبورد</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" href="javascript:void(0);">
+                                <span class="icon-holder">
+                                    <i class="fas fa-th-large"></i>
+                                </span>
+                                <span class="title">ویدیوها </span>
+                                <span class="arrow">
+                                    <i class="fas fa-chevron-right"></i>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/Admin/Catagory">
+                                        دسته بندی ها
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Playlist">
+                                        کلاس ها
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Video">
+                                        ویدیوها ها
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Video/Report">
+                                        تخلفات ویدیوها
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" href="javascript:void(0);">
+                                <span class="icon-holder">
+                                    <i class="fas fa-th-large"></i>
+                                </span>
+                                <span class="title">قوانین و درباره ما </span>
+                                <span class="arrow">
+                                    <i class="fas fa-chevron-right"></i>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/Admin/Home/About">
+                                        درباره ما
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Home/Contact">
+                                        قوانین سایت
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" href="javascript:void(0);">
+                                <span class="icon-holder">
+                                    <i class="fas fa-th-large"></i>
+                                </span>
+                                <span class="title">فروش </span>
+                                <span class="arrow">
+                                    <i class="fas fa-chevron-right"></i>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/Admin/Older/Prices">
+                                        درصد و سقف برداشت
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Home/Contact">
+                                        فروش کلی
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="/Admin/User">
+                                <span class="icon-holder">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <span class="title">کاربران</span>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="/Admin/Doc">
+                                <span class="icon-holder">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <span class="title"> اطلاعات ارسالی کاربران</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item active">
+                            <a href="/Admin/Ticket">
+                                <span class="icon-holder">
+                                    <i class="fas fa-ticket-alt"></i>
+                                </span>
+                                <span class="title">تیکت ها</span>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="/Admin/Chat">
+                                <span class="icon-holder">
+                                    <i class="fas fa-comments"></i>
+                                </span>
+                                <span class="title">چت ها</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- Side Nav END -->
+            <!-- Page Container START -->
+            <div class="page-container flex-div">
+                <!-- Header START -->
+                <div class="header navbar" style="z-index:7500">
+                    <div class="header-container">
+                        <ul class="nav-right float-right mr-3">
+                            <li>
+                                <a class="side-nav-toggle" href="javascript:void(0);">
+                                    <i class="fas fa-align-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sub-header shadow-sm" style="z-index:7000">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb rounded-0 m-0 bg-white">
+                            <li class="breadcrumb-item p-0"><a href="/admin/Home">داشبورد</a></li>
+                            <li class="breadcrumb-item p-0 active" aria-current="page"></li>
+                        </ol>
+                    </nav>
+                </div>
+                <!-- Header END -->
+                <!-- Content Wrapper START -->
+                <div class="main-content flex p-0">
+                    <div class="container-fluid flex-div">
+                        <div class="row flex-div" style="overflow-y:scroll">
+                            <div class="col-md-12 p-4">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content Wrapper END -->
+
+            </div>
+            <!-- Page Container END -->
+        </div>
+    </div>
+    <!-- #Loadin -->
+    <div id="overlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+
+    <!--#endregion-->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <div class="modal-body" id="myModalBody">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/admin/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/admin/Scripts/popper.min.js"></script>
+    <script src="~/admin/Scripts/docs.min.js"></script>
+    <script src="~/admin/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/admin/Scripts/script.js"></script>
+    <script src="~/admin/Content/bootstrap/js/bootstrap-tagsinput.js"></script>
+
+    <!--Paging-->
+    <script src="~/admin/bootstrap/Paging/jquery.simplePagination.js"></script>
+    <script src="~/admin/bootstrap/Paging/Paging.js"></script>
+
+
+    <script>
+        function LoadingRun(form) {
+            if (!$(form).valid()) return;
+            $("#overlay").fadeIn(300);
+        }
+        function LoadingEnd(form) {
+            $("#overlay").fadeOut(300);
+            $(form)[0].reset();
+        }
+        function doneModal(form) {
+            $("#myModal").modal('hide');
+            $('#listCat').load('/Admin/Catagory/ListCat')
+        }
+    </script>
+
+    @RenderSection("Scripts", false)
+</body>
+</html>

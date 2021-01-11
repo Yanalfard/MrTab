@@ -203,7 +203,7 @@ backdrop-filter: saturate(80%);
     grid-template-columns: 100px 1fr 1fr 1fr 1fr 2fr;
     grid-template-areas: "search order city food type name "; }
   .space-search {
-    width: 100vw;
+    width: 112vw;
     height: 94px; } }
 
 @media only screen and (min-width: 640px) and (max-width: 1050px) {
@@ -212,7 +212,7 @@ backdrop-filter: saturate(80%);
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "city type name" "search order food"; }
   .space-search {
-    width: 100vw;
+    width: 112vw;
     height: 160px; } }
 
 @media only screen and (max-width: 640px) {
@@ -226,7 +226,7 @@ backdrop-filter: saturate(80%);
     .search-filter .form-group {
       padding: 6px; }
   .space-search {
-    width: 100vw;
+    width: 112vw;
     height: 138px; } }
 
 @media only screen and (max-device-width: 480px) {
@@ -235,7 +235,7 @@ backdrop-filter: saturate(80%);
     grid-template-columns: 64px 110px 1fr;
     grid-template-rows: 1fr 1fr;
     padding: 8px;
-    width: calc(100vw - 16px);
+    width: calc(112vw - 16px);
     -moz-border-radius: 0 0 12px 12px;
     -webkit-border-radius: 0 0 12px 12px;
     border-radius: 0 0 12px 12px;
@@ -262,6 +262,6 @@ backdrop-filter: saturate(80%);
 
 @media only screen and (max-device-width: 380px) {
   .search-filter {
-    grid-template-columns: 64px 110px calc(100vw - 202px) !important; }
+    grid-template-columns: 64px 110px calc(112vw - 0) !important; }
   .uk-container {
     padding: 6px; } }
