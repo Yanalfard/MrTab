@@ -1738,6 +1738,7 @@
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Scripts\" />
+    <Folder Include="wwwroot\Images\Users\" />
   </ItemGroup>
 
 </Project>

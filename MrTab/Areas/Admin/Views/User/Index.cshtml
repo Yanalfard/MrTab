@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card flex-div border-0 shadow">
+    <div class="card-header bg-white">
+        <div class="row justify-content-end">
+            <div class="col-md-10 col-12">
+                <form class="card-form row" action="/Admin/User/Index" method="post">
+                    <div class="form-input col-md-8">
+                        <div class="form-inline">
+                            <div class="form-group mx-sm-1 mb-2">
+                                <input class="form-control form-control-sm" name="name" type="text" value="@ViewBag.name" placeholder="نام">
+                            </div>
+                            <div class="form-group mx-sm-1 mb-2">
+                                <input class="form-control form-control-sm" name="tellNo" type="text" value="@ViewBag.tellNo" placeholder="شماره تماس">
+                            </div>
+                            <div class="form-group mx-sm-1 mb-2">
+                                <select id="DegreeSearch" name="isActive" class="form-control form-control-sm">
+                                    <option value="-1" selected="">فعال بودن</option>
+                                    <option value="1">فعال</option>
+                                    <option value="0">غیر فعال</option>
+                                </select>
+                            </div>
+                            <div class="form-group mx-sm-1 mb-2">
+                                <select id="DegreeSearch" name="roleId" class="form-control form-control-sm">
+                                    <option value="-1" selected="">همه</option>
+                                    <option value="0">کاربران</option>
+                                    <option value="1">نویسنده </option>
+                                    <option value="2">مدیر</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-toolbar col-md-3">
+                        <input type="submit" value="جستجو" class="btn btn-primary btn-sm" />
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2 col-3 pl-2 pr-0">
+                <a href="/Admin/User/Create" class="btn btn-success btn-sm text-white float-left"><i class="fas fa-plus-circle"></i>افزودن</a>
+            </div>
+        </div>
+    </div>
+    <div id="card-table" class="p-0 card-body flex-div">
+        <div class="table-responsive flex">
+            <table class="table fixed pr-3 text-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">کد</th>
+                        <th scope="col">عکس</th>
+                        <th scope="col">نام</th>
+                        <th scope="col">شماره تماس</th>
+                        <th scope="col">فعال</th>
+                        <th scope="col">نقش</th>
+                        <th scope="col">تغیر رمز</th>
+                        <th scope="col">عملیات</th>
+                    </tr>
+                </thead>
+                <tbody id="listUser" class="list-wrapper">
+                    @await Component.InvokeAsync("UserListInAdminVc")
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer bg-white">
+        <nav aria-label="Page navigation example">
+            <div id="pagination-container"></div>
+        </nav>
+    </div>
+</div>
+
+
+
+<!-- Button trigger modal -->
+@section Scripts{
+    <script src="~/admin/bootstrap/js/jquery.validate.min.js"></script>
+    <script src="~/admin/bootstrap/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/admin/bootstrap/js/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+
+        function activeDisableUser(id) {
+            $.get("/Admin/User/ActiveDisableUser/" + id, function (result) {
+                //$('#listUser').html(result);
+                if (result == "true") {
+                    $.get("/Admin/User/ListUser", function (res) {
+                        $('#listUser').html(res);
+                    });
+                }
+            });
+        }
+        function changePassword(id) {
+            $.get("/Admin/User/ChangePassword/" + id,
+                function (result) {
+                    $("#myModal").modal('show');
+                    $("#myModalBody").html(result);
+                }
+            );
+        }
+        function deleteUser(id) {
+            if (confirm('آیا از حذف کاربر مورد نظر مظمئن هستین؟')) {
+                $.get("/Admin/User/Delete/" + id, function (result) {
+                    if (result == "true") {
+                        $('#user_' + id).addClass('text-danger');
+                        $("#user_" + id).hide('slow');
+                    } else {
+                        alert(result);
+                    }
+                })
+            }
+        }
+        function success() {
+            $("#myModal").modal('hide');
+        }
+    </script>
+}

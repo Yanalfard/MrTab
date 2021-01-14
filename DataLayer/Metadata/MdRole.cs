@@ -20,9 +20,9 @@ namespace DataLayer.Metadata
         public string Name { get; set; }
     }
 
-    [MetadataType(typeof(MdRole))]
-    public class TblRole
-    {
+    //[MetadataType(typeof(MdRole))]
+    //public class TblRole
+    //{
 
-    }
+    //}
 }

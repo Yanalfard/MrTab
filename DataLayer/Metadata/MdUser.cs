@@ -22,9 +22,9 @@ namespace DataLayer.Metadata
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(64)]
         public string Password { get; set; }
+        [Display(Name = "نقش")]
+        [Required(ErrorMessage = "لطفا {0} را انتخاب کنید")]
         public int RoleId { get; set; }
-        [Display(Name = "فعال")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public bool IsActive { get; set; }
         [StringLength(256)]
         public string Auth { get; set; }
@@ -34,9 +34,5 @@ namespace DataLayer.Metadata
         public string ImageUrl { get; set; }
     }
 
-    [MetadataType(typeof(MdUser))]
-    public class TblUser
-    {
 
-    }
 }

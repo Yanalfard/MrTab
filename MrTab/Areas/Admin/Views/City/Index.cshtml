@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = "شهرها";
+}
+
+<div class="card flex-div border-0 shadow">
+    <div class="card-header bg-white">
+        <div class="row justify-content-end">
+            <div class="col-md-2 col-3 pl-2 pr-0">
+                <a onclick="create()" class="btn btn-success btn-sm text-white float-left"><i class="fas fa-plus-circle"></i>افزودن</a>
+            </div>
+        </div>
+    </div>
+    <div id="listCat">
+        @await Component.InvokeAsync("CityListInAdminVc")
+    </div>
+
+    <div class="card-footer bg-white">
+        <nav aria-label="Page navigation example">
+            <div id="pagination-container"></div>
+        </nav>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+@section Scripts{
+    <script src="~/admin/bootstrap/js/jquery.validate.min.js"></script>
+    <script src="~/admin/bootstrap/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/admin/bootstrap/js/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+        function create() {
+            $.get("/Admin/City/Create",
+                function (result) {
+                    $("#myModal").modal('show');
+                    $("#myModalBody").html(result);
+                }
+            );
+        };
+        function edit(id) {
+            $.get("/Admin/City/Edit/" + id,
+                function (result) {
+                    $("#myModal").modal('show');
+                    $("#myModalBody").html(result);
+                }
+            );
+        };
+        function subCategory(id) {
+            $.get("/Admin/Catagory/SubCategory?id=" + id,
+                function (result) {
+                    $("#myModal").modal('show');
+                    $("#myModalBody").html(result);
+                }
+            );
+        }
+
+        function deleteCity(id) {
+            if (confirm('آیا از حذف شهر مورد نظر مظمئن هستین؟')) {
+                $.get("/Admin/City/Delete/" + id, function (result) {
+                    if (result == "true") {
+                        $('#city_' + id).addClass('text-danger');
+                        $("#city_" + id).hide('slow');
+                    } else {
+                        alert(result);
+                    }
+                })
+            }
+        }
+        function activeDisablePlaylist(id) {
+            $.get("/Admin/Catagory/ActiveDisablePlaylist/" + id, function (result) {
+                $('#listPlaylist').html(result);
+            });
+        }
+        function deletePlaylist(id) {
+            if (confirm('آیا از حذف کلاس مورد نظر مظمئن هستین؟')) {
+                $.get("/Admin/Catagory/DeletePlayList/" + id, function (result) {
+                    if (result.success) {
+                        $('#playlist_' + id).addClass('text-danger');
+                        $("#playlist_" + id).hide('slow');
+                    } else {
+                        alert(result.responseText);
+                    }
+                })
+            }
+        }
+            //activeDisablePlaylist
+            //deletePlaylist
+
+    </script>
+}

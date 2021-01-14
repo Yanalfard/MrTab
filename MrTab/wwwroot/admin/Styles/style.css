@@ -1,11 +1,9 @@
 @font-face {
     font-family: 'Sahel';
     src: url('../../Fonts/fontsite/sahel/Sahel.eot') format('embedded-opentype');
-    src: url('../../Fonts/fontsite/Sahel.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
-
 #overlay {
     position: fixed;
     top: 0;
@@ -674,9 +672,7 @@ ul {
                     background-position: center left;
                 }
 
-                .side-nav:hover .side-nav-inner .side-nav-logo a .logo-dark {
-                    background-image: url("/img/admin/logo/logo.png") !important;
-                }
+              
 
 
             .side-nav:hover .side-nav-inner .side-nav-menu > li > a .title {
