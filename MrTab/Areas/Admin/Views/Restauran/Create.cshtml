@@ -1,0 +1,137 @@
+﻿@model MdRestaurant
+@{
+    ViewData["Title"] = "ایجاد رستوران";
+}
+<div class="flex-column card flex-div border-0 shadow">
+    <div class="card-header bg-white">
+        <h4>رستوران جدید</h4>
+    </div>
+    <form asp-action="Create" asp-area="Admin" asp-controller="Restauran" role="form" method="post" enctype="multipart/form-data">
+        <div class="card-body">
+            <div class="form-group mx-sm-1 mb-2">
+                <label asp-for="Name"></label>
+                <input type="text" asp-for="Name" class="form-control form-control-sm" />
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group mx-sm-1 mb-2 ">
+                <label asp-for="ShortDesc"></label>
+                <input type="text" asp-for="ShortDesc" class="form-control form-control-sm" />
+                <span class="text-danger" asp-validation-for="ShortDesc"></span>
+            </div>
+            <div class="form-group mx-sm-1 mb-2">
+                <label asp-for="LongDesc"></label>
+                <input type="text" asp-for="LongDesc" class="form-control form-control-sm" />
+                <span class="text-danger" asp-validation-for="LongDesc"></span>
+            </div>
+            <div class="form-group mx-sm-1 mb-2">
+                <label asp-for="TellNo1"></label>
+                <input type="text" asp-for="TellNo1" class="form-control form-control-sm" />
+                <span class="text-danger" asp-validation-for="TellNo1"></span>
+            </div>
+            <div class="form-group mx-sm-1 mb-2">
+                <label asp-for="TellNo2"></label>
+                <input type="text" asp-for="TellNo2" class="form-control form-control-sm" />
+                <span class="text-danger" asp-validation-for="TellNo2"></span>
+            </div>
+            <div class="form-group mx-sm-1 mb-2">
+                <label asp-for="Neighborhood"></label>
+                <input type="text" asp-for="Neighborhood" class="form-control form-control-sm" />
+                <span class="text-danger" asp-validation-for="Neighborhood"></span>
+            </div>
+            <div class="form-group mx-sm-1 mb-2">
+                <label asp-for="InstagramUrl"></label>
+                <input type="text" asp-for="InstagramUrl" class="form-control form-control-sm" />
+                <span class="text-danger" asp-validation-for="InstagramUrl"></span>
+            </div>
+            <div class="form-group mx-sm-1 mb-2">
+                <label asp-for="Address"></label>
+                <input type="text" asp-for="Address" class="form-control form-control-sm" />
+                <span class="text-danger" asp-validation-for="Address"></span>
+            </div>
+            <div class="form-group mx-sm-1 mb-2">
+                <label asp-for="CatagoryId"></label>
+                <select asp-for="CatagoryId"
+                        class="form-control  form-control-sm"
+                        asp-items="@(new SelectList(@ViewBag.CatagoryId,"CatagoryId", "Name"))">
+                </select>
+                <span class="text-danger" asp-validation-for="CatagoryId"></span>
+            </div>
+            <div class="form-group mx-sm-1 mb-2">
+                <label asp-for="CityId"></label>
+                <select asp-for="CityId"
+                        class="form-control  form-control-sm"
+                        asp-items="@(new SelectList(@ViewBag.CityId,"CityId", "Name"))">
+                </select>
+                <span class="text-danger" asp-validation-for="CityId"></span>
+            </div>
+            <div class="form-group mx-sm-1 mb-2">
+                <label asp-for="UserId"></label>
+                <select asp-for="UserId"
+                        class="form-control  form-control-sm"
+                        asp-items="@(new SelectList(@ViewBag.UserId,"UserId", "TellNo"))">
+                </select>
+                <span class="text-danger" asp-validation-for="UserId"></span>
+            </div>
+            <div class="form-group mx-sm-1 mb-2">
+                <label asp-for="MainImage"></label>
+                <input type="file" name="MainImage" asp-for="MainImage" />
+                <span class="text-danger" asp-validation-for="MainImage"></span>
+            </div>
+            <div class="form-group mx-sm-1 mb-2">
+                <label asp-for="MainBanner"></label>
+                <input type="file" name="MainBanner" asp-for="MainBanner" />
+                <span class="text-danger" asp-validation-for="MainBanner"></span>
+            </div>
+            <div class="form-group mx-sm-1 mb-2">
+                <label>افزودن موقعیت</label>
+                <div class="map" id="map" style="height:400px;width:100%"></div>
+                <span class="text-danger" asp-validation-for="Lat"></span>
+            </div>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="flex-row">
+                <button class="btn btn-primary">تایید</button>
+                <a asp-action="Index" class="btn btn-secondary mr-2">بازگشت</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<link href="~/leaflet/leaflet.css" rel="stylesheet" />
+<script src="~/leaflet/leaflet.js"></script>
+
+<script>
+
+    var map = L.map('map').setView([38.07674409597339, 46.29700302496191], 11);
+
+    L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Mr Tab'
+    }).addTo(map);
+
+    var theMarker = {};
+
+    map.on('click', function (e) {
+        lat = e.latlng.lat;
+        lon = e.latlng.lng;
+
+        //Clear existing marker,
+
+        if (theMarker != undefined) {
+            map.removeLayer(theMarker);
+        };
+
+        var iconSetting = L.Icon.extend({
+            options: {
+                iconSize: [20, 29],
+                iconAnchor: [10, 29]
+            }
+        });
+
+        var customIcon = new iconSetting({ iconUrl: '/location.png' });
+        //Add a marker to show where you clicked.
+        $("#Lat").val(lat.toString());
+        $("#Lon").val(lon.toString());
+        theMarker = L.marker([lat, lon], { icon: customIcon }).addTo(map).bindPopup('<h6 style="color:green">موقعیت فروشگاه شما ثبت شد</h6>').openPopup();
+    });
+
+</script>

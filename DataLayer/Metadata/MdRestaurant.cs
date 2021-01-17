@@ -25,16 +25,23 @@ namespace DataLayer.Metadata
         [Display(Name = "توضیحات مختصر")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(200)]
+        [DataType(DataType.MultilineText)]
         public string ShortDesc { get; set; }
         [Display(Name = "توضیحات")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(1000)]
+        [DataType(DataType.MultilineText)]
         public string LongDesc { get; set; }
+        [Display(Name = "دسته بندی ")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int CatagoryId { get; set; }
         [Display(Name = "آدرس")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(500)]
+        [DataType(DataType.MultilineText)]
         public string Address { get; set; }
+        [Display(Name = " شهر ")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int CityId { get; set; }
         [Display(Name = "محله")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
@@ -81,12 +88,9 @@ namespace DataLayer.Metadata
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(1000)]
         public string InstagramUrl { get; set; }
+        [Display(Name = "کاربر")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int UserId { get; set; }
     }
 
-    [MetadataType(typeof(MdRestaurant))]
-    public class TblRestaurant
-    {
-
-    }
 }

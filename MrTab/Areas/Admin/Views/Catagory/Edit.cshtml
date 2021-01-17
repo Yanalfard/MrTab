@@ -1,0 +1,35 @@
+﻿@model TblCatagory
+
+<form asp-action="Edit" asp-controller="Catagory" asp-area="Admin" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <input type="hidden" asp-for="CatagoryId" />
+        <input type="hidden" asp-for="ImageUrl" />
+
+        <div class="form-group">
+            <label for="name">نام </label>
+            <div class="form-group mx-sm-1 mb-2">
+                <input type="text" asp-for="Name" class="form-control form-control-sm" placeholder="نام" required />
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name">عکس </label>
+            @if (Model.ImageUrl != null)
+            {
+                <img src="/Images/Catagory/@Model.ImageUrl" alt=" @Model.Name" style="max-width:100px;" />
+            }
+            else
+            {
+                <img src="/Images/NoImage.svg" alt="@Model.Name" style="max-width:100px;" />
+            }
+            <div class="form-group mx-sm-1 mb-2">
+                <input type="file" asp-for="Name" name="imgup" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ویرایش" onclick="LoadingRun('#createCatagory')" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</form>

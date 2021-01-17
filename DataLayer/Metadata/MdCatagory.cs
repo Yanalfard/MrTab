@@ -15,10 +15,4 @@ namespace DataLayer.Metadata
         [StringLength(150)]
         public string Name { get; set; }
     }
-
-    [MetadataType(typeof(MdCatagory))]
-    public class TblCatagory
-    {
-
-    }
 }

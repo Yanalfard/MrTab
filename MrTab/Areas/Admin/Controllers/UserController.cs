@@ -17,14 +17,12 @@ namespace MrTab.Areas.Admin.Controllers
     public class UserController : Controller
     {
         private Core db = new Core();
-        public ActionResult Index(UserSeachVm search)
+        public ActionResult Index(string name = null, string tellNo = null, int isActive = -1, int roleId = -1)
         {
-            //ViewBag.name = name;
-            //ViewBag.tellNo = tellNo;
-            //ViewBag.email = email;
-            //ViewBag.balance = balance;
-            //ViewBag.isActive = isActive;
-            //ViewBag.roleId = roleId;
+            ViewBag.name = name;
+            ViewBag.tellNo = tellNo;
+            ViewBag.isActive = isActive;
+            ViewBag.roleId = roleId;
             return View();
         }
         //public ActionResult ListUser()
@@ -35,8 +33,6 @@ namespace MrTab.Areas.Admin.Controllers
         {
             return View();
         }
-
-
 
         public IActionResult Create()
         {
@@ -276,6 +272,48 @@ namespace MrTab.Areas.Admin.Controllers
         //    }
         //    return PartialView(list.OrderByDescending(i => i.UserId));
         //}
+
+
+
+        public async Task<IActionResult> Search(string name=null, string tellNo = null, int isActive = -1, int roleId = -1)
+        {
+            List<TblUser> list = db.User.Get().ToList();
+            if (name != null)
+            {
+                list = list.Where(i => i.Name.Contains(name)).ToList();
+            }
+            if (tellNo != null)
+            {
+                list = list.Where(i => i.TellNo.Contains(tellNo)).ToList();
+            }
+            if (isActive > -1)
+            {
+                if (isActive == 1)
+                {
+                    list = list.Where(p => p.IsActive == true).ToList();
+                }
+                else
+                {
+                    list = list.Where(p => p.IsActive == false).ToList();
+                }
+            }
+            if (roleId > -1)
+            {
+                if (roleId == 0)
+                {
+                    list = list.Where(p => p.RoleId == 0).ToList();
+                }
+                else if (roleId == 1)
+                {
+                    list = list.Where(p => p.RoleId == 1).ToList();
+                }
+                else if (roleId == 2)
+                {
+                    list = list.Where(p => p.RoleId == 2).ToList();
+                }
+            }
+            return await Task.FromResult(PartialView(list));
+        }
 
     }
 }

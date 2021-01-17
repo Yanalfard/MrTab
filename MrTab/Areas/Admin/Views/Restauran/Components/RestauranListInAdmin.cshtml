@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TblRestaurant>
+
+    @*@if (Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <tr id="user_@item.RestaurantId" class="list-item">
+                <td>@(Model.ToList().IndexOf(item)+1)</td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.User.Name
+                </td>
+                <td>
+                    @if (item.MainImage != null)
+                    {
+                        <img src="/Images/Restauran/@item.MainImage" alt=" @item.Name" style="max-width:100px;" />
+                    }
+                    else
+                    {
+                        <img src="/Images/NoImage.svg" alt="@item.Name" style="max-width:100px;" />
+                    }
+                </td>
+                <td>
+                    @if (item.MainBanner != null)
+                    {
+                        <img src="/Images/Restauran/@item.MainBanner" alt=" @item.Name" style="max-width:100px;" />
+                    }
+                    else
+                    {
+                        <img src="/Images/NoImage.svg" alt="@item.Name" style="max-width:100px;" />
+                    }
+                </td>
+                <td>
+                    @item.Catagory.Name
+                </td>
+                <td>
+                    @item.City.Name
+                </td>
+                <td>
+                    @item.Neighborhood
+                </td>
+                <td>
+                    @item.Rating
+                </td>
+                <td>
+                    @item.TellNo1
+                </td>
+                <td>
+                    <span data-placement="top" data-toggle="tooltip" title="" data-original-title="ویرایش">
+                        <a href="/Admin/User/Edit/@item.UserId"><i class="btn fas fa-edit mr-2 text-primary"></i></a>
+                    </span>
+                    <span data-placement="top" data-toggle="tooltip" title="" data-original-title="حذف">
+                        <a onclick="deleteUser(@item.UserId)" data-toggle="modal" data-target="#modalSave"><i class="btn fas fa-trash mr-2 text-danger"></i></a>
+                    </span>
+                </td>
+            </tr>
+        }
+    }*@

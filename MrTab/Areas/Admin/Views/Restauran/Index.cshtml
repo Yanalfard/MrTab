@@ -1,12 +1,12 @@
 ﻿
 @{
-    ViewData["Title"] = "کاربران";
+    ViewData["Title"] = "رستوران ها";
 }
 
 <div class="card flex-div border-0 shadow">
     <div class="card-header bg-white">
         <div class="row justify-content-end">
-            <form id="formUser" class="col-md-10 col-12">
+            <div class="col-md-10 col-12">
                 <div class="card-form row">
                     <div class="form-input col-md-8">
                         <div class="form-inline">
@@ -34,12 +34,12 @@
                         </div>
                     </div>
                     <div class="form-toolbar col-md-3">
-                        <input type="submit" value="جستجو" class="btn btn-primary btn-sm" />
+                        <input type="submit" value="جستجو" class="btn btn-primary btn-sm" onclick="search()" />
                     </div>
                 </div>
-            </form>
+            </div>
             <div class="col-md-2 col-3 pl-2 pr-0">
-                <a href="/Admin/User/Create" class="btn btn-success btn-sm text-white float-left"><i class="fas fa-plus-circle"></i>افزودن</a>
+                <a href="/Admin/Restauran/Create" class="btn btn-success btn-sm text-white float-left"><i class="fas fa-plus-circle"></i>افزودن</a>
             </div>
         </div>
     </div>
@@ -49,17 +49,21 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">کد</th>
-                        <th scope="col">عکس</th>
                         <th scope="col">نام</th>
-                        <th scope="col">شماره تماس</th>
-                        <th scope="col">فعال</th>
-                        <th scope="col">نقش</th>
-                        <th scope="col">تغیر رمز</th>
+                        <th scope="col">کاربر</th>
+                        <th scope="col">عکس</th>
+                        <th scope="col">عکس بنر</th>
+                        <th scope="col">دسته</th>
+                        <th scope="col">شهر</th>
+                        <th scope="col">محله</th>
+                        <th scope="col">تلفن</th>
+                        <th scope="col">امتیاز</th>
+                        <th scope="col">تلفن</th>
                         <th scope="col">عملیات</th>
                     </tr>
                 </thead>
                 <tbody id="listUser" class="list-wrapper">
-                    @await Component.InvokeAsync("UserListInAdminVc")
+                    @await Component.InvokeAsync("RestauranListInAdminVm")
                 </tbody>
             </table>
         </div>
@@ -80,25 +84,21 @@
     <script src="~/admin/bootstrap/js/jquery.unobtrusive-ajax.min.js"></script>
 
     <script>
-        $('#formUser').submit(function (e) {
-            e.preventDefault();
-            var data = $(this).serializeArray();
-            $.post('/Admin/User/Search/', data, function (result) {
+        //$.get('/Admin/User/Search', function (result) {
+        //    $('#listUser').html(result);
+        //});
+        function search() {
+            var name = $('#name').val();
+            var tellNo = $('#tellNo').val();
+            var isActive = $('#isActive').val();
+            var roleId = $('#roleId').val();
+            $.ajax({
+                url: "/Admin/User/Search/",
+                data: { name: name, tellNo: tellNo, isActive: isActive, roleId: roleId }
+            }).done(function (result) {
                 $('#listUser').html(result);
-            });
-        });
-        //function search() {
-        //    var name = $('#name').val();
-        //    var tellNo = $('#tellNo').val();
-        //    var isActive = $('#isActive').val();
-        //    var roleId = $('#roleId').val();
-        //    $.ajax({
-        //        url: "/Admin/User/Search/",
-        //        data: { name: name, tellNo: tellNo, isActive: isActive, roleId: roleId }
-        //    }).done(function (result) {
-        //        $('#listUser').html(result);
-        //    })
-        //}
+            })
+        }
         function activeDisableUser(id) {
             $.get("/Admin/User/ActiveDisableUser/" + id, function (result) {
                 //$('#listUser').html(result);

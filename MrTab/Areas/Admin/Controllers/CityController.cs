@@ -13,8 +13,9 @@ namespace MrTab.Areas.Admin.Controllers
     public class CityController : Controller
     {
         private Core db = new Core();
-        public IActionResult Index()
+        public ActionResult Index(string name = null)
         {
+            ViewBag.name = name;
             return View();
         }
         public async Task<IActionResult> Create()
@@ -63,5 +64,18 @@ namespace MrTab.Areas.Admin.Controllers
             }
             return await Task.FromResult("خطا در حذف   لطفا بررسی فرمایید");
         }
+
+
+
+        public async Task<IActionResult> Search(string name = null)
+        {
+            List<TblCity> list = db.City.Get().ToList();
+            if (name != null)
+            {
+                list = list.Where(i => i.Name.Contains(name)).ToList();
+            }
+            return await Task.FromResult(PartialView(list));
+        }
+
     }
 }
