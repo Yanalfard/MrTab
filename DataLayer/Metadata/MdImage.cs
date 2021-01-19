@@ -10,22 +10,16 @@ namespace DataLayer.Metadata
         [Key]
         public int ImageId { get; set; }
         [Display(Name = "لینک")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(1000)]
         public string Url { get; set; }
-        [Display(Name = "وضعیت")]
+        [Display(Name = "عنوان عکس")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int Status { get; set; }
         public int RestaurantId { get; set; }
         [Display(Name = "تایید شده؟")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public bool IsValid { get; set; }
 
     }
 
-    [MetadataType(typeof(MdImage))]
-    public class TblImage
-    {
 
-    }
 }

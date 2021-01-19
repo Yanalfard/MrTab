@@ -15,11 +15,9 @@ namespace DataLayer.Metadata
         [StringLength(128)]
         public string Name { get; set; }
         [Display(Name = "عکس اصلی")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(500)]
         public string MainImage { get; set; }
         [Display(Name = "بنر اصلی")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(500)]
         public string MainBanner { get; set; }
         [Display(Name = "توضیحات مختصر")]

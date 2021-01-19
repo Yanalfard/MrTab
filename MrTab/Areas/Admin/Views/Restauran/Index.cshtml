@@ -58,7 +58,6 @@
                         <th scope="col">محله</th>
                         <th scope="col">تلفن</th>
                         <th scope="col">امتیاز</th>
-                        <th scope="col">تلفن</th>
                         <th scope="col">عملیات</th>
                     </tr>
                 </thead>
@@ -84,9 +83,6 @@
     <script src="~/admin/bootstrap/js/jquery.unobtrusive-ajax.min.js"></script>
 
     <script>
-        //$.get('/Admin/User/Search', function (result) {
-        //    $('#listUser').html(result);
-        //});
         function search() {
             var name = $('#name').val();
             var tellNo = $('#tellNo').val();
@@ -99,38 +95,17 @@
                 $('#listUser').html(result);
             })
         }
-        function activeDisableUser(id) {
-            $.get("/Admin/User/ActiveDisableUser/" + id, function (result) {
-                //$('#listUser').html(result);
-                if (result == "true") {
-                    $.get("/Admin/User/ListUser", function (res) {
-                        $('#listUser').html(res);
-                    });
-                }
-            });
-        }
-        function changePassword(id) {
-            $.get("/Admin/User/ChangePassword/" + id,
-                function (result) {
-                    $("#myModal").modal('show');
-                    $("#myModalBody").html(result);
-                }
-            );
-        }
-        function deleteUser(id) {
-            if (confirm('آیا از حذف کاربر مورد نظر مظمئن هستین؟')) {
-                $.get("/Admin/User/Delete/" + id, function (result) {
+        function deleteRestauran(id) {
+            if (confirm('آیا از حذف رستوران مورد نظر مظمئن هستین؟')) {
+                $.get("/Admin/Restauran/Delete/" + id, function (result) {
                     if (result == "true") {
-                        $('#user_' + id).addClass('text-danger');
-                        $("#user_" + id).hide('slow');
+                        $('#restaurant_' + id).addClass('text-danger');
+                        $("#restaurant_" + id).hide('slow');
                     } else {
                         alert(result);
                     }
                 })
             }
-        }
-        function success() {
-            $("#myModal").modal('hide');
         }
     </script>
 }

@@ -74,7 +74,7 @@ namespace MrTab.Areas.Admin.Controllers
                 }
                 TblCatagory editCat = db.Catagory.GetById(cat.CatagoryId);
                 editCat.Name = cat.Name;
-                editCat.Name = cat.Name;
+                editCat.ImageUrl = cat.ImageUrl;
                 db.Catagory.Update(editCat);
                 db.Catagory.Save();
                 return await Task.FromResult(RedirectToAction(nameof(Index)));

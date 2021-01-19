@@ -1,0 +1,122 @@
+﻿@model TblImage
+
+@{
+    ViewBag.Title = "گالری تصاویر رستوران";
+}
+<h2>گالری تصاویر محصول</h2>
+<div class="row">
+
+
+    <form asp-action="Gallery" asp-controller="Restauran" asp-area="Admin" enctype="multipart/form-data">
+        <input type="hidden" asp-for="RestaurantId" />
+        <div class="col-md-12">
+            <div class="form-horizontal">
+                <hr />
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <select asp-for="Status" class="form-control">
+                            <option value="1">منوی رستوران</option>
+                            <option value="2">داخل </option>
+                        </select>
+                        <span class="text-danger" asp-validation-for="Status"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2"> عکس</label>
+                    <div class="col-md-10">
+                        <input type="file" name="imgUp" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="ثبت تصویر" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="table-responsive flex">
+        @{
+            List<TblImage> list = ViewBag.Galleries as List<TblImage>;
+
+            <table class="table fixed pr-3 text-center">
+
+                <thead class="thead-light">
+                    <tr>
+                        <th>ردیف</th>
+                        <th>تصویر</th>
+                        <th>عنوان</th>
+                        <th>وضعیت</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="listUser">
+                    @foreach (var item in list)
+                    {
+                        <tr id="image_@item.ImageId">
+                            <td>
+                                @(list.ToList().IndexOf(item)+1)
+                            </td>
+                            <td>
+                                <a target="_blank" href="~/Images/Restaurant/Gallery/@item.Url">
+                                    <img style="max-width:250px" src="~/Images/Restaurant/Gallery/@item.Url" class="thumbnail" />
+                                </a>
+                            </td>
+                            <td>
+                                @if (item.Status == 1)
+                                {
+                                    <a href="#" class=" badge-pill">منو</a>
+                                }
+                                else if (item.Status == 2)
+                                {
+                                    <a href="#" class=" badge-pill">رستوران</a>
+                                }
+                            </td>
+                            <td>
+                                @if (item.IsValid)
+                                {
+                                    <a href="/Admin/Restauran/ShowHideImage/@item.ImageId" class="badge-success badge-pill">نمایش</a>
+                                }
+                                else
+                                {
+                                    <a href="/Admin/Restauran/ShowHideImage/@item.ImageId" class="badge-danger badge-pill">مخفی</a>
+                                }
+                            </td>
+                            <td>
+                                <span data-placement="top" data-toggle="tooltip" title="" data-original-title="حذف">
+                                    <a onclick="deleteGallery(@item.ImageId)" data-toggle="modal" data-target="#modalSave"><i class="btn fas fa-trash mr-2 text-danger"></i></a>
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+
+</div>
+
+
+@section Scripts{
+    <script src="~/admin/bootstrap/js/jquery.validate.min.js"></script>
+    <script src="~/admin/bootstrap/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/admin/bootstrap/js/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+
+        function deleteGallery(id) {
+            if (confirm('آیا از حذف عکس مورد نظر مظمئن هستین؟')) {
+                $.get("/Admin/Restauran/DeleteGallery/" + id, function (result) {
+                    if (result == "true") {
+                        $('#image_' + id).addClass('text-danger');
+                        $("#image_" + id).hide('slow');
+                    } else {
+                        alert(result);
+                    }
+                })
+            }
+        }
+
+    </script>
+}

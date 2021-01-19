@@ -1740,7 +1740,7 @@
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Scripts\" />
     <Folder Include="wwwroot\Images\Catagory\" />
-    <Folder Include="wwwroot\Images\Restaurant\" />
+    <Folder Include="wwwroot\Images\Restaurant\Gallery\" />
     <Folder Include="wwwroot\Images\Users\" />
   </ItemGroup>
 
