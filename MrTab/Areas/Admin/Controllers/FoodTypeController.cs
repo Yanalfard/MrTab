@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace MrTab.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class FoodController : Controller
+    public class FoodTypeController : Controller
     {
         private Core db = new Core();
         public async Task<IActionResult> Index(int id, string name = null)
@@ -24,56 +24,54 @@ namespace MrTab.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Create(int id)
         {
-            return await Task.FromResult(PartialView(new TblFood()
+            return await Task.FromResult(PartialView(new TblFoodType()
             {
                 RestaurantId = id
             }));
         }
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(TblFood food)
+        public async Task<IActionResult> CreateAsync(TblFoodType foodType)
         {
             if (ModelState.IsValid)
             {
-                db.Food.Add(food);
-                db.Food.Save();
-                //return await Task.FromResult(Redirect("/ADminIndex" + food.RestaurantId));
-
-                return await Task.FromResult(Redirect("/Admin/Food?id=" + food.RestaurantId));
+                db.FoodType.Add(foodType);
+                db.FoodType.Save();
+                return await Task.FromResult(Redirect("/Admin/FoodType?id=" + foodType.RestaurantId));
             }
-            return await Task.FromResult(PartialView(food));
+            return await Task.FromResult(PartialView(foodType));
         }
         public async Task<IActionResult> Edit(int id)
         {
-            return await Task.FromResult(PartialView(db.Food.GetById(id)));
+            return await Task.FromResult(PartialView(db.FoodType.GetById(id)));
         }
         [HttpPost]
-        public async Task<IActionResult> EditAsync(TblFood food)
+        public async Task<IActionResult> EditAsync(TblFoodType foodType)
         {
             if (ModelState.IsValid)
             {
-                TblFood editFood = db.Food.GetById(food.FoodId);
-                editFood.Name = food.Name;
-                db.Food.Update(editFood);
-                db.Food.Save();
-                return await Task.FromResult(Redirect("/Admin/Food?id=" + food.RestaurantId));
+                TblFoodType editFoodType = db.FoodType.GetById(foodType.FoodTypeId);
+                editFoodType.Name = foodType.Name;
+                db.FoodType.Update(editFoodType);
+                db.FoodType.Save();
+                return await Task.FromResult(Redirect("/Admin/FoodType?id=" + foodType.RestaurantId));
             }
-            return await Task.FromResult(PartialView(food));
+            return await Task.FromResult(PartialView(foodType));
         }
 
         public async Task<string> Delete(int id)
         {
-            TblFood selectedFoodById = db.Food.GetById(id);
-            bool delete = db.Food.Delete(selectedFoodById);
+            TblFoodType selectedFoodTypeById = db.FoodType.GetById(id);
+            bool delete = db.FoodType.Delete(selectedFoodTypeById);
             if (delete)
             {
-                db.Food.Save();
+                db.FoodType.Save();
                 return await Task.FromResult("true");
             }
             return await Task.FromResult("خطا در حذف   لطفا بررسی فرمایید");
         }
         public async Task<IActionResult> Search(string name = null)
         {
-            List<TblFood> list = db.Food.Get().ToList();
+            List<TblFoodType> list = db.FoodType.Get().ToList();
             if (name != null)
             {
                 list = list.Where(i => i.Name.Contains(name)).ToList();

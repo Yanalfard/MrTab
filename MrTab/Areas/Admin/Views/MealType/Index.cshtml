@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "  غذاهای رستوران  " + ViewData["Title"];
+    ViewData["Title"] = "  سبک غذاهای رستوران  " + ViewData["Title"];
 }
 
 <div class="card flex-div border-0 shadow">
@@ -11,7 +11,7 @@
                     <div class="form-input col-md-8">
                         <div class="form-inline">
                             <div class="form-group mx-sm-1 mb-2">
-                                <input class="form-control form-control-sm" id="namefood" name="name" type="text" value="@ViewBag.name" placeholder="نام">
+                                <input class="form-control form-control-sm" id="nameMealType" name="name" type="text" value="@ViewBag.name" placeholder="نام">
                             </div>
                         </div>
                     </div>
@@ -25,8 +25,8 @@
             </div>
         </div>
     </div>
-    <div id="listFood">
-        @await Component.InvokeAsync("FoodListInAdminVc", ViewBag.Id)
+    <div id="listMeal">
+        @await Component.InvokeAsync("MealTypeListInAdminVc", ViewBag.Id)
     </div>
 
     <div class="card-footer bg-white">
@@ -45,16 +45,16 @@
     <script>
 
         function search() {
-            var name = $('#namefood').val();
+            var name = $('#nameMealType').val();
             $.ajax({
-                url: "/Admin/Food/Search",
+                url: "/Admin/MealType/Search",
                 data: { name: name }
             }).done(function (result) {
-                $('#listFood').html(result);
+                $('#listMeal').html(result);
             })
         }
         function create(id) {
-            $.get("/Admin/Food/Create/"+id,
+            $.get("/Admin/MealType/Create/"+id,
                 function (result) {
                     $("#myModal").modal('show');
                     $("#myModalBody").html(result);
@@ -62,25 +62,24 @@
             );
         };
         function edit(id) {
-            $.get("/Admin/Food/Edit/" + id,
+            $.get("/Admin/MealType/Edit/" + id,
                 function (result) {
                     $("#myModal").modal('show');
                     $("#myModalBody").html(result);
                 }
             );
         };
-        function deleteFood(id) {
-            if (confirm('آیا از حذف غذای مورد نظر مظمئن هستین؟')) {
-                $.get("/Admin/Food/Delete/" + id, function (result) {
+        function deleteMealType(id) {
+            if (confirm('آیا از حذف  سبک غذای  رستوران مورد نظر مظمئن هستین؟')) {
+                $.get("/Admin/MealType/Delete/" + id, function (result) {
                     if (result == "true") {
-                        $('#food_' + id).addClass('text-danger');
-                        $("#food_" + id).hide('slow');
+                        $('#mealType_' + id).addClass('text-danger');
+                        $("#mealType_" + id).hide('slow');
                     } else {
                         alert(result);
                     }
                 })
             }
         }
-
     </script>
 }

@@ -16,9 +16,4 @@ namespace DataLayer.Metadata
         public int RestaurantId { get; set; }
     }
 
-    [MetadataType(typeof(MdFoodType))]
-    public class TblFoodType
-    {
-
-    }
 }

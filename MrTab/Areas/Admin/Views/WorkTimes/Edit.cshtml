@@ -1,0 +1,25 @@
+﻿@model TblWorkTime
+
+<form asp-action="Edit" asp-controller="WorkTimes" asp-area="Admin">
+    <div class="form-horizontal">
+        <input type="hidden" asp-for="WorkTimeId" />
+        <input type="hidden" asp-for="RestaurantId" />
+        <div class="form-group">
+            <label for="name">روز  </label>
+            <div class="form-group mx-sm-1 mb-2">
+                <input type="text" asp-for="Day" class="form-control form-control-sm" placeholder="روز" required />
+                <span class="text-danger" asp-validation-for="Day"></span>
+            </div>
+            <label for="name">ساعت</label>
+            <div class="form-group mx-sm-1 mb-2">
+                <input type="text" asp-for="Time" class="form-control form-control-sm" placeholder="ساعت" required />
+                <span class="text-danger" asp-validation-for="Time"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ویرایش" onclick="LoadingRun('#createCatagory')" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</form>

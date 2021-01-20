@@ -13,10 +13,6 @@ namespace MrTab.ViewComponents.Admin
         {
             VmChangePassword selectedId = new VmChangePassword();
             selectedId.Id = id;
-            //return PartialView(new VmChangePassword()
-            //{
-            //    Id = id,
-            //});
             return await Task.FromResult((IViewComponentResult)View("/Areas/Admin/Views/User/Components/ChangePasswordUser.cshtml", selectedId));
         }
     }
