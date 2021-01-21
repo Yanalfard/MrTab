@@ -1,0 +1,40 @@
+﻿@model LoginVm
+@{
+    ViewBag.Title = "ورود";
+    ViewBag.BodyClass = "entry-2";
+    Layout = "~/Views/Shared/_EntryLayout.cshtml";
+}
+
+<form asp-action="Login" asp-controller="Account" asp-area="">
+    @*@if (Context.Request.Query["ReturnUrl"] == "Active")*@
+    @if (Context.Request.Query["Active"].ToString() == "true")
+    {
+        <div class="form-group">
+            <p class="uk-text-danger">حساب کاربری شما فعال شد می توانید وارد حساب خود شوید</p>
+        </div>
+    }
+    <div class="form-group">
+        <label class="input-label" for="txtTel">شماره تلفن</label>
+        <input class="input" autocomplete="username" type="tel" asp-for="TellNo" placeholder="..." />
+        <span class="input-error" asp-validation-for="TellNo"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="input-label" for="txtPassword">رمز</label>
+        <input class="input" autocomplete="new-password" asp-for="Password" type="password" placeholder="..." />
+        <span class="input-error" asp-validation-for="Password"></span>
+    </div>
+
+    <div class="form-group">
+        <a href="/Account/ForgotPassword" class="anchor">
+            رمز عبور خود را فراموش کرده اید؟
+        </a>
+    </div>
+
+    <div class="button-panel">
+        <button class="btn btn-primary">ورود</button>
+        @*<a href="/Home/Profile" class="btn btn-primary">ورود</a>*@
+        <a href="/Account/Register" class="btn btn-secondary uk-margin-right">ثبت نام</a>
+    </div>
+
+</form>

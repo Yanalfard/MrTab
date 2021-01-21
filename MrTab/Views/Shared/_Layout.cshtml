@@ -54,12 +54,36 @@
         </nav>
 
         <div class="nav-header-left row uk-margin-auto-right">
-            <a href="/Entry/Register" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
-                ثبت نام
-            </a>
-            <a href="/Entry/Login" id="btnLogin" class="btn btn-round btn-darkglass margin-header-left hide-on-mobile">
-                ورود
-            </a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                @if (User.Claims.First().Value == "user")
+                {
+                    <a href="/Account/Register" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
+                       پنل کاربری
+                    </a>
+                }
+                else if (User.Claims.First().Value == "author")
+                {
+
+                }
+                else if (User.Claims.First().Value == "admin")
+                {
+
+                }
+                <a href="/Account/LogOut" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
+                    خروج
+                </a>
+            }
+            else
+            {
+                <a href="/Account/Register" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
+                    ثبت نام
+                </a>
+                <a href="/Account/Login" id="btnLogin" class="btn btn-round btn-darkglass margin-header-left hide-on-mobile">
+                    ورود
+                </a>
+            }
+
             <button id="btnLocation" uk-icon="location-outline"
                     class="btn btn-round btn-darkglass margin-header-left" type="button" uk-toggle="#Modal-Location">
                 تبریز

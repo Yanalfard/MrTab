@@ -1,30 +1,28 @@
-﻿
+﻿@model ActiveVm
 @{
     ViewBag.Title = "احراز هویت";
     ViewBag.BodyClass = "entry-3";
     Layout = "~/Views/Shared/_EntryLayout.cshtml";
 }
 
-    <form class="column">
+    <form class="column" asp-controller="Account" asp-action="Validation" asp-area="">
 
         <p class="column">
             کد احراز هویت شما به شماره
             <span class="uk-h3 uk-margin-small-top uk-margin-remove-bottom">
-                093555932930
+                @Model.Tell
             </span>
             فرستاده شد
         </p>
-
-        <a class="uk-margin-bottom" href="">شماره اشتباه است؟</a>
-
+        <input type="hidden"asp-for="Tell" name="Tell"  />
         <div class="form-group">
-            <label class="input-label" for="validation">کد احراز</label>
-            <input class="input" type="tel" name="validation" placeholder="..." />
-            <span class="input-error">این فیلد اشتباه وارد شده است</span>
+            <label class="input-label" for="id">کد احراز</label>
+            <input class="input" type="tel"asp-for="Id" name="Id" placeholder="..." />
+            <span class="input-error" asp-validation-for="Id"></span>
         </div>
 
         <div class="button-panel">
-            <button class="btn btn-primary">احراز</button>
+            <input type="submit" class="btn btn-primary" value="احراز" />
             <button class="btn btn-secondary uk-margin-right">بازگشت</button>
         </div>
 

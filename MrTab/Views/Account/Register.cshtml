@@ -1,0 +1,33 @@
+﻿@model DataLayer.ViewModel.RegisterVm 
+@{
+    ViewBag.Title = "ثبت نام";
+    ViewBag.BodyClass = "entry-1";
+    Layout = "~/Views/Shared/_EntryLayout.cshtml";
+}
+
+<form class="column" asp-action="Register" asp-controller="Account" asp-area="">
+
+    <div class="form-group">
+        <label class="input-label" for="txtTel">شماره تلفن</label>
+        <input class="input" autocomplete="username" type="tel" asp-for="TellNo" placeholder="..." />
+        <span class="input-error" asp-validation-for="TellNo"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="input-label" for="txtPassword">رمز</label>
+        <input class="input" autocomplete="new-password" asp-for="Password" type="password" placeholder="..." />
+        <span class="input-error" asp-validation-for="Password"></span>
+    </div>
+    <div class="form-group">
+        <label class="input-label" for="txtPassword">تکرار رمز</label>
+        <input class="input" autocomplete="new-password" asp-for="RePassword" type="password" placeholder="..." />
+        <span class="input-error" asp-validation-for="RePassword"></span>
+    </div>
+    <div class="button-panel">
+        <input type="submit" class="btn btn-primary" name="name" value="ثبت نام" />
+        @*<button class="btn btn-primary">ثبت نام</button>*@
+        <a href="/Account/Login" class="btn btn-secondary uk-margin-right">ورود</a>
+    </div>
+
+</form>
+
