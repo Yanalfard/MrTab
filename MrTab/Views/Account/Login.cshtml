@@ -6,25 +6,45 @@
 }
 
 <form asp-action="Login" asp-controller="Account" asp-area="">
-    @*@if (Context.Request.Query["ReturnUrl"] == "Active")*@
     @if (Context.Request.Query["Active"].ToString() == "true")
     {
         <div class="form-group">
             <p class="uk-text-danger">حساب کاربری شما فعال شد می توانید وارد حساب خود شوید</p>
         </div>
     }
+    @if (Context.Request.Query["ChangePassword"].ToString() == "true")
+    {
+        <div class="form-group">
+            <p class="uk-text-danger">رمز شما تغیر یافت می توانید وارد حساب خود شوید</p>
+        </div>
+    }
+
+    @if (ViewBag.IsSuccess != null)
+    {
+        <div class="uk-alert uk-alert-success">
+            <p class="help-block">ورود با موفقیت انجام شد</p>
+        </div>
+
+        <script>
+            var delay = 3000;
+            setTimeout(function () { window.location = "/"; }, delay);
+        </script>
+    }
     <div class="form-group">
         <label class="input-label" for="txtTel">شماره تلفن</label>
         <input class="input" autocomplete="username" type="tel" asp-for="TellNo" placeholder="..." />
         <span class="input-error" asp-validation-for="TellNo"></span>
     </div>
-
     <div class="form-group">
         <label class="input-label" for="txtPassword">رمز</label>
         <input class="input" autocomplete="new-password" asp-for="Password" type="password" placeholder="..." />
         <span class="input-error" asp-validation-for="Password"></span>
     </div>
-
+    <div class="form-group">
+        <label class="input-label" for="txtPassword">مرا بخاطر بسپار</label>
+        <input class="input" asp-for="RememberMe" type="checkbox" />
+        <span class="input-error" asp-validation-for="RememberMe"></span>
+    </div>
     <div class="form-group">
         <a href="/Account/ForgotPassword" class="anchor">
             رمز عبور خود را فراموش کرده اید؟
@@ -33,7 +53,6 @@
 
     <div class="button-panel">
         <button class="btn btn-primary">ورود</button>
-        @*<a href="/Home/Profile" class="btn btn-primary">ورود</a>*@
         <a href="/Account/Register" class="btn btn-secondary uk-margin-right">ثبت نام</a>
     </div>
 

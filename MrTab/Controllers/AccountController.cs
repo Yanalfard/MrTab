@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using DataLayer.Models;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using MrTab.Utilities;
+using Newtonsoft.Json;
 using Services.Security;
 using Services.Services;
 
@@ -17,6 +19,43 @@ namespace MrTab.Controllers
     public class AccountController : Controller
     {
         private Core db = new Core();
+
+        private async Task<bool> IsCaptchaValid(string response)
+        {
+            try
+            {
+                //Localhost
+                var secret = "6LfeB-IZAAAAAFJGzrD4-Vz9B4GPnjaps0gjQwFq";
+                //Site
+                //var secret = "6LfeB-IZAAAAAFJGzrD4-Vz9B4GPnjaps0gjQwFq";
+                using (var client = new HttpClient())
+                {
+
+                    var values = new Dictionary<string, string>
+                    {
+                        {"secret", secret},
+                        {"response", response},
+                        //{"remoteip", Request.UserHostAddress}
+                    };
+
+                    var content = new FormUrlEncodedContent(values);
+                    var verify = await client.PostAsync("https://www.google.com/recaptcha/api/siteverify", content);
+
+                    //return verify.IsSuccessStatusCode;
+
+                    var captchaResponseJson = await verify.Content.ReadAsStringAsync();
+                    var captchaResult = JsonConvert.DeserializeObject<CaptchaResponseViewModel>(captchaResponseJson);
+                    return captchaResult.Success
+                           && captchaResult.Action == "contact_us"
+                           && captchaResult.Score > 0.5;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
         public async Task<IActionResult> Login()
         {
             return await Task.FromResult(View());
@@ -32,8 +71,23 @@ namespace MrTab.Controllers
                     TblUser user = db.User.Get().FirstOrDefault(i => i.TellNo == login.TellNo);
                     if (user.IsActive)
                     {
-                        await SignInAsync(user);
-                        return Redirect("/");
+                        var claims = new List<Claim>()
+                    {
+                        new Claim(ClaimTypes.NameIdentifier,user.UserId.ToString()),
+                        new Claim(ClaimTypes.Name,user.TellNo),
+                        new Claim("RoleId",db.Role.GetById(user.RoleId).Name.Trim()),
+                    };
+                        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                        var principal = new ClaimsPrincipal(identity);
+
+                        var properties = new AuthenticationProperties
+                        {
+                            IsPersistent = login.RememberMe
+                        };
+                        HttpContext.SignInAsync(principal, properties);
+
+                        ViewBag.IsSuccess = true;
+                        return View();
                     }
                     else
                     {
@@ -48,28 +102,28 @@ namespace MrTab.Controllers
             return await Task.FromResult(View(login));
         }
 
-        private async Task SignInAsync(TblUser tblUser)
-        {
-            var UserClaim = GetClaims(tblUser);
+        //private async Task SignInAsync(TblUser tblUser)
+        //{
+        //    var UserClaim = GetClaims(tblUser);
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                                          new ClaimsPrincipal(UserClaim),
-                                          new AuthenticationProperties
-                                          {
-                                              AllowRefresh = true,
-                                              IsPersistent = true,
-                                              ExpiresUtc = DateTime.Now.AddDays(30)
-                                          });
-        }
+        //    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+        //                                  new ClaimsPrincipal(UserClaim),
+        //                                  new AuthenticationProperties
+        //                                  {
+        //                                      AllowRefresh = true,
+        //                                      IsPersistent = true,
+        //                                      ExpiresUtc = DateTime.Now.AddDays(30)
+        //                                  });
+        //}
 
-        private ClaimsIdentity GetClaims(TblUser tblUser)
-        {
-            return new ClaimsIdentity(new List<Claim>
-                    {
-                        new Claim("RoleId",db.Role.GetById(tblUser.RoleId).Name.Trim()),
-                        new Claim("TellNo",tblUser.TellNo),
-                    }, CookieAuthenticationDefaults.AuthenticationScheme);
-        }
+        //private ClaimsIdentity GetClaims(TblUser tblUser)
+        //{
+        //    return new ClaimsIdentity(new List<Claim>
+        //            {
+        //                new Claim("RoleId",db.Role.GetById(tblUser.RoleId).Name.Trim()),
+        //                new Claim("TellNo",tblUser.TellNo),
+        //            }, CookieAuthenticationDefaults.AuthenticationScheme);
+        //}
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -123,7 +177,7 @@ namespace MrTab.Controllers
                 if (db.User.Get().Any(i => i.TellNo == active.Tell))
                 {
                     TblUser selectedUser = db.User.Get().FirstOrDefault(i => i.TellNo == active.Tell);
-                    if (selectedUser.Auth == active.Id)
+                    if (selectedUser.Auth == active.Auth)
                     {
                         selectedUser.IsActive = true;
                         var CodeCreator = Guid.NewGuid().ToString();
@@ -134,7 +188,7 @@ namespace MrTab.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("id", "کد فعال سازی اشتباه است");
+                        ModelState.AddModelError("Auth", "کد فعال سازی اشتباه است");
                     }
                 }
                 else
@@ -163,7 +217,7 @@ namespace MrTab.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("id", "شماره تلفن یافت نشد");
+                    ModelState.AddModelError("TellNo", "شماره تلفن یافت نشد");
                 }
             }
             return await Task.FromResult(View(forget));
@@ -184,18 +238,18 @@ namespace MrTab.Controllers
                 if (db.User.Get().Any(i => i.TellNo == active.Tell))
                 {
                     TblUser selectedUser = db.User.Get().FirstOrDefault(i => i.TellNo == active.Tell);
-                    if (selectedUser.Auth == active.Id)
+                    if (selectedUser.Auth == active.Auth)
                     {
                         return await Task.FromResult(Redirect("/Account/ChangePassword?tellNo=" + selectedUser.TellNo + "&&auth=" + selectedUser.Auth));
                     }
                     else
                     {
-                        ModelState.AddModelError("id", "کد فعال سازی اشتباه است");
+                        ModelState.AddModelError("Auth", "کد تغیر رمز  اشتباه است");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("id", "شماره تلفن یافت نشد");
+                    ModelState.AddModelError("Auth", "شماره تلفن یافت نشد");
                 }
             }
             return await Task.FromResult(View(active));
@@ -205,7 +259,7 @@ namespace MrTab.Controllers
             return await Task.FromResult(View(new ChangePasswordVm()
             {
                 Tell = tellNo,
-                Id = auth
+                Auth = auth
             }));
         }
         [HttpPost]
@@ -213,12 +267,16 @@ namespace MrTab.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (db.User.Get().Any(i => i.TellNo == change.Tell && i.Auth==change.Id))
+                if (db.User.Get().Any(i => i.TellNo == change.Tell && i.Auth == change.Auth))
                 {
                     TblUser selectedUser = db.User.Get().FirstOrDefault(i => i.TellNo == change.Tell);
                     selectedUser.Password = PasswordHelper.EncodePasswordMd5(change.Password);
+                    var CodeCreator = Guid.NewGuid().ToString();
+                    string Code = CodeCreator.Substring(CodeCreator.Length - 5);
+                    selectedUser.Auth = Code;
                     db.User.Update(selectedUser);
                     db.User.Save();
+                    return await Task.FromResult(Redirect("/Account/Login?ChangePassword=true"));
                 }
                 else
                 {

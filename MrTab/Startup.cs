@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +25,23 @@ namespace MrTab
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+
+            #region Authentication
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+            }).AddCookie(options =>
+            {
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(43200);
+
+            });
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,13 +54,9 @@ namespace MrTab
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
             app.UseStaticFiles();
-
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
             app.UseAuthentication();
 

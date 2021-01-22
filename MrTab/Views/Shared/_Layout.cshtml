@@ -59,17 +59,22 @@
                 @if (User.Claims.First().Value == "user")
                 {
                     <a href="/Account/Register" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
-                       پنل کاربری
+                        پنل کاربری
                     </a>
                 }
                 else if (User.Claims.First().Value == "author")
                 {
-
+                    <a href="/Account/Register" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
+                        پنل نویسنده
+                    </a>
                 }
                 else if (User.Claims.First().Value == "admin")
                 {
-
+                    <a href="/Account/Register" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
+                        پنل مدیریت
+                    </a>
                 }
+                @User.Identity.Name
                 <a href="/Account/LogOut" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
                     خروج
                 </a>
@@ -271,6 +276,23 @@
     <div class="space-nav-bottom uk-margin-top"></div>
     <partial name="/Views/Shared/_MobileNav.cshtml">
 
+
+
+        <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF&&hl=fa"></script>
+
+        <script>
+            grecaptcha.ready(function () {
+                grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
+                    $('.GoogleCapcha').val(token);
+                });
+            });
+            function reloadRech() {
+                grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
+                    //document.getElementById("GoogleCapcha").value = token;
+                    $('.GoogleCapcha').val(token);
+                });
+            }
+        </script>
         <!-- PWA -->
         @*<script src="~/app.js"></script>*@
 
@@ -282,6 +304,7 @@
         @*<script src="~/js/ImageLoadFailed.js"></script>*@
         <script src="~/js/CopyText.js"></script>
         <!--Page Dependant Js-->
+
         @RenderSection("Scripts", false)
 
 </body>

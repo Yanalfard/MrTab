@@ -10,7 +10,7 @@ namespace DataLayer.ViewModel
         [Display(Name = "کد فعال سازی  ")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(5)]
-        public string Id { get; set; }
+        public string Auth { get; set; }
         public string Tell { get; set; }
     }
 
