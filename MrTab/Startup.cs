@@ -1,3 +1,5 @@
+using GoogleReCaptcha.V3;
+using GoogleReCaptcha.V3.Interface;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,7 +28,7 @@ namespace MrTab
         {
             services.AddControllersWithViews();
 
-
+            services.AddHttpClient<ICaptchaValidator, GoogleReCaptchaValidator>();
             #region Authentication
             services.AddAuthentication(options =>
             {

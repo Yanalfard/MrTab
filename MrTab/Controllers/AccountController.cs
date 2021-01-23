@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using DataLayer.Models;
 using DataLayer.ViewModel;
+using GoogleReCaptcha.V3.Interface;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -20,42 +21,13 @@ namespace MrTab.Controllers
     {
         private Core db = new Core();
 
-        private async Task<bool> IsCaptchaValid(string response)
+        private readonly ICaptchaValidator _captchaValidator;
+
+        public AccountController(ICaptchaValidator captchaValidator)
         {
-            try
-            {
-                //Localhost
-                var secret = "6LfeB-IZAAAAAFJGzrD4-Vz9B4GPnjaps0gjQwFq";
-                //Site
-                //var secret = "6LfeB-IZAAAAAFJGzrD4-Vz9B4GPnjaps0gjQwFq";
-                using (var client = new HttpClient())
-                {
-
-                    var values = new Dictionary<string, string>
-                    {
-                        {"secret", secret},
-                        {"response", response},
-                        //{"remoteip", Request.UserHostAddress}
-                    };
-
-                    var content = new FormUrlEncodedContent(values);
-                    var verify = await client.PostAsync("https://www.google.com/recaptcha/api/siteverify", content);
-
-                    //return verify.IsSuccessStatusCode;
-
-                    var captchaResponseJson = await verify.Content.ReadAsStringAsync();
-                    var captchaResult = JsonConvert.DeserializeObject<CaptchaResponseViewModel>(captchaResponseJson);
-                    return captchaResult.Success
-                           && captchaResult.Action == "contact_us"
-                           && captchaResult.Score > 0.5;
-                }
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-
+            _captchaValidator = captchaValidator;
         }
+
         public async Task<IActionResult> Login()
         {
             return await Task.FromResult(View());
@@ -64,6 +36,12 @@ namespace MrTab.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginAsync(LoginVm login,string ReturnUrl = "/")
         {
+            if (!await _captchaValidator.IsCaptchaPassedAsync(login.Captcha))
+            {
+                ModelState.AddModelError("TellNo", "ورود غیر مجاز");
+                return View(login);
+            }
+
             if (ModelState.IsValid)
             {
                 string password = PasswordHelper.EncodePasswordMd5(login.Password);
@@ -87,7 +65,7 @@ namespace MrTab.Controllers
                         };
                         await HttpContext.SignInAsync(principal, properties);
                         ViewBag.IsSuccess = true;
-                        return Redirect(ReturnUrl);
+                        return View();
                     }
                     else
                     {
@@ -102,28 +80,7 @@ namespace MrTab.Controllers
             return await Task.FromResult(View(login));
         }
 
-        //private async Task SignInAsync(TblUser tblUser)
-        //{
-        //    var UserClaim = GetClaims(tblUser);
-
-        //    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-        //                                  new ClaimsPrincipal(UserClaim),
-        //                                  new AuthenticationProperties
-        //                                  {
-        //                                      AllowRefresh = true,
-        //                                      IsPersistent = true,
-        //                                      ExpiresUtc = DateTime.Now.AddDays(30)
-        //                                  });
-        //}
-
-        //private ClaimsIdentity GetClaims(TblUser tblUser)
-        //{
-        //    return new ClaimsIdentity(new List<Claim>
-        //            {
-        //                new Claim("RoleId",db.Role.GetById(tblUser.RoleId).Name.Trim()),
-        //                new Claim("TellNo",tblUser.TellNo),
-        //            }, CookieAuthenticationDefaults.AuthenticationScheme);
-        //}
+       
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -136,6 +93,11 @@ namespace MrTab.Controllers
         [HttpPost]
         public async Task<IActionResult> RegisterAsync(RegisterVm register)
         {
+            if (!await _captchaValidator.IsCaptchaPassedAsync(register.Captcha))
+            {
+                ModelState.AddModelError("TellNo", "ورود غیر مجاز");
+                return View(register);
+            }
             if (ModelState.IsValid)
             {
                 if (!db.User.Get().Any(i => i.TellNo == register.TellNo))

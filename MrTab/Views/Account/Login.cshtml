@@ -4,8 +4,13 @@
     ViewBag.BodyClass = "entry-2";
     Layout = "~/Views/Shared/_EntryLayout.cshtml";
 }
-
+@section Scripts
+{
+    <partial name="_CaptchaScripts" />
+}
 <form asp-action="Login" asp-controller="Account" asp-area="">
+
+    <partial name="_CaptchaInput" />
     @if (Context.Request.Query["Active"].ToString() == "true")
     {
         <div class="form-group">

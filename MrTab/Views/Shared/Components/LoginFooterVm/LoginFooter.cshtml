@@ -1,0 +1,15 @@
+﻿@model LoginVm
+
+    <h3>ورود به سایت</h3>
+    <form class="column" asp-action="Login" asp-controller="Account" asp-area="">
+        <input dir="rtl" autocomplete="username" type="tel" asp-for="TellNo" class="input-darkglass input-fade btn-round uk-margin-bottom"
+               placeholder="شماره تلفن" aria-label="شماره تلفن" />
+        <span class="input-error uk-text-danger" asp-validation-for="TellNo"></span>
+        <input dir="rtl" autocomplete="current-password" class="input-darkglass input-fade btn-round uk-margin-bottom"
+               type="password" placeholder="گذرواژه" asp-for="Password" aria-label="گذرواژه" />
+        <span class="input-error uk-text-danger" asp-validation-for="Password"></span>
+
+        <button class="btn btn-primary btn-primary-lowglow btn-round uk-margin-auto-left">
+            ورود
+        </button>
+    </form>

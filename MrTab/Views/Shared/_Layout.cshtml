@@ -24,7 +24,7 @@
     <link href="~/css/Controls.min.css" rel="stylesheet" />
 
 
-   
+
 
     @RenderSection("Styles")
 
@@ -154,16 +154,10 @@
         <ul class="footer-body">
             <li>
                 <div class="footer-body-login column">
-                    <h3>ورود به سایت</h3>
-                    <form class="column">
-                        <input dir="rtl" autocomplete="username" class="input-darkglass input-fade btn-round uk-margin-bottom"
-                               type="tel" placeholder="شماره تلفن" aria-label="شماره تلفن" />
-                        <input dir="rtl" autocomplete="current-password" class="input-darkglass input-fade btn-round uk-margin-bottom"
-                               type="password" placeholder="گذرواژه" aria-label="گذرواژه" />
-                        <button class="btn btn-primary btn-primary-lowglow btn-round uk-margin-auto-left">
-                            ورود
-                        </button>
-                    </form>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        @await Component.InvokeAsync("LoginFooterVm")
+                    }
                 </div>
             </li>
             <li>
@@ -240,30 +234,31 @@
                 </div>
                 <div class="even-taglist column uk-margin-small-top">
                     <ul class="tag-grid uk-padding-remove">
-                        <li>
-                            <button class="even-tag">تبریز</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">تهران</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">مراغه</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">زنچان</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">قزوین</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">ارومیه</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">سراب</button>
-                        </li>
-                        <li>
-                            <button class="even-tag">بناب</button>
-                        </li>
+                        @await Component.InvokeAsync("CityVm")
+                        @*<li>
+                                <button class="even-tag">تبریز</button>
+                            </li>
+                            <li>
+                                <button class="even-tag">تهران</button>
+                            </li>
+                            <li>
+                                <button class="even-tag">مراغه</button>
+                            </li>
+                            <li>
+                                <button class="even-tag">زنچان</button>
+                            </li>
+                            <li>
+                                <button class="even-tag">قزوین</button>
+                            </li>
+                            <li>
+                                <button class="even-tag">ارومیه</button>
+                            </li>
+                            <li>
+                                <button class="even-tag">سراب</button>
+                            </li>
+                            <li>
+                                <button class="even-tag">بناب</button>
+                            </li>*@
                     </ul>
                 </div>
                 <div class="button-panel uk-margin-top uk-margin-auto">
@@ -277,24 +272,6 @@
 
     <div class="space-nav-bottom uk-margin-top"></div>
     <partial name="/Views/Shared/_MobileNav.cshtml">
-
-
-
-        @*<script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF&&hl=fa"></script>
-
-            <script>
-                grecaptcha.ready(function () {
-                    grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
-                        $('.GoogleCapcha').val(token);
-                    });
-                });
-                function reloadRech() {
-                    grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
-                        //document.getElementById("GoogleCapcha").value = token;
-                        $('.GoogleCapcha').val(token);
-                    });
-                }
-            </script>*@
         <!-- PWA -->
         @*<script src="~/app.js"></script>*@
 

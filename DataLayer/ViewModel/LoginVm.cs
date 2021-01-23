@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataLayer.ViewModel
 {
-    public class LoginVm
+    public class LoginVm : CaptchaViewModel
     {
         public int id { get; set; }
         [Display(Name = "مرا بخاطر بسپار")]

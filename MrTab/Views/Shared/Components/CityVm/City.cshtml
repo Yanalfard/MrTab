@@ -1,0 +1,9 @@
+﻿@model IEnumerable<TblCity>
+
+
+@foreach (var item in Model)
+{
+    <li>
+        <button class="even-tag">@item.Name</button>
+    </li>
+}

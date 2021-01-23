@@ -1,11 +1,15 @@
-﻿@model DataLayer.ViewModel.RegisterVm 
+﻿@model DataLayer.ViewModel.RegisterVm
 @{
     ViewBag.Title = "ثبت نام";
     ViewBag.BodyClass = "entry-1";
     Layout = "~/Views/Shared/_EntryLayout.cshtml";
 }
-
+@section Scripts
+{
+    <partial name="_CaptchaScripts" />
+}
 <form class="column" asp-action="Register" asp-controller="Account" asp-area="">
+    <partial name="_CaptchaInput" />
 
     <div class="form-group">
         <label class="input-label" for="txtTel">شماره تلفن</label>
