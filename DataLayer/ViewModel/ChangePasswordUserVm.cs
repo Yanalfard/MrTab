@@ -5,11 +5,8 @@ using System.Text;
 
 namespace DataLayer.ViewModel
 {
-    public class ChangePasswordVm
+    public class ChangePasswordUserVm
     {
-        public int Id { get; set; }
-        public string Auth { get; set; }
-        public string Tell { get; set; }
         [Display(Name = "کد واژه")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MinLength(4, ErrorMessage = "تعداد کاراکتر کم است")]

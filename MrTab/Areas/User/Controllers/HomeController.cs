@@ -8,12 +8,14 @@ using MrTab.Utilities;
 namespace MrTab.Areas.User.Controllers
 {
     [Area("User")]
-    [WebAuthorize("user")]
+    [PermissionChecker("user")]
     public class HomeController : Controller
     {
         public IActionResult Index()
         {
+            ViewBag.UserId= Convert.ToInt32(User.Claims.First().Value);
             return View();
         }
+        
     }
 }

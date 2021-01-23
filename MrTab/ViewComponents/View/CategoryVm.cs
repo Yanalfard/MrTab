@@ -12,8 +12,7 @@ namespace MrTab.ViewComponents.View
         private Core db = new Core();
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return await Task.FromResult((IViewComponentResult)View("/View/Shared/Components/CategoryVm/CategoryVm.cshtml", db.Catagory.Get()));
-            //return await Task.FromResult((IViewComponentResult)View("CategoryVm.cshtml", db.Catagory.Get()));
+            return await Task.FromResult((IViewComponentResult)View("/Views/Home/Components/CategoryVm/Category.cshtml", db.Catagory.Get()));
         }
     }
 }

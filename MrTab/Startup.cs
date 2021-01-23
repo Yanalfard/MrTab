@@ -33,13 +33,11 @@ namespace MrTab
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-
             }).AddCookie(options =>
             {
                 options.LoginPath = "/Account/Login";
                 options.LogoutPath = "/Account/Logout";
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(43200);
-
             });
             #endregion
         }
@@ -55,10 +53,10 @@ namespace MrTab
                 app.UseHsts();
             }
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
-            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
@@ -66,7 +64,6 @@ namespace MrTab
                 name: "Areas",
                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
              );
-
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

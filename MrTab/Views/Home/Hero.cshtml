@@ -31,43 +31,8 @@
                  uk-slider="autoplay:true;autoplay-interval: 2000">
                 <ul class="uk-slider-items uk-child-width-1-4-at-s uk-child-width-1-4-at-m uk-child-width-1-5-at-l">
 
-                    @*@await Component.InvokeAsync("CategoryVm")*@
-                    <li>
-                        <a href="/Home/CategoryView">
-                            <img src="~/resources/svg/Category/chickenleg.svg" width="28" height="28" alt="" />
-                        </a>
-                        <span>سوخاری</span>
-                    </li>
-                    <li>
-                        <a href="/Home/CategoryView">
-                            <img src="~/resources/svg/Category/frenchfries.svg" width="28" height="28" alt="" />
-                        </a>
-                        <span>سیب زمینی</span>
-                    </li>
-                    <li>
-                        <a href="/Home/CategoryView">
-                            <img src="~/resources/svg/Category/hotdog.svg" width="28" height="28" alt="" />
-                        </a>
-                        <span>هات داگ</span>
-                    </li>
-                    <li>
-                        <a href="/Home/CategoryView">
-                            <img src="~/resources/svg/Category/noodles.svg" width="28" height="28" alt="" />
-                        </a>
-                        <span>اسپاگتی</span>
-                    </li>
-                    <li>
-                        <a href="/Home/CategoryView">
-                            <img src="~/resources/svg/Category/pizza.svg" width="28" height="28" alt="" />
-                        </a>
-                        <span>پیتزا</span>
-                    </li>
-                    <li>
-                        <a href="/Home/CategoryView">
-                            <img src="~/resources/svg/Category/burger.svg" width="28" height="28" alt="" />
-                        </a>
-                        <span>همبرگر</span>
-                    </li>
+                    @await Component.InvokeAsync("CategoryVm")
+                  
                 </ul>
 
                 <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>

@@ -60,8 +60,9 @@ namespace MrTab.Controllers
         {
             return await Task.FromResult(View());
         }
+
         [HttpPost]
-        public async Task<IActionResult> LoginAsync(LoginVm login)
+        public async Task<IActionResult> LoginAsync(LoginVm login,string ReturnUrl = "/")
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +76,7 @@ namespace MrTab.Controllers
                     {
                         new Claim(ClaimTypes.NameIdentifier,user.UserId.ToString()),
                         new Claim(ClaimTypes.Name,user.TellNo),
-                        new Claim("RoleId",db.Role.GetById(user.RoleId).Name.Trim()),
+                        new Claim(ClaimTypes.Role,db.Role.GetById(user.RoleId).Name.Trim()),
                     };
                         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         var principal = new ClaimsPrincipal(identity);
@@ -84,10 +85,9 @@ namespace MrTab.Controllers
                         {
                             IsPersistent = login.RememberMe
                         };
-                        HttpContext.SignInAsync(principal, properties);
-
+                        await HttpContext.SignInAsync(principal, properties);
                         ViewBag.IsSuccess = true;
-                        return View();
+                        return Redirect(ReturnUrl);
                     }
                     else
                     {

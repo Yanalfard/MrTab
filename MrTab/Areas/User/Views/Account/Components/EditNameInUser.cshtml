@@ -1,0 +1,28 @@
+﻿@model EditNameUserVm
+
+
+<form class="column" asp-action="EditName" asp-controller="Account" asp-area="User"
+      data-ajax="true"
+      data-ajax-method="POST"
+      data-ajax-mode="replace"
+      data-ajax-complete="completeChangePassword()"
+      data-ajax-update="#ajaxresult">
+    <h2 class="uk-h4 uk-margin-auto-left">تغییر نام</h2>
+    <div class="hideCompleChange">
+
+    </div>
+    <span class="uk-modal-close" uk-close></span>
+    <div class="form-group">
+        <label class="input-label" for="txtName">نام جدید</label>
+        <input class="input" asp-for="Name" type="text" placeholder="..." />
+        <span class="input-error" asp-validation-for="Name"></span>
+    </div>
+    <div class="button-panel uk-margin-top uk-margin-auto">
+        <input type="submit" class="btn btn-round btn-primary" value="ویرایش" />
+        <div class="btn btn-round btn-secondary uk-margin-small-right uk-modal-close">بازگشت</div>
+    </div>
+
+
+</form>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.js"></script>

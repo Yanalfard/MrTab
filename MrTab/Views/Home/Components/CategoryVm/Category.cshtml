@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TblCatagory>
+@foreach (var item in Model)
+{
+    <li>
+        <a href="/Home/CategoryView">
+            <img src="~/Images/Catagory/@item.ImageUrl" width="28" height="28" alt="" />
+        </a>
+        <span>@item.Name</span>
+    </li>
+}
+
+@*<li>
+    <a href="/Home/CategoryView">
+        <img src="~/resources/svg/Category/chickenleg.svg" width="28" height="28" alt="" />
+    </a>
+    <span>سوخاری</span>
+</li>
+<li>
+    <a href="/Home/CategoryView">
+        <img src="~/resources/svg/Category/frenchfries.svg" width="28" height="28" alt="" />
+    </a>
+    <span>سیب زمینی</span>
+</li>
+<li>
+    <a href="/Home/CategoryView">
+        <img src="~/resources/svg/Category/hotdog.svg" width="28" height="28" alt="" />
+    </a>
+    <span>هات داگ</span>
+</li>
+<li>
+    <a href="/Home/CategoryView">
+        <img src="~/resources/svg/Category/noodles.svg" width="28" height="28" alt="" />
+    </a>
+    <span>اسپاگتی</span>
+</li>
+<li>
+    <a href="/Home/CategoryView">
+        <img src="~/resources/svg/Category/pizza.svg" width="28" height="28" alt="" />
+    </a>
+    <span>پیتزا</span>
+</li>
+<li>
+    <a href="/Home/CategoryView">
+        <img src="~/resources/svg/Category/burger.svg" width="28" height="28" alt="" />
+    </a>
+    <span>همبرگر</span>
+</li>*@

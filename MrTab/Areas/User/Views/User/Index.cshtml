@@ -22,8 +22,8 @@
                     <span uk-icon="crop"></span>
                 </button>
                 @*<button class="button-icon uk-margin-auto-left" onclick="window.history.back()">
-                                <span uk-icon="close"></span>
-                    </button>*@
+                    <span uk-icon="close"></span>
+        </button>*@
                 <button class="button-icon uk-margin-auto-left uk-modal-close">
                     <span uk-icon="close"></span>
                 </button>
@@ -37,24 +37,7 @@
 
 <div id="Modal-ChangePass" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
-        <form class="column">
-            <h2 class="uk-h4 uk-margin-auto-left">تغییر گذرواژه</h2>
-            <span class="uk-modal-close" uk-close></span>
-            <div class="form-group">
-                <label for="txtPass" class="uk-margin-small-bottom" dir="rtl">گذرواژه جدید</label>
-                <input type="password" class="form-group-bg" dir="rtl" name="txtPass" />
-                <span class="input-error">این فیلد اشتباه وارد شده است</span>
-            </div>
-            <div class="form-group">
-                <label for="txtRePass" class="uk-margin-small-bottom" dir="rtl">بازنویس گذرواژه</label>
-                <input type="password" class="form-group-bg" dir="rtl" name="txtRePass" />
-                <span class="input-error">این فیلد اشتباه وارد شده است</span>
-            </div>
-            <div class="button-panel uk-margin-top uk-margin-auto">
-                <div class="btn btn-round btn-primary">ویرایش</div>
-                <div class="btn btn-round btn-secondary uk-margin-small-right uk-modal-close">بازگشت</div>
-            </div>
-        </form>
+       
     </div>
 </div>
 
@@ -115,20 +98,19 @@
             <div class="mat uk-box-shadow-large">
                 <ul class="column uk-list">
                     <li>
-                        <a href="#Modal-ChangePass" uk-toggle class="uk-text-default">
+                        @*<a href="#Modal-ChangePass" uk-toggle class="uk-text-default">
+                                تغییر رمز
+                            </a>*@
+                        <a href="#" onclick="changePassword()" class="uk-text-default">
                             تغییر رمز
                         </a>
                     </li>
                     <li>
-                        <a href="#Modal-ChangeName" uk-toggle class="uk-text-default">
+                        <a href="#" onclick="editName()" class="uk-text-default">
                             تغییر نام
                         </a>
                     </li>
-                    <li>
-                        <a href="#Modal-ChangeTel" uk-toggle class="uk-text-default">
-                            تغییر شماره تلفن
-                        </a>
-                    </li>
+
                     <li>
                         <a href="/Home/ToRestaurant" class="uk-text-default">
                             تبدیل حساب به رستوران
@@ -141,34 +123,8 @@
             </div>
         </div>
 
-        <div class="alternate">
-            <div class="profile-image">
-                <img src="~/resources/jpg/Coffee.jpg" width="150" height="150" alt="عکس پروفایل" />
-                <button id="btnUploadImage" uk-tooltip="آپلود عکس" uk-toggle="#Croppie"
-                        class="btn-icon" aria-label="آپلود عکس پروفایل">
-                    <span uk-icon="image"></span>
-                </button>
-            </div>
-
-            <div class="column uk-margin-right">
-                <div class="data-group" name="dName">
-                    <label class="data-label">نام و نام خانوادگی</label>
-                    <div class="uk-inline">
-                        <button class="btn-icon uk-margin-small-right" uk-toggle="#Modal-ChangeName" type="button" aria-label="ویرایش نام"
-                                uk-icon="create-outline"></button>
-                        <text class="data-value">صدرا محمدی</text>
-                    </div>
-                </div>
-
-                <div class="data-group" name="dTel">
-                    <label class="data-label">شماره تلفن</label>
-                    <div class="uk-inline">
-                        <button class="btn-icon uk-margin-small-right" uk-toggle="#Modal-ChangeTel" type="button" aria-label="ویرایش شماره تلفن"
-                                uk-icon="create-outline"></button>
-                        <text class="data-value">0935 593 29 30</text>
-                    </div>
-                </div>
-            </div>
+        <div class="alternate" id="alternate">
+            @await Component.InvokeAsync("InformationInUserVc", Convert.ToInt32(ViewBag.Id))
         </div>
     </div>
 
@@ -192,7 +148,45 @@
 
 <div class="space"></div>
 
+
+
+
+<div id="Modal-User" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body" id="Modal-Body">
+
+    </div>
+</div>
+
 @section Scripts{
+   
+
+    <script>
+        function completeChangePassword() {
+            $(".hideCompleChange").html('<div class="uk-alert uk-alert-success"><p class="help-block">تغیرات با موفقیت انجام شد</p></div>');
+            $.get('/User/Account/Information', function (result) {
+                $('#nameUser').html(result);
+            });
+            var delay = 3000;
+            setTimeout(function () { UIkit.modal(document.getElementById('Modal-User')).hide(); }, delay);
+        }
+        function changePassword() {
+            $.get("/User/Account/ChangePassword/",
+                function (result) {
+                    UIkit.modal(document.getElementById('Modal-User')).show();
+                    $("#Modal-Body").html(result);
+                }
+            );
+        }
+        function editName() {
+            $.get("/User/Account/EditName/",
+                function (result) {
+                    UIkit.modal(document.getElementById('Modal-User')).show();
+                    $("#Modal-Body").html(result);
+                }
+            );
+        }
+    </script>
+
 
     <script name="Upload Image">
         const opt = {
