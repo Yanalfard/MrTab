@@ -17,11 +17,21 @@
                 }
             </td>
             <td>
+                @if (item.IconUrl != null)
+                {
+                    <img src="/Images/Catagory/Icon/@item.IconUrl" alt=" @item.Name" style="max-width:100px;" />
+                }
+                else
+                {
+                    <img src="/Images/NoImage.svg" alt="@item.Name" style="max-width:100px;" />
+                }
+            </td>
+            <td>
                 @item.Name
             </td>
             <td>
                 <span data-placement="top" data-toggle="tooltip" title="" data-original-title="ویرایش">
-                    <a onclick="edit(@item.CatagoryId)" ><i class="btn fas fa-edit mr-2 text-primary"></i></a>
+                    <a onclick="edit(@item.CatagoryId)"><i class="btn fas fa-edit mr-2 text-primary"></i></a>
                 </span>
                 <span data-placement="top" data-toggle="tooltip" title="" data-original-title="حذف">
                     <a onclick="deleteCat(@item.CatagoryId)" data-toggle="modal" data-target="#modalSave"><i class="btn fas fa-trash mr-2 text-danger"></i></a>

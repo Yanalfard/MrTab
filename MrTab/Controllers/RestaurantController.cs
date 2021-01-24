@@ -5,8 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataLayer.Models;
 using DataLayer.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MrTab.Utilities;
 using Services.Services;
 
 namespace MrTab.Controllers
@@ -14,6 +16,13 @@ namespace MrTab.Controllers
     public class RestaurantController : Controller
     {
         private Core db = new Core();
+
+        TblUser SelectUser()
+        {
+            int userId = Convert.ToInt32(User.Claims.First().Value);
+            TblUser selectUser = db.User.GetById(userId);
+            return selectUser;
+        }
         [Route("ViewSingle/{id}/{name}")]
         public IActionResult ViewSingle(int id, string name)
         {
@@ -42,6 +51,7 @@ namespace MrTab.Controllers
                 TblImage addImage = new TblImage();
                 addImage.RestaurantId = uploadImage.id;
                 addImage.Url = uploadImage.Image;
+                addImage.Status = 2;
                 db.Image.Add(addImage);
                 db.User.Save();
                 return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/" + select.Name.Replace(" ", "-")));
@@ -60,6 +70,52 @@ namespace MrTab.Controllers
             TblRestaurant select = db.Restaurant.GetById(report.RestaurantId);
             db.Report.Add(report);
             db.Report.Save();
+            return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/" + select.Name.Replace(" ", "-")));
+
+        }
+
+        public async Task<IActionResult> SendCommentRestaurant(int id)
+        {
+            return await Task.FromResult(ViewComponent("SendCommentRestaurantVm", new { id = id }));
+        }
+        [HttpPost]
+        [PermissionChecker("user")]
+        public async Task<IActionResult> SendCommentRestaurant(SendCommentVm sendComment)
+        {
+            TblRestaurant select = db.Restaurant.GetById(sendComment.RestaurantId);
+            if (select.RateCount == 0)
+            {
+                select.DecorRate = sendComment.DecorRate;
+                select.ServiceRate = sendComment.ServiceRate;
+                select.QualityPerPriceRate = sendComment.QualityPerPriceRate;
+                select.QualityRate = sendComment.QualityRate;
+                select.RateCount=1;
+            }
+            else
+            {
+                var DecorRate = select.RateCount * select.DecorRate;
+                var ServiceRate = select.RateCount * select.ServiceRate;
+                var QualityPerPriceRate = select.RateCount * select.QualityPerPriceRate;
+                var QualityRate = select.RateCount * select.QualityRate;
+
+                select.DecorRate = (short)((DecorRate + sendComment.DecorRate) / select.RateCount);
+                select.ServiceRate = (short)((ServiceRate + sendComment.ServiceRate) / select.RateCount);
+                select.QualityPerPriceRate = (short)((QualityPerPriceRate + sendComment.QualityPerPriceRate) / select.RateCount);
+                select.QualityRate = (short)((QualityRate + sendComment.QualityRate) / select.RateCount);
+                select.RateCount++;
+            }
+            if (sendComment.Comment != null)
+            {
+                TblComment addComment = new TblComment();
+                addComment.Text = sendComment.Comment;
+                addComment.RestaurantId = sendComment.RestaurantId;
+                addComment.UserId = SelectUser().UserId;
+                addComment.DateSubmited = DateTime.Now;
+                //db.Comment.Add(addComment);
+            }
+            db.Restaurant.Update(select);
+            db.Restaurant.Save();
+
             return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/" + select.Name.Replace(" ", "-")));
 
         }

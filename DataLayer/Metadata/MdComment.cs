@@ -49,9 +49,5 @@ namespace DataLayer.Metadata
         public int UserId { get; set; }
     }
 
-    [MetadataType(typeof(MdComment))]
-    public class TblComment
-    {
 
-    }
 }

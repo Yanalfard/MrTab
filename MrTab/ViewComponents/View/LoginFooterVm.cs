@@ -10,7 +10,7 @@ namespace MrTab.ViewComponents.View
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return await Task.FromResult((IViewComponentResult)View("/Views/Shared/Components/LoginFooterVm/LoginFooter.cshtml"));
+            return await Task.FromResult((IViewComponentResult)View("LoginFooter"));
         }
     }
 }

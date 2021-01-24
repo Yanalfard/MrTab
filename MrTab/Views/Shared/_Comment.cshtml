@@ -1,0 +1,24 @@
+﻿<!-- #region Comment -->
+@model TblComment
+<div class="comment">
+    <div class="user">
+        <img src="~/@Model.User.ImageUrl" class="btn-round" width="50" height="50" alt="عکس کاربر" />
+        <div>
+            <label class="name">@Model.User.Name</label>
+            <span class="date">@Model.DateSubmited.ToShamsi() </span>
+        </div>
+    </div>
+    <p class="content">
+        @Model.Text
+    </p>
+    <div class="action">
+        @*<button class="btn-icon" uk-icon="information-circle"></button>*@
+        <button class="btn-icon uk-margin-small-right" uk-icon="heart-outline">
+            <span>@Model.LikeCount</span>
+        </button>
+        <button class="btn-icon uk-margin-auto-right" uk-toggle="#Modal-Report-Comment"
+                type="button" uk-icon="megaphone-outline"></button>
+    </div>
+</div>
+
+<!-- #endregion -->

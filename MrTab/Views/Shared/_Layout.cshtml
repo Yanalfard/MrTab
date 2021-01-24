@@ -95,13 +95,13 @@
                     class="btn btn-round btn-darkglass margin-header-left" type="button" uk-toggle="#Modal-Location">
                 تبریز
             </button>
-            <div id="txtSearch" class="material-darkglass margin-header-left btn-round row">
+            <form asp-action="Search" asp-controller="Home" asp-area="" id="txtSearch" class="material-darkglass margin-header-left btn-round row">
                 <button onclick="window.location='/Home/Search'" uk-icon="search-outline" aria-label="جستجو"
                         class="btn-icon-darkglass uk-margin-small-left uk-margin-small-right"></button>
                 <input class="input-darkglass input-invis btn-round row flex-1"
                        placeholder="جستجو..." dir="rtl"
-                       type="search" aria-label="جستجوی رستوران" />
-            </div>
+                       type="search" aria-label="جستجوی رستوران" name="name" />
+            </form>
         </div>
     </div>
 
@@ -156,7 +156,7 @@
                 <div class="footer-body-login column">
                     @if (!User.Identity.IsAuthenticated)
                     {
-                        @await Component.InvokeAsync("LoginFooterVm")
+                        @*@await Component.InvokeAsync("LoginFooterVm")*@
                     }
                 </div>
             </li>

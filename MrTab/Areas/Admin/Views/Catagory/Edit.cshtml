@@ -23,7 +23,22 @@
                 <img src="/Images/NoImage.svg" alt="@Model.Name" style="max-width:100px;" />
             }
             <div class="form-group mx-sm-1 mb-2">
-                <input type="file" asp-for="Name" name="imgup" class="form-control form-control-sm" />
+                <input type="file" asp-for="ImageUrl" name="imgup" class="form-control form-control-sm" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">عکس لوگو  </label>
+            @if (Model.IconUrl != null)
+            {
+                <img src="/Images/Catagory/Icon/@Model.IconUrl" alt=" @Model.Name" style="max-width:100px;" />
+            }
+            else
+            {
+                <img src="/Images/NoImage.svg" alt="@Model.Name" style="max-width:100px;" />
+            }
+            <div class="form-group mx-sm-1 mb-2">
+                <input type="file" asp-for="IconUrl" name="IconUrl" class="form-control form-control-sm" />
             </div>
         </div>
         <div class="form-group">

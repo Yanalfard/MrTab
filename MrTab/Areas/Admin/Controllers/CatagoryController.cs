@@ -25,25 +25,37 @@ namespace MrTab.Areas.Admin.Controllers
             return await Task.FromResult(PartialView());
         }
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(TblCatagory cat, IFormFile imgup)
+        public async Task<IActionResult> CreateAsync(TblCatagory cat, IFormFile ImageUrl,IFormFile IconUrl)
         {
             if (ModelState.IsValid)
             {
-                if (imgup != null)
+                if (ImageUrl != null)
                 {
-                    cat.ImageUrl = Guid.NewGuid().ToString() + Path.GetExtension(imgup.FileName);
+                    cat.ImageUrl = Guid.NewGuid().ToString() + Path.GetExtension(ImageUrl.FileName);
                     string savePath = Path.Combine(
                         Directory.GetCurrentDirectory(), "wwwroot/Images/Catagory/", cat.ImageUrl
                     );
                     using (var stream = new FileStream(savePath, FileMode.Create))
                     {
-                        await imgup.CopyToAsync(stream);
+                        await ImageUrl.CopyToAsync(stream);
+                    }
+                }
+                if (IconUrl != null)
+                {
+                    cat.IconUrl = Guid.NewGuid().ToString() + Path.GetExtension(IconUrl.FileName);
+                    string savePath = Path.Combine(
+                        Directory.GetCurrentDirectory(), "wwwroot/Images/Catagory/Icon/", cat.IconUrl
+                    );
+                    using (var stream = new FileStream(savePath, FileMode.Create))
+                    {
+                        await IconUrl.CopyToAsync(stream);
                     }
                 }
                 TblCatagory addCat = new TblCatagory();
                 addCat.Name = cat.Name;
                 addCat.ImageUrl = cat.ImageUrl;
                 addCat.IsHome = cat.IsHome;
+                addCat.IconUrl = cat.IconUrl;
                 db.Catagory.Add(addCat);
                 db.Catagory.Save();
                 return await Task.FromResult(RedirectToAction(nameof(Index)));
@@ -55,28 +67,40 @@ namespace MrTab.Areas.Admin.Controllers
             return await Task.FromResult(PartialView(db.Catagory.GetById(id)));
         }
         [HttpPost]
-        public async Task<IActionResult> EditAsync(TblCatagory cat, IFormFile imgup)
+        public async Task<IActionResult> EditAsync(TblCatagory cat, IFormFile ImageUrl, IFormFile IconUrl)
         {
             if (ModelState.IsValid)
             {
-                if (imgup != null)
+                if (ImageUrl != null)
                 {
                     if (cat.ImageUrl == null)
                     {
-                        cat.ImageUrl = Guid.NewGuid().ToString() + Path.GetExtension(imgup.FileName);
+                        cat.ImageUrl = Guid.NewGuid().ToString() + Path.GetExtension(ImageUrl.FileName);
                     }
                     string savePath = Path.Combine(
                        Directory.GetCurrentDirectory(), "wwwroot/Images/Catagory/", cat.ImageUrl
                    );
                     using (var stream = new FileStream(savePath, FileMode.Create))
                     {
-                        await imgup.CopyToAsync(stream);
+                        await ImageUrl.CopyToAsync(stream);
+                    }
+                }
+                if (IconUrl != null)
+                {
+                    cat.IconUrl = Guid.NewGuid().ToString() + Path.GetExtension(IconUrl.FileName);
+                    string savePath = Path.Combine(
+                        Directory.GetCurrentDirectory(), "wwwroot/Images/Catagory/Icon/", cat.IconUrl
+                    );
+                    using (var stream = new FileStream(savePath, FileMode.Create))
+                    {
+                        await IconUrl.CopyToAsync(stream);
                     }
                 }
                 TblCatagory editCat = db.Catagory.GetById(cat.CatagoryId);
                 editCat.Name = cat.Name;
                 editCat.ImageUrl = cat.ImageUrl;
                 editCat.IsHome = cat.IsHome;
+                editCat.IconUrl = cat.IconUrl;
                 db.Catagory.Update(editCat);
                 db.Catagory.Save();
                 return await Task.FromResult(RedirectToAction(nameof(Index)));
@@ -96,6 +120,14 @@ namespace MrTab.Areas.Admin.Controllers
                 if (selectedCatById.ImageUrl != null)
                 {
                     var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Catagory/", selectedCatById.ImageUrl);
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        System.IO.File.Delete(imagePath);
+                    }
+                }
+                if (selectedCatById.IconUrl != null)
+                {
+                    var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Catagory/Icon/", selectedCatById.IconUrl);
                     if (System.IO.File.Exists(imagePath))
                     {
                         System.IO.File.Delete(imagePath);

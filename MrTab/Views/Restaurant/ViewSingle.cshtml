@@ -18,7 +18,7 @@
             </button>
         </li>
         <li>
-            <button type="button" uk-toggle="#Modal-Comment">
+            <button type="button" onclick="sendCommentRestaurant()">
                 <span uk-icon="chatbox-ellipses"></span>
                 <span>ثبت نظر</span>
             </button>
@@ -41,53 +41,11 @@
 <!-- #region Modals -->
 
 <div id="Modal-Comment" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <form class="column">
-            <h2 class="uk-h4">ثبت نظر</h2>
-            <span class="uk-modal-close" uk-close></span>
-            <div class="form-group">
-                <textarea dir="rtl" placeholder="نظر شما..." name="txtComment"></textarea>
-            </div>
-            <div class="uk-margin-small-top center column uk-width-1-1">
-                <div class="form-group">
-                    <div class="row uk-margin-small-bottom">
-                        <label class="uk-margin-auto-right uk-badge text-center" id="lblDecor">5</label>
-                        <label class="uk-margin-auto-left">دکوراسیون و محیط</label>
-                    </div>
-                    <input class="input-range" oninput="document.getElementById('lblDecor').innerText = this.value" type="range" min="0" max="10" />
-                </div>
-                <div class="form-group">
-                    <div class="row uk-margin-small-bottom">
-                        <label class="uk-margin-auto-right uk-badge text-center" id="lblService">5</label>
-                        <label class="uk-margin-auto-left">سرویس و کارکنان</label>
-                    </div>
-                    <input class="input-range" oninput="document.getElementById('lblService').innerText = this.value" type="range" min="0" max="10" />
-                </div>
-                <div class="form-group">
-                    <div class="row uk-margin-small-bottom">
-                        <label class="uk-margin-auto-right uk-badge text-center" id="lblPrice">5</label>
-                        <label class="uk-margin-auto-left">ارزش نسبت به قیمت</label>
-                    </div>
-                    <input class="input-range" oninput="document.getElementById('lblPrice').innerText = this.value" type="range" min="0" max="10" />
-                </div>
-                <div class="form-group">
-                    <div class="row uk-margin-small-bottom">
-                        <label class="uk-margin-auto-right uk-badge text-center" id="lblQuality">5</label>
-                        <label class="uk-margin-auto-left">کیفیت و طعم</label>
-                    </div>
-                    <input class="input-range" oninput="document.getElementById('lblQuality').innerText = this.value" type="range" min="0" max="10" />
-                </div>
-            </div>
-            <div class="button-panel uk-margin-top uk-margin-auto">
-                <div class="btn btn-round btn-primary">ثبت</div>
-                <div class="btn btn-round btn-secondary uk-margin-small-right uk-modal-close">بازگشت</div>
-            </div>
-        </form>
-    </div>
+
 </div>
 
 <div id="Modal-Report" uk-modal>
-    
+
 </div>
 
 <div id="Modal-Report-Comment" uk-modal>
@@ -182,7 +140,7 @@
     <div class="banner-action column">
         <div class="row uk-margin-auto-top">
             <a href="#" onclick="uploadImage()" uk-tooltip="آپلود عکس" class="banner-material clickable uk-margin-small-right" uk-icon="image"></a>
-            <a href="#"  onclick="reportRestaurant()" uk-tooltip="گزارش مشکل" class="banner-material clickable uk-margin-auto-right" uk-icon="megaphone-outline"></a>
+            <a href="#" onclick="reportRestaurant()" uk-tooltip="گزارش مشکل" class="banner-material clickable uk-margin-auto-right" uk-icon="megaphone-outline"></a>
             <span uk-tooltip="اشتراک گذاری رستوران" class="banner-material uk-margin-small-right clickable" uk-icon="share-social-outline"
                   onclick="copy(window.location.href,'لینک صفحه کپی شد')"></span>
             <a href="@Model.InstagramUrl" uk-tooltip="پیج اینستاگرام" class="banner-material clickable" uk-icon="logo-instagram"></a>
@@ -205,7 +163,13 @@
             uk-child-width-1-4-at-m
             uk-child-width-1-5-at-l
             uk-child-width-1-6-at-xl">
-            <li>
+            @foreach (var item in Model.TblImage.Where(i => i.Status == 2 && i.IsValid))
+            {
+                <li>
+                    <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="آپلود شده توسط: نام کاربر1"><img src="~/Images/Restaurant/Gallery/@item.Url"  width="220" height="220" alt="عکس از رستوران" /></a>
+                </li>
+            }
+            @*<li>
                 <a href="/resources/jpg/Food_1.jpg" data-caption="آپلود شده توسط: نام کاربر1"><img src="~/resources/jpg/Food_1.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
             </li>
             <li>
@@ -228,7 +192,7 @@
             </li>
             <li>
                 <a href="/resources/jpg/Food_4.jpg" data-caption="آپلود شده توسط: نام کاربر8"><img src="~/resources/jpg/Food_4.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-            </li>
+            </li>*@
         </ul>
 
         <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
@@ -250,30 +214,34 @@
             uk-child-width-1-4-at-m
             uk-child-width-1-5-at-l
             uk-child-width-1-6-at-xl">
-            <li>
-                <a href="/resources/jpg/Menu_1.jpg" data-caption="صفحه 1"><img src="~/resources/jpg/Menu_1.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Menu_2.jpg" data-caption="صفحه 2"><img src="~/resources/jpg/Menu_2.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Menu_3.jpg" data-caption="صفحه 3"><img src="~/resources/jpg/Menu_3.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Menu_4.jpg" data-caption="صفحه 4"><img src="~/resources/jpg/Menu_4.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Menu_1.jpg" data-caption="صفحه 5"><img src="~/resources/jpg/Menu_1.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Menu_2.jpg" data-caption="صفحه 6"><img src="~/resources/jpg/Menu_2.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Menu_3.jpg" data-caption="صفحه 7"><img src="~/resources/jpg/Menu_3.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Menu_4.jpg" data-caption="صفحه 8"><img src="~/resources/jpg/Menu_4.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-            </li>
+            @foreach (var item in Model.TblImage.Where(i => i.Status == 1))
+            {
+                <li>
+                    <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="@Model.Name"><img src="~/Images/Restaurant/Gallery/@item.Url" width="220" height="365" alt="عکس از منو رستوران" /></a>
+                </li>
+            }
+
+            @*<li>
+                    <a href="/resources/jpg/Menu_2.jpg" data-caption="صفحه 2"><img src="~/resources/jpg/Menu_2.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
+                </li>
+                <li>
+                    <a href="/resources/jpg/Menu_3.jpg" data-caption="صفحه 3"><img src="~/resources/jpg/Menu_3.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
+                </li>
+                <li>
+                    <a href="/resources/jpg/Menu_4.jpg" data-caption="صفحه 4"><img src="~/resources/jpg/Menu_4.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
+                </li>
+                <li>
+                    <a href="/resources/jpg/Menu_1.jpg" data-caption="صفحه 5"><img src="~/resources/jpg/Menu_1.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
+                </li>
+                <li>
+                    <a href="/resources/jpg/Menu_2.jpg" data-caption="صفحه 6"><img src="~/resources/jpg/Menu_2.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
+                </li>
+                <li>
+                    <a href="/resources/jpg/Menu_3.jpg" data-caption="صفحه 7"><img src="~/resources/jpg/Menu_3.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
+                </li>
+                <li>
+                    <a href="/resources/jpg/Menu_4.jpg" data-caption="صفحه 8"><img src="~/resources/jpg/Menu_4.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
+                </li>*@
         </ul>
 
         <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
@@ -458,18 +426,18 @@
     <div class="comment-section mat mat-margin-top">
         <div class="row-reverse uk-margin-small-bottom">
             <h4 class="uk-h3 uk-margin-remove">نظرات کاربران</h4>
-            <button uk-toggle="#Modal-Comment" type="button" class="row-reverse btn btn-primary btn-round uk-margin-auto-right">
+            <button onclick="sendCommentRestaurant()" type="button" class="row-reverse btn btn-primary btn-round uk-margin-auto-right">
                 <span uk-icon="chatbox-ellipses" class="uk-margin-small-left"></span>
                 ثبت نظر
             </button>
         </div>
 
         <ul class="uk-margin-remove uk-padding-remove">
-            <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" /></li>
-            <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" /></li>
-            <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" /></li>
-            <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" /></li>
-            <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" /></li>
+            @foreach (var item in Model.TblComment)
+            {
+                <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" model="item" /></li>
+            }
+
         </ul>
 
     </div>
@@ -510,6 +478,15 @@
                 function (result) {
                     UIkit.modal(document.getElementById('Modal-Report')).show();
                     $("#Modal-Report").html(result);
+                }
+            );
+        }
+        function sendCommentRestaurant() {
+            var id = $('#RestaurantId').val()
+            $.get("/Restaurant/SendCommentRestaurant/" + id,
+                function (result) {
+                    UIkit.modal(document.getElementById('Modal-Comment')).show();
+                    $("#Modal-Comment").html(result);
                 }
             );
         }

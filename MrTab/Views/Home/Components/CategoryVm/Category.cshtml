@@ -3,7 +3,15 @@
 {
     <li>
         <a href="/CategoryView/@item.CatagoryId/@item.Name.Replace(" ","-")">
-            <img src="~/Images/Catagory/@item.ImageUrl" width="28" height="28" alt="" />
+            @if (item.IconUrl != null)
+            {
+                <img src="~/Images/Catagory/Icon/@item.IconUrl" width="28" height="28" alt="" />
+
+            }
+            else
+            {
+                <img src="~/Images/pizza.svg" width="28" height="28" alt="" />
+            }
         </a>
         <span>@item.Name</span>
     </li>

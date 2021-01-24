@@ -7,7 +7,7 @@
         <ul>
             <li class="uk-form-controls">
                 <label>این مکان موقتا بسته شده است</label>
-                <input type="radio" class=" uk-radio" asp-for="Reason" name="Reason" value="این مکان موقتا بسته شده است" id="" />
+                <input type="radio" class=" uk-radio" asp-for="Reason" checked name="Reason" value="این مکان موقتا بسته شده است" id="" />
             </li>
             <li class="uk-form-controls uk-margin-small-top">
                 <label>این مکان تکراری است</label>
@@ -24,7 +24,7 @@
         </ul>
         <label for="Other" class="uk-margin-small-bottom" dir="rtl">مشکل دیگر</label>
         <div class="form-group">
-            <textarea dir="rtl" asp-for="Description"  maxlength="150" placeholder="لحاظ کنید..." name="Description"></textarea>
+            <textarea dir="rtl" required asp-for="Description"  maxlength="150" placeholder="لحاظ کنید..." name="Description"></textarea>
         </div>
         <div class="button-panel uk-margin-top uk-margin-auto">
             <input type="submit" class="btn btn-round btn-primary" value="ویرایش " />

@@ -23,6 +23,8 @@ namespace DataLayer.Models
         public string Name { get; set; }
         [StringLength(500)]
         public string ImageUrl { get; set; }
+        [StringLength(500)]
+        public string IconUrl { get; set; }
         public bool IsHome { get; set; }
 
         [InverseProperty("Catagory")]

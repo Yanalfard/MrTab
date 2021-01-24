@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<TblRestaurant>
+
+@{
     ViewBag.Title = "جستجوی رستوران";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -75,7 +77,7 @@
         <span>شهر</span>
     </button>
     <input tabindex="1" id="txtType" type="text" class="form-group-bg" placeholder="نوع رستوران" value="" />
-    <input tabindex="2" id="txtName" type="text" class="form-group-bg" placeholder="نام مکان" value="" />
+    <input tabindex="2" id="address" name="address"  type="text" class="form-group-bg" placeholder="نام مکان" value="@ViewBag.name" />
 </form>
 
 <div role="none" class="space-search uk-margin-medium-bottom"></div>
@@ -105,16 +107,11 @@
 
     <div class="rest-grid">
 
-        <partial name="_RestaurantBlock" />
-        <partial name="_RestaurantBlock" />
-        <partial name="_RestaurantBlock" />
-
-        <partial name="_RestaurantBlock" />
-        <partial name="_RestaurantBlock" />
-        <partial name="_RestaurantBlock" />
-
-        <partial name="_RestaurantBlock" />
-        <partial name="_RestaurantBlock" />
+        @foreach (var item in Model)
+        {
+        <partial name="_RestaurantBlock" model="item" />
+        }
+      
 
         <div role="none"></div>
         <div role="none"></div>

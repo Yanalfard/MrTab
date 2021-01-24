@@ -1,0 +1,46 @@
+﻿@model SendCommentVm
+<div class="uk-modal-dialog uk-modal-body">
+        <form class="column" asp-action="SendCommentRestaurant" asp-controller="Restaurant" asp-area="">
+            <input type="hidden" asp-for="RestaurantId" name="RestaurantId" />
+            <h2 class="uk-h4">ثبت نظر</h2>
+            <span class="uk-modal-close" uk-close></span>
+            <div class="form-group">
+                <textarea dir="rtl" name="Comment" placeholder="نظر شما..."></textarea>
+            </div>
+            <div class="uk-margin-small-top center column uk-width-1-1">
+                <div class="form-group">
+                    <div class="row uk-margin-small-bottom">
+                        <label class="uk-margin-auto-right uk-badge text-center" id="lblDecor">5</label>
+                        <label class="uk-margin-auto-left">دکوراسیون و محیط</label>
+                    </div>
+                    <input class="input-range" name="DecorRate" oninput="document.getElementById('lblDecor').innerText = this.value" type="range" min="0" max="10" />
+                </div>
+                <div class="form-group">
+                    <div class="row uk-margin-small-bottom">
+                        <label class="uk-margin-auto-right uk-badge text-center" id="lblService">5</label>
+                        <label class="uk-margin-auto-left">سرویس و کارکنان</label>
+                    </div>
+                    <input class="input-range" name="ServiceRate" oninput="document.getElementById('lblService').innerText = this.value" type="range" min="0" max="10" />
+                </div>
+                <div class="form-group">
+                    <div class="row uk-margin-small-bottom">
+                        <label class="uk-margin-auto-right uk-badge text-center" id="lblPrice">5</label>
+                        <label class="uk-margin-auto-left">ارزش نسبت به قیمت</label>
+                    </div>
+                    <input class="input-range" name="QualityPerPriceRate" oninput="document.getElementById('lblPrice').innerText = this.value" type="range" min="0" max="10" />
+                </div>
+                <div class="form-group">
+                    <div class="row uk-margin-small-bottom">
+                        <label class="uk-margin-auto-right uk-badge text-center" id="lblQuality">5</label>
+                        <label class="uk-margin-auto-left">کیفیت و طعم</label>
+                    </div>
+                    <input class="input-range" name="QualityRate" oninput="document.getElementById('lblQuality').innerText = this.value" type="range" min="0" max="10" />
+                </div>
+            </div>
+            <div class="button-panel uk-margin-top uk-margin-auto">
+                <input type="submit" class="btn btn-round btn-primary" value="ثبت" />
+
+                <div class="btn btn-round btn-secondary uk-margin-small-right uk-modal-close">بازگشت</div>
+            </div>
+        </form>
+</div>
