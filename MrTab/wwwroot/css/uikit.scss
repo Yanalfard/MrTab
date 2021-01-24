@@ -1898,8 +1898,9 @@ select.uk-form-width-xsmall {
 .uk-checkbox {
     /* 1 */
     display: inline-block;
-    height: 16px;
-    width: 16px;
+    height: 20px;
+    width: 20px;
+    padding: 4px;
     /* 2 */
     overflow: hidden;
     /* 3 */
@@ -1916,6 +1917,9 @@ select.uk-form-width-xsmall {
     border: 1px solid #cccccc;
     transition: 0.2s ease-in-out;
     transition-property: background-color, border;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
 }
 
 .uk-radio {

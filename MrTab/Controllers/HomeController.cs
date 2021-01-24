@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Services.Services;
 
 namespace MrTab.Controllers
 {
     public class HomeController : Controller
     {
+        private Core db = new Core();
         public IActionResult Index()
         {
             return View();
@@ -21,9 +23,10 @@ namespace MrTab.Controllers
         {
             return View();
         }
-        public IActionResult CategoryView()
+        [Route("CategoryView/{id}/{name}")]
+        public IActionResult CategoryView(int id,string name)
         {
-            return View();
+            return View(db.Catagory.GetById(id));
         }
         public IActionResult Profile()
         {

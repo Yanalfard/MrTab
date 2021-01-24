@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
-#nullable disable
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace DataLayer.Models
 {
-    [Table("TblUser")]
     public partial class TblUser
     {
         public TblUser()
         {
-            TblComments = new HashSet<TblComment>();
-            TblRestaurants = new HashSet<TblRestaurant>();
+            TblComment = new HashSet<TblComment>();
+            TblRestaurant = new HashSet<TblRestaurant>();
         }
 
         [Key]
@@ -35,11 +35,11 @@ namespace DataLayer.Models
         public string ImageUrl { get; set; }
 
         [ForeignKey(nameof(RoleId))]
-        [InverseProperty(nameof(TblRole.TblUsers))]
+        [InverseProperty(nameof(TblRole.TblUser))]
         public virtual TblRole Role { get; set; }
-        [InverseProperty(nameof(TblComment.User))]
-        public virtual ICollection<TblComment> TblComments { get; set; }
-        [InverseProperty(nameof(TblRestaurant.User))]
-        public virtual ICollection<TblRestaurant> TblRestaurants { get; set; }
+        [InverseProperty("User")]
+        public virtual ICollection<TblComment> TblComment { get; set; }
+        [InverseProperty("User")]
+        public virtual ICollection<TblRestaurant> TblRestaurant { get; set; }
     }
 }

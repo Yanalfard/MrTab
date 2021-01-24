@@ -114,7 +114,7 @@ namespace MrTab.Controllers
                     db.User.Add(addUser);
                     db.User.Save();
                     string message = addUser.Auth;
-                    //await Sms.SendSms(addUser.TellNo, message, "RegisterMrTab");
+                    await Sms.SendSms(addUser.TellNo, message, "FoodestanRegister");
                     return await Task.FromResult(Redirect("/Account/Validation?tellNo=" + addUser.TellNo));
                 }
                 else
@@ -174,7 +174,7 @@ namespace MrTab.Controllers
                 {
                     TblUser forgotPassword = db.User.Get().FirstOrDefault(i => i.TellNo == forget.TellNo);
                     string message = forgotPassword.Auth;
-                    //await Sms.SendSms(addUser.TellNo, message, "RegisterMrTab");
+                    await Sms.SendSms(forgotPassword.TellNo, message, "FoodestanForget");
                     return await Task.FromResult(Redirect("/Account/RestorePassword?tell=" + forgotPassword.TellNo));
                 }
                 else

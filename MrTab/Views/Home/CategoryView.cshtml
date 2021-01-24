@@ -1,4 +1,4 @@
-﻿
+﻿@model TblCatagory
 @{
     ViewData["Title"] = "CategoryView";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,18 +7,20 @@
 @section Styles{
 
     <link href="~/css/Pages/CategoryView.min.css" rel="stylesheet" />
+}
 
+@{
+    string bannerPath = (string.IsNullOrEmpty(Model.ImageUrl) ? "/Images/NoImage.svg" : $"/Images/Catagory/{Model.ImageUrl}");
 }
 
 <div class="banner column uk-height-large uk-background-cover uk-margin-medium-bottom uk-light uk-flex" uk-parallax="bgy: -200"
-     style="background-image: url('/resources/jpg/peter-dawn-sxZ_Ca6MkWM-unsplash.jpg');">
-
+      style="background-image: url('@bannerPath');">
     <div class="column uk-margin-auto-bottom">
         <div class="banner-text column">
-            <h1 class="uk-text-center uk-margin-small-bottom uk-margin-auto uk-margin-remove-vertical">همبرگر</h1>
-            <p class="uk-margin-remove-vertical text-center">
-                تاوا کباب (در فارسی کباب تابه ای) یکی از کباب های خوشمزه و پر طرفدار ما ایرانی هاست، در این فهرست رستوران هایی در تبریز که تاوا کباب معروف و خوشمزه ای دارند برای شما جمع آوری شده
-            </p>
+            <h1 class="uk-text-center uk-margin-small-bottom uk-margin-auto uk-margin-remove-vertical">@Model.Name</h1>
+            @*<p class="uk-margin-remove-vertical text-center">
+                    تاوا کباب (در فارسی کباب تابه ای) یکی از کباب های خوشمزه و پر طرفدار ما ایرانی هاست، در این فهرست رستوران هایی در تبریز که تاوا کباب معروف و خوشمزه ای دارند برای شما جمع آوری شده
+                </p>*@
         </div>
     </div>
 
@@ -26,18 +28,13 @@
 
 <div class="uk-container">
     <div class="rest-grid">
-
-        <partial name="_RestaurantBlock" />
-        <partial name="_RestaurantBlock" />
-        <partial name="_RestaurantBlock" />
-
-        <partial name="_RestaurantBlock" />
-        <partial name="_RestaurantBlock" />
-        <partial name="_RestaurantBlock" />
-
-        <partial name="_RestaurantBlock" />
-        <partial name="_RestaurantBlock" />
-
+        @if (Model.TblRestaurant.Any())
+        {
+            foreach (var item in Model.TblRestaurant)
+            {
+                <partial name="_RestaurantBlock" model="item" />
+            }
+        }
         <div role="none"></div>
         <div role="none"></div>
         <div role="none"></div>

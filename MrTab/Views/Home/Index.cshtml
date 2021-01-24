@@ -12,39 +12,17 @@
 <div class="uk-container">
 
     <!-- #region Grid -->
-   
+
     <div class="grid-categories uk-margin-medium-top">
-        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:200">
-            <h3><span>کباب</span></h3>
-        </a>
-        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:0">
-            <h3><span>دونر</span></h3>
-        </a>
-        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:200">
-            <h3><span>غذای مکزیکی</span></h3>
-        </a>
-        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:0">
-            <h3><span>صبحانه دبش</span></h3>
-        </a>
-        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:200">
-            <h3><span>فضای رمانتیک</span></h3>
-        </a>
-        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:0">
-            <h3><span>پیتزا و فست فود</span></h3>
-        </a>
-        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:200">
-            <h3><span>مرغ سوخاری</span></h3>
-        </a>
-        <a href="/Home/CategoryView" class="category" uk-scrollspy="cls:uk-animation-fade;delay:0">
-            <h3><span>غذای ویگن</span></h3>
-        </a>
+        @await Component.InvokeAsync("CategoryGridShowInHomeVm")
+       
     </div>
 
     <!-- #endregion -->
+    @await Component.InvokeAsync("CategoryShowInHomeVm")
+    @*<partial name="_RestaurantCarousel" />
 
-    <partial name="_RestaurantCarousel" />
-
-    <partial name="_RestaurantCarousel" />
+        <partial name="_RestaurantCarousel" />*@
 
 </div>
 
@@ -68,7 +46,7 @@
 <!-- #endregion -->
 
 <div class="uk-container">
-    <partial name="_RestaurantCarousel" />
+    @await Component.InvokeAsync("CategoryShowInHomeSingleVm")
 </div>
 
 @section Scripts {

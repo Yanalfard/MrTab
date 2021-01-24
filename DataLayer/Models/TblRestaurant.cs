@@ -2,25 +2,25 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
-#nullable disable
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace DataLayer.Models
 {
-    [Table("TblRestaurant")]
     public partial class TblRestaurant
     {
         public TblRestaurant()
         {
-            TblComments = new HashSet<TblComment>();
-            TblFoodTypes = new HashSet<TblFoodType>();
-            TblFoods = new HashSet<TblFood>();
-            TblImages = new HashSet<TblImage>();
-            TblMealTypes = new HashSet<TblMealType>();
-            TblProperties = new HashSet<TblProperty>();
-            TblReports = new HashSet<TblReport>();
-            TblWorkTimes = new HashSet<TblWorkTime>();
+            TblComment = new HashSet<TblComment>();
+            TblFood = new HashSet<TblFood>();
+            TblFoodType = new HashSet<TblFoodType>();
+            TblImage = new HashSet<TblImage>();
+            TblMealType = new HashSet<TblMealType>();
+            TblProperty = new HashSet<TblProperty>();
+            TblReport = new HashSet<TblReport>();
+            TblWorkTime = new HashSet<TblWorkTime>();
         }
 
         [Key]
@@ -62,29 +62,29 @@ namespace DataLayer.Models
         public int UserId { get; set; }
 
         [ForeignKey(nameof(CatagoryId))]
-        [InverseProperty(nameof(TblCatagory.TblRestaurants))]
+        [InverseProperty(nameof(TblCatagory.TblRestaurant))]
         public virtual TblCatagory Catagory { get; set; }
         [ForeignKey(nameof(CityId))]
-        [InverseProperty(nameof(TblCity.TblRestaurants))]
+        [InverseProperty(nameof(TblCity.TblRestaurant))]
         public virtual TblCity City { get; set; }
         [ForeignKey(nameof(UserId))]
-        [InverseProperty(nameof(TblUser.TblRestaurants))]
+        [InverseProperty(nameof(TblUser.TblRestaurant))]
         public virtual TblUser User { get; set; }
-        [InverseProperty(nameof(TblComment.Restaurant))]
-        public virtual ICollection<TblComment> TblComments { get; set; }
-        [InverseProperty(nameof(TblFoodType.Restaurant))]
-        public virtual ICollection<TblFoodType> TblFoodTypes { get; set; }
-        [InverseProperty(nameof(TblFood.Restaurant))]
-        public virtual ICollection<TblFood> TblFoods { get; set; }
-        [InverseProperty(nameof(TblImage.Restaurant))]
-        public virtual ICollection<TblImage> TblImages { get; set; }
-        [InverseProperty(nameof(TblMealType.Restaurant))]
-        public virtual ICollection<TblMealType> TblMealTypes { get; set; }
-        [InverseProperty(nameof(TblProperty.Restaurant))]
-        public virtual ICollection<TblProperty> TblProperties { get; set; }
-        [InverseProperty(nameof(TblReport.Restaurant))]
-        public virtual ICollection<TblReport> TblReports { get; set; }
-        [InverseProperty(nameof(TblWorkTime.Restaurant))]
-        public virtual ICollection<TblWorkTime> TblWorkTimes { get; set; }
+        [InverseProperty("Restaurant")]
+        public virtual ICollection<TblComment> TblComment { get; set; }
+        [InverseProperty("Restaurant")]
+        public virtual ICollection<TblFood> TblFood { get; set; }
+        [InverseProperty("Restaurant")]
+        public virtual ICollection<TblFoodType> TblFoodType { get; set; }
+        [InverseProperty("Restaurant")]
+        public virtual ICollection<TblImage> TblImage { get; set; }
+        [InverseProperty("Restaurant")]
+        public virtual ICollection<TblMealType> TblMealType { get; set; }
+        [InverseProperty("Restaurant")]
+        public virtual ICollection<TblProperty> TblProperty { get; set; }
+        [InverseProperty("Restaurant")]
+        public virtual ICollection<TblReport> TblReport { get; set; }
+        [InverseProperty("Restaurant")]
+        public virtual ICollection<TblWorkTime> TblWorkTime { get; set; }
     }
 }

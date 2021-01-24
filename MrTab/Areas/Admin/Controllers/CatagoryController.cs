@@ -43,6 +43,7 @@ namespace MrTab.Areas.Admin.Controllers
                 TblCatagory addCat = new TblCatagory();
                 addCat.Name = cat.Name;
                 addCat.ImageUrl = cat.ImageUrl;
+                addCat.IsHome = cat.IsHome;
                 db.Catagory.Add(addCat);
                 db.Catagory.Save();
                 return await Task.FromResult(RedirectToAction(nameof(Index)));
@@ -75,6 +76,7 @@ namespace MrTab.Areas.Admin.Controllers
                 TblCatagory editCat = db.Catagory.GetById(cat.CatagoryId);
                 editCat.Name = cat.Name;
                 editCat.ImageUrl = cat.ImageUrl;
+                editCat.IsHome = cat.IsHome;
                 db.Catagory.Update(editCat);
                 db.Catagory.Save();
                 return await Task.FromResult(RedirectToAction(nameof(Index)));

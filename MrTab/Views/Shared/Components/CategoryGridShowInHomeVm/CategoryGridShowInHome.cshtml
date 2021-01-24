@@ -1,0 +1,8 @@
+﻿@model IEnumerable<TblCatagory>
+
+@foreach (var item in Model)
+{
+    <a href="/CategoryView/@item.CatagoryId/@item.Name.Replace(" ","-")" style="background-image: url('/Images/Catagory/@item.ImageUrl')" class="category" uk-scrollspy="cls:uk-animation-fade;delay:200">
+        <h3><span></span></h3>
+    </a>
+}

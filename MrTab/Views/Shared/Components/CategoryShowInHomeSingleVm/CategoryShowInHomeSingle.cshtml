@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TblCatagory>
+
+@foreach (var item in Model)
+{
+    if (item.TblRestaurant.Any())
+    {
+
+        <div class="rest-carousel uk-position-relative uk-visible-toggle uk-box-shadow-small uk-box-shadow-hover-large"
+             tabindex="-1" uk-scrollspy="cls:uk-animation-slide-top-medium;delay:0" uk-slider>
+            <div class="rest-carousel-info">
+                <h4 tabindex="-1" class="tag uk-margin-auto-left uk-box-shadow-medium" dir="rtl">
+                    @item.Name
+                </h4>
+                <a href="/CategoryView/@item.CatagoryId/@item.Name.Replace(" ","-")" tabindex="-1" dir="rtl" class="more uk-margin-auto-right uk-box-shadow-medium">
+                    <span>بیشتر</span>
+                    <span uk-icon="chevron-back"></span>
+                </a>
+            </div>
+
+            <ul class="uk-slider-items">
+                @foreach (var j in item.TblRestaurant)
+                {
+                    <li>
+                        <partial name="_RestaurantBlock" model="j" />
+                    </li>
+                }
+
+            </ul>
+
+            <a class="uk-position-center-left  uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+        </div>
+    }
+}

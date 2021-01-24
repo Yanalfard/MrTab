@@ -2,7 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-#nullable disable
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace DataLayer.Models
 {
@@ -17,25 +19,25 @@ namespace DataLayer.Models
         {
         }
 
-        public virtual DbSet<TblCatagory> TblCatagories { get; set; }
-        public virtual DbSet<TblCity> TblCities { get; set; }
-        public virtual DbSet<TblComment> TblComments { get; set; }
-        public virtual DbSet<TblConfig> TblConfigs { get; set; }
-        public virtual DbSet<TblFood> TblFoods { get; set; }
-        public virtual DbSet<TblFoodType> TblFoodTypes { get; set; }
-        public virtual DbSet<TblImage> TblImages { get; set; }
-        public virtual DbSet<TblMealType> TblMealTypes { get; set; }
-        public virtual DbSet<TblProperty> TblProperties { get; set; }
-        public virtual DbSet<TblReport> TblReports { get; set; }
-        public virtual DbSet<TblRestaurant> TblRestaurants { get; set; }
-        public virtual DbSet<TblRole> TblRoles { get; set; }
-        public virtual DbSet<TblUser> TblUsers { get; set; }
-        public virtual DbSet<TblWorkTime> TblWorkTimes { get; set; }
+        public virtual DbSet<TblCatagory> TblCatagory { get; set; }
+        public virtual DbSet<TblCity> TblCity { get; set; }
+        public virtual DbSet<TblComment> TblComment { get; set; }
+        public virtual DbSet<TblConfig> TblConfig { get; set; }
+        public virtual DbSet<TblFood> TblFood { get; set; }
+        public virtual DbSet<TblFoodType> TblFoodType { get; set; }
+        public virtual DbSet<TblImage> TblImage { get; set; }
+        public virtual DbSet<TblMealType> TblMealType { get; set; }
+        public virtual DbSet<TblProperty> TblProperty { get; set; }
+        public virtual DbSet<TblReport> TblReport { get; set; }
+        public virtual DbSet<TblRestaurant> TblRestaurant { get; set; }
+        public virtual DbSet<TblRole> TblRole { get; set; }
+        public virtual DbSet<TblUser> TblUser { get; set; }
+        public virtual DbSet<TblWorkTime> TblWorkTime { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-             => optionsBuilder
-           .UseLazyLoadingProxies()
-           .UseSqlServer("Data Source=103.216.62.27;Initial Catalog=MrTab;User ID=Yanal;Password=1710ahmad.fard");
+              => optionsBuilder
+            .UseLazyLoadingProxies()
+            .UseSqlServer("Data Source=103.216.62.27;Initial Catalog=MrTab;User ID=Yanal;Password=1710ahmad.fard");
         //  {
         //            if (!optionsBuilder.IsConfigured)
         //            {
@@ -44,8 +46,6 @@ namespace DataLayer.Models
 
 
         //            }
-
-
 
         // }
 
@@ -60,12 +60,12 @@ namespace DataLayer.Models
                     .HasConstraintName("FK_TblComment_TblComment");
 
                 entity.HasOne(d => d.Restaurant)
-                    .WithMany(p => p.TblComments)
+                    .WithMany(p => p.TblComment)
                     .HasForeignKey(d => d.RestaurantId)
                     .HasConstraintName("FK_TblComment_TblRestaurant");
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.TblComments)
+                    .WithMany(p => p.TblComment)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_TblComment_TblUser");
@@ -74,7 +74,7 @@ namespace DataLayer.Models
             modelBuilder.Entity<TblFood>(entity =>
             {
                 entity.HasOne(d => d.Restaurant)
-                    .WithMany(p => p.TblFoods)
+                    .WithMany(p => p.TblFood)
                     .HasForeignKey(d => d.RestaurantId)
                     .HasConstraintName("FK_TblFood_TblRestaurant");
             });
@@ -82,7 +82,7 @@ namespace DataLayer.Models
             modelBuilder.Entity<TblFoodType>(entity =>
             {
                 entity.HasOne(d => d.Restaurant)
-                    .WithMany(p => p.TblFoodTypes)
+                    .WithMany(p => p.TblFoodType)
                     .HasForeignKey(d => d.RestaurantId)
                     .HasConstraintName("FK_TblFoodType_TblRestaurant");
             });
@@ -92,17 +92,15 @@ namespace DataLayer.Models
                 entity.Property(e => e.Status).HasComment("0 is Normal; 1 is Menu");
 
                 entity.HasOne(d => d.Restaurant)
-                    .WithMany(p => p.TblImages)
+                    .WithMany(p => p.TblImage)
                     .HasForeignKey(d => d.RestaurantId)
                     .HasConstraintName("FK_TblImage_TblRestaurant");
             });
 
             modelBuilder.Entity<TblMealType>(entity =>
             {
-                entity.Property(e => e.MealTypeId).ValueGeneratedNever();
-
                 entity.HasOne(d => d.Restaurant)
-                    .WithMany(p => p.TblMealTypes)
+                    .WithMany(p => p.TblMealType)
                     .HasForeignKey(d => d.RestaurantId)
                     .HasConstraintName("FK_TblMealType_TblRestaurant");
             });
@@ -110,7 +108,7 @@ namespace DataLayer.Models
             modelBuilder.Entity<TblProperty>(entity =>
             {
                 entity.HasOne(d => d.Restaurant)
-                    .WithMany(p => p.TblProperties)
+                    .WithMany(p => p.TblProperty)
                     .HasForeignKey(d => d.RestaurantId)
                     .HasConstraintName("FK_TblProperty_TblRestaurant");
             });
@@ -118,7 +116,7 @@ namespace DataLayer.Models
             modelBuilder.Entity<TblReport>(entity =>
             {
                 entity.HasOne(d => d.Restaurant)
-                    .WithMany(p => p.TblReports)
+                    .WithMany(p => p.TblReport)
                     .HasForeignKey(d => d.RestaurantId)
                     .HasConstraintName("FK_TblReport_TblRestaurant");
             });
@@ -126,19 +124,19 @@ namespace DataLayer.Models
             modelBuilder.Entity<TblRestaurant>(entity =>
             {
                 entity.HasOne(d => d.Catagory)
-                    .WithMany(p => p.TblRestaurants)
+                    .WithMany(p => p.TblRestaurant)
                     .HasForeignKey(d => d.CatagoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_TblRestaurant_TblCatagory");
 
                 entity.HasOne(d => d.City)
-                    .WithMany(p => p.TblRestaurants)
+                    .WithMany(p => p.TblRestaurant)
                     .HasForeignKey(d => d.CityId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_TblRestaurant_TblCity");
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.TblRestaurants)
+                    .WithMany(p => p.TblRestaurant)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_TblRestaurant_TblUser");
@@ -148,13 +146,13 @@ namespace DataLayer.Models
             {
                 entity.Property(e => e.RoleId).ValueGeneratedNever();
 
-                entity.Property(e => e.Title).IsFixedLength(true);
+                entity.Property(e => e.Title).IsFixedLength();
             });
 
             modelBuilder.Entity<TblUser>(entity =>
             {
                 entity.HasOne(d => d.Role)
-                    .WithMany(p => p.TblUsers)
+                    .WithMany(p => p.TblUser)
                     .HasForeignKey(d => d.RoleId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_TblUser_TblRole");
@@ -162,8 +160,11 @@ namespace DataLayer.Models
 
             modelBuilder.Entity<TblWorkTime>(entity =>
             {
+                entity.HasKey(e => e.WorkTimeId)
+                    .HasName("PK_TblWorkTimes");
+
                 entity.HasOne(d => d.Restaurant)
-                    .WithMany(p => p.TblWorkTimes)
+                    .WithMany(p => p.TblWorkTime)
                     .HasForeignKey(d => d.RestaurantId)
                     .HasConstraintName("FK_TblWorkTimes_TblRestaurant");
             });

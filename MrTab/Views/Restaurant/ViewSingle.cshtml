@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "ورود";
+﻿@model TblRestaurant
+@{
+    ViewBag.Title = Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,7 +12,7 @@
 <div class="actions-adrift" uk-scrollspy="cls:uk-animation-slide-bottom-medium">
     <ul>
         <li>
-            <button type="button" uk-toggle="#Croppie">
+            <button type="button" onclick="uploadImage()">
                 <span uk-icon="image"></span>
                 <span>آپلود عکس</span>
             </button>
@@ -23,7 +24,7 @@
             </button>
         </li>
         <li>
-            <button type="button" uk-toggle="#Modal-Report">
+            <button type="button" onclick="reportRestaurant()">
                 <span uk-icon="megaphone"></span>
                 <span>گزارش مکان</span>
             </button>
@@ -86,38 +87,7 @@
 </div>
 
 <div id="Modal-Report" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <form class="column">
-            <h2 class="uk-h4 uk-margin-auto-left">این مکان چا مشکلی دارد؟</h2>
-            <span class="uk-modal-close" uk-close></span>
-            <ul>
-                <li class="uk-form-controls">
-                    <label>این مکان موقتا بسته شده است</label>
-                    <input type="radio" class=" uk-radio" name="report" value="" id="" />
-                </li>
-                <li class="uk-form-controls uk-margin-small-top">
-                    <label>این مکان تکراری است</label>
-                    <input type="radio" class="uk-radio" name="report" value="" id="" />
-                </li>
-                <li class="uk-form-controls uk-margin-small-top">
-                    <label>این مکان وجود ندارد</label>
-                    <input type="radio" class="uk-radio" name="report" value="" id="" />
-                </li>
-                <li class="uk-form-controls uk-margin-small-top">
-                    <label>وجود اشکال در اطلاعات مکان</label>
-                    <input type="radio" class="uk-radio" name="report" value="" id="" />
-                </li>
-            </ul>
-            <label for="Other" class="uk-margin-small-bottom" dir="rtl">مشکل دیگر</label>
-            <div class="form-group">
-                <textarea dir="rtl" placeholder="لحاظ کنید..." name="txtComment"></textarea>
-            </div>
-            <div class="button-panel uk-margin-top uk-margin-auto">
-                <div class="btn btn-round btn-primary">ثبت</div>
-                <div class="btn btn-round btn-secondary uk-margin-small-right uk-modal-close">بازگشت</div>
-            </div>
-        </form>
-    </div>
+    
 </div>
 
 <div id="Modal-Report-Comment" uk-modal>
@@ -153,53 +123,31 @@
 </div>
 
 <!-- #region Croppie -->
-
-<div id="Croppie" uk-modal>
-    <div class="uk-modal-dialog background-transparent uk-flex">
-        <div class="popup-croppie column uk-margin-auto">
-            <div class="controls uk-width-1-1 row ">
-                <input type="file" id="files" accept="image/*" onchange="fileSelected(this)" class="display-none">
-                <label class="button-icon" for="files">
-                    <span uk-icon="image"></span>
-                </label>
-                <button class="button-icon" onclick="crop()">
-                    <span uk-icon="crop"></span>
-                </button>
-                @*<button class="button-icon uk-margin-auto-left" onclick="window.history.back()">
-                                <span uk-icon="close"></span>
-                    </button>*@
-                <button class="button-icon uk-margin-auto-left uk-modal-close">
-                    <span uk-icon="close"></span>
-                </button>
-            </div>
-            <img src="~/resources/svg/Image.svg" id="item" />
-        </div>
-    </div>
-</div>
-
 <!-- #endregion -->
 <!-- #endregion -->
 <!-- #region Banner -->
 
 <div class="image-container uk-box-shadow-large">
-    <img class="banner-image" width="500" height="350" src="~/resources/png/GoodFather.png" alt="Restaurant Banner" />
+    <img class="banner-image" width="500" height="350" src="/Images/Restaurant/@Model.MainBanner" alt="Restaurant Banner" />
 </div>
 
 <div class="banner uk-margin-small-bottom">
     <div class="banner-logo">
         <div class="row-reverse">
             <div uk-lightbox>
-                <a href="/resources/png/food_3.png" data-caption="نام رستوران" data-alt="Restaurant Logo">
+                <a href="/Images/Restaurant/@Model.MainImage" data-caption="@Model.Name" data-alt="Restaurant Logo">
                     <img class="logo uk-box-shadow-medium"
-                         src="/resources/png/food_3.png" width="100" height="100" alt="Restaurant Logo" />
+                         src="/Images/Restaurant/@Model.MainImage" width="100" height="100" alt="Restaurant Logo" />
                 </a>
             </div>
             <div class="column">
                 <h1 class="uk-h3">
-                    پدر خوب
+                    @Model.Name
                 </h1>
-                <div class="star-container uk-margin-auto-top uk-margin-auto-right banner-material row" uk-tooltip="2.5" dir="rtl">
-                    <div class="Stars" style="--rating:  2.5" aria-label="Rating of this product is 2.3 out of 5."></div>
+
+
+                <div class="star-container uk-margin-auto-top uk-margin-auto-right banner-material row" uk-tooltip="@(Model.Rating/20)" dir="rtl">
+                    <div class="Stars" style="--rating:   @(Model.Rating/20);" aria-label="Rating of this product is  @(Model.Rating/20) out of 5."></div>
                 </div>
             </div>
         </div>
@@ -208,30 +156,36 @@
         <div class="column">
             <div class="alternate">
                 <h3 class="uk-margin-remove clickable uk-h5 row banner-material"
-                    onclick="copy('021 861 28 640','شماره تلفن کپی شد')">
+                    onclick="copy('@Model.TellNo1','شماره تلفن کپی شد')">
                     <i uk-icon="call"></i>
-                    <span class="uk-margin-small-left">021 861 28 640</span>
+                    <span class="uk-margin-small-left">@Model.TellNo1</span>
                 </h3>
-                <h3 class="uk-margin-small-left clickable uk-margin-remove-vertical uk-h5 row banner-material"
-                    onclick="copy('7:30 تا 22:30','زمان کاری کپی شد')">
-                    <i uk-icon="time-outline"></i>
-                    <span class="uk-margin-small-left">7:30 تا 22:30</span>
-                </h3>
+                @foreach (var item in Model.TblWorkTime)
+                {
+                    <h3 class="uk-margin-small-left clickable uk-margin-remove-vertical uk-h5 row banner-material"
+                        onclick="copy('@item.Time @item.Day','زمان کاری کپی شد')">
+                        <i uk-icon="time-outline"></i>
+                        <span class="uk-margin-small-left">@item.Time </span>
+                        <span class="uk-margin-small-left"> @item.Day</span>
+                    </h3>
+                }
+
+
             </div>
             <p class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom"
-               onclick="copy('تبریز - ایل گلی - کوی فردوس - خیابان ایل گلی - رستوران پدر خوب','آدرس کپی شد')">
+               onclick="copy('@Model.Address','آدرس کپی شد')">
                 <span uk-icon="location-sharp"></span>
-                تبریز - ایل گلی - کوی فردوس - خیابان ایل گلی - رستوران پدر خوب
+                @Model.Address
             </p>
         </div>
     </div>
     <div class="banner-action column">
         <div class="row uk-margin-auto-top">
-            <a href="#Croppie" uk-tooltip="آپلود عکس" uk-toggle class="banner-material clickable uk-margin-small-right" uk-icon="image"></a>
-            <a href="#Modal-Report" uk-tooltip="گزارش مشکل" uk-toggle class="banner-material clickable uk-margin-auto-right" uk-icon="megaphone-outline"></a>
+            <a href="#" onclick="uploadImage()" uk-tooltip="آپلود عکس" class="banner-material clickable uk-margin-small-right" uk-icon="image"></a>
+            <a href="#"  onclick="reportRestaurant()" uk-tooltip="گزارش مشکل" class="banner-material clickable uk-margin-auto-right" uk-icon="megaphone-outline"></a>
             <span uk-tooltip="اشتراک گذاری رستوران" class="banner-material uk-margin-small-right clickable" uk-icon="share-social-outline"
                   onclick="copy(window.location.href,'لینک صفحه کپی شد')"></span>
-            <a href="https://www.instagram.com/mr.foodtbz/?hl=en" uk-tooltip="پیج اینستاگرام" class="banner-material clickable" uk-icon="logo-instagram"></a>
+            <a href="@Model.InstagramUrl" uk-tooltip="پیج اینستاگرام" class="banner-material clickable" uk-icon="logo-instagram"></a>
         </div>
     </div>
 </div>
@@ -332,30 +286,12 @@
         <div class="mat meals" uk-scrollspy="cls:uk-animation-fade;delay:300">
             <h5 class="uk-h4">غذا ها</h5>
             <ul class="auto-row uk-margin-remove-bottom uk-padding-remove">
-                <li>
-                    <a>پیتزا</a>
-                </li>
-                <li>
-                    <a>همبرگر</a>
-                </li>
-                <li>
-                    <a>سوخاری</a>
-                </li>
-                <li>
-                    <a>فلافل</a>
-                </li>
-                <li>
-                    <a>کباب</a>
-                </li>
-                <li>
-                    <a>جیگر</a>
-                </li>
-                <li>
-                    <a>سالاد</a>
-                </li>
-                <li>
-                    <a>سیب زمینی پنیری</a>
-                </li>
+                @foreach (var item in Model.TblFood)
+                {
+                    <li>
+                        <a>@item.Name</a>
+                    </li>
+                }
 
             </ul>
         </div>
@@ -367,8 +303,8 @@
                         ارزش نسبت به قیمت
                     </label>
                     <div class="prog">
-                        <progress class="uk-progress" dir="rtl" value="1" max="10"></progress>
-                        <span class="uk-badge uk-margin-auto-right">1</span>
+                        <progress class="uk-progress" dir="rtl" value="@Model.QualityPerPriceRate" max="10"></progress>
+                        <span class="uk-badge uk-margin-auto-right">@Model.QualityPerPriceRate</span>
                     </div>
                 </li>
                 <li>
@@ -376,8 +312,8 @@
                         سرویس و کارکنان
                     </label>
                     <div class="prog">
-                        <progress class="uk-progress" dir="rtl" value="7" max="10"></progress>
-                        <span class="uk-badge uk-margin-auto-right">7</span>
+                        <progress class="uk-progress" dir="rtl" value="@Model.ServiceRate" max="10"></progress>
+                        <span class="uk-badge uk-margin-auto-right">@Model.ServiceRate</span>
                     </div>
                 </li>
                 <li>
@@ -385,8 +321,8 @@
                         دکوراسیون و محیط
                     </label>
                     <div class="prog">
-                        <progress class="uk-progress" dir="rtl" value="3" max="10"></progress>
-                        <span class="uk-badge uk-margin-auto-right">3</span>
+                        <progress class="uk-progress" dir="rtl" value="@Model.DecorRate" max="10"></progress>
+                        <span class="uk-badge uk-margin-auto-right">@Model.DecorRate</span>
                     </div>
                 </li>
                 <li>
@@ -394,141 +330,127 @@
                         کیفیت و طعم
                     </label>
                     <div class="prog">
-                        <progress class="uk-progress" dir="rtl" value="9" max="10"></progress>
-                        <span class="uk-badge uk-margin-auto-right">9</span>
+                        <progress class="uk-progress" dir="rtl" value="@Model.QualityRate" max="10"></progress>
+                        <span class="uk-badge uk-margin-auto-right">@Model.QualityRate</span>
                     </div>
                 </li>
             </ul>
         </div>
-        <div class="mat scores" uk-scrollspy="cls:uk-animation-fade;delay:100">
+        <!--<div class="mat scores" uk-scrollspy="cls:uk-animation-fade;delay:100">
             <h5 class="uk-h4">امتیاز ها</h5>
-            <div class="container uk-flex-wrap">
-                <!-- #region Gauge -->
-
-                <div class="progress-ring-container" percentage="32">
-                    <svg class="progress-ring"
-                         width="120"
-                         height="120">
-                        <circle class="progress-ring__circle"
-                                fill="transparent"
-                                r="56"
-                                cx="60"
-                                cy="60" />
-                    </svg>
-                    <div class="text">
-                        <div class="column">
-                            <p>
-                                32
-                            </p>
-                            <label>
-                                کیفیت و طعم
-                            </label>
-                        </div>
-                    </div>
+            <div class="container uk-flex-wrap">-->
+        <!-- #region Gauge -->
+        <!--<div class="progress-ring-container" percentage="32">
+            <svg class="progress-ring"
+                 width="120"
+                 height="120">
+                <circle class="progress-ring__circle"
+                        fill="transparent"
+                        r="56"
+                        cx="60"
+                        cy="60" />
+            </svg>
+            <div class="text">
+                <div class="column">
+                    <p>
+                        32
+                    </p>
+                    <label>
+                        کیفیت و طعم
+                    </label>
                 </div>
-
-                <!-- #endregion -->
-                <!-- #region Gauge -->
-
-                <div class="progress-ring-container" percentage="64">
-                    <svg class="progress-ring"
-                         width="120"
-                         height="120">
-                        <circle class="progress-ring__circle"
-                                fill="transparent"
-                                r="56"
-                                cx="60"
-                                cy="60" />
-                    </svg>
-                    <div class="text">
-                        <div class="column">
-                            <p>
-                                64
-                            </p>
-                            <label>
-                                دکوراسیون و محیط
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- #endregion -->
-                <!-- #region Gauge -->
-
-                <div class="progress-ring-container" percentage="75">
-                    <svg class="progress-ring"
-                         width="120"
-                         height="120">
-                        <circle class="progress-ring__circle"
-                                fill="transparent"
-                                r="56"
-                                cx="60"
-                                cy="60" />
-                    </svg>
-                    <div class="text">
-                        <div class="column">
-                            <p>
-                                75
-                            </p>
-                            <label>
-                                سرویس و کارکنان
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- #endregion -->
-                <!-- #region Gauge -->
-
-                <div class="progress-ring-container" percentage="90">
-                    <svg class="progress-ring"
-                         width="120"
-                         height="120">
-                        <circle class="progress-ring__circle"
-                                fill="transparent"
-                                r="56"
-                                cx="60"
-                                cy="60" />
-                    </svg>
-                    <div class="text">
-                        <div class="column">
-                            <p>
-                                90
-                            </p>
-                            <label>
-                                ارزش نسبت به قیمت
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- #endregion -->
             </div>
-        </div>
+        </div>-->
+        <!-- #endregion -->
+        <!-- #region Gauge -->
+        <!--<div class="progress-ring-container" percentage="64">
+            <svg class="progress-ring"
+                 width="120"
+                 height="120">
+                <circle class="progress-ring__circle"
+                        fill="transparent"
+                        r="56"
+                        cx="60"
+                        cy="60" />
+            </svg>
+            <div class="text">
+                <div class="column">
+                    <p>
+                        64
+                    </p>
+                    <label>
+                        دکوراسیون و محیط
+                    </label>
+                </div>
+            </div>
+        </div>-->
+        <!-- #endregion -->
+        <!-- #region Gauge -->
+        <!--<div class="progress-ring-container" percentage="75">
+            <svg class="progress-ring"
+                 width="120"
+                 height="120">
+                <circle class="progress-ring__circle"
+                        fill="transparent"
+                        r="56"
+                        cx="60"
+                        cy="60" />
+            </svg>
+            <div class="text">
+                <div class="column">
+                    <p>
+                        75
+                    </p>
+                    <label>
+                        سرویس و کارکنان
+                    </label>
+                </div>
+            </div>
+        </div>-->
+        <!-- #endregion -->
+        <!-- #region Gauge -->
+        <!--<div class="progress-ring-container" percentage="90">
+            <svg class="progress-ring"
+                 width="120"
+                 height="120">
+                <circle class="progress-ring__circle"
+                        fill="transparent"
+                        r="56"
+                        cx="60"
+                        cy="60" />
+            </svg>
+            <div class="text">
+                <div class="column">
+                    <p>
+                        90
+                    </p>
+                    <label>
+                        ارزش نسبت به قیمت
+                    </label>
+                </div>
+            </div>
+        </div>-->
+        <!-- #endregion -->
+        <!--</div>
+        </div>-->
         <div class="mat options" uk-scrollspy="cls:uk-animation-fade;delay:100">
             <h5 class="uk-h4">امکانات</h5>
             <ul class="uk-margin-remove ">
-                <li>
-                    <span uk-icon="checkmark-circle"></span>
-                    <span>فضای باز</span>
-                </li>
-                <li>
-                    <span uk-icon="checkmark-circle"></span>
-                    <span>سیگار آزاد</span>
-                </li>
-                <li>
-                    <span uk-icon="checkmark-circle"></span>
-                    <span>دستشویی</span>
-                </li>
-                <li>
-                    <span uk-icon="checkmark-circle"></span>
-                    <span>دستشویی</span>
-                </li>
+                @foreach (var item in Model.TblProperty)
+                {
+                    <li>
+                        <span uk-icon="checkmark-circle"></span>
+                        <span>@item.Name</span>
+                    </li>
+                }
+
             </ul>
         </div>
-        <div id="mapid" class="mat map" uk-scrollspy="cls:uk-animation-fade;delay:200">
+        @*<div id="mapid" class="mat map" uk-scrollspy="cls:uk-animation-fade;delay:200">
 
-        </div>
+            </div>*@
+
+        <div class="map" id="map" style="height:400px;width:100%"></div>
     </div>
     <!-- #endregion -->
     <!-- #region Comment Section -->
@@ -555,84 +477,81 @@
     <!-- #endregion -->
 
 </div>
+<input type="hidden" asp-for="Lat" />
+<input type="hidden" asp-for="Lon" />
+<input type="hidden" asp-for="RestaurantId" id="RestaurantId" />
+
+
+
+<div id="Modal-View" uk-modal>
+
+</div>
+
 
 @section Scripts{
 
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-            crossorigin=""></script>
+    <script src="~/js/jquery-3.5.1.min.js"></script>
+    <link href="~/leaflet/leaflet.css" rel="stylesheet" />
+    <script src="~/leaflet/leaflet.js"></script>
 
     <script>
-
-        try {
-            var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-
-            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                maxZoom: 18,
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1
-            }).addTo(mymap);
-
-            L.marker([51.5, -0.09]).addTo(mymap)
-                .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-
-            L.circle([51.508, -0.11], 500, {
-                color: 'red',
-                fillColor: '#f03',
-                fillOpacity: 0.5
-            }).addTo(mymap).bindPopup("I am a circle.");
-
-            L.polygon([
-                [51.509, -0.08],
-                [51.503, -0.06],
-                [51.51, -0.047]
-            ]).addTo(mymap).bindPopup("I am a polygon.");
-
-
-            var popup = L.popup();
-
-            function onMapClick(e) {
-                popup
-                    .setLatLng(e.latlng)
-                    .setContent("You clicked the map at " + e.latlng.toString())
-                    .openOn(mymap);
-            }
-
-            mymap.on('click', onMapClick);
-        } catch (e) {
-
+        function uploadImage() {
+            var id = $('#RestaurantId').val()
+            $.get("/Restaurant/UploadImage/" + id,
+                function (result) {
+                    UIkit.modal(document.getElementById('Modal-View')).show();
+                    $("#Modal-View").html(result);
+                }
+            );
         }
-
-    </script>
-
-    <script name="Gauge">
-        const circles = document.getElementsByClassName('progress-ring__circle');
-        let counter = 0;
-        for (let circle of circles) {
-
-            var radius = circle.r.baseVal.value;
-            var circumference = radius * 2 * Math.PI;
-
-            circle.style.strokeDasharray = `${circumference} ${circumference}`;
-            circle.style.strokeDashoffset = `${circumference}`;
-
-            function setProgress(percent) {
-                const offset = circumference - percent / 100 * circumference;
-                circle.style.strokeDashoffset = offset;
-            }
-
-            const percentage =
-                document.getElementsByClassName('progress-ring-container')[counter]
-                    .getAttribute("percentage");
-            setProgress(parseInt(percentage));
-
-            counter++;
+        function reportRestaurant() {
+            var id = $('#RestaurantId').val()
+            $.get("/Restaurant/ReportRestaurant/" + id,
+                function (result) {
+                    UIkit.modal(document.getElementById('Modal-Report')).show();
+                    $("#Modal-Report").html(result);
+                }
+            );
         }
     </script>
+
+    <script>
+        var Lat = $("#Lat").val();
+        var Lon = $("#Lon").val();
+        var map = L.map('map').setView([Lat, Lon], 15);
+
+        L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Farzam Yamini - 09027159171'
+        }).addTo(map);
+
+        L.marker([Lat, Lon]).addTo(map).bindPopup('@Model.Name').openPopup();
+    </script>
+
+
+    @*<script name="Gauge">
+            const circles = document.getElementsByClassName('progress-ring__circle');
+            let counter = 0;
+            for (let circle of circles) {
+
+                var radius = circle.r.baseVal.value;
+                var circumference = radius * 2 * Math.PI;
+
+                circle.style.strokeDasharray = `${circumference} ${circumference}`;
+                circle.style.strokeDashoffset = `${circumference}`;
+
+                function setProgress(percent) {
+                    const offset = circumference - percent / 100 * circumference;
+                    circle.style.strokeDashoffset = offset;
+                }
+
+                const percentage =
+                    document.getElementsByClassName('progress-ring-container')[counter]
+                        .getAttribute("percentage");
+                setProgress(parseInt(percentage));
+
+                counter++;
+            }
+        </script>*@
 
     <script>
         //UIkit.modal(document.getElementById('Modal-Report')).show();
@@ -649,6 +568,7 @@
         }
         var c;
         function fileSelected(input) {
+            document.getElementById("sendImage").disabled = true;
             if (input.files[0] == null) return;
 
             if (c != undefined) {
@@ -669,21 +589,34 @@
             reader.readAsDataURL(input.files[0]);
         }
 
-        //Returns the Base64 string of a WebP image
+        //Returns the Base64 string of a Png image
         function crop() {
             try {
                 c.result({ type: 'base64', size: 'viewport', format: 'png', quality: 1, circle: false }).then(i => {
-                    //var image = new Image();
-                    //image.src = i;
-                    //document.getElementById('content').appendChild(image);
                     //console.log(i);
-                    return i;
+
+                    //fetch('/Restaurant/UploadImage', {
+                    //    method: 'post',
+                    //    body: JSON.stringify(i)
+                    //}).then();
+
+                    //$.ajax({
+                    //    url: '/Restaurant/UploadImage',
+                    //    data: JSON.stringify({ imageName: i }),
+                    //   // data: JSON.stringify({ "imageName": i }),
+
+                    //}).done(function () {
+
+
+                    //});
+
                 });
             }
             catch {
                 UIkit.notification('لطفا یک عکس انتخاب کنید');
             }
         }
+
     </script>
 
 }

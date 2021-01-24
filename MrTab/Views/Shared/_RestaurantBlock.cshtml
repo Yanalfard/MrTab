@@ -1,17 +1,25 @@
-﻿<a href="/Restaurant/ViewSingle" class="rest-block" uk-scrollspy="cls:uk-animation-fade;delay:200">
-    <label>دسر ها</label>
-    <img src="~/resources/png/food_1.png"
+﻿@model TblRestaurant
+<a href="/ViewSingle/@Model.RestaurantId/@Model.Name.Replace(" ","-")" class="rest-block" uk-scrollspy="cls:uk-animation-fade;delay:200">
+
+    @if (Model.TblFoodType.Any())
+    {
+            <label>
+                @Model.TblFoodType.First().Name
+            </label>
+    }
+    <img src="~/Images/Restaurant/@Model.MainImage"
          width="300" height="300"
          alt="عکس رستوران" />
     <div class="info">
         <h4>
-            رستوران بسیار شیک و با کلاس و گران قیمت باکلاس 
+            @Model.Name
         </h4>
-        <div class="star-container" uk-tooltip="2.5">
-            <div class="Stars" style="--rating:  2.5"></div>
+        <div class="star-container" uk-tooltip="@(Model.Rating/20)">
+
+            <div class="Stars" style="--rating:  @(Model.Rating/20);"></div>
         </div>
         <address uk-icon="location-outline">
-            ائل گلی، روبه‌روی هتل شهریار
+            @Model.Address
         </address>
     </div>
 </a>

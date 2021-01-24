@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
-#nullable disable
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace DataLayer.Models
 {
-    [Table("TblImage")]
     public partial class TblImage
     {
         [Key]
@@ -20,7 +20,7 @@ namespace DataLayer.Models
         public bool IsValid { get; set; }
 
         [ForeignKey(nameof(RestaurantId))]
-        [InverseProperty(nameof(TblRestaurant.TblImages))]
+        [InverseProperty(nameof(TblRestaurant.TblImage))]
         public virtual TblRestaurant Restaurant { get; set; }
     }
 }

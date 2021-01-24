@@ -12,6 +12,7 @@ namespace MrTab.ViewComponents.Admin
         private Core db = new Core();
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            var list = db.Restaurant.Get();
             return await Task.FromResult((IViewComponentResult)View("/Areas/Admin/Views/Restauran/Components/RestauranListInAdmin.cshtml", db.Restaurant.Get()));
         }
     }

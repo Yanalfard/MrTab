@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
-#nullable disable
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace DataLayer.Models
 {
-    [Table("TblCatagory")]
     public partial class TblCatagory
     {
         public TblCatagory()
         {
-            TblRestaurants = new HashSet<TblRestaurant>();
+            TblRestaurant = new HashSet<TblRestaurant>();
         }
 
         [Key]
@@ -23,8 +23,9 @@ namespace DataLayer.Models
         public string Name { get; set; }
         [StringLength(500)]
         public string ImageUrl { get; set; }
+        public bool IsHome { get; set; }
 
-        [InverseProperty(nameof(TblRestaurant.Catagory))]
-        public virtual ICollection<TblRestaurant> TblRestaurants { get; set; }
+        [InverseProperty("Catagory")]
+        public virtual ICollection<TblRestaurant> TblRestaurant { get; set; }
     }
 }
