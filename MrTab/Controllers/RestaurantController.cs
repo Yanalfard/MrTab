@@ -104,7 +104,8 @@ namespace MrTab.Controllers
                 select.QualityPerPriceRate = (short)((QualityPerPriceRate + sendComment.QualityPerPriceRate) / select.RateCount);
                 select.QualityRate = (short)((QualityRate + sendComment.QualityRate) / select.RateCount);
             }
-
+            var rat = (select.DecorRate + select.ServiceRate + select.QualityPerPriceRate + select.QualityRate) / 4;
+            select.Rating = (short)(rat * 10);
             TblComment addComment = new TblComment();
             addComment.Text = sendComment.Comment;
             addComment.RestaurantId = sendComment.RestaurantId;
@@ -125,9 +126,9 @@ namespace MrTab.Controllers
 
         }
 
-        public async Task<IActionResult> ReportCommentRestaurant(int RestaurantId,int CommentId)
+        public async Task<IActionResult> ReportCommentRestaurant(int RestaurantId, int CommentId)
         {
-            return await Task.FromResult(ViewComponent("ReportCommentRestaurantVm", new { RestaurantId = RestaurantId, CommentId= CommentId }));
+            return await Task.FromResult(ViewComponent("ReportCommentRestaurantVm", new { RestaurantId = RestaurantId, CommentId = CommentId }));
         }
         [HttpPost]
         public async Task<IActionResult> ReportCommentRestaurant(ReportCommentRestaurant report)
