@@ -40,9 +40,7 @@ self.addEventListener('fetch', (evt) => {
                         if (evt.request.url.includes('/css/')
                             || evt.request.url.includes('/fonts/')
                             || evt.request.url.includes('/js/')
-                            || evt.request.url.includes('/resources/'))
-                        {
-
+                            || evt.request.url.includes('/resources/')) {
                             return caches.open(staticCacheName).then(cache => {
                                 cache.put(evt.request.url, fetchRes.clone());
 

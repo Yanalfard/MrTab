@@ -74,8 +74,6 @@
                 <h1 class="uk-h3">
                     @Model.Name
                 </h1>
-
-
                 <div class="star-container uk-margin-auto-top uk-margin-auto-right banner-material row" uk-tooltip="@(Model.Rating/20)" dir="rtl">
                     <div class="Stars" style="--rating:   @(Model.Rating/20);" aria-label="Rating of this product is  @(Model.Rating/20) out of 5."></div>
                 </div>
@@ -93,10 +91,12 @@
                 @foreach (var item in Model.TblWorkTime)
                 {
                     <h3 class="uk-margin-small-left clickable uk-margin-remove-vertical uk-h5 row banner-material"
-                        onclick="copy('@item.Time @item.Day','زمان کاری کپی شد')">
+                        onclick="copy('@item.Day @item.Time','زمان کاری کپی شد')">
                         <i uk-icon="time-outline"></i>
-                        <span class="uk-margin-small-left">@item.Time </span>
-                        <span class="uk-margin-small-left"> @item.Day</span>
+                        <span class="rowr">
+                            <span class="uk-margin-small-left" dir="rtl">@item.Time</span>
+                            <span dir="rtl"> @item.Day</span>
+                        </span>
                     </h3>
                 }
 
@@ -232,7 +232,6 @@
                         <a>@item.Name</a>
                     </li>
                 }
-
             </ul>
         </div>
         <div class="mat progbar foodstyle" uk-scrollspy="cls:uk-animation-fade;delay:300">
@@ -405,7 +404,7 @@
         </div>
 
         <ul class="uk-margin-remove uk-padding-remove">
-            @foreach (var item in Model.TblComment.Where(i=>i.IsReported==false))
+            @foreach (var item in Model.TblComment.Where(i => i.IsReported == false))
             {
                 <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" model="item" /></li>
             }

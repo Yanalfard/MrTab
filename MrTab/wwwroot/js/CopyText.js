@@ -62,9 +62,6 @@ function btnDownloadClick(e) {
         return;
     }
     //Is not installed
-
-
-
     if (isSafari && isIos) {
         UIkit.modal(document.getElementById('Modal-PopupIos')).show();
         return;

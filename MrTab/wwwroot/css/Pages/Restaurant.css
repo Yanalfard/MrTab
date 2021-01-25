@@ -200,15 +200,21 @@ h5.uk-h4 {
   .banner-logo {
     grid-area: logo;
     padding: 25px 25px 0 0; }
-    .banner-logo .logo {
-      -moz-border-radius: 32px 32px 32px 32px;
-      -webkit-border-radius: 32px 32px 32px 32px;
-      border-radius: 32px 32px 32px 32px;
-      /* -moz-border-radius: 0;
+    .banner-logo a {
+      min-height: 100px;
+      min-width: 100px;
+      display: block; }
+      .banner-logo a .logo {
+        -moz-border-radius: 32px 32px 32px 32px;
+        -webkit-border-radius: 32px 32px 32px 32px;
+        border-radius: 32px 32px 32px 32px;
+        /* -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;*/
-      margin-left: 20px;
-      margin-bottom: auto; }
+        margin-left: 20px;
+        margin-bottom: auto;
+        min-width: 100px;
+        min-height: 100px; }
     .banner-logo h1 {
       color: white;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.32); }
@@ -492,7 +498,7 @@ h5.uk-h4 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
-  grid-template-areas: "foodstyle meals" "scores options" "map map"; }
+  grid-template-areas: "foodstyle meals" "options options" "map map"; }
   .info .meals {
     grid-area: meals; }
   .info .meals, .info .foodstyle {

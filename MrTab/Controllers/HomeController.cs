@@ -59,5 +59,11 @@ namespace MrTab.Controllers
         {
             return View();
         }
+
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+
     }
 }

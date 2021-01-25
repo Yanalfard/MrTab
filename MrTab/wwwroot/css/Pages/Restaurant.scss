@@ -41,10 +41,18 @@ h5.uk-h4 {
         grid-area: logo;
         padding: 25px 25px 0 0;
 
-        .logo {
-            @include border-radius(32px,32px,32px,32px);
-            margin-left: 20px;
-            margin-bottom: auto;
+        a {
+            min-height: 100px;
+            min-width: 100px;
+            display: block;
+
+            .logo {
+                @include border-radius(32px,32px,32px,32px);
+                margin-left: 20px;
+                margin-bottom: auto;
+                min-width: 100px;
+                min-height: 100px;
+            }
         }
 
         h1 {
@@ -398,7 +406,7 @@ h5.uk-h4 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: $card-margin;
-    grid-template-areas: "foodstyle meals" "scores options" "map map";
+    grid-template-areas: "foodstyle meals" "options options" "map map";
 
     .meals {
         grid-area: meals;
