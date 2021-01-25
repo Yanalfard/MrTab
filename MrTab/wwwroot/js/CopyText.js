@@ -29,6 +29,11 @@ const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
 
 let deferredPrompt;
 const addButtons = document.getElementsByClassName('btn-pwa');
+
+for (let btn of addButtons) {
+    btn.addEventListener('click', btnDownloadClick);
+}
+
 window.addEventListener('beforeinstallprompt', (e) => {
     try {
         // Prevent Chrome 67 and earlier from automatically showing the prompt
