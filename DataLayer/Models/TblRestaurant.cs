@@ -60,6 +60,7 @@ namespace DataLayer.Models
         [StringLength(1000)]
         public string InstagramUrl { get; set; }
         public int UserId { get; set; }
+        public bool? IsValid { get; set; }
 
         [ForeignKey(nameof(CatagoryId))]
         [InverseProperty(nameof(TblCatagory.TblRestaurant))]
