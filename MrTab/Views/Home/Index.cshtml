@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "نام وبسایت";
+    ViewBag.Title = "فودستان ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,7 +15,7 @@
 
     <div class="grid-categories uk-margin-medium-top">
         @await Component.InvokeAsync("CategoryGridShowInHomeVm")
-       
+
     </div>
 
     <!-- #endregion -->
@@ -53,14 +53,13 @@
 
     <script>
 
-        const categories = [
-            'کافه',
-            'رستوران',
-            'فست فود',
-            'دونر',
-            'نوتلا'
-        ];
-
+        //const categories = [
+        //    'کافه',
+        //    'رستوران',
+        //    'فست فود',
+        //    'دونر',
+        //    'نوتلا'
+        //];
         function txtTypeChanged(val) {
             const drop = document.getElementById('drop');
 

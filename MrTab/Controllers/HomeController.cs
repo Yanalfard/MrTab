@@ -20,28 +20,33 @@ namespace MrTab.Controllers
         {
             return View();
         }
-        public IActionResult Search(string name="",string address="",string city="")
+        public IActionResult Search(string name = null, string nameFood = null, string address = null, string city = null)
         {
             ViewBag.name = name;
             ViewBag.address = address;
             ViewBag.city = city;
             List<TblRestaurant> list = db.Restaurant.Get().ToList();
-            if (name != "")
+            if (name != null)
             {
                 list = list.Where(i => i.Name.Contains(name)).ToList();
             }
-            if (address != "")
+            if (nameFood != null)
+            {
+                List<TblRestaurant> food = db.Food.Get().Where(i => i.Name.Contains(nameFood)).Select(i => i.Restaurant).ToList();
+                list.AddRange(food.Distinct());
+            }
+            if (address != null)
             {
                 list = list.Where(i => i.Address.Contains(address)).ToList();
             }
-            if (name != "")
+            if (city != null)
             {
                 list = list.Where(i => i.City.Name.Contains(city)).ToList();
             }
             return View(list);
         }
         [Route("CategoryView/{id}/{name}")]
-        public IActionResult CategoryView(int id,string name)
+        public IActionResult CategoryView(int id, string name)
         {
             return View(db.Catagory.GetById(id));
         }

@@ -18,22 +18,23 @@ namespace DataLayer.Models
 
         [Key]
         public int CommentId { get; set; }
-        [Required]
         [StringLength(500)]
         public string Text { get; set; }
-        public int LikeCount { get; set; }
-        public bool IsReported { get; set; }
-        public short Rate { get; set; }
-        public short ExpenseRate { get; set; }
-        public short QualityRate { get; set; }
-        public short ServiceRate { get; set; }
-        public short DecorRate { get; set; }
-        public short QualityPerPriceRate { get; set; }
-        public int AnswerId { get; set; }
+        public int? LikeCount { get; set; }
+        public bool? IsReported { get; set; }
+        public short? Rate { get; set; }
+        public short? ExpenseRate { get; set; }
+        public short? QualityRate { get; set; }
+        public short? ServiceRate { get; set; }
+        public short? DecorRate { get; set; }
+        public short? QualityPerPriceRate { get; set; }
+        public int? AnswerId { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime DateSubmited { get; set; }
-        public int RestaurantId { get; set; }
-        public int UserId { get; set; }
+        public DateTime? DateSubmited { get; set; }
+        public int? RestaurantId { get; set; }
+        public int? UserId { get; set; }
+        [StringLength(500)]
+        public string TextReport { get; set; }
 
         [ForeignKey(nameof(AnswerId))]
         [InverseProperty(nameof(TblComment.InverseAnswer))]

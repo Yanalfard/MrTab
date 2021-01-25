@@ -1,6 +1,7 @@
 ﻿using DataLayer.Metadata;
 using DataLayer.Models;
 using Microsoft.AspNetCore.Mvc;
+using MrTab.Utilities;
 using Services.Services;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace MrTab.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [PermissionChecker("admin")]
     public class CityController : Controller
     {
         private Core db = new Core();

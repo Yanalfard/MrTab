@@ -9,22 +9,11 @@ namespace MrTab.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [PermissionChecker("admin")]
-    public class HomeController : Controller
+    public class CommentController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult List()
-        {
-            return View();
-        }
-
-        public IActionResult ViewSingle()
-        {
-            return View();
-        }
-
     }
 }

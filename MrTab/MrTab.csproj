@@ -1738,9 +1738,11 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Comment\Components\" />
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\Shared\Components\InformationFooterVm\" />
     <Folder Include="wwwroot\Images\Catagory\Icon\" />
     <Folder Include="wwwroot\Images\Restaurant\Gallery\" />
     <Folder Include="wwwroot\Images\Users\" />

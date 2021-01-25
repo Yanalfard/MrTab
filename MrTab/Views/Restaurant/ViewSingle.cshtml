@@ -49,35 +49,7 @@
 </div>
 
 <div id="Modal-Report-Comment" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <form class="column">
-            <h2 class="uk-h4 uk-margin-auto-left">این نظر چه مشکلی دارد؟</h2>
-            <span class="uk-modal-close" uk-close></span>
-            <ul>
-                <li class="uk-form-controls">
-                    <label>لحن و کلمات مبتذل</label>
-                    <input type="radio" class=" uk-radio" name="report" value="" id="" />
-                </li>
-                <li class="uk-form-controls uk-margin-small-top">
-                    <label>بحث درباره موضوعات نامربوط</label>
-                    <input type="radio" class="uk-radio" name="report" value="" id="" />
-                </li>
-                <li class="uk-form-controls uk-margin-small-top">
-                    <label>فرستنده ربات است</label>
-                    <input type="radio" class="uk-radio" name="report" value="" id="" />
-                </li>
-            </ul>
-            <label for="Other" class="uk-margin-small-bottom" dir="rtl">مشکل دیگر</label>
-            <div class="form-group">
-                <textarea dir="rtl" placeholder="لحاظ کنید..." name="txtComment"></textarea>
-            </div>
-            <div class="button-panel uk-margin-top uk-margin-auto">
-                <div class="btn btn-round btn-primary">ثبت</div>
-                <div class="btn btn-round btn-secondary uk-margin-small-right uk-modal-close">بازگشت</div>
-            </div>
 
-        </form>
-    </div>
 </div>
 
 <!-- #region Croppie -->
@@ -166,33 +138,33 @@
             @foreach (var item in Model.TblImage.Where(i => i.Status == 2 && i.IsValid))
             {
                 <li>
-                    <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="آپلود شده توسط: نام کاربر1"><img src="~/Images/Restaurant/Gallery/@item.Url"  width="220" height="220" alt="عکس از رستوران" /></a>
+                    <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="آپلود شده توسط: نام کاربر1"><img src="~/Images/Restaurant/Gallery/@item.Url" width="220" height="220" alt="عکس از رستوران" /></a>
                 </li>
             }
             @*<li>
-                <a href="/resources/jpg/Food_1.jpg" data-caption="آپلود شده توسط: نام کاربر1"><img src="~/resources/jpg/Food_1.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Food_2.jpg" data-caption="آپلود شده توسط: نام کاربر2"><img src="~/resources/jpg/Food_2.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Food_3.jpg" data-caption="آپلود شده توسط: نام کاربر3"><img src="~/resources/jpg/Food_3.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Food_4.jpg" data-caption="4آپلود شده توسط: نام کاربر"><img src="~/resources/jpg/Food_4.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Food_1.jpg" data-caption="5آپلود شده توسط: نام کاربر"><img src="~/resources/jpg/Food_1.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Food_2.jpg" data-caption="آپلود شده توسط: نام کاربر6"><img src="~/resources/jpg/Food_2.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Food_3.jpg" data-caption="7آپلود شده توسط: نام کاربر"><img src="~/resources/jpg/Food_3.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-            </li>
-            <li>
-                <a href="/resources/jpg/Food_4.jpg" data-caption="آپلود شده توسط: نام کاربر8"><img src="~/resources/jpg/Food_4.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-            </li>*@
+                    <a href="/resources/jpg/Food_1.jpg" data-caption="آپلود شده توسط: نام کاربر1"><img src="~/resources/jpg/Food_1.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
+                </li>
+                <li>
+                    <a href="/resources/jpg/Food_2.jpg" data-caption="آپلود شده توسط: نام کاربر2"><img src="~/resources/jpg/Food_2.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
+                </li>
+                <li>
+                    <a href="/resources/jpg/Food_3.jpg" data-caption="آپلود شده توسط: نام کاربر3"><img src="~/resources/jpg/Food_3.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
+                </li>
+                <li>
+                    <a href="/resources/jpg/Food_4.jpg" data-caption="4آپلود شده توسط: نام کاربر"><img src="~/resources/jpg/Food_4.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
+                </li>
+                <li>
+                    <a href="/resources/jpg/Food_1.jpg" data-caption="5آپلود شده توسط: نام کاربر"><img src="~/resources/jpg/Food_1.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
+                </li>
+                <li>
+                    <a href="/resources/jpg/Food_2.jpg" data-caption="آپلود شده توسط: نام کاربر6"><img src="~/resources/jpg/Food_2.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
+                </li>
+                <li>
+                    <a href="/resources/jpg/Food_3.jpg" data-caption="7آپلود شده توسط: نام کاربر"><img src="~/resources/jpg/Food_3.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
+                </li>
+                <li>
+                    <a href="/resources/jpg/Food_4.jpg" data-caption="آپلود شده توسط: نام کاربر8"><img src="~/resources/jpg/Food_4.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
+                </li>*@
         </ul>
 
         <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
@@ -433,7 +405,7 @@
         </div>
 
         <ul class="uk-margin-remove uk-padding-remove">
-            @foreach (var item in Model.TblComment)
+            @foreach (var item in Model.TblComment.Where(i=>i.IsReported==false))
             {
                 <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" model="item" /></li>
             }
@@ -490,6 +462,16 @@
                 }
             );
         }
+        function reportCommentRestaurant(id) {
+            var RestaurantId = $('#RestaurantId').val();
+            var CommentId = id;
+            $.get("/Restaurant/ReportCommentRestaurant?RestaurantId=" + RestaurantId + "&CommentId=" + CommentId,
+                function (result) {
+                    UIkit.modal(document.getElementById('Modal-Report-Comment')).show();
+                    $("#Modal-Report-Comment").html(result);
+                }
+            );
+        }
     </script>
 
     <script>
@@ -498,7 +480,7 @@
         var map = L.map('map').setView([Lat, Lon], 15);
 
         L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Farzam Yamini - 09027159171'
+            attribution: '@Model.Name'
         }).addTo(map);
 
         L.marker([Lat, Lon]).addTo(map).bindPopup('@Model.Name').openPopup();

@@ -2,6 +2,7 @@
 using DataLayer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MrTab.Utilities;
 using Services.Services;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 namespace MrTab.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [PermissionChecker("admin")]
     public class RestauranController : Controller
     {
         private Core db = new Core();
@@ -331,5 +333,55 @@ namespace MrTab.Areas.Admin.Controllers
         {
             return await Task.FromResult(View());
         }
+
+        public async Task<IActionResult> Report()
+        {
+            return await Task.FromResult(View());
+        }
+        public async Task<IActionResult> ReportSearch(string name=null)
+        {
+            List<TblReport> list = db.Report.Get().ToList();
+            if (name != null)
+            {
+                list = list.Where(i => i.Restaurant.Name.Contains(name)).ToList();
+            }
+            return await Task.FromResult(PartialView(list));
+
+        }
+
+        public async Task<string> DeleteReport(int id)
+        {
+            TblReport selectedCityById = db.Report.GetById(id);
+            bool delete = db.Report.Delete(selectedCityById);
+            if (delete)
+            {
+                db.Report.Save();
+                return await Task.FromResult("true");
+            }
+            return await Task.FromResult("خطا در حذف   لطفا بررسی فرمایید");
+        }
+
+        public async Task<IActionResult> Search(string name = null, string tellNo = null, string cat = null, string user = null)
+        {
+            List<TblRestaurant> list = db.Restaurant.Get().ToList();
+            if (name != null)
+            {
+                list = list.Where(i => i.Name.Contains(name)).ToList();
+            }
+            if (tellNo != null)
+            {
+                list = list.Where(i => i.TellNo1.Contains(tellNo)|| i.TellNo2.Contains(tellNo)).ToList();
+            }
+            if (user != null)
+            {
+                list = list.Where(i => i.User.Name.Contains(user) || i.User.TellNo.Contains(user)).ToList();
+            }
+            if (cat != null)
+            {
+                list = list.Where(i => i.Catagory.Name.Contains(cat)).ToList();
+            }
+            return await Task.FromResult(PartialView(list));
+        }
+
     }
 }

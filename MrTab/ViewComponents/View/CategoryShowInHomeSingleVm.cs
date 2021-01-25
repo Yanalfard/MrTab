@@ -12,7 +12,7 @@ namespace MrTab.ViewComponents.View
         private Core db = new Core();
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return await Task.FromResult((IViewComponentResult)View("/Views/Shared/Components/CategoryShowInHomeSingleVm/CategoryShowInHomeSingle.cshtml", db.Catagory.Get().Where(i => i.IsHome).OrderByDescending(i => i.CatagoryId).Take(1)));
+            return await Task.FromResult((IViewComponentResult)View("/Views/Shared/Components/CategoryShowInHomeSingleVm/CategoryShowInHomeSingle.cshtml", db.Catagory.Get().Where(i => i.IsHome && i.TblRestaurant.Count != 0).OrderByDescending(i => i.CatagoryId).Take(1)));
         }
     }
 

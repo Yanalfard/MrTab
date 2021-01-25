@@ -7,55 +7,85 @@
             @*<span class="sign-out uk-offcanvas-close btn-icon" dir="rtl" uk-icon="icon:square-signout"></span>*@
         </div>
         @*<form class="form-group form-group-bg row uk-margin-top uk-margin-remove-bottom">
-            <button onclick="window.location = '/Home/Search'" class="btn-icon flex-1 row" type="submit">
-                <span class="uk-margin-auto-right" uk-icon="search-outline"></span>
-            </button>
-            <input type="text" class="input-invis flex-auto" dir="rtl" placeholder="جستجو..." aria-label="جستجو" />
-        </form>*@
-        <ul class="uk-list">
+                <button onclick="window.location = '/Home/Search'" class="btn-icon flex-1 row" type="submit">
+                    <span class="uk-margin-auto-right" uk-icon="search-outline"></span>
+                </button>
+                <input type="text" class="input-invis flex-auto" dir="rtl" placeholder="جستجو..." aria-label="جستجو" />
+            </form>*@
+    <ul class="uk-list">
+        <li>
+            <a href="/" class="uk-h4">
+                <span uk-icon="home"></span>
+                <span>خانه</span>
+            </a>
+        </li>
+        @*<li>
+            <a href="#" class="uk-h4">
+                <span uk-icon="information-circle-outline"></span>
+                <span>درباره</span>
+            </a>
+        </li>*@
+
+        @*<li>
+            <a href="#Modal-Location" class="uk-h4">
+                <span uk-icon="location-outline"></span>
+                <span>تغییر مکان</span>
+            </a>
+        </li>*@
+        <li>
+            <a href="/Home/Search" class="uk-h4">
+                <span uk-icon="search-outline"></span>
+                <span>جستجو</span>
+            </a>
+        </li>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            @if (User.Claims.Last().Value == "user")
+            {
+                <li>
+                    <a href="/User/User/Index" class="uk-h4">
+                        <span uk-icon="person-circle-outline"></span>
+                        <span>پروفایل</span>
+                    </a>
+                </li>
+            }
+            else if (User.Claims.Last().Value == "author")
+            {
+                <li>
+                    <a href="/Account/Register" class="uk-h4">
+                        <span uk-icon="person-circle-outline"></span>
+                        <span>پروفایل</span>
+                    </a>
+                </li>
+            }
+            else if (User.Claims.Last().Value == "admin")
+            {
+                <li>
+                    <a href="/Admin/Home/Index" class="uk-h4">
+                        <span uk-icon="person-circle-outline"></span>
+                        <span>پروفایل</span>
+                    </a>
+                </li>
+            }
             <li>
-                <a href="/" class="uk-h4">
-                    <span uk-icon="home"></span>
-                    <span>خانه</span>
+                <a href="/Account/LogOut" class="uk-h4 uk-text-danger">
+                    <span uk-icon="log-out-outline"></span>
+                    <span>خروج</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="uk-h4">
-                    <span uk-icon="information-circle-outline"></span>
-                    <span>درباره</span>
-                </a>
-            </li>
-            <li>
-                <a href="/Home/Profile" class="uk-h4">
-                    <span uk-icon="person-circle-outline"></span>
-                    <span>پروفایل</span>
-                </a>
-            </li>
-            <li>
-                <a href="#Modal-Location" class="uk-h4">
-                    <span uk-icon="location-outline"></span>
-                    <span>تغییر مکان</span>
-                </a>
-            </li>
-            <li>
-                <a href="/Home/Search" class="uk-h4">
-                    <span uk-icon="search-outline"></span>
-                    <span>جستجو</span>
-                </a>
-            </li>
+        }
+        else
+        {
             <li>
                 <a href="/Account/Login" class="uk-h4">
                     <span uk-icon="log-in-outline"></span>
                     <span>ورود</span>
                 </a>
             </li>
-            <li>
-                <a href="/Account/Login" class="uk-h4 uk-text-danger">
-                    <span uk-icon="log-out-outline"></span>
-                    <span>خروج</span>
-                </a>
-            </li>
-        </ul>
+        }
+
+    </ul>
         <button class="btn btn-primary btn-round btn-pwa">
             <span>دانلود اپلیکیشن موبایل</span>
             <span uk-icon="phone-portrait-outline"></span>

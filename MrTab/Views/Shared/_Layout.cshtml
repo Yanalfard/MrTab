@@ -46,14 +46,14 @@
                 <span class="hide-on-mobile">خانه</span>
                 <span uk-icon="icon:home;ratio:1.65" class="display-none"></span>
             </a>
-            <a href="#" class="btn-icon-darkglass" aria-label="درباره ما" uk-tooltip="منتظر داده های مشتری، طرح تو واتساپ فرستادم">
+            @*<a href="#" class="btn-icon-darkglass" aria-label="درباره ما" uk-tooltip="منتظر داده های مشتری، طرح تو واتساپ فرستادم">
                 <span class="hide-on-mobile">درباره ما</span>
                 <span uk-icon="icon:information-circle;ratio:1.65" class="display-none"></span>
-            </a>
-            <a href="#" class="btn-icon-darkglass" aria-label="تماس با ما" uk-tooltip="من در نظرم بود صفحه درباره ما و تماس با ما یکی باشه، به هر حال از تجربه میگم نه واسه ارتباط با ما نه راسه درباره ما اطلاعات زیادی نمیدن صفحه ها خالی می مونه">
+            </a>*@
+            @*<a href="#" class="btn-icon-darkglass" aria-label="تماس با ما" uk-tooltip="من در نظرم بود صفحه درباره ما و تماس با ما یکی باشه، به هر حال از تجربه میگم نه واسه ارتباط با ما نه راسه درباره ما اطلاعات زیادی نمیدن صفحه ها خالی می مونه">
                 <span class="hide-on-mobile">تماس با ما</span>
                 <span uk-icon="icon:information-circle;ratio:1.65" class="display-none"></span>
-            </a>
+            </a>*@
         </nav>
 
         <div class="nav-header-left row uk-margin-auto-right">
@@ -114,42 +114,8 @@
 
     <footer class="footer column">
         <ul class="footer-counters uk-box-shadow-large">
-            <li>
-                <div class="row-reverse counter">
-                    <img src="~/resources/svg/Footer/Chat.svg" width="64" height="64" alt="Comments" />
-                    <div class="comments column">
-                        <strong>12,000</strong>
-                        <span>نظر</span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="row-reverse counter">
-                    <img src="~/resources/svg/Footer/Heart.svg" width="64" height="64" alt="Likes" />
-                    <div class="likes column">
-                        <strong>20,000</strong>
-                        <span>پسند</span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="row-reverse counter">
-                    <img src="~/resources/svg/Footer/User.svg" width="64" height="64" alt="Users" />
-                    <div class="users column">
-                        <strong>6,000</strong>
-                        <span>کاربر</span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="row-reverse counter">
-                    <img src="~/resources/svg/Footer/Market.svg" width="64" height="64" alt="Restaurants" />
-                    <div class="resaurants column">
-                        <strong>4,000</strong>
-                        <span>رستوران</span>
-                    </div>
-                </div>
-            </li>
+            @await Component.InvokeAsync("InformationFooterVm")
+           
         </ul>
         <ul class="footer-body">
             <li>
@@ -173,14 +139,34 @@
                     <h3>منوی اصلی</h3>
                     <div class="row-reverse">
                         <div class="column">
-                            <a href="#">خانه</a>
-                            <a href="#">درباره</a>
+                            <a href="/">خانه</a>
+                            @*<a href="#">درباره</a>*@
                             <a href="#">جستجو</a>
-                            <a href="#">پنل کاربری</a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @if (User.Claims.Last().Value == "user")
+                                {
+                                    <a href="/User/User/Index" >
+                                        پنل کاربری
+                                    </a>
+                                }
+                                else if (User.Claims.Last().Value == "author")
+                                {
+                                    <a href="/Account/Register"  >
+                                        پنل نویسنده
+                                    </a>
+                                }
+                                else if (User.Claims.Last().Value == "admin")
+                                {
+                                    <a href="/Admin/Home/Index" >
+                                        پنل مدیریت
+                                    </a>
+                                }
+                            }
                         </div>
                         <div class="column uk-margin-right">
-                            <a href="#">ورود</a>
-                            <a href="#">ثبت نام</a>
+                            <a href="/Account/Login">ورود</a>
+                            <a href="/Account/Register">ثبت نام</a>
                             <a href="#">دریافت اپلیکیشن</a>
                         </div>
                     </div>
@@ -228,9 +214,9 @@
                 <h2 class="uk-h4">انتخاب شهر</h2>
                 <span class="uk-modal-close" uk-close></span>
                 <div class="form-group">
-                    <input type="text" class="form-group-bg"
+                    @*<input type="text" class="form-group-bg"
                            dir="rtl" placeholder="جستجو..."
-                           aria-label="جستجو شهر" name="txtSearch" />
+                           aria-label="جستجو شهر" name="txtSearch" />*@
                 </div>
                 <div class="even-taglist column uk-margin-small-top">
                     <ul class="tag-grid uk-padding-remove">
@@ -273,7 +259,7 @@
     <div class="space-nav-bottom uk-margin-top"></div>
     <partial name="/Views/Shared/_MobileNav.cshtml">
         <!-- PWA -->
-        @*<script src="~/app.js"></script>*@
+        <script src="~/app.js"></script>
 
         <!--Static Js-->
         <script src="~/js/uikit.min.js"></script>

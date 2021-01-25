@@ -3,6 +3,7 @@ using DataLayer.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MrTab.Utilities;
 using Services.Security;
 using Services.Services;
 using System;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
 namespace MrTab.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [PermissionChecker("admin")]
     public class UserController : Controller
     {
         private Core db = new Core();

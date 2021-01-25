@@ -52,7 +52,6 @@ namespace DataLayer.Models
         public string TellNo2 { get; set; }
         public short Rating { get; set; }
         public int RateCount { get; set; }
-
         public short ExpenseRate { get; set; }
         public short QualityRate { get; set; }
         public short ServiceRate { get; set; }

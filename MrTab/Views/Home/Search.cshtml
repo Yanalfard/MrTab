@@ -55,11 +55,12 @@
 
 <!-- #endregion -->
 
-<form class="search-filter mat">
-    <button id="btnSearch" class="btn btn-primary" aria-label="جسنجو رستوران">
+<form class="search-filter mat" asp-action="UploadImage" asp-controller="Account" asp-area="User">
+    @*<button id="btnSearch" class="btn btn-primary" aria-label="جسنجو رستوران">
         <span uk-icon="search"></span>
-    </button>
-    <button id="btnFood" type="button" uk-toggle="#Modal-Food" aria-label="انتخاب نوع غذا"
+    </button>*@
+    <input type="submit" class="btn btn-primary" aria-label="جسنجو رستوران" value="جسنجو" />
+    @*<button id="btnFood" type="button" uk-toggle="#Modal-Food" aria-label="انتخاب نوع غذا"
             class="form-group-bg row-reverse searchbar-margin-left">
         <span class="uk-margin-small-left" uk-icon="grid-outline"></span>
         <span>نوع غذا</span>
@@ -75,8 +76,8 @@
             class="form-group-bg row-reverse searchbar-margin-left">
         <span uk-icon="location-outline"></span>
         <span>شهر</span>
-    </button>
-    <input tabindex="1" id="txtType" type="text" class="form-group-bg" placeholder="نوع رستوران" value="" />
+    </button>*@
+    <input tabindex="1" id="txtType" name="nameFood" type="text" class="form-group-bg" placeholder=" غذا"value="@ViewBag.nameFood" />
     <input tabindex="2" id="address" name="address"  type="text" class="form-group-bg" placeholder="نام مکان" value="@ViewBag.name" />
 </form>
 

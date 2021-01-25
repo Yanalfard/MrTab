@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataLayer.Models;
+using Microsoft.AspNetCore.Mvc;
 using Services.Services;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace MrTab.ViewComponents.View
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return await Task.FromResult((IViewComponentResult)View("LoginFooter"));
+            return await Task.FromResult((IViewComponentResult)View("~/Views/Shared/Components/LoginFooterVm/LoginFooter"));
         }
     }
 }

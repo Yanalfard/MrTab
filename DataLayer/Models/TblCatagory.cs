@@ -23,9 +23,9 @@ namespace DataLayer.Models
         public string Name { get; set; }
         [StringLength(500)]
         public string ImageUrl { get; set; }
-        [StringLength(500)]
-        public string IconUrl { get; set; }
         public bool IsHome { get; set; }
+        [StringLength(150)]
+        public string IconUrl { get; set; }
 
         [InverseProperty("Catagory")]
         public virtual ICollection<TblRestaurant> TblRestaurant { get; set; }

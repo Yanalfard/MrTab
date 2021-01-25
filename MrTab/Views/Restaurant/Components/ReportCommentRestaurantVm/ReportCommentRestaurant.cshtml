@@ -1,0 +1,31 @@
+﻿@model ReportCommentRestaurant
+<div class="uk-modal-dialog uk-modal-body">
+    <form class="column" asp-action="ReportCommentRestaurant" asp-controller="Restaurant" asp-area="">
+        <input type="hidden" asp-for="CommentId" />
+        <input type="hidden" asp-for="RestaurantId" />
+        <h2 class="uk-h4 uk-margin-auto-left">این نظر چه مشکلی دارد؟</h2>
+        <span class="uk-modal-close" uk-close></span>
+        <ul>
+            <li class="uk-form-controls">
+                <label>لحن و کلمات مبتذل</label>
+                <input type="radio" class=" uk-radio" asp-for="Text" checked name="Text" value="" id="" />
+            </li>
+            <li class="uk-form-controls uk-margin-small-top">
+                <label>بحث درباره موضوعات نامربوط</label>
+                <input type="radio" class="uk-radio" asp-for="Text" name="Text" value="" id="" />
+            </li>
+            <li class="uk-form-controls uk-margin-small-top">
+                <label>فرستنده ربات است</label>
+                <input type="radio" class="uk-radio" asp-for="Text" name="Text" value="" id="" />
+            </li>
+        </ul>
+        <label for="Other" class="uk-margin-small-bottom" dir="rtl">مشکل دیگر</label>
+        <div class="form-group">
+            <textarea dir="rtl" asp-for="Description" placeholder="لحاظ کنید..." name="Description"></textarea>
+        </div>
+        <div class="button-panel uk-margin-top uk-margin-auto">
+            <input type="submit" class="btn btn-round btn-primary" value="ثبت" />
+            <div class="btn btn-round btn-secondary uk-margin-small-right uk-modal-close">بازگشت</div>
+        </div>
+    </form>
+</div>

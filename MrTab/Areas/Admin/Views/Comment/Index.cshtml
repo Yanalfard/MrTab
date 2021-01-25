@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = " رستوران ها  ";
+    ViewData["Title"] = " تخلفات کامنت ها یا پیام ها ";
 }
 
 <div class="card flex-div border-0 shadow">
@@ -53,7 +53,7 @@
                     </tr>
                 </thead>
                 <tbody id="listUser" class="list-wrapper">
-                    @await Component.InvokeAsync("RestauranListInAdminVm")
+                    @await Component.InvokeAsync("RestauranCommentListInAdminVm")
                 </tbody>
             </table>
         </div>

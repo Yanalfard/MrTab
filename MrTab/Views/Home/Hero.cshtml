@@ -18,14 +18,14 @@
              class="hero-image uk-margin-auto-right"
              width="430" height="386" alt="Hero image, man looking for food" />
         <div class="searcher">
-            <form class="hero-button row uk-box-shadow-small uk-box-shadow-hover-large" uk-scrollspy="cls:uk-animation-fade;delay:1800">
+            <form asp-action="Search" asp-controller="Home" asp-area="" class="hero-button row uk-box-shadow-small uk-box-shadow-hover-large" uk-scrollspy="cls:uk-animation-fade;delay:1800">
                 <button uk-icon="search" class="flex-auto" aria-label="جستجو"></button>
-                <input type="text" id="txtCategory" oninput="txtTypeChanged(this.value)" class="input-invis flex-1" dir="rtl" aria-label="نوع رستوران" placeholder="نوع رستوران" />
+                <input type="text" id="txtCategory" oninput="txtTypeChanged(this.value)" class="input-invis flex-1" dir="rtl" aria-label=" غذا" placeholder="نوع رستوران" />
                 <div class="category-drop" uk-drop="mode: click; pos: top-justify">
                     <ul class="uk-margin-remove" id="drop"></ul>
                 </div>
                 <div role="none" class="divider"></div>
-                <input type="text" id="txtSearcher" class="input-invis flex-3" dir="rtl" aria-label="جستجو" placeholder="جستجو..." />
+                <input type="text" id="txtSearcher" name="" class="input-invis flex-3" dir="rtl" aria-label="جستجو" placeholder="جستجو..." />
             </form>
             <div class="category-slider uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-scrollspy="cls:uk-animation-fade;delay:2600"
                  uk-slider="autoplay:true;autoplay-interval: 2000">

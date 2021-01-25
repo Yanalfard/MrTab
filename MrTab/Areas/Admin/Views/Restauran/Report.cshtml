@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewData["Title"] = "تخلفات رستوران ها";
+}
+<div class="card flex-div border-0 shadow">
+    <div class="card-header bg-white">
+        <div class="row justify-content-end">
+            <div class="col-md-10 col-12">
+                <div class="card-form row">
+                    <div class="form-input col-md-8">
+                        <div class="form-inline">
+                            <div class="form-group mx-sm-1 mb-2">
+                                <input class="form-control form-control-sm" id="name" name="name" type="text" value="@ViewBag.name" placeholder="نام رستوران">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-toolbar col-md-3">
+                        <input type="submit" value="جستجو" class="btn btn-primary btn-sm" onclick="search()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="card-table" class="p-0 card-body flex-div">
+        <div class="table-responsive flex">
+            <table class="table fixed pr-3 text-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">کد</th>
+                        <th scope="col">نام رستوران </th>
+                        <th scope="col">متن</th>
+                        <th scope="col">توضیحات</th>
+                        <th scope="col">عملیات</th>
+                    </tr>
+                </thead>
+                <tbody id="listUser" class="list-wrapper">
+                    @await Component.InvokeAsync("ReportListInAdminVm")
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer bg-white">
+        <nav aria-label="Page navigation example">
+            <div id="pagination-container"></div>
+        </nav>
+    </div>
+</div>
+
+
+
+<!-- Button trigger modal -->
+@section Scripts{
+    <script src="~/admin/bootstrap/js/jquery.validate.min.js"></script>
+    <script src="~/admin/bootstrap/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/admin/bootstrap/js/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+        function search() {
+            var name = $('#name').val();
+            $.ajax({
+                url: "/Admin/Restauran/ReportSearch/",
+                data: { name: name}
+            }).done(function (result) {
+                $('#listUser').html(result);
+            })
+        }
+        function deleteReport(id) {
+            if (confirm('آیا از حذف نظر مورد نظر مظمئن هستین؟')) {
+                $.get("/Admin/Restauran/DeleteReport/" + id, function (result) {
+                    if (result == "true") {
+                        $('#report_' + id).addClass('text-danger');
+                        $("#report_" + id).hide('slow');
+                    } else {
+                        alert(result);
+                    }
+                })
+            }
+        }
+    </script>
+}

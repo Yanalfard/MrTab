@@ -35,9 +35,9 @@ namespace DataLayer.Models
         public virtual DbSet<TblWorkTime> TblWorkTime { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-              => optionsBuilder
-            .UseLazyLoadingProxies()
-            .UseSqlServer("Data Source=103.216.62.27;Initial Catalog=MrTab;User ID=Yanal;Password=1710ahmad.fard");
+             => optionsBuilder
+           .UseLazyLoadingProxies()
+           .UseSqlServer("Data Source=103.216.62.27;Initial Catalog=MrTab;User ID=Yanal;Password=1710ahmad.fard");
         //  {
         //            if (!optionsBuilder.IsConfigured)
         //            {
@@ -53,21 +53,36 @@ namespace DataLayer.Models
         {
             modelBuilder.Entity<TblComment>(entity =>
             {
+                entity.Property(e => e.DecorRate).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ExpenseRate).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.IsReported).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.LikeCount).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.QualityPerPriceRate).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.QualityRate).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.Rate).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ServiceRate).HasDefaultValueSql("((0))");
+
                 entity.HasOne(d => d.Answer)
                     .WithMany(p => p.InverseAnswer)
                     .HasForeignKey(d => d.AnswerId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_TblComment_TblComment");
 
                 entity.HasOne(d => d.Restaurant)
                     .WithMany(p => p.TblComment)
                     .HasForeignKey(d => d.RestaurantId)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_TblComment_TblRestaurant");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.TblComment)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_TblComment_TblUser");
             });
 

@@ -1,11 +1,13 @@
 ﻿using DataLayer.Models;
 using DataLayer.ViewModel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MrTab.Utilities;
 using Services.Security;
 using Services.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -64,6 +66,34 @@ namespace MrTab.Areas.User.Controllers
                 return await Task.FromResult(PartialView("EditName", nameUser));
             }
             return await Task.FromResult(PartialView("EditName", nameUser));
+        }
+
+
+
+
+        public async Task<IActionResult> UploadImage()
+        {
+            return await Task.FromResult(ViewComponent("UploadImageInUserVm"));
+        }
+        [HttpPost]
+        public async Task<IActionResult> UploadImageAsync(UploadImageRestaurant uploadImage, IFormFile files)
+        {
+            if (files != null)
+            {
+                uploadImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(files.FileName);
+                string savePath = Path.Combine(
+                    Directory.GetCurrentDirectory(), "wwwroot/Images/Users/", uploadImage.Image
+                );
+                using (var stream = new FileStream(savePath, FileMode.Create))
+                {
+                    await files.CopyToAsync(stream);
+                }
+                TblUser selectedUser = db.User.GetById(SelectUser().UserId);
+                selectedUser.ImageUrl = uploadImage.Image;
+                db.User.Save();
+                return await Task.FromResult(Redirect("/User/User/Index"));
+            }
+            return await Task.FromResult(Redirect("/User/User/Index"));
         }
     }
 }

@@ -1,0 +1,38 @@
+﻿@model InformationFooter
+
+    <li>
+        <div class="row-reverse counter">
+            <img src="~/resources/svg/Footer/Chat.svg" width="64" height="64" alt="Comments" />
+            <div class="comments column">
+                <strong>@Model.Comment</strong>
+                <span>نظر</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="row-reverse counter">
+            <img src="~/resources/svg/Footer/Heart.svg" width="64" height="64" alt="Likes" />
+            <div class="likes column">
+                <strong>@Model.RateCount</strong>
+                <span>پسند</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="row-reverse counter">
+            <img src="~/resources/svg/Footer/User.svg" width="64" height="64" alt="Users" />
+            <div class="users column">
+                <strong>@Model.User</strong>
+                <span>کاربر</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="row-reverse counter">
+            <img src="~/resources/svg/Footer/Market.svg" width="64" height="64" alt="Restaurants" />
+            <div class="resaurants column">
+                <strong>@Model.Restaurant</strong>
+                <span>رستوران</span>
+            </div>
+        </div>
+    </li>
