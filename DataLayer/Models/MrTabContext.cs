@@ -35,19 +35,13 @@ namespace DataLayer.Models
         public virtual DbSet<TblWorkTime> TblWorkTime { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-             => optionsBuilder
-           .UseLazyLoadingProxies()
-           .UseSqlServer("Data Source=103.216.62.27;Initial Catalog=MrTab;User ID=Yanal;Password=1710ahmad.fard");
-        //  {
-        //            if (!optionsBuilder.IsConfigured)
-        //            {
-        //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        //                optionsBuilder.UseSqlServer("Data Source=103.216.62.27;Initial Catalog=MrTab;User ID=Yanal;Password=1710ahmad.fard");
-
-
-        //            }
-
-        // }
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Data Source=103.216.62.27;Initial Catalog=MrTab;User ID=Yanal;Password=1710ahmad.fard");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -58,6 +52,8 @@ namespace DataLayer.Models
                 entity.Property(e => e.ExpenseRate).HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.IsReported).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.IsValid).HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.LikeCount).HasDefaultValueSql("((0))");
 
@@ -138,6 +134,8 @@ namespace DataLayer.Models
 
             modelBuilder.Entity<TblRestaurant>(entity =>
             {
+                entity.Property(e => e.IsValid).HasDefaultValueSql("((0))");
+
                 entity.HasOne(d => d.Catagory)
                     .WithMany(p => p.TblRestaurant)
                     .HasForeignKey(d => d.CatagoryId)
