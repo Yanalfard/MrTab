@@ -39,15 +39,33 @@
                 @item.City.Name
             </td>
             <td>
+                @if (item.IsValid)
+                {
+                    <a href="#" onclick="activeDisableRestauran(@item.RestaurantId)" class="badge-success badge-pill">بله</a>
+                }
+                else
+                {
+                    <a href="#" onclick="activeDisableRestauran(@item.RestaurantId)" class="badge-danger badge-pill">خیر</a>
+                }
+            </td>
+            <td>
                 @item.Neighborhood
             </td>
             <td>
                 @item.TellNo1
             </td>
+
+            @*<td>
+                <a href="/Admin/Restauran/ReportSearch/@item.RestaurantId" class="fa fa-eye" title="گزارش ها " data-toggle="tooltip" data-placement="top">
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Comment/Index?restaurantId=@item.RestaurantId" class="fa fa-eye" title="پیام ها " data-toggle="tooltip" data-placement="top">
+                </a>
+            </td>*@
             <td>
                 @item.Rating
             </td>
-
             <td>
                 <a href="/Admin/Restauran/Gallery/@item.RestaurantId" class="btn btn-warning btn-sm">گالری </a>
                 <a class="btn btn-warning btn-sm" href="/Admin/Food/Index/@item.RestaurantId">غذاها </a>

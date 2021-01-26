@@ -334,13 +334,17 @@ namespace MrTab.Areas.Admin.Controllers
             return await Task.FromResult(View());
         }
 
-        public async Task<IActionResult> Report()
+        public async Task<IActionResult> Report(int restaurantId = 0, string name = null)
         {
             return await Task.FromResult(View());
         }
-        public async Task<IActionResult> ReportSearch(string name=null)
+        public async Task<IActionResult> ReportSearch(int restaurantId = 0, string name=null)
         {
             List<TblReport> list = db.Report.Get().ToList();
+            if (restaurantId > 0)
+            {
+                list = list.Where(i => i.Restaurant.RestaurantId == restaurantId).ToList();
+            }
             if (name != null)
             {
                 list = list.Where(i => i.Restaurant.Name.Contains(name)).ToList();
@@ -383,5 +387,19 @@ namespace MrTab.Areas.Admin.Controllers
             return await Task.FromResult(PartialView(list));
         }
 
+
+        public async Task<string> ActiveDisableRestauran(int id)
+        {
+            TblRestaurant updateUser = db.Restaurant.GetById(id);
+            updateUser.IsValid = !updateUser.IsValid;
+            db.Restaurant.Update(updateUser);
+            db.Restaurant.Save();
+            return await Task.FromResult("true");
+        }
+
+        public IActionResult ListRestauran()
+        {
+            return ViewComponent("RestauranListInAdminVm");
+        }
     }
 }

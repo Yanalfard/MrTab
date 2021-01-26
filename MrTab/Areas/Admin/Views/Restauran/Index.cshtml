@@ -46,8 +46,11 @@
                         <th scope="col">عکس بنر</th>
                         <th scope="col">دسته</th>
                         <th scope="col">شهر</th>
+                        <th scope="col">نمایش </th>
                         <th scope="col">محله</th>
                         <th scope="col">تلفن</th>
+                        @*<th scope="col">گزارش ها</th>
+                        <th scope="col">پیام ها</th>*@
                         <th scope="col">امتیاز</th>
                         <th scope="col">عملیات</th>
                     </tr>
@@ -96,6 +99,15 @@
                     }
                 })
             }
+        }
+        function activeDisableRestauran(id) {
+            $.get("/Admin/Restauran/ActiveDisableRestauran/" + id, function (result) {
+                if (result == "true") {
+                    $.get("/Admin/Restauran/ListRestauran", function (res) {
+                        $('#listUser').html(res);
+                    });
+                }
+            });
         }
     </script>
 }

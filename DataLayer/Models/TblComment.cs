@@ -35,7 +35,7 @@ namespace DataLayer.Models
         public int? UserId { get; set; }
         [StringLength(500)]
         public string TextReport { get; set; }
-        public bool? IsValid { get; set; }
+        public bool IsValid { get; set; }
 
         [ForeignKey(nameof(AnswerId))]
         [InverseProperty(nameof(TblComment.InverseAnswer))]
