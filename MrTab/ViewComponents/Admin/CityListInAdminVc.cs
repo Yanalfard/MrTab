@@ -12,7 +12,7 @@ namespace MrTab.ViewComponents.Admin
         private Core db = new Core();
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return await Task.FromResult((IViewComponentResult)View("/Areas/Admin/Views/City/Components/CityListInAdmin.cshtml", db.City.Get()));
+            return await Task.FromResult((IViewComponentResult)View("/Areas/Admin/Views/City/Components/CityListInAdmin.cshtml", db.City.Get().OrderByDescending(i => i.CityId)));
         }
     }
 }

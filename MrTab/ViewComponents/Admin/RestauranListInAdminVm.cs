@@ -13,7 +13,7 @@ namespace MrTab.ViewComponents.Admin
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var list = db.Restaurant.Get();
-            return await Task.FromResult((IViewComponentResult)View("/Areas/Admin/Views/Restauran/Components/RestauranListInAdmin.cshtml", db.Restaurant.Get()));
+            return await Task.FromResult((IViewComponentResult)View("/Areas/Admin/Views/Restauran/Components/RestauranListInAdmin.cshtml", db.Restaurant.Get().OrderByDescending(i => i.CatagoryId)));
         }
     }
 }

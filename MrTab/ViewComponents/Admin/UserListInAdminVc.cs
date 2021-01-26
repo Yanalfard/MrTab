@@ -13,7 +13,7 @@ namespace MrTab.ViewComponents.Admin
         private Core db = new Core();
         public async Task<IViewComponentResult> InvokeAsync(UserSeachVm search)
         {
-            return await Task.FromResult((IViewComponentResult)View("/Areas/Admin/Views/User/Components/UserListInAdmin.cshtml", db.User.Get()));
+            return await Task.FromResult((IViewComponentResult)View("/Areas/Admin/Views/User/Components/UserListInAdmin.cshtml", db.User.Get().OrderByDescending(i => i.UserId)));
         }
     }
 }
