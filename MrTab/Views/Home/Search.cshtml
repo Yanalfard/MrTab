@@ -19,30 +19,25 @@
             <div class="form-group">
                 <input type="text" class="form-group-bg"
                        dir="rtl" placeholder="جستجو..."
-                       aria-label="جسجتو غذا" name="txtSearchFood" />
+                       aria-label="جسجتو غذا" name="txtSearchFood"
+                       oninput="document.getElementById('foods').childNodes.forEach(i => { if(i.nodeType !== Node.TEXT_NODE)  i.style.display = i.textContent.includes(this.value) ? 'list-item' : 'none' })" />
             </div>
             <div class="even-taglist column uk-margin-small-top">
-                <ul class="tag-grid uk-padding-remove">
+                <ul id="foods" class="tag-grid uk-padding-remove">
                     <li>
-                        <button class="even-tag">سنتی</button>
+                        <button type="button" class="even-tag uk-modal-close" onclick="document.getElementById('foodType').value = this.textContent">سنتی</button>
                     </li>
                     <li>
-                        <button class="even-tag">فرنگی</button>
+                        <button type="button" class="even-tag uk-modal-close" onclick="document.getElementById('foodType').value = this.textContent">سنتی</button>
                     </li>
                     <li>
-                        <button class="even-tag">ایتالیایی</button>
+                        <button type="button" class="even-tag uk-modal-close" onclick="document.getElementById('foodType').value = this.textContent">سنتی</button>
                     </li>
                     <li>
-                        <button class="even-tag">کباب</button>
+                        <button type="button" class="even-tag uk-modal-close" onclick="document.getElementById('foodType').value = this.textContent">سنتی</button>
                     </li>
                     <li>
-                        <button class="even-tag">دونر</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">صبحانه</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">مکزیکی</button>
+                        <button type="button" class="even-tag uk-modal-close" onclick="document.getElementById('foodType').value = this.textContent">سنتی</button>
                     </li>
                 </ul>
             </div>
@@ -57,28 +52,28 @@
 
 <form class="search-filter mat" asp-action="UploadImage" asp-controller="Account" asp-area="User">
     @*<button id="btnSearch" class="btn btn-primary" aria-label="جسنجو رستوران">
-        <span uk-icon="search"></span>
-    </button>*@
-    <input type="submit" class="btn btn-primary" aria-label="جسنجو رستوران" value="جسنجو" />
-    @*<button id="btnFood" type="button" uk-toggle="#Modal-Food" aria-label="انتخاب نوع غذا"
-            class="form-group-bg row-reverse searchbar-margin-left">
+            <span uk-icon="search"></span>
+        </button>*@
+    <input id="btnSearch" type="submit" class="btn btn-primary" aria-label="جستجو رستوران" value="جستجو" />
+    <div id="btnFood" type="button" uk-toggle="#Modal-Food" aria-label="انتخاب نوع غذا"
+         class="form-group-bg row-reverse searchbar-margin-left">
         <span class="uk-margin-small-left" uk-icon="grid-outline"></span>
-        <span>نوع غذا</span>
-    </button>
+        <input readonly class="input-invis" id="foodType" name="foodType" value="نوع غذا">
+    </div>
     <div id="selectOrder" class="form-group-bg">
-        <select class="form-group-bg uk-padding-remove" dir="rtl">
-            <option>مرتب کردن</option>
-            <option>خیزان بر اساس امتیاز</option>
-            <option>افتان بر اساس امتیاز</option>
+        <select class="form-group-bg uk-padding-remove" dir="rtl" name="orderBy">
+            <option value="0">مرتب کردن</option>
+            <option value="1">از کمترین  امتیاز</option>
+            <option value="2">از بیشترین  امتیاز</option>
         </select>
     </div>
-    <button id="btnCity" type="button" uk-toggle="#Modal-Location" aria-label="انتخاب شهر"
+    <div id="btnCity" type="button" uk-toggle="#Modal-Location"  aria-label="انتخاب شهر"
             class="form-group-bg row-reverse searchbar-margin-left">
         <span uk-icon="location-outline"></span>
-        <span>شهر</span>
-    </button>*@
-    <input tabindex="1" id="txtType" name="nameFood" type="text" class="form-group-bg" placeholder=" غذا"value="@ViewBag.nameFood" />
-    <input tabindex="2" id="address" name="address"  type="text" class="form-group-bg" placeholder="نام مکان" value="@ViewBag.name" />
+        <input readonly class="input-invis" id="CityInput" name="CityInput" value="شهر">
+    </div>
+    <input tabindex="1" id="txtType" name="nameFood" type="text" class="form-group-bg" placeholder=" غذا" value="@ViewBag.nameFood" />
+    <input tabindex="2" id="address" name="name" type="text" class="form-group-bg" placeholder="نام مکان" value="@ViewBag.name" />
 </form>
 
 <div role="none" class="space-search uk-margin-medium-bottom"></div>
@@ -86,23 +81,22 @@
 <div class="uk-container column">
 
     <!-- #region Searchbar -->
-    @*<form class="searchbar">
-            <input type="text" class="form-group-bg searchbar-margin-left" placeholder="نام رستوران" aria-label="نام رستوران" />
-            <button type="button" uk-toggle="#Modal-Location" aria-label="انتخاب شهر"
-                    class="form-group-bg row-reverse searchbar-margin-left">
-                <span uk-icon="location-outline"></span>
-                <span>انتخاب شهر</span>
-            </button>
-            <button type="button" uk-toggle="#Modal-Food" aria-label="انتخاب نوع غذا"
-                    class="form-group-bg row-reverse searchbar-margin-left">
-                <span class="uk-margin-small-left" uk-icon="grid-outline"></span>
-                <span>نوع غذا</span>
-            </button>
-            <button class="btn btn-primary" aria-label="جسنجو رستوران">
-                <span uk-icon="search"></span>
-            </button>
-        </form>*@
-
+    <!--<form class="searchbar">
+        <input type="text" class="form-group-bg searchbar-margin-left" placeholder="نام رستوران" aria-label="نام رستوران" />
+        <button type="button" uk-toggle="#Modal-Location" aria-label="انتخاب شهر"
+                class="form-group-bg row-reverse searchbar-margin-left">
+            <span uk-icon="location-outline"></span>
+            <span>انتخاب شهر</span>
+        </button>
+        <button type="button" uk-toggle="#Modal-Food" aria-label="انتخاب نوع غذا"
+                class="form-group-bg row-reverse searchbar-margin-left">
+            <span class="uk-margin-small-left" uk-icon="grid-outline"></span>
+            <span>نوع غذا</span>
+        </button>
+        <button class="btn btn-primary" aria-label="جسنجو رستوران">
+            <span uk-icon="search"></span>
+        </button>
+    </form>-->
     <!-- #endregion -->
     <!-- #region Grid -->
 
@@ -110,14 +104,8 @@
 
         @foreach (var item in Model)
         {
-        <partial name="_RestaurantBlock" model="item" />
+            <partial name="_RestaurantBlock" model="item" />
         }
-      
-
-        <div role="none"></div>
-        <div role="none"></div>
-        <div role="none"></div>
-        <div role="none"></div>
 
     </div>
 

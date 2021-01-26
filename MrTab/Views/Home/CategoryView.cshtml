@@ -14,7 +14,7 @@
 }
 
 <div class="banner column uk-height-large uk-background-cover uk-margin-medium-bottom uk-light uk-flex" uk-parallax="bgy: -200"
-      style="background-image: url('@bannerPath');">
+     style="background-image: url('@bannerPath');">
     <div class="column uk-margin-auto-bottom">
         <div class="banner-text column">
             <h1 class="uk-text-center uk-margin-small-bottom uk-margin-auto uk-margin-remove-vertical">@Model.Name</h1>
@@ -27,20 +27,20 @@
 </div>
 
 <div class="uk-container">
-    <div class="rest-grid">
-        @if (Model.TblRestaurant.Any())
-        {
-            foreach (var item in Model.TblRestaurant)
+    @if (Model.TblRestaurant.Any(i => i.IsValid))
+    {
+        <div class="rest-grid">
+            @foreach (var item in Model.TblRestaurant)
             {
                 <partial name="_RestaurantBlock" model="item" />
             }
-        }
-        <div role="none"></div>
-        <div role="none"></div>
-        <div role="none"></div>
-        <div role="none"></div>
+            <div role="none"></div>
+            <div role="none"></div>
+            <div role="none"></div>
+            <div role="none"></div>
 
-    </div>
+        </div>
 
+    }
 </div>
 

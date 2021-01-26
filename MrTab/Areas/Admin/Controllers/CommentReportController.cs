@@ -14,7 +14,7 @@ namespace MrTab.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [PermissionChecker("admin")]
-    public class CommentController : Controller
+    public class CommentReportController : Controller
     {
         private Core db = new Core();
         public IActionResult Index()
@@ -39,18 +39,15 @@ namespace MrTab.Areas.Admin.Controllers
             return await Task.FromResult(PartialView(list));
         }
 
-        public async Task<string> DeleteComment(int id)
+        public async Task<string> DeleteCommentReport(int id)
         {
-            TblComment selectedCityById = db.Comment.GetById(id);
-            bool delete = db.Comment.Delete(selectedCityById);
-            if (delete)
-            {
-                db.Report.Save();
-                return await Task.FromResult("true");
-            }
-            return await Task.FromResult("خطا در حذف   لطفا بررسی فرمایید");
+            TblComment updateComment = db.Comment.GetById(id);
+            updateComment.IsReported = !updateComment.IsReported;
+            db.Comment.Update(updateComment);
+            db.Comment.Save();
+            return await Task.FromResult("true");
         }
-        public async Task<string> ActiveDisableComment(int id)
+        public async Task<string> ActiveDisableCommentReport(int id)
         {
             TblComment updateComment = db.Comment.GetById(id);
             updateComment.IsValid = !updateComment.IsValid;
@@ -59,9 +56,9 @@ namespace MrTab.Areas.Admin.Controllers
             return await Task.FromResult("true");
         }
 
-        public IActionResult ListComment()
+        public IActionResult ListCommentReport()
         {
-            return ViewComponent("CommentListInAdminVm");
+            return ViewComponent("CommentReportListInAdminVm");
         }
 
     }

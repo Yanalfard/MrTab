@@ -1,8 +1,8 @@
-{
+﻿{
   "dir": "rtl",
   "lang": "fa",
-  "name": "MrTab",
-  "short_name": "MrTab",
+  "name": "فودستان",
+  "short_name": "فودستان",
   "display": "standalone",
   "start_url": "/Home/Index",
   "background_color": "#FFAC2F",

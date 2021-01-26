@@ -135,7 +135,6 @@ namespace MrTab.Controllers
         {
             TblRestaurant select = db.Restaurant.GetById(report.RestaurantId);
             TblComment selectComment = db.Comment.GetById(report.CommentId);
-            selectComment.IsReported = true;
             selectComment.TextReport = report.Text + report.Description;
             db.Comment.Update(selectComment);
             db.Comment.Save();
