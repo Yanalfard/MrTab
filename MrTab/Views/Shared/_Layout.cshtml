@@ -65,7 +65,7 @@
                         <div class="mat uk-box-shadow-large">
                             <ul class="column uk-list">
                                 <li>
-                                    <a href="#" onclick="changePassword()" class="uk-text-default">
+                                    <a href="/User/User/Index" class="uk-text-default">
                                         پروفایل
                                     </a>
                                 </li>
@@ -75,7 +75,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" class="uk-text-danger">خروج</a>
+                                    <a href="/Account/LogOut" class="uk-text-danger">خروج</a>
                                 </li>
                             </ul>
                         </div>
@@ -86,12 +86,40 @@
                     <a href="/Account/Register" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
                         پنل نویسنده
                     </a>
+                    <div uk-drop="pos: bottom-right; offset:36">
+                        <div class="mat uk-box-shadow-large">
+                            <ul class="column uk-list">
+                                <li>
+                                    <a href="/Account/Register" class="uk-text-default">
+                                        پنل نویسنده
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Account/LogOut" class="uk-text-danger">خروج</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 }
                 else if (User.Claims.Last().Value == "admin")
                 {
                     <a href="/Admin/Home/Index" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
                         پنل مدیریت
                     </a>
+                    <div uk-drop="pos: bottom-right; offset:36">
+                        <div class="mat uk-box-shadow-large">
+                            <ul class="column uk-list">
+                                <li>
+                                    <a href="/Admin/Home/Index" class="uk-text-default">
+                                        پنل مدیریت
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Account/LogOut" class="uk-text-danger">خروج</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 }
             }
             else
