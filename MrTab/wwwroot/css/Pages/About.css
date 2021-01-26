@@ -80,7 +80,7 @@ backdrop-filter: saturate(80%);
 /*#endregion */
 @media only screen and (max-width: 800px) {
   .intro .text, .app .text, .outro .text {
-    font-size: 16px; } }
+    font-size: 14px; } }
 
 .intro {
   display: grid;
@@ -127,11 +127,11 @@ backdrop-filter: saturate(80%);
     padding: 32px; }
     .app .text h3 {
       margin: 0;
-      font-size: 36px;
+      font-size: 32px;
       color: #000; }
     .app .text p {
       color: #000;
-      font-size: 20px; }
+      font-size: 16px; }
 
 @media only screen and (min-width: 800px) and (max-width: 1124px) {
   .app .img {
@@ -159,11 +159,11 @@ backdrop-filter: saturate(80%);
     padding: 32px; }
     .outro .text h3 {
       margin: 0;
-      font-size: 36px;
+      font-size: 32px;
       color: #000; }
     .outro .text p {
       color: #000;
-      font-size: 20px; }
+      font-size: 16px; }
     .outro .text .media {
       grid-gap: 16px; }
       .outro .text .media .social {
