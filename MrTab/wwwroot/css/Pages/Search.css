@@ -78,7 +78,7 @@ backdrop-filter: saturate(80%);
   flex: auto; }
 
 /*#endregion */
-#txtSearch {
+#txtSearch, #btnLocation {
   display: none; }
 
 .searchbar {

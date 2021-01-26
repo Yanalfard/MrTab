@@ -2,7 +2,7 @@
 
 @foreach (var item in Model)
 {
-    if (item.TblRestaurant.Any())
+    if (item.TblRestaurant.Any(i => i.IsValid))
     {
 
         <div class="rest-carousel uk-position-relative uk-visible-toggle uk-box-shadow-small uk-box-shadow-hover-large"
@@ -18,7 +18,7 @@
             </div>
 
             <ul class="uk-slider-items">
-                @foreach (var j in item.TblRestaurant)
+                @foreach (var j in item.TblRestaurant.Where(i=>i.IsValid))
                 {
                     <li>
                         <partial name="_RestaurantBlock" model="j" />

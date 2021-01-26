@@ -132,10 +132,12 @@
                 </a>
             }
 
-            <button id="btnLocation" uk-icon="location-outline"
+
+            @* TODO *@
+            @*<button id="btnLocation" uk-icon="location-outline"
                     class="btn btn-round btn-darkglass margin-header-left" type="button" uk-toggle="#Modal-Location">
                 تبریز
-            </button>
+            </button>*@
             <form asp-action="Search" asp-controller="Home" asp-area="" id="txtSearch" class="material-darkglass margin-header-left btn-round row">
                 <button onclick="window.location='/Home/Search'" uk-icon="search-outline" aria-label="جستجو"
                         class="btn-icon-darkglass uk-margin-small-left uk-margin-small-right"></button>
@@ -248,76 +250,31 @@
     </div>
 
     <!-- #region Location -->
+    <partial name="/Views/Shared/_CitySelector.cshtml">
 
-    <div id="Modal-Location" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body">
-            <form class="column">
-                <h2 class="uk-h4">انتخاب شهر</h2>
-                <span class="uk-modal-close" uk-close></span>
-                <div class="form-group">
-                    @*<input type="text" class="form-group-bg"
-                        dir="rtl" placeholder="جستجو..."
-                        aria-label="جستجو شهر" name="txtSearch" />*@
-                </div>
-                <div class="even-taglist column uk-margin-small-top">
-                    <ul class="tag-grid uk-padding-remove">
-                        @await Component.InvokeAsync("CityVm")
-                        @*<li>
-                                <button class="even-tag">تبریز</button>
-                            </li>
-                            <li>
-                                <button class="even-tag">تهران</button>
-                            </li>
-                            <li>
-                                <button class="even-tag">مراغه</button>
-                            </li>
-                            <li>
-                                <button class="even-tag">زنچان</button>
-                            </li>
-                            <li>
-                                <button class="even-tag">قزوین</button>
-                            </li>
-                            <li>
-                                <button class="even-tag">ارومیه</button>
-                            </li>
-                            <li>
-                                <button class="even-tag">سراب</button>
-                            </li>
-                            <li>
-                                <button class="even-tag">بناب</button>
-                            </li>*@
-                    </ul>
-                </div>
-                <div class="button-panel uk-margin-top uk-margin-auto">
-                    <div class="btn btn-round btn-secondary uk-modal-close">بازگشت</div>
-                </div>
-            </form>
-        </div>
-    </div>
+        <!-- #endregion -->
 
-    <!-- #endregion -->
+        <div class="space-nav-bottom uk-margin-top"></div>
+        <partial name="/Views/Shared/_MobileNav.cshtml">
 
-    <div class="space-nav-bottom uk-margin-top"></div>
-    <partial name="/Views/Shared/_MobileNav.cshtml">
+            <!-- PWA -->
+            <script src="~/app.js"></script>
 
-        <!-- PWA -->
-        <script src="~/app.js"></script>
+            <!--Static Js-->
+            <script src="~/js/uikit.min.js"></script>
+            <script src="~/js/uikit-icons.js"></script>
+            <script src="~/js/croppie.js"></script>
+            <script src="~/js/persianDigits.js"></script>
+            @*<script src="~/js/ImageLoadFailed.js"></script>*@
+            <script src="~/js/CopyText.js"></script>
+            <!--Page Dependant Js-->
 
-        <!--Static Js-->
-        <script src="~/js/uikit.min.js"></script>
-        <script src="~/js/uikit-icons.js"></script>
-        <script src="~/js/croppie.js"></script>
-        <script src="~/js/persianDigits.js"></script>
-        @*<script src="~/js/ImageLoadFailed.js"></script>*@
-        <script src="~/js/CopyText.js"></script>
-        <!--Page Dependant Js-->
+            <script src="~/js/jquery-3.5.1.min.js"></script>
+            <script src="~/js/jquery.validate.min.js"></script>
+            <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+            <script src="~/js/jquery.unobtrusive-ajax.min.js"></script>
 
-        <script src="~/js/jquery-3.5.1.min.js"></script>
-        <script src="~/js/jquery.validate.min.js"></script>
-        <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
-        <script src="~/js/jquery.unobtrusive-ajax.min.js"></script>
-
-        @RenderSection("Scripts", false)
+            @RenderSection("Scripts", false)
 
 </body>
 </html>

@@ -20,12 +20,11 @@ namespace MrTab.Controllers
         {
             return View();
         }
-        public IActionResult Search(string name = null, string nameFood = null, string address = null, string city = null)
+        public IActionResult Search(string name = null,string foodType=null, string nameFood = null, string CityInput = null,int orderBy=0)
         {
             ViewBag.name = name;
-            ViewBag.address = address;
-            ViewBag.city = city;
-            List<TblRestaurant> list = db.Restaurant.Get().ToList();
+            ViewBag.CityInput = CityInput;
+            List<TblRestaurant> list = db.Restaurant.Get().Where(i => i.IsValid).ToList();
             if (name != null)
             {
                 list = list.Where(i => i.Name.Contains(name)).ToList();
@@ -35,13 +34,25 @@ namespace MrTab.Controllers
                 List<TblRestaurant> food = db.Food.Get().Where(i => i.Name.Contains(nameFood)).Select(i => i.Restaurant).ToList();
                 list.AddRange(food.Distinct());
             }
-            if (address != null)
+            if (foodType != null)
             {
-                list = list.Where(i => i.Address.Contains(address)).ToList();
+                List<TblRestaurant> food = db.FoodType.Get().Where(i => i.Name.Contains(foodType)).Select(i => i.Restaurant).ToList();
+                list.AddRange(food.Distinct());
             }
-            if (city != null)
+            if (CityInput != null)
             {
-                list = list.Where(i => i.City.Name.Contains(city)).ToList();
+                list = list.Where(i => i.City.Name.Contains(CityInput)).ToList();
+            }
+            if (orderBy > 0)
+            {
+                if (orderBy == 1)
+                {
+                    list.OrderByDescending(i => i.Rating);
+                }
+                else if(orderBy == 2)
+                {
+                    list.OrderBy(i => i.Rating);
+                }
             }
             return View(list);
         }

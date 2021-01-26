@@ -12,7 +12,7 @@ namespace MrTab.ViewComponents.View
         private Core db = new Core();
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return await Task.FromResult((IViewComponentResult)View("/Views/Shared/Components/CityVm/City.cshtml", db.City.Get()));
+            return await Task.FromResult((IViewComponentResult)View("/Views/Shared/Components/CityVm/City.cshtml", db.City.Get().OrderByDescending(i=>i.CityId)));
         }
     }
 }

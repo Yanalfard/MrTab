@@ -36,5 +36,11 @@ namespace MrTab.Areas.User.Controllers
             int id = Convert.ToInt32(User.Claims.First().Value);
             return await Task.FromResult(ViewComponent("ChangePasswordInUserVm", new { id = id }));
         }
+
+        public IActionResult Menu()
+        {
+            return View();
+        }
+
     }
 }
