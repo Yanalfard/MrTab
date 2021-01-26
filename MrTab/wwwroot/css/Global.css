@@ -70,10 +70,7 @@ img {
   background: #fff;
   -moz-border-radius: 16px 16px 16px 16px;
   -webkit-border-radius: 16px 16px 16px 16px;
-  border-radius: 16px 16px 16px 16px;
-  /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/ }
+  border-radius: 16px 16px 16px 16px; }
 
 .white {
   background: #fff; }

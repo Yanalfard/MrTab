@@ -65,5 +65,10 @@ namespace MrTab.Controllers
             return View();
         }
 
+        public IActionResult Rules()
+        {
+            return View();
+        }
+
     }
 }
