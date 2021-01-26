@@ -136,6 +136,7 @@ namespace MrTab.Controllers
             TblRestaurant select = db.Restaurant.GetById(report.RestaurantId);
             TblComment selectComment = db.Comment.GetById(report.CommentId);
             selectComment.TextReport = report.Text + report.Description;
+            selectComment.IsReported = true;
             db.Comment.Update(selectComment);
             db.Comment.Save();
             return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/" + select.Name.Replace(" ", "-")));

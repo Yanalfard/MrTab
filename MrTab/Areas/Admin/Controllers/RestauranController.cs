@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace MrTab.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [PermissionChecker("admin")]
+    [PermissionChecker("author,admin")]
     public class RestauranController : Controller
     {
         private Core db = new Core();
@@ -97,6 +97,7 @@ namespace MrTab.Areas.Admin.Controllers
                     addRestaurant.TellNo1 = restaurant.TellNo1;
                     addRestaurant.TellNo2 = restaurant.TellNo2;
                     addRestaurant.UserId = restaurant.UserId;
+                    addRestaurant.IsValid = true;
                     db.Restaurant.Add(addRestaurant);
                     db.Restaurant.Save();
                     return await Task.FromResult(RedirectToAction(nameof(Index)));
@@ -124,6 +125,7 @@ namespace MrTab.Areas.Admin.Controllers
             md.ShortDesc = selectedRestaurant.ShortDesc;
             md.TellNo1 = selectedRestaurant.TellNo1;
             md.TellNo2 = selectedRestaurant.TellNo2;
+            md.UserId = selectedRestaurant.UserId;
             md.UserId = selectedRestaurant.UserId;
 
             ViewBag.CityId = db.City.Get();

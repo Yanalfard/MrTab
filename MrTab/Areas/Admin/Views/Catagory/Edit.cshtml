@@ -4,6 +4,7 @@
     <div class="form-horizontal">
         <input type="hidden" asp-for="CatagoryId" />
         <input type="hidden" asp-for="ImageUrl" />
+        <input type="hidden" asp-for="IconUrl" />
 
         <div class="form-group">
             <label for="name">نام </label>
@@ -22,8 +23,15 @@
             {
                 <img src="/Images/NoImage.svg" alt="@Model.Name" style="max-width:100px;" />
             }
-            <div class="form-group mx-sm-1 mb-2">
-                <input type="file" asp-for="ImageUrl" name="imgup" class="form-control form-control-sm" />
+            <div class="upload-image uk-margin-auto-left">
+                <label class="title">لوگو دسته بندی <span>(نسبت یک در یک)</span></label>
+                <img class="preview" src="" alt="" />
+                <label class="select">
+                    <span>
+                        فایل انتخاب نشده
+                    </span>
+                    <input type="file" accept="image/*" name="IconUrl" onchange="imageSelected(this)" />
+                </label>
             </div>
         </div>
 
@@ -37,9 +45,16 @@
             {
                 <img src="/Images/NoImage.svg" alt="@Model.Name" style="max-width:100px;" />
             }
-            <div class="form-group mx-sm-1 mb-2">
-                <input type="file" asp-for="IconUrl" name="IconUrl" class="form-control form-control-sm" />
-            </div>
+        <div class="upload-image uk-margin-auto-left">
+            <label class="title"> عکس <span>(نسبت یک در یک)</span></label>
+            <img class="preview" src="" alt="" />
+            <label class="select">
+                <span>
+                    فایل انتخاب نشده
+                </span>
+                <input type="file" accept="image/*" name="ImageUrl" onchange="imageSelected(this)" />
+            </label>
+        </div>
         </div>
         <div class="form-group">
             <label for="name">در صفحه اصلی نمایش داده شود </label>
@@ -54,3 +69,19 @@
         </div>
     </div>
 </form>
+
+<script>
+    function imageSelected(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                const img = input.parentElement.parentElement.querySelector('.preview');
+                img.src = e.target.result.toString();
+                img.style.backgroundImage = '';
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+</script>

@@ -25,10 +25,17 @@ namespace MrTab.Utilities
             {
                 string userName = context.HttpContext.User.Identity.Name;
                 TblUser selectUser = db.User.Get().SingleOrDefault(i => i.TellNo == userName);
-                if (selectUser.Role.Name != _permissionId)
+                List<string> check = _permissionId.Split(',').ToList();
+
+                string name = selectUser.Role.Name;
+                if (!check.Contains(name))
                 {
                     context.Result = new RedirectResult("/Account/Login");
                 }
+                //if (selectUser.Role.Name != _permissionId)
+                //{
+                //    context.Result = new RedirectResult("/Account/Login");
+                //}
             }
             else
             {

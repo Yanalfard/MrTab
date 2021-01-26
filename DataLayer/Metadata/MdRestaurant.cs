@@ -89,6 +89,7 @@ namespace DataLayer.Metadata
         [Display(Name = "کاربر")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int UserId { get; set; }
+        public bool IsValid { get; set; }
     }
 
 }

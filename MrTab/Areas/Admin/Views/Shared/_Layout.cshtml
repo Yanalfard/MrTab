@@ -57,15 +57,42 @@
                                 <span class="title">داشبورد</span>
                             </a>
                         </li>
+                        @if (User.Claims.Last().Value == "admin")
+                        {
+                            <li class="nav-item active">
+                                <a href="/Admin/User">
+                                    <span class="icon-holder">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                    <span class="title">کاربران</span>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle" href="javascript:void(0);">
+                                    <span class="icon-holder">
+                                        <i class="fas fa-th-large"></i>
+                                    </span>
+                                    <span class="title">قوانین و درباره ما </span>
+                                    <span class="arrow">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/Admin/Home/About">
+                                            درباره ما
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Admin/Home/Contact">
+                                            قوانین سایت
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
 
-                        <li class="nav-item active">
-                            <a href="/Admin/User">
-                                <span class="icon-holder">
-                                    <i class="fas fa-user"></i>
-                                </span>
-                                <span class="title">کاربران</span>
-                            </a>
-                        </li>
+
                         <li class="nav-item active">
                             <a href="/Admin/City">
                                 <span class="icon-holder">
@@ -119,29 +146,6 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
-                                <span class="icon-holder">
-                                    <i class="fas fa-th-large"></i>
-                                </span>
-                                <span class="title">قوانین و درباره ما </span>
-                                <span class="arrow">
-                                    <i class="fas fa-chevron-right"></i>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="/Admin/Home/About">
-                                        درباره ما
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/Home/Contact">
-                                        قوانین سایت
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
 
                     </ul>
                 </div>

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace MrTab.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [PermissionChecker("admin")]
+    [PermissionChecker("author,admin")]
     public class CommentController : Controller
     {
         private Core db = new Core();
