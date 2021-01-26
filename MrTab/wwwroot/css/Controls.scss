@@ -521,7 +521,6 @@ textarea:focus {
         margin: -28px 0 0 0;
         z-index: 50;
         @include border-radius(28px,28px,0,0);
-        @include shadow-more;
 
         h3 {
             color: #fff;

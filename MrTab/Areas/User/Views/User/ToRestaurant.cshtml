@@ -8,58 +8,6 @@
     <link href="~/css/Pages/Profile.min.css" rel="stylesheet" />
 }
 
-<!-- #region Croppie-Logo -->
-
-<div id="Croppie-Logo" uk-modal>
-    <div class="uk-modal-dialog background-transparent uk-flex">
-        <div class="popup-croppie column uk-margin-auto">
-            <div class="controls uk-width-1-1 row ">
-                <input type="file" id="files" onchange="LogoFileSelected(this)" class="display-none">
-                <label class="button-icon" for="files">
-                    <span uk-icon="image"></span>
-                </label>
-                <button class="button-icon" onclick="">
-                    <span uk-icon="crop"></span>
-                </button>
-                @*<button class="button-icon uk-margin-auto-left" onclick="window.history.back()">
-                                <span uk-icon="close"></span>
-                    </button>*@
-                <button class="button-icon uk-margin-auto-left uk-modal-close">
-                    <span uk-icon="close"></span>
-                </button>
-            </div>
-            <img src="~/resources/svg/Image.svg" id="item" />
-        </div>
-    </div>
-</div>
-
-<!-- #endregion -->
-<!-- #region Croppie-Banner -->
-
-<div id="Croppie-Banner" uk-modal>
-    <div class="uk-modal-dialog background-transparent uk-flex">
-        <div class="popup-croppie column uk-margin-auto">
-            <div class="controls uk-width-1-1 row ">
-                <input type="file" id="files" onchange="BannerFileSelected(this)" class="display-none">
-                <label class="button-icon" for="files">
-                    <span uk-icon="image"></span>
-                </label>
-                <button class="button-icon" onclick="">
-                    <span uk-icon="crop"></span>
-                </button>
-                @*<button class="button-icon uk-margin-auto-left" onclick="window.history.back()">
-                                <span uk-icon="close"></span>
-                    </button>*@
-                <button class="button-icon uk-margin-auto-left uk-modal-close">
-                    <span uk-icon="close"></span>
-                </button>
-            </div>
-            <img src="~/resources/svg/Image.svg" id="item" />
-        </div>
-    </div>
-</div>
-
-<!-- #endregion -->
 <!-- #region Restaurant Type -->
 
 <div id="Modal-RestType" uk-modal>
@@ -160,19 +108,25 @@
         <h3>تشکیل رستوران</h3>
         <form class="">
             <div class="inputs column">
-                <div class="profile-image">
-                    <img src="~/resources/jpg/Coffee.jpg" width="150" height="150" alt="عکس پروفایل" />
-                    <button uk-tooltip="آپلود عکس" type="button" uk-toggle="#Croppie-Logo"
-                            class="btn-icon btn-upload" aria-label="آپلود عکس پروفایل">
-                        <span uk-icon="image"></span>
-                    </button>
+                <div class="upload-image uk-margin-auto-left">
+                    <label class="title">لوگو رستوران <span>(نسبت یک در یک)</span></label>
+                    <img class="preview" src="" alt="" />
+                    <label class="select">
+                        <span>
+                            فایل انتخاب نشده
+                        </span>
+                        <input type="file" accept="image/*" onchange="imageSelected(this)" />
+                    </label>
                 </div>
-                <div class="upload-image">
-                    <img src="~/resources/jpg/Coffee.jpg" width="280" height="150" />
-                    <button uk-tooltip="آپلود عکس" type="button" uk-toggle="#Croppie-Banner"
-                            class="btn-icon btn-upload" aria-label="آپلود عکس پروفایل">
-                        <span uk-icon="image"></span>
-                    </button>
+                <div class="upload-image uk-margin-auto-left">
+                    <label class="title">عکس بنر <span>(بدون نسبت)</span></label>
+                    <img class="preview" src="" alt="" />
+                    <label class="select">
+                        <span>
+                            فایل انتخاب نشده
+                        </span>
+                        <input type="file" accept="image/*" onchange="imageSelected(this)" />
+                    </label>
                 </div>
                 <div class="form-group">
                     <label autocomplete="username" for="txtName" class="uk-margin-small-bottom" dir="rtl">نام رستوران</label>
@@ -260,90 +214,22 @@
 
 <div class="space-double"></div>
 <div class="space-double"></div>
-<div class="space-double"></div>
-<div class="space-double"></div>
-<div class="space-double"></div>
 
 @section Scripts{
 
-    <script name="Upload Image">
-        const optLogo = {
-            viewport: {
-                width: 220,
-                height: 220,
-                //Valid type values:'square' 'circle'
-                type: 'square'
-            }
-        }
+    <script>
+        function imageSelected(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-        const optBanner = {
-            viewport: {
-                width: 220,
-                height: 220,
-                //Valid type values:'square' 'circle'
-                type: 'square'
-            }
-        }
+                reader.onload = function (e) {
+                    const img = input.parentElement.parentElement.querySelector('.preview');
+                    img.src = e.target.result.toString();
+                    img.style.backgroundImage = '';
+                }
 
-        var c;
-
-        function LogoFileSelected(input) {
-            if (input.files[0] == null) return;
-
-            if (c != undefined) {
-                const popup = document.getElementsByClassName('popup-croppie')[0];
-                c.destroy();
-            }
-
-            var image = new Image();
-            image.src = input.value;
-
-            var reader = new FileReader();
-            reader.onload = function () {
-                var dataURL = reader.result;
-                var output = document.getElementById('item');
-                output.src = dataURL;
-                c = new Croppie(document.getElementById('item'), optLogo);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-        function BannerFileSelected(input) {
-            if (input.files[0] == null) return;
-
-            if (c != undefined) {
-                const popup = document.getElementsByClassName('popup-croppie')[0];
-                c.destroy();
-            }
-
-            var image = new Image();
-            image.src = input.value;
-
-            var reader = new FileReader();
-            reader.onload = function () {
-                var dataURL = reader.result;
-                var output = document.getElementById('item');
-                output.src = dataURL;
-                c = new Croppie(document.getElementById('item'), optBanner);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-
-        //Returns the Base64 string of a WebP image
-        function crop() {
-            try {
-                c.result({ type: 'base64', size: 'viewport', format: 'png', quality: 1, circle: false }).then(i => {
-                    //var image = new Image();
-                    //image.src = i;
-                    //document.getElementById('content').appendChild(image);
-                    //console.log(i);
-                    return i;
-                });
-            }
-            catch{
-                UIkit.notification('لطفا یک عکس انتخاب کنید');
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
             }
         }
     </script>
-
-
 }

@@ -10,22 +10,32 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="name">عکس </label>
-            <div class="form-group mx-sm-1 mb-2">
-                <input type="file" asp-for="ImageUrl" name="ImageUrl" class="form-control form-control-sm" />
+            <div class="upload-image uk-margin-auto-left">
+                <label class="title">لوگو رستوران <span>(نسبت یک در یک)</span></label>
+                <img class="preview" src="" alt="" />
+                <label class="select">
+                    <span>
+                        فایل انتخاب نشده
+                    </span>
+                    <input type="file" accept="image/*" onchange="imageSelected(this)" />
+                </label>
             </div>
         </div>
         <div class="form-group">
-            <label for="name">عکس </label>
-            <div class="form-group mx-sm-1 mb-2">
-                <input type="file" asp-for="IconUrl" name="IconUrl" class="form-control form-control-sm" />
+            <div class="upload-image uk-margin-auto-left">
+                <label class="title">لوگو رستوران <span>(نسبت یک در یک)</span></label>
+                <img class="preview" src="" alt="" />
+                <label class="select">
+                    <span>
+                        فایل انتخاب نشده
+                    </span>
+                    <input type="file" accept="image/*" onchange="imageSelected(this)" />
+                </label>
             </div>
         </div>
         <div class="form-group">
             <label for="name">در صفحه اصلی نمایش داده شود </label>
-            <div class="form-group mx-sm-1 mb-2">
-                <input type="checkbox" asp-for="IsHome" class="form-control form-control-sm" />
-            </div>
+                <input type="checkbox" asp-for="IsHome" class="custom-checkbox form-control-sm" />
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -34,3 +44,19 @@
         </div>
     </div>
 </form>
+
+<script>
+    function imageSelected(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                const img = input.parentElement.parentElement.querySelector('.preview');
+                img.src = e.target.result.toString();
+                img.style.backgroundImage = '';
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+</script>

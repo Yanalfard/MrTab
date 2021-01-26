@@ -129,9 +129,6 @@ $ScrollbarHandle: $white-dark;
     -moz-border-radius: $tl $tr $bl $br;
     -webkit-border-radius: $tl $tr $bl $br;
     border-radius: $tl $tr $bl $br;
-    /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
 }
 
 @mixin filter($filters) {

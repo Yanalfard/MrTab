@@ -153,9 +153,6 @@ body {
     -moz-border-radius: 16px 16px 16px 16px;
     -webkit-border-radius: 16px 16px 16px 16px;
     border-radius: 16px 16px 16px 16px;
-    /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
     -moz-box-shadow: rgba(0, 0, 0, 0.32) 0 0px 28px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.32) 0 0px 28px;
     box-shadow: rgba(0, 0, 0, 0.32) 0 0px 28px;

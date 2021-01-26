@@ -103,9 +103,6 @@ backdrop-filter: saturate(80%);
     -moz-border-radius: 0 0 24px 0;
     -webkit-border-radius: 0 0 24px 0;
     border-radius: 0 0 24px 0;
-    /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
     margin-bottom: 42px;
     -moz-box-shadow: inset 0 0 16px 6px rgba(0, 0, 0, 0.68);
     -webkit-box-shadow: inset 0 0 16px 6px rgba(0, 0, 0, 0.68);
@@ -175,9 +172,6 @@ backdrop-filter: saturate(80%);
         -moz-border-radius: 16px 16px 16px 16px;
         -webkit-border-radius: 16px 16px 16px 16px;
         border-radius: 16px 16px 16px 16px;
-        /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
         color: #333;
         -moz-transition: all ease 0.2s;
         -o-transition: all ease 0.2s;
@@ -190,9 +184,6 @@ backdrop-filter: saturate(80%);
     -moz-border-radius: 0 0 24px 0;
     -webkit-border-radius: 0 0 24px 0;
     border-radius: 0 0 24px 0;
-    /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
     margin-bottom: 42px;
     max-width: 680px; }
 

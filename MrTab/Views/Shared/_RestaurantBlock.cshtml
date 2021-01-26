@@ -3,9 +3,9 @@
 
     @if (Model.TblFoodType.Any())
     {
-            <label>
-                @Model.TblFoodType.First().Name
-            </label>
+        <label>
+            @Model.TblFoodType.First().Name
+        </label>
     }
     <img src="~/Images/Restaurant/@Model.MainImage"
          width="300" height="300"
@@ -15,7 +15,6 @@
             @Model.Name
         </h4>
         <div class="star-container" uk-tooltip="@(Model.Rating/20)">
-
             <div class="Stars" style="--rating:  @(Model.Rating/20);"></div>
         </div>
         <address uk-icon="location-outline">

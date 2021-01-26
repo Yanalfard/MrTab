@@ -2333,10 +2333,7 @@ select.uk-form-width-xsmall {
   overflow: hidden;
   -moz-border-radius: 8px 8px 8px 8px;
   -webkit-border-radius: 8px 8px 8px 8px;
-  border-radius: 8px 8px 8px 8px;
-  /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/ }
+  border-radius: 8px 8px 8px 8px; }
 
 /* Add margin if adjacent element */
 * + .uk-progress {
@@ -3883,10 +3880,7 @@ select.uk-form-width-xsmall {
   padding: 30px 30px;
   -moz-border-radius: 32px 32px 32px 32px;
   -webkit-border-radius: 32px 32px 32px 32px;
-  border-radius: 32px 32px 32px 32px;
-  /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/ }
+  border-radius: 32px 32px 32px 32px; }
 
 .uk-modal-header {
   display: flow-root;
@@ -4167,9 +4161,6 @@ select.uk-form-width-xsmall {
   -moz-border-radius: 24px 0 0 24px;
   -webkit-border-radius: 24px 0 0 24px;
   border-radius: 24px 0 0 24px;
-  /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
   -moz-box-shadow: rgba(0, 0, 0, 0.32) 0 0px 28px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.32) 0 0px 28px;
   box-shadow: rgba(0, 0, 0, 0.32) 0 0px 28px;
@@ -4452,10 +4443,7 @@ select.uk-form-width-xsmall {
   cursor: pointer;
   -moz-border-radius: 16px 16px 16px 16px;
   -webkit-border-radius: 16px 16px 16px 16px;
-  border-radius: 16px 16px 16px 16px;
-  /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/ }
+  border-radius: 16px 16px 16px 16px; }
 
 * + .uk-notification-message {
   margin-top: 10px; }

@@ -120,3 +120,61 @@
         right: 24px !important;
     }
 }
+
+.table {
+    td, th, tr {
+        direction: rtl !important;
+        text-align: right !important;
+    }
+
+    .action-panel {
+        @include row-reverse;
+        grid-gap: 12px;
+        margin-right: auto;
+        margin-bottom: 16px;
+    }
+}
+
+.upload-image {
+    $border-color: #ccc;
+    @include column;
+    border: 1px $border-color solid;
+    @include border-radius(12px,12px,12px,12px);
+    margin: 12px 0;
+
+    label.title {
+        padding: 12px;
+        border-bottom: 1px $border-color solid;
+
+        span {
+            font-size: 10px;
+            color: #777;
+        }
+    }
+
+    label.select {
+        width: calc(100% - 24px);
+        padding: 12px;
+        border-top: 1px $border-color solid;
+        margin-left: auto;
+        direction: rtl;
+        font-size: 12px;
+        @include trans(.2s);
+        cursor: pointer;
+    }
+
+    label.select:hover {
+        color: $primary;
+    }
+
+    img {
+        height: 128px;
+        min-width: 200px;
+        background-image: url('../../resources/svg/Jiggly-Doot.svg');
+        @include border-radius(0,0,0,0);
+    }
+
+    input {
+        display: none;
+    }
+}

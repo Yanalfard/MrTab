@@ -11,14 +11,14 @@
 <!-- #region Croppie -->
 
 <div id="Croppie" uk-modal>
-   
+
 </div>
 
 <!-- #endregion -->
 
 <div id="Modal-ChangePass" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
-       
+
     </div>
 </div>
 
@@ -73,15 +73,12 @@
 <div class="uk-container uk-margin-medium-top column">
 
     <div class="profile mat uk-box-shadow-medium">
-        <button id="btnMore" @*uk-toggle="#Modal-More"*@ type="button"
+        <button id="btnMore" type="button"
                 aria-label="بیشتر" class="btn-icon" uk-icon="ellipsis-horizontal"></button>
         <div uk-drop="pos: bottom-right">
             <div class="mat uk-box-shadow-large">
                 <ul class="column uk-list">
                     <li>
-                        @*<a href="#Modal-ChangePass" uk-toggle class="uk-text-default">
-                                تغییر رمز
-                            </a>*@
                         <a href="#" onclick="changePassword()" class="uk-text-default">
                             تغییر رمز
                         </a>
@@ -91,12 +88,11 @@
                             تغییر نام
                         </a>
                     </li>
-
-                    @*<li>
-                        <a href="/Home/ToRestaurant" class="uk-text-default">
-                            تبدیل حساب به رستوران
+                    <li>
+                        <a href="/User/User/ToRestaurant" class="uk-text-default">
+                            ایجاد رستوران
                         </a>
-                    </li>*@
+                    </li>
                     <li>
                         <a href="/" class="uk-text-danger">خروج</a>
                     </li>
@@ -104,29 +100,66 @@
             </div>
         </div>
 
-        <div class="alternate" id="alternate" >
+        <div class="alternate" id="alternate">
             @await Component.InvokeAsync("InformationInUserVc", Convert.ToInt32(ViewBag.Id))
-        </div>
-        <div style="height: 500px;">
-
         </div>
     </div>
 
-    <!--<div class="profile mat mat-margin-top uk-box-shadow-medium">
+    <div class="profile mat mat-margin-top uk-box-shadow-medium">
+        <h3 class="uk-margin-auto-left">
+            رستوران های شما
+        </h3>
+
+        <table class="uk-table table" dir="rtl">
+            <thead>
+                <tr>
+                    <th>عکس</th>
+                    <th>نام</th>
+                    <th>امتیاز</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div uk-lightbox>
+                            <a href="~/resources/jpg/Coffee.jpg">
+                                <img class="uk-border-rounded" src="~/resources/jpg/Coffee.jpg" width="64" height="64" alt="" />
+                            </a>
+                        </div>
+                    </td>
+                    <td>نام رستوران</td>
+                    <td class="row">
+                        <div class="star-container uk-margin-auto-left" uk-tooltip="3">
+                            <div class="Stars" style="--rating: 3;"></div>
+                        </div>
+                    </td>
+                    <th>
+                        <div class="action-panel">
+                            <a href="" class="btn-icon uk-margin-auto-vertical uk-margin-small-bottom" uk-icon="create-outline" uk-tooltip="ویرایش رستوران"></a>
+                            <a href="" class="btn-icon uk-margin-auto-vertical uk-margin-small-bottom" uk-icon="eye-outline" uk-tooltip="مشاهده صفحه رستوران"></a>
+                        </div>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="profile mat mat-margin-top uk-box-shadow-medium">
         <div class="column">
-            <h3 class="uk-margin-auto">تشکیل رستوران</h3>
-            <img src="~/resources/svg/undraw_cooking_lyxy.svg" class="uk-margin-auto" width="240" />-->
-            @*<img src="~/resources/svg/MakeARestaurant.svg" />*@
-            <!--<p class="uk-grid-margin-medium text-center">
+            <h3 class="uk-margin-auto">ایجاد رستوران</h3>
+            <img src="~/resources/svg/undraw_cooking_lyxy.svg" class="uk-margin-auto" width="240" />
+            @*<img src="~/resources/svg/makearestaurant.svg" />*@
+            <p class="uk-grid-margin-medium text-center">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
             </p>
             <div class="button-panel uk-margin-auto">
-                <a href="/Home/ToRestaurant" class="btn btn-primary">
+                <a href="/home/torestaurant" class="btn btn-primary">
                     تشکیل رستوران
                 </a>
             </div>
         </div>
-    </div>-->
+    </div>
 
 </div>
 
@@ -139,7 +172,7 @@
 </div>
 
 @section Scripts{
-   
+
     <script>
         function completeChangePassword() {
             $(".hideCompleChange").html('<div class="uk-alert uk-alert-success"><p class="help-block">تغیرات با موفقیت انجام شد</p></div>');

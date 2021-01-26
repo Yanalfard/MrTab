@@ -87,15 +87,9 @@ backdrop-filter: saturate(80%);
   -moz-border-radius: 16px 16px 16px 16px;
   -webkit-border-radius: 16px 16px 16px 16px;
   border-radius: 16px 16px 16px 16px;
-  /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
   -moz-border-radius: 24px 24px 24px 24px;
   -webkit-border-radius: 24px 24px 24px 24px;
   border-radius: 24px 24px 24px 24px;
-  /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
   -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 24px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 24px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 24px;
@@ -121,9 +115,6 @@ backdrop-filter: saturate(80%);
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
     width: 70px;
     min-width: 70px; }
   .searchbar .searchbar-margin-left {
@@ -156,9 +147,6 @@ backdrop-filter: saturate(80%);
       -moz-border-radius: 10px 10px 10px 10px;
       -webkit-border-radius: 10px 10px 10px 10px;
       border-radius: 10px 10px 10px 10px;
-      /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
       width: 48px;
       min-width: 48px; }
     .searchbar .searchbar-margin-left {
@@ -169,9 +157,6 @@ backdrop-filter: saturate(80%);
   -moz-border-radius: 0 0 24px 24px;
   -webkit-border-radius: 0 0 24px 24px;
   border-radius: 0 0 24px 24px;
-  /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
   display: grid;
   grid-gap: 20px;
   position: fixed;
@@ -239,9 +224,6 @@ backdrop-filter: saturate(80%);
     -moz-border-radius: 0 0 12px 12px;
     -webkit-border-radius: 0 0 12px 12px;
     border-radius: 0 0 12px 12px;
-    /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/
     overflow: hidden; }
     .search-filter * {
       font-size: 12px; }
@@ -252,10 +234,7 @@ backdrop-filter: saturate(80%);
       min-width: 64px !important;
       -moz-border-radius: 10px 10px 10px 10px;
       -webkit-border-radius: 10px 10px 10px 10px;
-      border-radius: 10px 10px 10px 10px;
-      /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/ }
+      border-radius: 10px 10px 10px 10px; }
   .space-search {
     height: 102px;
     margin-bottom: 16px !important; } }
