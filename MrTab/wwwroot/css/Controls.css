@@ -237,6 +237,21 @@ backdrop-filter: saturate(80%);
   -webkit-transition: all ease 0.2s;
   transition: all ease 0.2s; }
 
+#btnSuggestOnLocation {
+  background-color: #fff;
+  padding: 12px;
+  -moz-border-radius: 120px 120px 120px 120px;
+  -webkit-border-radius: 120px 120px 120px 120px;
+  border-radius: 120px 120px 120px 120px;
+  position: fixed;
+  left: 32px;
+  bottom: 32px;
+  color: #333;
+  z-index: 128; }
+
+#btnSuggestOnLocation:hover {
+  color: #FEB432; }
+
 .mat {
   padding: 16px;
   -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);

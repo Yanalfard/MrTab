@@ -135,9 +135,9 @@
 
             @* TODO *@
             @*<button id="btnLocation" uk-icon="location-outline"
-                    class="btn btn-round btn-darkglass margin-header-left" type="button" uk-toggle="#Modal-Location">
-                تبریز
-            </button>*@
+                        class="btn btn-round btn-darkglass margin-header-left" type="button" uk-toggle="#Modal-Location">
+                    تبریز
+                </button>*@
             <form asp-action="Search" asp-controller="Home" asp-area="" id="txtSearch" class="material-darkglass margin-header-left btn-round row">
                 <button onclick="window.location='/Home/Search'" uk-icon="search-outline" aria-label="جستجو"
                         class="btn-icon-darkglass uk-margin-small-left uk-margin-small-right"></button>
@@ -150,6 +150,11 @@
 
     <div class="space-nav-header"></div>
     <!-- #endregion -->
+
+    <button class="btn-icon uk-box-shadow-medium uk-box-shadow-hover-large" onclick="getLocation()"
+            id="btnSuggestOnLocation" uk-tooltip="pos:right; title: جستجو بر اساس مکان"
+            uk-icon="icon:location-outline;ratio:1.32"
+            uk-scrollspy="cls:uk-animation-fade;delay:200"></button>
 
     @RenderBody()
 
@@ -273,6 +278,25 @@
             <script src="~/js/jquery.validate.min.js"></script>
             <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
             <script src="~/js/jquery.unobtrusive-ajax.min.js"></script>
+
+            <script>
+
+                var x = document.getElementById("btnSuggestOnLocation");
+                function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPosition);
+                    } else {
+                        x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                }
+
+                function showPosition(position) {
+                    UIkit.notification(`${position.coords.latitude} ${position.coords.longitude}`);
+                    localStorage.setItem('lat', position.coords.latitude);
+                    localStorage.setItem('lon', position.coords.longitude);
+                }
+
+            </script>
 
             @RenderSection("Scripts", false)
 
