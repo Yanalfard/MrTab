@@ -3,6 +3,9 @@
     ViewData["Title"] = " تخلفات کامنت ها یا پیام ها ";
 }
 
+@{
+    ViewData["Title"] = "تخلفات رستوران ها";
+}
 <div class="card flex-div border-0 shadow">
     <div class="card-header bg-white">
         <div class="row justify-content-end">
@@ -11,16 +14,10 @@
                     <div class="form-input col-md-8">
                         <div class="form-inline">
                             <div class="form-group mx-sm-1 mb-2">
-                                <input class="form-control form-control-sm" id="name" name="name" type="text" value="@ViewBag.name" placeholder="نام">
+                                <input class="form-control form-control-sm" id="name" name="name" type="text" value="@ViewBag.name" placeholder="نام رستوران">
                             </div>
                             <div class="form-group mx-sm-1 mb-2">
-                                <input class="form-control form-control-sm" id="user" name="tellNo" type="text" value="@ViewBag.user" placeholder="کاربر ">
-                            </div>
-                            <div class="form-group mx-sm-1 mb-2">
-                                <input class="form-control form-control-sm" id="cat" name="cat" type="text" value="@ViewBag.cat" placeholder="دسته">
-                            </div>
-                            <div class="form-group mx-sm-1 mb-2">
-                                <input class="form-control form-control-sm" id="tellNo" name="tellNo" type="text" value="@ViewBag.tellNo" placeholder="شماره تماس">
+                                <input class="form-control form-control-sm" id="user" name="user" type="text" value="@ViewBag.user" placeholder="نام کاربر">
                             </div>
                         </div>
                     </div>
@@ -28,9 +25,6 @@
                         <input type="submit" value="جستجو" class="btn btn-primary btn-sm" onclick="search()" />
                     </div>
                 </div>
-            </div>
-            <div class="col-md-2 col-3 pl-2 pr-0">
-                <a href="/Admin/Restauran/Create" class="btn btn-success btn-sm text-white float-left"><i class="fas fa-plus-circle"></i>افزودن</a>
             </div>
         </div>
     </div>
@@ -40,20 +34,16 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">کد</th>
-                        <th scope="col">نام</th>
+                        <th scope="col">نام رستوران </th>
                         <th scope="col">کاربر</th>
-                        <th scope="col">عکس</th>
-                        <th scope="col">عکس بنر</th>
-                        <th scope="col">دسته</th>
-                        <th scope="col">شهر</th>
-                        <th scope="col">محله</th>
-                        <th scope="col">تلفن</th>
-                        <th scope="col">امتیاز</th>
+                        <th scope="col">تاریخ</th>
+                        <th scope="col">توضیحات</th>
+                        <th scope="col">نمایش</th>
                         <th scope="col">عملیات</th>
                     </tr>
                 </thead>
-                <tbody id="listUser" class="list-wrapper">
-                    @await Component.InvokeAsync("RestauranCommentListInAdminVm")
+                <tbody id="listComment" class="list-wrapper">
+                    @await Component.InvokeAsync("CommentListInAdminVm" )
                 </tbody>
             </table>
         </div>
@@ -72,30 +62,38 @@
     <script src="~/admin/bootstrap/js/jquery.validate.min.js"></script>
     <script src="~/admin/bootstrap/js/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/admin/bootstrap/js/jquery.unobtrusive-ajax.min.js"></script>
+
     <script>
         function search() {
             var name = $('#name').val();
-            var tellNo = $('#tellNo').val();
             var user = $('#user').val();
-            var cat = $('#cat').val();
             $.ajax({
-                url: "/Admin/Restauran/Search/",
-                data: { name: name, tellNo: tellNo, user: user, cat: cat }
+                url: "/Admin/Comment/Search/",
+                data: { name: name, user: user}
             }).done(function (result) {
-                $('#listUser').html(result);
+                $('#listComment').html(result);
             })
         }
-        function deleteRestauran(id) {
-            if (confirm('آیا از حذف رستوران مورد نظر مظمئن هستین؟')) {
-                $.get("/Admin/Restauran/Delete/" + id, function (result) {
+        function deleteComment(id) {
+            if (confirm('آیا از حذف نظر مورد نظر مظمئن هستین؟')) {
+                $.get("/Admin/Comment/DeleteComment/" + id, function (result) {
                     if (result == "true") {
-                        $('#restaurant_' + id).addClass('text-danger');
-                        $("#restaurant_" + id).hide('slow');
+                        $('#comment_' + id).addClass('text-danger');
+                        $("#comment_" + id).hide('slow');
                     } else {
                         alert(result);
                     }
                 })
             }
+        }
+        function activeDisableComment(id) {
+            $.get("/Admin/Comment/ActiveDisableComment/" + id, function (result) {
+                if (result == "true") {
+                    $.get("/Admin/Comment/ListComment", function (res) {
+                        $('#listComment').html(res);
+                    });
+                }
+            });
         }
     </script>
 }
