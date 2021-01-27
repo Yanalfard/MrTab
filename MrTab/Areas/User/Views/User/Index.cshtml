@@ -105,47 +105,8 @@
         </div>
     </div>
 
-    <div class="profile mat mat-margin-top uk-box-shadow-medium">
-        <h3 class="uk-margin-auto-left">
-            رستوران های شما
-        </h3>
-
-        <table class="uk-table table" dir="rtl">
-            <thead>
-                <tr>
-                    <th>عکس</th>
-                    <th>نام</th>
-                    <th>امتیاز</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div uk-lightbox>
-                            <a href="~/resources/jpg/Coffee.jpg">
-                                <img class="uk-border-rounded" src="~/resources/jpg/Coffee.jpg" width="64" height="64" alt="" />
-                            </a>
-                        </div>
-                    </td>
-                    <td>نام رستوران</td>
-                    <td class="row">
-                        <div class="star-container uk-margin-auto-left" uk-tooltip="3">
-                            <div class="Stars" style="--rating: 3;"></div>
-                        </div>
-                    </td>
-                    <th>
-                        <div class="action-panel">
-                            <a href="" class="btn-icon uk-margin-auto-vertical uk-margin-small-bottom" uk-icon="create-outline" uk-tooltip="ویرایش رستوران"></a>
-                            <a href="" class="btn-icon uk-margin-auto-vertical uk-margin-small-bottom" uk-icon="eye-outline" uk-tooltip="مشاهده صفحه رستوران"></a>
-                            <a href="" class="btn-icon uk-margin-auto-vertical uk-margin-small-bottom" uk-icon="copy-outline" uk-tooltip="منو"></a>
-                        </div>
-                    </th>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
+    @await Component.InvokeAsync("ListRestaurantVm", Convert.ToInt32(ViewBag.Id))
+ 
     <div class="profile mat mat-margin-top uk-box-shadow-medium">
         <div class="column">
             <h3 class="uk-margin-auto">ایجاد رستوران</h3>
@@ -206,6 +167,19 @@
                     $("#Croppie").html(result);
                 }
             );
+        }
+        function deleteRestauran(id) {
+            
+            if (confirm('آیا از حذف رستوران مورد نظر مظمئن هستین؟')) {
+                $.get("/User/User/DeleteRestauran/" + id, function (result) {
+                    if (result == "true") {
+                        $('#restaurant_' + id).addClass('text-danger');
+                        $("#restaurant_" + id).hide('slow');
+                    } else {
+                        alert(result);
+                    }
+                })
+            }
         }
     </script>
 
