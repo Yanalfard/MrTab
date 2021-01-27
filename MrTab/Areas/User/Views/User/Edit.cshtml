@@ -26,10 +26,18 @@
             <div class="profile column mat uk-box-shadow-medium">
                 <h3>تشکیل رستوران</h3>
                 <form class="" asp-action="ToRestaurant" asp-controller="User" asp-area="User" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="RestaurantId" name="RestaurantId"  />
                     <div class="inputs column">
                         <div class="upload-image uk-margin-auto-left">
                             <label class="title">لوگو رستوران <span>(نسبت یک در یک)</span></label>
-                            <img class="preview" src="" alt="" />
+                            @if (Model.MainImage != null)
+                            {
+                                <img class="preview" src="/Images/Restaurant/@Model.MainImage" alt=" @Model.Name" />
+                            }
+                            else
+                            {
+                                <img class="preview" src="/Images/NoImage.svg" alt="@Model.Name" />
+                            }
                             <label class="select">
                                 <span>
                                     فایل انتخاب نشده
@@ -41,7 +49,14 @@
 
                         <div class="upload-image uk-margin-auto-left">
                             <label class="title">عکس بنر <span>(بدون نسبت)</span></label>
-                            <img class="preview" src="" alt="" />
+                            @if (Model.MainBanner != null)
+                            {
+                                <img class="preview" src="/Images/Restaurant/@Model.MainBanner" alt=" @Model.Name" />
+                            }
+                            else
+                            {
+                                <img class="preview" src="/Images/NoImage.svg" alt="@Model.Name" />
+                            }
                             <label class="select">
                                 <span>
                                     فایل انتخاب نشده
@@ -69,13 +84,13 @@
                         <div class="form-group">
                             <label for="txtRestType" class="uk-margin-small-bottom" dir="rtl">نوع رستوران</label>
                             <input type="text" id="txtFoodSelector" asp-for="NameCatagory" uk-toggle="#Modal-RestType" asp class="form-group-bg" dir="rtl" name="txtRestType" />
-                            <input type="hidden" id="CatagoryId" name="CatagoryId" />
+                            <input type="hidden" id="CatagoryId" name="CatagoryId" asp-for="CatagoryId" />
                             <span class="input-error" asp-validation-for="CatagoryId"></span>
                         </div>
                         <div class="form-group">
                             <label for="txtCity" class="uk-margin-small-bottom" dir="rtl">شهر</label>
                             <input type="text" id="txtCitySelector" asp-for="NameCity" uk-toggle="#Modal-Location" class="form-group-bg" dir="rtl" name="txtCity" />
-                            <input type="hidden" id="CityId" name="CityId" />
+                            <input type="hidden" id="CityId" name="CityId" asp-for="CityId" />
                             <span class="input-error" asp-validation-for="CityId"></span>
                         </div>
                         <div class="form-group">

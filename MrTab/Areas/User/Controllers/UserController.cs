@@ -177,6 +177,7 @@ namespace MrTab.Areas.User.Controllers
             if (selectedRestaurant != null)
             {
                 CreateRestaurantVm restaurant = new CreateRestaurantVm();
+                restaurant.RestaurantId = selectedRestaurant.RestaurantId;
                 restaurant.Address = selectedRestaurant.Address;
                 restaurant.CatagoryId = selectedRestaurant.CatagoryId;
                 restaurant.CityId = selectedRestaurant.CityId;
@@ -187,17 +188,19 @@ namespace MrTab.Areas.User.Controllers
                 restaurant.MainBanner = selectedRestaurant.MainBanner;
                 restaurant.MainImage = selectedRestaurant.MainImage;
                 restaurant.Name = selectedRestaurant.Name;
+                restaurant.NameCity = selectedRestaurant.City.Name;
+                restaurant.NameCatagory = selectedRestaurant.Catagory.Name;
                 restaurant.Neighborhood = selectedRestaurant.Neighborhood;
                 restaurant.ShortDesc = selectedRestaurant.ShortDesc;
                 restaurant.TellNo1 = selectedRestaurant.TellNo1;
                 restaurant.TellNo2 = selectedRestaurant.TellNo2;
                 restaurant.IsValid = selectedRestaurant.IsValid;
-                restaurant.NameFood = string.Join(".", selectedRestaurant.TblFood.Select(t=>t.Name).ToList());
-                restaurant.NameFoodType = string.Join(".", selectedRestaurant.TblFoodType.Select(t=>t.Name).ToList());
-                restaurant.NameMealType = string.Join(".", selectedRestaurant.TblMealType.Select(t=>t.Name).ToList());
-                restaurant.NameWorkDay = string.Join(".", selectedRestaurant.TblWorkTime.Select(t=>t.Time).ToList());
-                restaurant.NameWorkTime = string.Join(".", selectedRestaurant.TblWorkTime.Select(t=>t.Day).ToList());
-                return await Task.FromResult(View(selectedRestaurant));
+                restaurant.NameFood = string.Join("،", selectedRestaurant.TblFood.Select(t=>t.Name).ToList());
+                restaurant.NameFoodType = string.Join("،", selectedRestaurant.TblFoodType.Select(t=>t.Name).ToList());
+                restaurant.NameMealType = string.Join("،", selectedRestaurant.TblMealType.Select(t=>t.Name).ToList());
+                restaurant.NameWorkDay = string.Join("،", selectedRestaurant.TblWorkTime.Select(t=>t.Day).ToList());
+                restaurant.NameWorkTime = string.Join("،", selectedRestaurant.TblWorkTime.Select(t=>t.Time).ToList());
+                return await Task.FromResult(View(restaurant));
 
             }
             return await Task.FromResult(RedirectToAction(nameof(Index)));

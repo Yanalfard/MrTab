@@ -169,7 +169,6 @@
             );
         }
         function deleteRestauran(id) {
-            
             if (confirm('آیا از حذف رستوران مورد نظر مظمئن هستین؟')) {
                 $.get("/User/User/DeleteRestauran/" + id, function (result) {
                     if (result == "true") {
