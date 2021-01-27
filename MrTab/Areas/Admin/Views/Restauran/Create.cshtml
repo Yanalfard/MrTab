@@ -15,7 +15,7 @@
             </div>
             <div class="form-group mx-sm-1 mb-2 ">
                 <label asp-for="ShortDesc"></label>
-                <textarea asp-for="ShortDesc" class="form-control form-control-sm" ></textarea>
+                <textarea asp-for="ShortDesc" class="form-control form-control-sm"></textarea>
                 <span class="text-danger" asp-validation-for="ShortDesc"></span>
             </div>
             <div class="form-group mx-sm-1 mb-2">
@@ -72,18 +72,34 @@
                 </select>
                 <span class="text-danger" asp-validation-for="UserId"></span>
             </div>
-            <div class="form-group mx-sm-1 mb-2">
-                <label asp-for="MainImage"></label>
-                <input type="file" name="MainImage" asp-for="MainImage" />
-                <span class="text-danger" asp-validation-for="MainImage"></span>
+            <div class="form-group">
+                <div class="upload-image uk-margin-auto-left">
+                    <label class="title"> عکس اصلی  <span>(نسبت یک در یک)</span></label>
+                    <img class="preview" src="" alt="" />
+                    <label class="select">
+                        <span>
+                            فایل انتخاب نشده
+                        </span>
+                        <input type="file" accept="image/*" name="MainImage" onchange="imageSelected(this)" />
+                        <span class="text-danger" asp-validation-for="MainImage"></span>
+                    </label>
+                </div>
             </div>
-            <div class="form-group mx-sm-1 mb-2">
-                <label asp-for="MainBanner"></label>
-                <input type="file" name="MainBanner" asp-for="MainBanner" />
-                <span class="text-danger" asp-validation-for="MainBanner"></span>
+            <div class="form-group">
+                <div class="upload-image uk-margin-auto-left">
+                    <label class="title"> عکس بنر  <span>(نسبت یک در یک)</span></label>
+                    <img class="preview" src="" alt="" />
+                    <label class="select">
+                        <span>
+                            فایل انتخاب نشده
+                        </span>
+                        <input type="file" accept="image/*" name="MainBanner" onchange="imageSelected(this)" />
+                        <span class="text-danger" asp-validation-for="MainBanner"></span>
+                    </label>
+                </div>
             </div>
-                <input type="hidden" name="Lat" asp-for="Lat" />
-                <input type="hidden" name="Lon" asp-for="Lon" />
+            <input type="hidden" name="Lat" asp-for="Lat" />
+            <input type="hidden" name="Lon" asp-for="Lon" />
             <div class="form-group mx-sm-1 mb-2">
                 <label>افزودن موقعیت</label>
                 <div class="map" id="map" style="height:400px;width:100%"></div>
@@ -136,4 +152,20 @@
         theMarker = L.marker([lat, lon], { icon: customIcon }).addTo(map).bindPopup('<h6 style="color:green">موقعیت فروشگاه شما ثبت شد</h6>').openPopup();
     });
 
+</script>
+
+<script>
+    function imageSelected(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                const img = input.parentElement.parentElement.querySelector('.preview');
+                img.src = e.target.result.toString();
+                img.style.backgroundImage = '';
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
 </script>

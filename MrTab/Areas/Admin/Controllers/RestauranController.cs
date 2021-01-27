@@ -143,10 +143,15 @@ namespace MrTab.Areas.Admin.Controllers
             {
                 if (MainImage != null)
                 {
-                    if (restaurant.MainImage == null)
+                    if (restaurant.MainImage != null)
                     {
-                        restaurant.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(MainImage.FileName);
+                        var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/", restaurant.MainImage);
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
                     }
+                    restaurant.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(MainImage.FileName);
                     string savePath = Path.Combine(
                        Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/", restaurant.MainImage
                    );
@@ -157,10 +162,15 @@ namespace MrTab.Areas.Admin.Controllers
                 }
                 if (MainBanner != null)
                 {
-                    if (restaurant.MainBanner == null)
+                    if (restaurant.MainBanner != null)
                     {
-                        restaurant.MainBanner = Guid.NewGuid().ToString() + Path.GetExtension(MainBanner.FileName);
+                        var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/", restaurant.MainBanner);
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
                     }
+                    restaurant.MainBanner = Guid.NewGuid().ToString() + Path.GetExtension(MainBanner.FileName);
                     string savePath = Path.Combine(
                        Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/", restaurant.MainBanner
                    );
@@ -189,7 +199,7 @@ namespace MrTab.Areas.Admin.Controllers
                 db.Restaurant.Save();
                 return await Task.FromResult(RedirectToAction(nameof(Index)));
             }
-            return await Task.FromResult(PartialView(restaurant));
+            return await Task.FromResult(View(restaurant));
         }
         public async Task<string> Delete(int id)
         {
@@ -340,7 +350,7 @@ namespace MrTab.Areas.Admin.Controllers
         {
             return await Task.FromResult(View());
         }
-        public async Task<IActionResult> ReportSearch(int restaurantId = 0, string name=null)
+        public async Task<IActionResult> ReportSearch(int restaurantId = 0, string name = null)
         {
             List<TblReport> list = db.Report.Get().ToList();
             if (restaurantId > 0)
@@ -376,7 +386,7 @@ namespace MrTab.Areas.Admin.Controllers
             }
             if (tellNo != null)
             {
-                list = list.Where(i => i.TellNo1.Contains(tellNo)|| i.TellNo2.Contains(tellNo)).ToList();
+                list = list.Where(i => i.TellNo1.Contains(tellNo) || i.TellNo2.Contains(tellNo)).ToList();
             }
             if (user != null)
             {

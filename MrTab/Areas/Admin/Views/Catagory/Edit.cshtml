@@ -14,18 +14,16 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="name">عکس </label>
-            @if (Model.ImageUrl != null)
-            {
-                <img src="/Images/Catagory/@Model.ImageUrl" alt=" @Model.Name" style="max-width:100px;" />
-            }
-            else
-            {
-                <img src="/Images/NoImage.svg" alt="@Model.Name" style="max-width:100px;" />
-            }
             <div class="upload-image uk-margin-auto-left">
                 <label class="title">لوگو دسته بندی <span>(نسبت یک در یک)</span></label>
-                <img class="preview" src="" alt="" />
+                @if (Model.IconUrl != null)
+                {
+                    <img class="preview" src="/Images/Catagory/Icon/@Model.IconUrl" alt=" @Model.Name" />
+                }
+                else
+                {
+                    <img class="preview" src="/Images/NoImage.svg" alt="@Model.Name" />
+                }
                 <label class="select">
                     <span>
                         فایل انتخاب نشده
@@ -36,25 +34,25 @@
         </div>
 
         <div class="form-group">
-            <label for="name">عکس لوگو  </label>
-            @if (Model.IconUrl != null)
-            {
-                <img src="/Images/Catagory/Icon/@Model.IconUrl" alt=" @Model.Name" style="max-width:100px;" />
-            }
-            else
-            {
-                <img src="/Images/NoImage.svg" alt="@Model.Name" style="max-width:100px;" />
-            }
-        <div class="upload-image uk-margin-auto-left">
-            <label class="title"> عکس <span>(نسبت یک در یک)</span></label>
-            <img class="preview" src="" alt="" />
-            <label class="select">
-                <span>
-                    فایل انتخاب نشده
-                </span>
-                <input type="file" accept="image/*" name="ImageUrl" onchange="imageSelected(this)" />
-            </label>
-        </div>
+
+            <div class="upload-image uk-margin-auto-left">
+                <label class="title"> عکس <span>(نسبت یک در یک)</span></label>
+                @if (Model.ImageUrl != null)
+                {
+                    <img class="preview" src="/Images/Catagory/@Model.ImageUrl" alt=" @Model.Name" />
+                }
+                else
+                {
+                    <img class="preview" src="/Images/NoImage.svg" alt="@Model.Name" />
+                }
+              
+                <label class="select">
+                    <span>
+                        فایل انتخاب نشده
+                    </span>
+                    <input type="file" accept="image/*" name="ImageUrl" onchange="imageSelected(this)" />
+                </label>
+            </div>
         </div>
         <div class="form-group">
             <label for="name">در صفحه اصلی نمایش داده شود </label>

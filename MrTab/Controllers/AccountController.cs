@@ -65,7 +65,7 @@ namespace MrTab.Controllers
                         };
                         await HttpContext.SignInAsync(principal, properties);
                         ViewBag.IsSuccess = true;
-                        return View();
+                        return Redirect(ReturnUrl);
                     }
                     else
                     {

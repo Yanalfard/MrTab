@@ -76,15 +76,45 @@
                 </select>
                 <span class="text-danger" asp-validation-for="UserId"></span>
             </div>
-            <div class="form-group mx-sm-1 mb-2">
-                <label asp-for="MainImage"></label>
-                <input type="file" name="MainImage" asp-for="MainImage" />
-                <span class="text-danger" asp-validation-for="MainImage"></span>
+            <div class="form-group">
+                <div class="upload-image uk-margin-auto-left">
+                    <label class="title"> عکس اصلی  <span>(نسبت یک در یک)</span></label>
+                    @if (Model.MainImage != null)
+                    {
+                        <img class="preview" src="/Images/Restaurant/@Model.MainImage" alt=" @Model.Name" />
+                    }
+                    else
+                    {
+                        <img class="preview" src="/Images/NoImage.svg" alt="@Model.Name" />
+                    }
+                    <label class="select">
+                        <span>
+                            فایل انتخاب نشده
+                        </span>
+                        <input type="file" accept="image/*" name="MainImage" onchange="imageSelected(this)" />
+                        <span class="text-danger" asp-validation-for="MainImage"></span>
+                    </label>
+                </div>
             </div>
-            <div class="form-group mx-sm-1 mb-2">
-                <label asp-for="MainBanner"></label>
-                <input type="file" name="MainBanner" asp-for="MainBanner" />
-                <span class="text-danger" asp-validation-for="MainBanner"></span>
+            <div class="form-group">
+                <div class="upload-image uk-margin-auto-left">
+                    <label class="title"> عکس بنر <span>(نسبت یک در یک)</span></label>
+                    @if (Model.MainBanner != null)
+                    {
+                        <img class="preview" src="/Images/Restaurant/@Model.MainBanner" alt=" @Model.Name" />
+                    }
+                    else
+                    {
+                        <img class="preview" src="/Images/NoImage.svg" alt="@Model.Name" />
+                    }
+                    <label class="select">
+                        <span>
+                            فایل انتخاب نشده
+                        </span>
+                        <input type="file" accept="image/*" name="MainBanner" onchange="imageSelected(this)" />
+                        <span class="text-danger" asp-validation-for="MainBanner"></span>
+                    </label>
+                </div>
             </div>
             <input type="hidden" name="Lat" asp-for="Lat" />
             <input type="hidden" name="Lon" asp-for="Lon" />
@@ -136,11 +166,27 @@
             map.removeLayer(theMarker);
         };
 
-        
+
         //Add a marker to show where you clicked.
         $("#Lat").val(lat.toString());
         $("#Lon").val(lon.toString());
         theMarker = L.marker([lat, lon], { icon: customIcon }).addTo(map).bindPopup('<h6 style="color:green">موقعیت جدید رستوران ویرایش شد</h6>').openPopup();
     });
 
+</script>
+
+<script>
+    function imageSelected(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                const img = input.parentElement.parentElement.querySelector('.preview');
+                img.src = e.target.result.toString();
+                img.style.backgroundImage = '';
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
 </script>
