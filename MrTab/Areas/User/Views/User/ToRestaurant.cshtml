@@ -1,6 +1,7 @@
-﻿
+﻿@model CreateRestaurantVm
+
 @{
-    ViewBag.Title = "تبدیل حساب به رستوران";
+    ViewBag.Title = "ایجاد رستوران";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,226 +11,208 @@
 
 <!-- #region Restaurant Type -->
 
-<div id="Modal-RestType" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <form class="column">
-            <h2 class="uk-h4">رستوران</h2>
-            <span class="uk-modal-close" uk-close></span>
-            <div class="form-group">
-                <input type="text" class="form-group-bg"
-                       dir="rtl" placeholder="جستجو..."
-                       aria-label="جسجتو غذا" name="txtSearchFood" />
-            </div>
-            <div class="even-taglist column uk-margin-small-top">
-                <ul class="tag-grid uk-padding-remove">
-                    <li>
-                        <button class="even-tag">سنتی</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">فرنگی</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">ایتالیایی</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">کباب</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">دونر</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">صبحانه</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">مکزیکی</button>
-                    </li>
-                </ul>
-            </div>
-            <div class="button-panel uk-margin-top uk-margin-auto">
-                <button class="btn btn-round btn-secondary uk-modal-close">بازگشت</button>
-            </div>
-        </form>
-    </div>
-</div>
+<partial name="/Views/Shared/_CategorySelector.cshtml">
 
-<!-- #endregion -->
-<!-- #region Location -->
+    <!-- #endregion -->
+    <!-- #region Location -->
 
-<div id="Modal-Location" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <form class="column">
-            <h2 class="uk-h4">انتخاب شهر</h2>
-            <span class="uk-modal-close" uk-close></span>
-            <div class="form-group">
-                <input type="text" class="form-group-bg"
-                       dir="rtl" placeholder="جستجو..."
-                       aria-label="جستجو شهر" name="txtSearch" />
-            </div>
-            <div class="even-taglist column uk-margin-small-top">
-                <ul class="tag-grid uk-padding-remove">
-                    <li>
-                        <button class="even-tag">تبریز</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">تهران</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">مراغه</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">زنچان</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">قزوین</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">ارومیه</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">سراب</button>
-                    </li>
-                    <li>
-                        <button class="even-tag">بناب</button>
-                    </li>
-                </ul>
-            </div>
-            <div class="button-panel uk-margin-top uk-margin-auto">
-                <div class="btn btn-round btn-secondary uk-modal-close">بازگشت</div>
-            </div>
-        </form>
-    </div>
-</div>
+    <partial name="/Views/Shared/_CitySelectorToRestaurant.cshtml">
 
-<!-- #endregion -->
 
-<div class="uk-container uk-margin-medium-top column">
+        <!-- #endregion -->
 
-    <div class="profile column mat uk-box-shadow-medium">
-        <h3>تشکیل رستوران</h3>
-        <form class="">
-            <div class="inputs column">
-                <div class="upload-image uk-margin-auto-left">
-                    <label class="title">لوگو رستوران <span>(نسبت یک در یک)</span></label>
-                    <img class="preview" src="" alt="" />
-                    <label class="select">
-                        <span>
-                            فایل انتخاب نشده
-                        </span>
-                        <input type="file" accept="image/*" onchange="imageSelected(this)" />
-                    </label>
-                </div>
-                <div class="upload-image uk-margin-auto-left">
-                    <label class="title">عکس بنر <span>(بدون نسبت)</span></label>
-                    <img class="preview" src="" alt="" />
-                    <label class="select">
-                        <span>
-                            فایل انتخاب نشده
-                        </span>
-                        <input type="file" accept="image/*" onchange="imageSelected(this)" />
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label autocomplete="username" for="txtName" class="uk-margin-small-bottom" dir="rtl">نام رستوران</label>
-                    <input type="text" class="form-group-bg" dir="rtl" name="txtName" />
-                    <span class="input-error">این فیلد اشتباه وارد شده است</span>
-                </div>
-                <div class="form-group">
-                    <label for="txtTel" class="uk-margin-small-bottom" dir="rtl">شماره تلفن</label>
-                    <input type="tel" class="form-group-bg" dir="rtl" name="txtTel" />
-                    <span class="input-error">این فیلد اشتباه وارد شده است</span>
-                </div>
-                <div class="form-group">
-                    <label for="txtRestType" class="uk-margin-small-bottom" dir="rtl">نوع رستوران</label>
-                    <input type="text" uk-toggle="#Modal-RestType" class="form-group-bg" dir="rtl" name="txtRestType" />
-                    <span class="input-error">این فیلد اشتباه وارد شده است</span>
-                </div>
-                <div class="form-group">
-                    <label for="txtCity" class="uk-margin-small-bottom" dir="rtl">شهر</label>
-                    <input type="text" uk-toggle="#Modal-Location" class="form-group-bg" dir="rtl" name="txtCity" />
-                    <span class="input-error">این فیلد اشتباه وارد شده است</span>
-                </div>
-                <div class="form-group">
-                    <label for="txtNeighbourhood" class="uk-margin-small-bottom" dir="rtl">محله</label>
-                    <input type="text" class="form-group-bg" dir="rtl" name="txtNeighbourhood" />
-                    <span class="input-error">این فیلد اشتباه وارد شده است</span>
-                </div>
-                <div class="map">
+        <div class="uk-container uk-margin-medium-top column">
 
-                </div>
-                <div class="form-group">
-                    <label for="txtAddress" class="uk-margin-small-bottom" dir="rtl">آدرس</label>
-                    <textarea class="form-group-bg" dir="rtl" name="txtAddress"></textarea>
-                    <span class="input-error">این فیلد اشتباه وارد شده است</span>
-                </div>
-                <!--
-                <div class="form-group">
-                            <label for="txtAddress" class="uk-margin-small-bottom" dir="rtl">توضیحات کوتاه</label>
-                            <textarea class="form-group-bg" dir="rtl" name="txtAddress"></textarea>
-                            <span class="input-error">این فیلد اشتباه وارد شده است</span>
+            <div class="profile column mat uk-box-shadow-medium">
+                <h3>تشکیل رستوران</h3>
+                <form class="" asp-action="ToRestaurant" asp-controller="User" asp-area="User" enctype="multipart/form-data">
+                    <div class="inputs column">
+                        <div class="upload-image uk-margin-auto-left">
+                            <label class="title">لوگو رستوران <span>(نسبت یک در یک)</span></label>
+                            <img class="preview" src="" alt="" />
+                            <label class="select">
+                                <span>
+                                    فایل انتخاب نشده
+                                </span>
+                                <input type="file" accept="image/*" id="MainImage" name="fileImage" onchange="imageSelected(this)" />
+                            </label>
+                            <span class="input-error uk-text-danger" asp-validation-for="MainImage"></span>
+                        </div>
+
+                        <div class="upload-image uk-margin-auto-left">
+                            <label class="title">عکس بنر <span>(بدون نسبت)</span></label>
+                            <img class="preview" src="" alt="" />
+                            <label class="select">
+                                <span>
+                                    فایل انتخاب نشده
+                                </span>
+                                <input type="file" accept="image/*" id="MainBanner" name="fileBanner" onchange="imageSelected(this)" />
+                            </label>
+                            <span class="input-error uk-text-danger" asp-validation-for="MainBanner"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label autocomplete="username" for="txtName" class="uk-margin-small-bottom" dir="rtl">نام رستوران</label>
+                            <input type="text" class="form-group-bg" dir="rtl" asp-for="Name" name="Name" />
+                            <span class="input-error" asp-validation-for="Name"></span>
                         </div>
                         <div class="form-group">
+                            <label for="txtTel" class="uk-margin-small-bottom" dir="rtl">شماره تلفن</label>
+                            <input type="tel" class="form-group-bg" dir="rtl" asp-for="TellNo1" name="TellNo1" />
+                            <span class="input-error" asp-validation-for="TellNo1"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtTel" class="uk-margin-small-bottom" dir="rtl">شماره تلفن</label>
+                            <input type="tel" class="form-group-bg" asp-for="TellNo2" dir="rtl" name="TellNo2" />
+                            <span class="input-error" asp-validation-for="TellNo2"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtRestType" class="uk-margin-small-bottom" dir="rtl">نوع رستوران</label>
+                            <input type="text" id="txtFoodSelector" asp-for="NameCatagory" uk-toggle="#Modal-RestType" asp class="form-group-bg" dir="rtl" name="txtRestType" />
+                            <input type="hidden" id="CatagoryId" name="CatagoryId" />
+                            <span class="input-error" asp-validation-for="CatagoryId"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCity" class="uk-margin-small-bottom" dir="rtl">شهر</label>
+                            <input type="text" id="txtCitySelector" asp-for="NameCity" uk-toggle="#Modal-Location" class="form-group-bg" dir="rtl" name="txtCity" />
+                            <input type="hidden" id="CityId" name="CityId" />
+                            <span class="input-error" asp-validation-for="CityId"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtNeighbourhood" class="uk-margin-small-bottom" dir="rtl">محله</label>
+                            <input type="text" class="form-group-bg" asp-for=Neighborhood dir="rtl" name="Neighborhood" />
+                            <span class="input-error" asp-validation-for="Neighborhood"></span>
+                        </div>
+                        <div class="map">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAddress" class="uk-margin-small-bottom" dir="rtl">آدرس</label>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="Address" name="Address"></textarea>
+                            <span class="input-error" asp-validation-for="Address"></span>
+                        </div>
+
+                        <div class="form-group">
                             <label for="txtAddress" class="uk-margin-small-bottom" dir="rtl">توضیحات کوتاه</label>
-                            <textarea class="form-group-bg" dir="rtl" name="txtAddress"></textarea>
-                            <span class="input-error">این فیلد اشتباه وارد شده است</span>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="ShortDesc" name="ShortDesc"></textarea>
+                            <span class="input-error" asp-validation-for="ShortDesc"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAddress" class="uk-margin-small-bottom" dir="rtl">توضیحات </label>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="LongDesc" name="LongDesc"></textarea>
+                            <span class="input-error" asp-validation-for="LongDesc"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="uk-margin-small-bottom" dir="rtl">روز و زمان کاری</label>
+                            <div class="row-reverse">
+                                <label class="uk-margin-auto-vertical uk-margin-small-left uk-margin-small-right"
+                                       for="txtFrom"
+                                       dir="rtl">از</label>
+                                <input class="form-group-bg input-tiny" type="datetime" asp-for="NameWorkTime" name="NameWorkTime" placeholder="22 - 08" />
+                                <label class="uk-margin-auto-vertical uk-margin-small-left uk-margin-small-right"
+                                       for="txtTo"
+                                       dir="rtl"></label>
+                                <input class="form-group-bg input-tiny" type="datetime" asp-for="NameWorkDay" name="NameWorkDay" placeholder="شنبه تا جمعه" />
+                            </div>
+                            <span class="input-error" asp-validation-for="NameWorkTime"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtFoods" class="uk-margin-small-bottom" dir="rtl">غذا ها</label>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="NameFood" name="NameFood" placeholder="لطفا با ، از هم جدا کنید(پیتزا، سالاد، همبرگر)"></textarea>
+                            <span class="input-error" asp-validation-for="NameFood"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFoods" class="uk-margin-small-bottom" dir="rtl"> نوع رستوران</label>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="NameFoodType" name="NameFoodType" placeholder="لطفا با ، از هم جدا کنید"></textarea>
+                            <span class="input-error" asp-validation-for="NameFoodType"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFoods" class="uk-margin-small-bottom" dir="rtl">سبک غذاها </label>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="NameMealType" name="NameMealType" placeholder="لطفا با ، از هم جدا کنید( فرنگی، ایتالیایی)"></textarea>
+                            <span class="input-error" asp-validation-for="NameMealType"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtoptions" class="uk-margin-small-bottom" dir="rtl">امکانات</label>
+                            <textarea class="form-group-bg" dir="rtl" name="txtoptions" placeholder="لطفا با ، از هم جدا کنید(سیگار آزاد، فضای باز)"></textarea>
+                            <span class="input-error" asp-validation-for="NameProperty"></span>
+                        </div>
+
+                        <input type="hidden" name="Lat" asp-for="Lat" />
+                        <input type="hidden" name="Lon" asp-for="Lon" />
+                        <div class="form-group mx-sm-1 mb-2">
+                            <label>افزودن موقعیت</label>
+                            <div class="map" id="map" style="height:400px;width:100%"></div>
+                            <span class="input-error" asp-validation-for="Lat"></span>
+                        </div>
+                        <div class="button-panel uk-margin-top">
+                            <button class="btn btn-primary">تایید</button>
+                            <a href="/User/User/Index" class="btn btn-secondary uk-margin-small-right">بازگشت</a>
+                        </div>
                     </div>
-                              -->
-                <div class="form-group">
-                    <label class="uk-margin-small-bottom" dir="rtl">زمان کاری</label>
-                    <div class="row-reverse">
-                        <label class="uk-margin-auto-vertical uk-margin-small-left uk-margin-small-right"
-                               for="txtFrom"
-                               dir="rtl">از</label>
-                        <input class="form-group-bg input-tiny" type="datetime" name="txtFrom" placeholder="00:00" />
-                        <label class="uk-margin-auto-vertical uk-margin-small-left uk-margin-small-right"
-                               for="txtTo"
-                               dir="rtl">تا</label>
-                        <input class="form-group-bg input-tiny" type="datetime" name="txtTo" placeholder="00:00" />
-                    </div>
-                    <span class="input-error">این فیلد اشتباه وارد شده است</span>
-                </div>
-                <div class="form-group">
-                    <label for="txtFoods" class="uk-margin-small-bottom" dir="rtl">غذا ها</label>
-                    <textarea class="form-group-bg" dir="rtl" name="txtFoods" placeholder="پیتزا، سالاد، همبرگر"></textarea>
-                    <span class="input-error">این فیلد اشتباه وارد شده است</span>
-                </div>
-                @*<div class="form-group">
-                        <label for="txtFoodTypes" class="uk-margin-small-bottom" dir="rtl">سبک غذایی</label>
-                        <textarea class="form-group-bg" dir="rtl" name="txtFoodTypes" placeholder="فرنگی، ایرانی"></textarea>
-                        <span class="input-error">این فیلد اشتباه وارد شده است</span>
-                    </div>*@
-                <div class="form-group">
-                    <label for="txtoptions" class="uk-margin-small-bottom" dir="rtl">امکانات</label>
-                    <textarea class="form-group-bg" dir="rtl" name="txtoptions" placeholder="سیگار آزاد، فضای باز"></textarea>
-                    <span class="input-error">این فیلد اشتباه وارد شده است</span>
-                </div>
-                <div class="button-panel uk-margin-top">
-                    <button onclick="window.location = '/Home/Profile'" class="btn btn-primary">ثبت اطلاعات</button>
-                    <a href="/Home/Profile" class="btn btn-secondary uk-margin-small-right">بازگشت</a>
-                </div>
+                </form>
             </div>
-        </form>
-    </div>
 
-</div>
+        </div>
 
-<div class="space-double"></div>
-<div class="space-double"></div>
+        <div class="space-double"></div>
+        <div class="space-double"></div>
 
-@section Scripts{
+        @section Scripts{
 
-    <script>
-        function imageSelected(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+            <link href="~/leaflet/leaflet.css" rel="stylesheet" />
+            <script src="~/leaflet/leaflet.js"></script>
+            <script>
+                function imageSelected(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    const img = input.parentElement.parentElement.querySelector('.preview');
-                    img.src = e.target.result.toString();
-                    img.style.backgroundImage = '';
+                        reader.onload = function (e) {
+                            const img = input.parentElement.parentElement.querySelector('.preview');
+                            img.src = e.target.result.toString();
+                            img.style.backgroundImage = '';
+                        }
+
+                        reader.readAsDataURL(input.files[0]); // convert to base64 string
+                    }
                 }
 
-                reader.readAsDataURL(input.files[0]); // convert to base64 string
-            }
+
+
+
+
+
+                var map = L.map('map').setView([38.07674409597339, 46.29700302496191], 11);
+
+                L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: 'Mr Tab'
+                }).addTo(map);
+
+                var theMarker = {};
+
+                map.on('click', function (e) {
+                    lat = e.latlng.lat;
+                    lon = e.latlng.lng;
+
+                    //Clear existing marker,
+
+                    if (theMarker != undefined) {
+                        map.removeLayer(theMarker);
+                    };
+
+                    var iconSetting = L.Icon.extend({
+                        options: {
+                            iconSize: [20, 29],
+                            iconAnchor: [10, 29]
+                        }
+                    });
+
+                    var customIcon = new iconSetting({ iconUrl: '/location.png' });
+                    //Add a marker to show where you clicked.
+                    $("#Lat").val(lat.toString());
+                    $("#Lon").val(lon.toString());
+                    theMarker = L.marker([lat, lon], { icon: customIcon }).addTo(map).bindPopup('<h6 style="color:green">موقعیت فروشگاه شما ثبت شد</h6>').openPopup();
+                });
+            </script>
         }
-    </script>
-}

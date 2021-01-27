@@ -13,14 +13,14 @@
     <partial name="_CaptchaInput" />
     @if (Context.Request.Query["Active"].ToString() == "true")
     {
-        <div class="form-group">
-            <p class="uk-text-danger">حساب کاربری شما فعال شد می توانید وارد حساب خود شوید</p>
+        <div class="uk-alert uk-alert-success">
+            <p class="help-block">حساب کاربری شما فعال شد می توانید وارد حساب خود شوید</p>
         </div>
     }
     @if (Context.Request.Query["ChangePassword"].ToString() == "true")
     {
-        <div class="form-group">
-            <p class="uk-text-danger">رمز شما تغیر یافت می توانید وارد حساب خود شوید</p>
+        <div class="uk-alert uk-alert-success">
+            <p class="help-block">رمز شما تغیر یافت می توانید وارد حساب خود شوید</p>
         </div>
     }
 
@@ -31,13 +31,13 @@
         </div>
 
         <script>
-            var delay = 3000;
+            var delay = 2000;
             setTimeout(function () { window.location = "/"; }, delay);
         </script>
     }
     <div class="form-group">
         <label class="input-label" for="txtTel">شماره تلفن</label>
-        <input class="input" autocomplete="username" type="tel" asp-for="TellNo" placeholder="..." />
+        <input class="input" autocomplete="username" type="tel" asp-for="TellNo" placeholder="09......" />
         <span class="input-error" asp-validation-for="TellNo"></span>
     </div>
     <div class="form-group">

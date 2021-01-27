@@ -21,12 +21,12 @@ namespace DataLayer.Metadata
         [StringLength(500)]
         public string MainBanner { get; set; }
         [Display(Name = "توضیحات مختصر")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(200)]
         [DataType(DataType.MultilineText)]
         public string ShortDesc { get; set; }
         [Display(Name = "توضیحات")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(1000)]
         [DataType(DataType.MultilineText)]
         public string LongDesc { get; set; }
@@ -34,7 +34,7 @@ namespace DataLayer.Metadata
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int CatagoryId { get; set; }
         [Display(Name = "آدرس")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(500)]
         [DataType(DataType.MultilineText)]
         public string Address { get; set; }
@@ -42,7 +42,7 @@ namespace DataLayer.Metadata
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int CityId { get; set; }
         [Display(Name = "محله")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(50)]
         public string Neighborhood { get; set; }
         [Display(Name = "طول جغرافیایی")]
@@ -54,15 +54,15 @@ namespace DataLayer.Metadata
         [StringLength(50)]
         public string Lon { get; set; }
         [Display(Name = "تلفن 1")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(20)]
         public string TellNo1 { get; set; }
         [Display(Name = "تلفن 2")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(20)]
         public string TellNo2 { get; set; }
         [Display(Name = "امتیاز")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public short Rating { get; set; }
         [Display(Name = "تعداد امتیاز")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
@@ -83,12 +83,13 @@ namespace DataLayer.Metadata
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public short QualityPerPriceRate { get; set; }
         [Display(Name = "لیبنک اینستاگرام")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [StringLength(1000)]
         public string InstagramUrl { get; set; }
         [Display(Name = "کاربر")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int UserId { get; set; }
+        public bool IsValid { get; set; }
     }
 
 }

@@ -34,12 +34,12 @@ namespace MrTab.Controllers
                 List<TblRestaurant> food = db.Food.Get().Where(i => i.Name.Contains(nameFood)).Select(i => i.Restaurant).ToList();
                 list.AddRange(food.Distinct());
             }
-            if (foodType != null)
+            if (foodType != null && foodType != "نوع غذا")
             {
                 List<TblRestaurant> food = db.FoodType.Get().Where(i => i.Name.Contains(foodType)).Select(i => i.Restaurant).ToList();
                 list.AddRange(food.Distinct());
             }
-            if (CityInput != null)
+            if (CityInput != null && CityInput != "شهر")
             {
                 list = list.Where(i => i.City.Name.Contains(CityInput)).ToList();
             }

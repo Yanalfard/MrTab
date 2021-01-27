@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataLayer.ViewModel
 {
-    public class ForgotPasswordVm
+    public class ForgotPasswordVm : CaptchaViewModel
     {
         [Display(Name = "شماره تلفن")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]

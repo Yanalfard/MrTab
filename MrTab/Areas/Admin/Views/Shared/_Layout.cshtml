@@ -38,7 +38,7 @@
             <div class="side-nav" style="z-index:8500">
                 <div class="side-nav-inner">
                     <div class="side-nav-logo">
-                        <a href="#">
+                        <a href="/">
                             <img class="logo logo-dark" width="24" height="24" src="~/resources/svg/BurgerKing.svg" />
                             <!--<div class="logo logo-dark" style="background-image: url('/img/admin/logo/logo.png')"></div>-->
                         </a>
@@ -57,23 +57,40 @@
                                 <span class="title">داشبورد</span>
                             </a>
                         </li>
-
-                        <li class="nav-item active">
-                            <a href="/Admin/User">
-                                <span class="icon-holder">
-                                    <i class="fas fa-user"></i>
-                                </span>
-                                <span class="title">کاربران</span>
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a href="/Admin/City">
-                                <span class="icon-holder">
-                                    <i class="fas fa-user"></i>
-                                </span>
-                                <span class="title">شهرها</span>
-                            </a>
-                        </li>
+                        @if (User.Claims.Last().Value == "admin")
+                        {
+                            <li class="nav-item active">
+                                <a href="/Admin/User">
+                                    <span class="icon-holder">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                    <span class="title">کاربران</span>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle" href="javascript:void(0);">
+                                    <span class="icon-holder">
+                                        <i class="fas fa-th-large"></i>
+                                    </span>
+                                    <span class="title">قوانین و درباره ما </span>
+                                    <span class="arrow">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/Admin/Home/About">
+                                            درباره ما
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Admin/Home/Contact">
+                                            قوانین سایت
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
 
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="javascript:void(0);">
@@ -119,30 +136,14 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
+                        <li class="nav-item active">
+                            <a href="/Account/LogOut">
                                 <span class="icon-holder">
-                                    <i class="fas fa-th-large"></i>
+                                    <i class="fas fa-cloud-sun"></i>
                                 </span>
-                                <span class="title">قوانین و درباره ما </span>
-                                <span class="arrow">
-                                    <i class="fas fa-chevron-right"></i>
-                                </span>
+                                <span class="title">خروج</span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="/Admin/Home/About">
-                                        درباره ما
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/Home/Contact">
-                                        قوانین سایت
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-
                     </ul>
                 </div>
             </div>

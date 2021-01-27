@@ -69,11 +69,11 @@
                                         پروفایل
                                     </a>
                                 </li>
-                                <li>
+                                @*<li>
                                     <a href="#" uk-toggle="#Modal-Location" class="uk-text-default">
                                         تغییر مکان
                                     </a>
-                                </li>
+                                </li>*@
                                 <li>
                                     <a href="/Account/LogOut" class="uk-text-danger">خروج</a>
                                 </li>
@@ -83,14 +83,14 @@
                 }
                 else if (User.Claims.Last().Value == "author")
                 {
-                    <a href="/Account/Register" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
+                    <a href="/Admin/Home/Index" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
                         پنل نویسنده
                     </a>
                     <div uk-drop="pos: bottom-right; offset:36">
                         <div class="mat uk-box-shadow-large">
                             <ul class="column uk-list">
                                 <li>
-                                    <a href="/Account/Register" class="uk-text-default">
+                                    <a href="/Admin/Home/Index" class="uk-text-default">
                                         پنل نویسنده
                                     </a>
                                 </li>
@@ -154,7 +154,7 @@
     <button class="btn-icon uk-box-shadow-medium uk-box-shadow-hover-large" onclick="getLocation()"
             id="btnSuggestOnLocation" uk-tooltip="pos:right; title: جستجو بر اساس مکان"
             uk-icon="icon:location-outline;ratio:1.32"
-            uk-scrollspy="cls:uk-animation-fade;delay:200"></button>
+            ></button>
 
     @RenderBody()
 
@@ -162,7 +162,7 @@
 
     <footer class="footer column">
         <ul class="footer-counters uk-box-shadow-large">
-            @await Component.InvokeAsync("InformationFooterVm")
+            @*@await Component.InvokeAsync("InformationFooterVm")*@
 
         </ul>
         <ul class="footer-body">

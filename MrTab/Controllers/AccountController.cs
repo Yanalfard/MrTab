@@ -65,7 +65,7 @@ namespace MrTab.Controllers
                         };
                         await HttpContext.SignInAsync(principal, properties);
                         ViewBag.IsSuccess = true;
-                        return View();
+                        return Redirect(ReturnUrl);
                     }
                     else
                     {
@@ -95,7 +95,7 @@ namespace MrTab.Controllers
         {
             if (!await _captchaValidator.IsCaptchaPassedAsync(register.Captcha))
             {
-                ModelState.AddModelError("TellNo", "ورود غیر مجاز");
+                ModelState.AddModelError("Name", "ورود غیر مجاز");
                 return View(register);
             }
             if (ModelState.IsValid)
@@ -110,6 +110,7 @@ namespace MrTab.Controllers
                     addUser.Name = "";
                     addUser.IsActive = false;
                     addUser.Password = PasswordHelper.EncodePasswordMd5(register.Password);
+                    addUser.Name = register.Name;
                     addUser.TellNo = register.TellNo;
                     db.User.Add(addUser);
                     db.User.Save();
@@ -168,6 +169,11 @@ namespace MrTab.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordVm forget)
         {
+            if (!await _captchaValidator.IsCaptchaPassedAsync(forget.Captcha))
+            {
+                ModelState.AddModelError("TellNo", "ورود غیر مجاز");
+                return View(forget);
+            }
             if (ModelState.IsValid)
             {
                 if (db.User.Get().Any(i => i.TellNo == forget.TellNo))

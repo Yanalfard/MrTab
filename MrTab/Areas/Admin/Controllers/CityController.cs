@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace MrTab.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [PermissionChecker("admin")]
+    [PermissionChecker("author,admin")]
     public class CityController : Controller
     {
         private Core db = new Core();

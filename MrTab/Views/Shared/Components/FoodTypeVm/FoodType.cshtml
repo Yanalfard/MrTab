@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TblFoodType>
+<div id="Modal-Food" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <form class="column">
+            <h2 class="uk-h4">نوع غذا</h2>
+            <span class="uk-modal-close" uk-close></span>
+            <div class="form-group">
+                <input type="text" class="form-group-bg"
+                       dir="rtl" placeholder="جستجو..."
+                       aria-label="جسجتو غذا" name="txtSearchFood"
+                       oninput="document.getElementById('foods').childNodes.forEach(i => { if(i.nodeType !== Node.TEXT_NODE)  i.style.display = i.textContent.includes(this.value) ? 'list-item' : 'none' })" />
+            </div>
+            <div class="even-taglist column uk-margin-small-top">
+                <ul id="foods" class="tag-grid uk-padding-remove">
+                    @foreach (var item in Model)
+                    {
+             
+                        <li>
+
+                            <button type="button" class="even-tag uk-modal-close" onclick="document.getElementById('foodType').value = this.textContent">@item.Name</button>
+
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="button-panel uk-margin-top uk-margin-auto">
+                <div class="btn btn-round btn-secondary uk-modal-close">بازگشت</div>
+            </div>
+        </form>
+    </div>
+</div>
+

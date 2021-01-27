@@ -11,108 +11,74 @@
 
 <!-- #region Location -->
 
-<div id="Modal-Food" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <form class="column">
-            <h2 class="uk-h4">نوع غذا</h2>
-            <span class="uk-modal-close" uk-close></span>
-            <div class="form-group">
-                <input type="text" class="form-group-bg"
-                       dir="rtl" placeholder="جستجو..."
-                       aria-label="جسجتو غذا" name="txtSearchFood"
-                       oninput="document.getElementById('foods').childNodes.forEach(i => { if(i.nodeType !== Node.TEXT_NODE)  i.style.display = i.textContent.includes(this.value) ? 'list-item' : 'none' })" />
-            </div>
-            <div class="even-taglist column uk-margin-small-top">
-                <ul id="foods" class="tag-grid uk-padding-remove">
-                    <li>
-                        <button type="button" class="even-tag uk-modal-close" onclick="document.getElementById('foodType').value = this.textContent">سنتی</button>
-                    </li>
-                    <li>
-                        <button type="button" class="even-tag uk-modal-close" onclick="document.getElementById('foodType').value = this.textContent">سنتی</button>
-                    </li>
-                    <li>
-                        <button type="button" class="even-tag uk-modal-close" onclick="document.getElementById('foodType').value = this.textContent">سنتی</button>
-                    </li>
-                    <li>
-                        <button type="button" class="even-tag uk-modal-close" onclick="document.getElementById('foodType').value = this.textContent">سنتی</button>
-                    </li>
-                    <li>
-                        <button type="button" class="even-tag uk-modal-close" onclick="document.getElementById('foodType').value = this.textContent">سنتی</button>
-                    </li>
-                </ul>
-            </div>
-            <div class="button-panel uk-margin-top uk-margin-auto">
-                <div class="btn btn-round btn-secondary uk-modal-close">بازگشت</div>
-            </div>
-        </form>
-    </div>
-</div>
+<partial name="/Views/Shared/_FoodTypeSelector.cshtml">
 
-<!-- #endregion -->
 
-<form class="search-filter mat" asp-action="UploadImage" asp-controller="Account" asp-area="User">
-    @*<button id="btnSearch" class="btn btn-primary" aria-label="جسنجو رستوران">
-            <span uk-icon="search"></span>
-        </button>*@
-    <input id="btnSearch" type="submit" class="btn btn-primary" aria-label="جستجو رستوران" value="جستجو" />
-    <div id="btnFood" type="button" uk-toggle="#Modal-Food" aria-label="انتخاب نوع غذا"
-         class="form-group-bg row-reverse searchbar-margin-left">
-        <span class="uk-margin-small-left" uk-icon="grid-outline"></span>
-        <input readonly class="input-invis" id="foodType" name="foodType" value="نوع غذا">
-    </div>
-    <div id="selectOrder" class="form-group-bg">
-        <select class="form-group-bg uk-padding-remove" dir="rtl" name="orderBy">
-            <option value="0">مرتب کردن</option>
-            <option value="1">از کمترین  امتیاز</option>
-            <option value="2">از بیشترین  امتیاز</option>
-        </select>
-    </div>
-    <div id="btnCity" type="button" uk-toggle="#Modal-Location"  aria-label="انتخاب شهر"
-            class="form-group-bg row-reverse searchbar-margin-left">
-        <span uk-icon="location-outline"></span>
-        <input readonly class="input-invis" id="CityInput" name="CityInput" value="شهر">
-    </div>
-    <input tabindex="1" id="txtType" name="nameFood" type="text" class="form-group-bg" placeholder=" غذا" value="@ViewBag.nameFood" />
-    <input tabindex="2" id="address" name="name" type="text" class="form-group-bg" placeholder="نام مکان" value="@ViewBag.name" />
-</form>
+    <!-- #endregion -->
 
-<div role="none" class="space-search uk-margin-medium-bottom"></div>
-
-<div class="uk-container column">
-
-    <!-- #region Searchbar -->
-    <!--<form class="searchbar">
-        <input type="text" class="form-group-bg searchbar-margin-left" placeholder="نام رستوران" aria-label="نام رستوران" />
-        <button type="button" uk-toggle="#Modal-Location" aria-label="انتخاب شهر"
-                class="form-group-bg row-reverse searchbar-margin-left">
-            <span uk-icon="location-outline"></span>
-            <span>انتخاب شهر</span>
-        </button>
-        <button type="button" uk-toggle="#Modal-Food" aria-label="انتخاب نوع غذا"
-                class="form-group-bg row-reverse searchbar-margin-left">
+    <form class="search-filter mat" asp-action="Search" asp-controller="Home" asp-area="">
+        @*<button id="btnSearch" class="btn btn-primary" aria-label="جسنجو رستوران">
+                <span uk-icon="search"></span>
+            </button>*@
+        <input id="btnSearch" type="submit" class="btn btn-primary" aria-label="جستجو رستوران" value="جستجو" />
+        <div id="btnFood" type="button" uk-toggle="#Modal-Food" aria-label="انتخاب نوع غذا"
+             class="form-group-bg row-reverse searchbar-margin-left">
             <span class="uk-margin-small-left" uk-icon="grid-outline"></span>
-            <span>نوع غذا</span>
-        </button>
-        <button class="btn btn-primary" aria-label="جسنجو رستوران">
-            <span uk-icon="search"></span>
-        </button>
-    </form>-->
-    <!-- #endregion -->
-    <!-- #region Grid -->
+            <input readonly class="input-invis" id="foodType" name="foodType" value="نوع غذا">
+        </div>
+        <div id="selectOrder" class="form-group-bg">
+            <select class="form-group-bg uk-padding-remove" dir="rtl" name="orderBy">
+                <option value="0">مرتب کردن</option>
+                <option value="1">از کمترین  امتیاز</option>
+                <option value="2">از بیشترین  امتیاز</option>
+            </select>
+        </div>
+        <div id="btnCity" type="button" uk-toggle="#Modal-Location" aria-label="انتخاب شهر"
+             class="form-group-bg row-reverse searchbar-margin-left">
+            <span uk-icon="location-outline"></span>
+            <input readonly class="input-invis" id="CityInput" name="CityInput" value="شهر">
+        </div>
+        <input tabindex="1" id="txtType" name="nameFood" type="text" class="form-group-bg" placeholder=" غذا" value="@ViewBag.nameFood" />
+        <input tabindex="2" id="address" name="name" type="text" class="form-group-bg" placeholder="نام مکان" value="@ViewBag.name" />
+    </form>
 
-    <div class="rest-grid">
+    <div role="none" class="space-search uk-margin-medium-bottom"></div>
 
-        @foreach (var item in Model)
-        {
-            <partial name="_RestaurantBlock" model="item" />
-        }
+    <div class="uk-container column">
+
+        <!-- #region Searchbar -->
+        <!--<form class="searchbar">
+            <input type="text" class="form-group-bg searchbar-margin-left" placeholder="نام رستوران" aria-label="نام رستوران" />
+            <button type="button" uk-toggle="#Modal-Location" aria-label="انتخاب شهر"
+                    class="form-group-bg row-reverse searchbar-margin-left">
+                <span uk-icon="location-outline"></span>
+                <span>انتخاب شهر</span>
+            </button>
+            <button type="button" uk-toggle="#Modal-Food" aria-label="انتخاب نوع غذا"
+                    class="form-group-bg row-reverse searchbar-margin-left">
+                <span class="uk-margin-small-left" uk-icon="grid-outline"></span>
+                <span>نوع غذا</span>
+            </button>
+            <button class="btn btn-primary" aria-label="جسنجو رستوران">
+                <span uk-icon="search"></span>
+            </button>
+        </form>-->
+        <!-- #endregion -->
+        <!-- #region Grid -->
+
+        <div class="rest-grid">
+
+            @foreach (var item in Model)
+            {
+                <partial name="_RestaurantBlock" model="item" />
+            }
+
+        </div>
+
+        <!-- #endregion -->
 
     </div>
 
-    <!-- #endregion -->
+    @section Scripts {
 
-</div>
-
-@section Scripts {
-
-}
+    }

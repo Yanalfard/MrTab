@@ -1,0 +1,233 @@
+﻿@model CreateRestaurantVm
+
+@{
+    ViewBag.Title = "ویرایش رستوران";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles{
+    <link href="~/css/Pages/Profile.min.css" rel="stylesheet" />
+}
+
+<!-- #region Restaurant Type -->
+
+<partial name="/Views/Shared/_CategorySelector.cshtml">
+
+    <!-- #endregion -->
+    <!-- #region Location -->
+
+    <partial name="/Views/Shared/_CitySelectorToRestaurant.cshtml">
+
+
+        <!-- #endregion -->
+
+        <div class="uk-container uk-margin-medium-top column">
+
+            <div class="profile column mat uk-box-shadow-medium">
+                <h3>تشکیل رستوران</h3>
+                <form class="" asp-action="ToRestaurant" asp-controller="User" asp-area="User" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="RestaurantId" name="RestaurantId"  />
+                    <div class="inputs column">
+                        <div class="upload-image uk-margin-auto-left">
+                            <label class="title">لوگو رستوران <span>(نسبت یک در یک)</span></label>
+                            @if (Model.MainImage != null)
+                            {
+                                <img class="preview" src="/Images/Restaurant/@Model.MainImage" alt=" @Model.Name" />
+                            }
+                            else
+                            {
+                                <img class="preview" src="/Images/NoImage.svg" alt="@Model.Name" />
+                            }
+                            <label class="select">
+                                <span>
+                                    فایل انتخاب نشده
+                                </span>
+                                <input type="file" accept="image/*" id="MainImage" name="fileImage" onchange="imageSelected(this)" />
+                            </label>
+                            <span class="input-error uk-text-danger" asp-validation-for="MainImage"></span>
+                        </div>
+
+                        <div class="upload-image uk-margin-auto-left">
+                            <label class="title">عکس بنر <span>(بدون نسبت)</span></label>
+                            @if (Model.MainBanner != null)
+                            {
+                                <img class="preview" src="/Images/Restaurant/@Model.MainBanner" alt=" @Model.Name" />
+                            }
+                            else
+                            {
+                                <img class="preview" src="/Images/NoImage.svg" alt="@Model.Name" />
+                            }
+                            <label class="select">
+                                <span>
+                                    فایل انتخاب نشده
+                                </span>
+                                <input type="file" accept="image/*" id="MainBanner" name="fileBanner" onchange="imageSelected(this)" />
+                            </label>
+                            <span class="input-error uk-text-danger" asp-validation-for="MainBanner"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label autocomplete="username" for="txtName" class="uk-margin-small-bottom" dir="rtl">نام رستوران</label>
+                            <input type="text" class="form-group-bg" dir="rtl" asp-for="Name" name="Name" />
+                            <span class="input-error" asp-validation-for="Name"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtTel" class="uk-margin-small-bottom" dir="rtl">شماره تلفن</label>
+                            <input type="tel" class="form-group-bg" dir="rtl" asp-for="TellNo1" name="TellNo1" />
+                            <span class="input-error" asp-validation-for="TellNo1"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtTel" class="uk-margin-small-bottom" dir="rtl">شماره تلفن</label>
+                            <input type="tel" class="form-group-bg" asp-for="TellNo2" dir="rtl" name="TellNo2" />
+                            <span class="input-error" asp-validation-for="TellNo2"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtRestType" class="uk-margin-small-bottom" dir="rtl">نوع رستوران</label>
+                            <input type="text" id="txtFoodSelector" asp-for="NameCatagory" uk-toggle="#Modal-RestType" asp class="form-group-bg" dir="rtl" name="txtRestType" />
+                            <input type="hidden" id="CatagoryId" name="CatagoryId" asp-for="CatagoryId" />
+                            <span class="input-error" asp-validation-for="CatagoryId"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCity" class="uk-margin-small-bottom" dir="rtl">شهر</label>
+                            <input type="text" id="txtCitySelector" asp-for="NameCity" uk-toggle="#Modal-Location" class="form-group-bg" dir="rtl" name="txtCity" />
+                            <input type="hidden" id="CityId" name="CityId" asp-for="CityId" />
+                            <span class="input-error" asp-validation-for="CityId"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtNeighbourhood" class="uk-margin-small-bottom" dir="rtl">محله</label>
+                            <input type="text" class="form-group-bg" asp-for=Neighborhood dir="rtl" name="txtNeighbourhood" />
+                            <span class="input-error" asp-validation-for="Neighborhood"></span>
+                        </div>
+                        <div class="map">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAddress" class="uk-margin-small-bottom" dir="rtl">آدرس</label>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="Address" name="Address"></textarea>
+                            <span class="input-error" asp-validation-for="Address"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtAddress" class="uk-margin-small-bottom" dir="rtl">توضیحات کوتاه</label>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="ShortDesc" name="ShortDesc"></textarea>
+                            <span class="input-error" asp-validation-for="ShortDesc"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAddress" class="uk-margin-small-bottom" dir="rtl">توضیحات </label>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="LongDesc" name="LongDesc"></textarea>
+                            <span class="input-error" asp-validation-for="LongDesc"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="uk-margin-small-bottom" dir="rtl">روز و زمان کاری</label>
+                            <div class="row-reverse">
+                                <label class="uk-margin-auto-vertical uk-margin-small-left uk-margin-small-right"
+                                       for="txtFrom"
+                                       dir="rtl">از</label>
+                                <input class="form-group-bg input-tiny" type="datetime" asp-for="NameWorkTime" name="NameWorkTime" placeholder="22 - 08" />
+                                <label class="uk-margin-auto-vertical uk-margin-small-left uk-margin-small-right"
+                                       for="txtTo"
+                                       dir="rtl"></label>
+                                <input class="form-group-bg input-tiny" type="datetime" asp-for="NameWorkDay" name="NameWorkDay" placeholder="شنبه تا جمعه" />
+                            </div>
+                            <span class="input-error" asp-validation-for="NameWorkTime"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtFoods" class="uk-margin-small-bottom" dir="rtl">غذا ها</label>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="NameFood" name="NameFood" placeholder="لطفا با ، از هم جدا کنید(پیتزا، سالاد، همبرگر)"></textarea>
+                            <span class="input-error" asp-validation-for="NameFood"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFoods" class="uk-margin-small-bottom" dir="rtl"> نوع رستوران</label>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="NameFoodType" name="NameFoodType" placeholder="لطفا با ، از هم جدا کنید"></textarea>
+                            <span class="input-error" asp-validation-for="NameFoodType"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFoods" class="uk-margin-small-bottom" dir="rtl">سبک غذاها </label>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="NameMealType" name="NameMealType" placeholder="لطفا با ، از هم جدا کنید( فرنگی، ایتالیایی)"></textarea>
+                            <span class="input-error" asp-validation-for="NameMealType"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtoptions" class="uk-margin-small-bottom" dir="rtl">امکانات</label>
+                            <textarea class="form-group-bg" dir="rtl" name="txtoptions" placeholder="لطفا با ، از هم جدا کنید(سیگار آزاد، فضای باز)"></textarea>
+                            <span class="input-error" asp-validation-for="NameProperty"></span>
+                        </div>
+
+                        <input type="hidden" name="Lat" asp-for="Lat" />
+                        <input type="hidden" name="Lon" asp-for="Lon" />
+                        <div class="form-group mx-sm-1 mb-2">
+                            <label>افزودن موقعیت</label>
+                            <div class="map" id="map" style="height:400px;width:100%"></div>
+                            <span class="input-error" asp-validation-for="Lat"></span>
+                        </div>
+                        <div class="button-panel uk-margin-top">
+                            <button class="btn btn-primary">ویرایش</button>
+                            <a href="/User/User/Index" class="btn btn-secondary uk-margin-small-right">بازگشت</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="space-double"></div>
+        <div class="space-double"></div>
+
+        @section Scripts{
+
+            <link href="~/leaflet/leaflet.css" rel="stylesheet" />
+            <script src="~/leaflet/leaflet.js"></script>
+            <script>
+                function imageSelected(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            const img = input.parentElement.parentElement.querySelector('.preview');
+                            img.src = e.target.result.toString();
+                            img.style.backgroundImage = '';
+                        }
+
+                        reader.readAsDataURL(input.files[0]); // convert to base64 string
+                    }
+                }
+
+
+
+
+
+
+                var map = L.map('map').setView([38.07674409597339, 46.29700302496191], 11);
+
+                L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: 'Mr Tab'
+                }).addTo(map);
+
+                var theMarker = {};
+
+                map.on('click', function (e) {
+                    lat = e.latlng.lat;
+                    lon = e.latlng.lng;
+
+                    //Clear existing marker,
+
+                    if (theMarker != undefined) {
+                        map.removeLayer(theMarker);
+                    };
+
+                    var iconSetting = L.Icon.extend({
+                        options: {
+                            iconSize: [20, 29],
+                            iconAnchor: [10, 29]
+                        }
+                    });
+
+                    var customIcon = new iconSetting({ iconUrl: '/location.png' });
+                    //Add a marker to show where you clicked.
+                    $("#Lat").val(lat.toString());
+                    $("#Lon").val(lon.toString());
+                    theMarker = L.marker([lat, lon], { icon: customIcon }).addTo(map).bindPopup('<h6 style="color:green">موقعیت فروشگاه شما ثبت شد</h6>').openPopup();
+                });
+            </script>
+        }
