@@ -152,6 +152,10 @@ backdrop-filter: saturate(80%);
     -webkit-border-radius: 100% 100% 100% 100%;
     border-radius: 100% 100% 100% 100%; }
 
+body {
+  -ms-zoom: 88% !important;
+  zoom: 88% !important; }
+
 h5.uk-h4 {
   font-size: 16px; }
 
@@ -560,7 +564,7 @@ h5.uk-h4 {
 @media only screen and (max-width: 824px) {
   .info {
     grid-template-columns: 1fr;
-    grid-template-areas: "foodstyle" "meals" "scores " "options" "map"; }
+    grid-template-areas: "foodstyle" "meals" "options" "map"; }
     .info .meals a, .info .foodstyle a {
       border: 1.5px #FEB432 thin;
       color: #FEB432;
@@ -593,7 +597,7 @@ h5.uk-h4 {
 @media only screen and (max-device-width: 824px) {
   .info {
     grid-template-columns: 1fr;
-    grid-template-areas: "foodstyle" "meals" "scores " "options" "map"; }
+    grid-template-areas: "foodstyle" "meals" "options" "map"; }
     .info .meals a, .info .foodstyle a {
       border: 1.5px #FEB432 thin;
       color: #FEB432;

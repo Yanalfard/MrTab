@@ -7,21 +7,6 @@
     @include trans(.2s);
 }
 
-#btnSuggestOnLocation {
-    background-color: #fff;
-    padding: 12px;
-    @include border-radius(120px,120px,120px,120px);
-    position: fixed;
-    left: 32px;
-    bottom: 32px;
-    color: #333;
-    z-index: 128;
-}
-
-#btnSuggestOnLocation:hover {
-    color: $primary;
-}
-
 .mat {
     padding: 16px;
     -moz-box-shadow: 0 5px 15px rgba(0,0,0,0.08);
@@ -187,6 +172,30 @@
         display: none
     }
 }
+
+#btnSuggestOnLocation {
+    background-color: #fff;
+    padding: 12px;
+    @include border-radius(120px,120px,120px,120px);
+    position: fixed;
+    left: 32px;
+    bottom: 32px;
+    color: #333;
+    z-index: 128;
+}
+
+#btnSuggestOnLocation:hover {
+    color: $primary;
+}
+
+@media only screen and (max-device-width : 513px) {
+
+    #btnSuggestOnLocation {
+        bottom: $nav-bottom-height + 20px;
+        left: 20px;
+    }
+}
+
 
 button, a, a:hover .js-upload, input[type=file] {
     cursor: pointer;

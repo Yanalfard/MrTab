@@ -100,7 +100,6 @@
                     </h3>
                 }
 
-
             </div>
             <p class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom"
                onclick="copy('@Model.Address','آدرس کپی شد')">
@@ -126,103 +125,63 @@
 
     <!-- #region User Photos -->
 
-    <div class="carousel carousel-image uk-position-relative uk-visible-toggle" uk-scrollspy="cls:uk-animation-fade" tabindex="-1" uk-slider>
-        <h4 class="uk-margin-remove-top">
-            عکس های کاربران
-        </h4>
-        <ul uk-lightbox class="uk-slider-items
+    @if (Model.TblImage.Where(i => i.Status == 2 && i.IsValid).Count() > 0)
+    {
+        <div class="carousel carousel-image uk-position-relative uk-visible-toggle" uk-scrollspy="cls:uk-animation-fade" tabindex="-1" uk-slider>
+            <h4 class="uk-margin-remove-top">
+                عکس های کاربران
+            </h4>
+            <ul uk-lightbox class="uk-slider-items
             uk-child-width-1-3-at-s
             uk-child-width-1-4-at-m
             uk-child-width-1-5-at-l
             uk-child-width-1-5-at-xl">
-            @foreach (var item in Model.TblImage.Where(i => i.Status == 2 && i.IsValid))
-            {
-                <li>
-                    <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="آپلود شده توسط: نام کاربر1"><img src="~/Images/Restaurant/Gallery/@item.Url" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-            }
-            @*<li>
-                    <a href="/resources/jpg/Food_1.jpg" data-caption="آپلود شده توسط: نام کاربر1"><img src="~/resources/jpg/Food_1.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_2.jpg" data-caption="آپلود شده توسط: نام کاربر2"><img src="~/resources/jpg/Food_2.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_3.jpg" data-caption="آپلود شده توسط: نام کاربر3"><img src="~/resources/jpg/Food_3.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_4.jpg" data-caption="4آپلود شده توسط: نام کاربر"><img src="~/resources/jpg/Food_4.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_1.jpg" data-caption="5آپلود شده توسط: نام کاربر"><img src="~/resources/jpg/Food_1.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_2.jpg" data-caption="آپلود شده توسط: نام کاربر6"><img src="~/resources/jpg/Food_2.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_3.jpg" data-caption="7آپلود شده توسط: نام کاربر"><img src="~/resources/jpg/Food_3.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_4.jpg" data-caption="آپلود شده توسط: نام کاربر8"><img src="~/resources/jpg/Food_4.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>*@
-        </ul>
+                @foreach (var item in Model.TblImage.Where(i => i.Status == 2 && i.IsValid))
+                {
+                    <li>
+                        <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="آپلود شده توسط: نام کاربر1"><img src="~/Images/Restaurant/Gallery/@item.Url" width="220" height="220" alt="عکس از رستوران" /></a>
+                    </li>
+                }
+            </ul>
 
-        <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 
-    </div>
+        </div>
+    }
 
     <!-- #endregion -->
     <!-- #region Menu -->
 
-    <div class="carousel carousel-menu uk-box-shadow-medium
+    @if (Model.TblFood.Count > 0)
+    {
+        <div class="carousel carousel-menu uk-box-shadow-medium
          uk-position-relative uk-visible-toggle" uk-scrollspy="cls:uk-animation-fade" tabindex="-1" uk-slider>
 
-        <h4 class="uk-margin-remove-top">
-            منو رستوران
-        </h4>
+            <h4 class="uk-margin-remove-top">
+                منو رستوران
+            </h4>
 
-        <ul uk-lightbox class="uk-slider-items
+            <ul uk-lightbox class="uk-slider-items
             uk-child-width-1-3-at-s
             uk-child-width-1-4-at-m
             uk-child-width-1-5-at-l
             uk-child-width-1-5-at-xl">
-            @foreach (var item in Model.TblImage.Where(i => i.Status == 1))
-            {
-                <li>
-                    <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="@Model.Name"><img src="~/Images/Restaurant/Gallery/@item.Url" width="220" height="365" alt="عکس از منو رستوران" /></a>
-                </li>
-            }
+                @foreach (var item in Model.TblImage.Where(i => i.Status == 1))
+                {
+                    <li>
+                        <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="@Model.Name"><img src="~/Images/Restaurant/Gallery/@item.Url" width="220" height="365" alt="عکس از منو رستوران" /></a>
+                    </li>
+                }
+            </ul>
 
-            @*<li>
-                    <a href="/resources/jpg/Menu_2.jpg" data-caption="صفحه 2"><img src="~/resources/jpg/Menu_2.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Menu_3.jpg" data-caption="صفحه 3"><img src="~/resources/jpg/Menu_3.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Menu_4.jpg" data-caption="صفحه 4"><img src="~/resources/jpg/Menu_4.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Menu_1.jpg" data-caption="صفحه 5"><img src="~/resources/jpg/Menu_1.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Menu_2.jpg" data-caption="صفحه 6"><img src="~/resources/jpg/Menu_2.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Menu_3.jpg" data-caption="صفحه 7"><img src="~/resources/jpg/Menu_3.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Menu_4.jpg" data-caption="صفحه 8"><img src="~/resources/jpg/Menu_4.jpg" width="220" height="365" alt="عکس از منو رستوران" /></a>
-                </li>*@
-        </ul>
+            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 
-        <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
-
-    </div>
+        </div>
+    }
 
     <!-- #endregion -->
     <!-- #region Info -->
-    <div class="info mat-margin-top">
+    <div class="info uk-margin-medium-top">
         <div class="mat meals" uk-scrollspy="cls:uk-animation-fade;delay:300">
             <h5 class="uk-h4">غذا ها</h5>
             <ul class="auto-row uk-margin-remove-bottom uk-padding-remove">
@@ -275,103 +234,7 @@
                 </li>
             </ul>
         </div>
-        <!--<div class="mat scores" uk-scrollspy="cls:uk-animation-fade;delay:100">
-            <h5 class="uk-h4">امتیاز ها</h5>
-            <div class="container uk-flex-wrap">-->
-        <!-- #region Gauge -->
-        <!--<div class="progress-ring-container" percentage="32">
-            <svg class="progress-ring"
-                 width="120"
-                 height="120">
-                <circle class="progress-ring__circle"
-                        fill="transparent"
-                        r="56"
-                        cx="60"
-                        cy="60" />
-            </svg>
-            <div class="text">
-                <div class="column">
-                    <p>
-                        32
-                    </p>
-                    <label>
-                        کیفیت و طعم
-                    </label>
-                </div>
-            </div>
-        </div>-->
-        <!-- #endregion -->
-        <!-- #region Gauge -->
-        <!--<div class="progress-ring-container" percentage="64">
-            <svg class="progress-ring"
-                 width="120"
-                 height="120">
-                <circle class="progress-ring__circle"
-                        fill="transparent"
-                        r="56"
-                        cx="60"
-                        cy="60" />
-            </svg>
-            <div class="text">
-                <div class="column">
-                    <p>
-                        64
-                    </p>
-                    <label>
-                        دکوراسیون و محیط
-                    </label>
-                </div>
-            </div>
-        </div>-->
-        <!-- #endregion -->
-        <!-- #region Gauge -->
-        <!--<div class="progress-ring-container" percentage="75">
-            <svg class="progress-ring"
-                 width="120"
-                 height="120">
-                <circle class="progress-ring__circle"
-                        fill="transparent"
-                        r="56"
-                        cx="60"
-                        cy="60" />
-            </svg>
-            <div class="text">
-                <div class="column">
-                    <p>
-                        75
-                    </p>
-                    <label>
-                        سرویس و کارکنان
-                    </label>
-                </div>
-            </div>
-        </div>-->
-        <!-- #endregion -->
-        <!-- #region Gauge -->
-        <!--<div class="progress-ring-container" percentage="90">
-            <svg class="progress-ring"
-                 width="120"
-                 height="120">
-                <circle class="progress-ring__circle"
-                        fill="transparent"
-                        r="56"
-                        cx="60"
-                        cy="60" />
-            </svg>
-            <div class="text">
-                <div class="column">
-                    <p>
-                        90
-                    </p>
-                    <label>
-                        ارزش نسبت به قیمت
-                    </label>
-                </div>
-            </div>
-        </div>-->
-        <!-- #endregion -->
-        <!--</div>
-        </div>-->
+
         <div class="mat options" uk-scrollspy="cls:uk-animation-fade;delay:100">
             <h5 class="uk-h4">امکانات</h5>
             <ul class="uk-margin-remove ">
@@ -385,9 +248,6 @@
 
             </ul>
         </div>
-        @*<div id="mapid" class="mat map" uk-scrollspy="cls:uk-animation-fade;delay:200">
-
-            </div>*@
 
         <div class="map" id="map" style="height:400px;width:100%"></div>
     </div>
@@ -403,13 +263,24 @@
             </button>
         </div>
 
-        <ul class="uk-margin-remove uk-padding-remove">
-            @foreach (var item in Model.TblComment.Where(i => i.IsReported == false))
-            {
-                <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" model="item" /></li>
-            }
+        @if (Model.TblComment.Where(i => i.IsValid).Count() > 0)
+        {
+            <ul class="uk-margin-remove uk-padding-remove">
+                @foreach (var item in Model.TblComment.Where(i => i.IsValid))
+                {
+                    <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" model="item" /></li>
+                }
 
-        </ul>
+            </ul>
+        }
+        else
+        {
+            <div class="column">
+                <img src="~/resources/svg/btfToComment.svg" width="164" height="164" class="uk-margin-auto uk-margin-medium-top" alt="کسی نظری نداده است" />
+                <h3 class="h4 uk-text-center uk-margin-remove-bottom uk-margin-top">اولین نظر را شما بدهید</h3>
+                <p class="uk-text-muted uk-text-center uk-margin-small-top">هنوز کسی درباره این مکان نظری نداده است</p>
+            </div>
+        }
 
     </div>
 
@@ -420,12 +291,9 @@
 <input type="hidden" asp-for="Lon" />
 <input type="hidden" asp-for="RestaurantId" id="RestaurantId" />
 
-
-
 <div id="Modal-View" uk-modal>
 
 </div>
-
 
 @section Scripts{
 
