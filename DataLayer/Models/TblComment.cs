@@ -32,6 +32,7 @@ namespace DataLayer.Models
         [Column(TypeName = "datetime")]
         public DateTime? DateSubmited { get; set; }
         public int? RestaurantId { get; set; }
+        public int? DocId { get; set; }
         public int? UserId { get; set; }
         [StringLength(500)]
         public string TextReport { get; set; }
@@ -40,6 +41,9 @@ namespace DataLayer.Models
         [ForeignKey(nameof(AnswerId))]
         [InverseProperty(nameof(TblComment.InverseAnswer))]
         public virtual TblComment Answer { get; set; }
+        [ForeignKey(nameof(DocId))]
+        [InverseProperty(nameof(TblDoc.TblComment))]
+        public virtual TblDoc Doc { get; set; }
         [ForeignKey(nameof(RestaurantId))]
         [InverseProperty(nameof(TblRestaurant.TblComment))]
         public virtual TblRestaurant Restaurant { get; set; }
