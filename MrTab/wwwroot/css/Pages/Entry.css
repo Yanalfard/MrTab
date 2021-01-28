@@ -82,7 +82,10 @@ body, .entry-1, .entry-2, .entry-3 {
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: bottom;
-  background-size: contain; }
+  background-size: contain;
+  -ms-zoom: unset;
+  zoom: unset;
+  min-height: 100vh; }
 
 html {
   overflow-y: hidden !important; }
@@ -125,14 +128,14 @@ body {
   html {
     background-color: #fff; }
   body {
-    height: calc(112vh - 24px);
-    max-height: calc(112vh - 24px);
+    height: calc(100vh - 24px);
+    max-height: calc(100vh - 24px);
     overflow: hidden !important;
     background-color: #fff; }
   .entry-wrapper {
     padding: 24px;
-    width: calc(112vw - 48px);
-    height: calc(112vh - 48px);
+    width: calc(100vw - 48px);
+    height: calc(100vh - 48px);
     margin-bottom: 12px !important;
     background-color: #fff; }
   .button-panel {
@@ -145,7 +148,7 @@ body {
     background-image: url("/resources/svg/jiggly-doot.svg");
     background-repeat: repeat; }
   .entry-wrapper {
-    width: 400px;
+    width: 380px;
     margin: auto;
     background-image: none;
     padding: 24px;
@@ -156,6 +159,6 @@ body {
     -moz-box-shadow: rgba(0, 0, 0, 0.32) 0 0px 28px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.32) 0 0px 28px;
     box-shadow: rgba(0, 0, 0, 0.32) 0 0px 28px;
-    min-height: 460px; }
+    min-height: 440px; }
   .entry-header {
     margin-bottom: 28px; } }
