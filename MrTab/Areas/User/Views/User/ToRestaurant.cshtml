@@ -135,7 +135,7 @@
                         </div>
                         <div class="form-group">
                             <label for="txtoptions" class="uk-margin-small-bottom" dir="rtl">امکانات</label>
-                            <textarea class="form-group-bg" dir="rtl" name="txtoptions" placeholder="لطفا با ، از هم جدا کنید(سیگار آزاد، فضای باز)"></textarea>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="NameProperty" name="NameProperty" placeholder="لطفا با ، از هم جدا کنید(سیگار آزاد، فضای باز)"></textarea>
                             <span class="input-error" asp-validation-for="NameProperty"></span>
                         </div>
 
@@ -159,38 +159,16 @@
         <div class="space-double"></div>
         <div class="space-double"></div>
 
+        <link href="~/leaflet/leaflet.css" rel="stylesheet" />
+        <script src="~/leaflet/leaflet.js"></script>
         @section Scripts{
 
-            <link href="~/leaflet/leaflet.css" rel="stylesheet" />
-            <script src="~/leaflet/leaflet.js"></script>
             <script>
-                function imageSelected(input) {
-                    if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-
-                        reader.onload = function (e) {
-                            const img = input.parentElement.parentElement.querySelector('.preview');
-                            img.src = e.target.result.toString();
-                            img.style.backgroundImage = '';
-                        }
-
-                        reader.readAsDataURL(input.files[0]); // convert to base64 string
-                    }
-                }
-
-
-
-
-
-
                 var map = L.map('map').setView([38.07674409597339, 46.29700302496191], 11);
-
                 L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: 'Mr Tab'
                 }).addTo(map);
-
                 var theMarker = {};
-
                 map.on('click', function (e) {
                     lat = e.latlng.lat;
                     lon = e.latlng.lng;
@@ -214,5 +192,22 @@
                     $("#Lon").val(lon.toString());
                     theMarker = L.marker([lat, lon], { icon: customIcon }).addTo(map).bindPopup('<h6 style="color:green">موقعیت فروشگاه شما ثبت شد</h6>').openPopup();
                 });
+
+
+                //////
+
+                function imageSelected(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            const img = input.parentElement.parentElement.querySelector('.preview');
+                            img.src = e.target.result.toString();
+                            img.style.backgroundImage = '';
+                        }
+
+                        reader.readAsDataURL(input.files[0]); // convert to base64 string
+                    }
+                }
             </script>
         }

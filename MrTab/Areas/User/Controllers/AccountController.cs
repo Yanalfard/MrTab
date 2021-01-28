@@ -80,6 +80,13 @@ namespace MrTab.Areas.User.Controllers
         {
             if (files != null)
             {
+                TblUser selectedUser = db.User.GetById(SelectUser().UserId);
+                var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Users/", selectedUser.ImageUrl);
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+
                 uploadImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(files.FileName);
                 string savePath = Path.Combine(
                     Directory.GetCurrentDirectory(), "wwwroot/Images/Users/", uploadImage.Image
@@ -88,7 +95,6 @@ namespace MrTab.Areas.User.Controllers
                 {
                     await files.CopyToAsync(stream);
                 }
-                TblUser selectedUser = db.User.GetById(SelectUser().UserId);
                 selectedUser.ImageUrl = uploadImage.Image;
                 db.User.Save();
                 return await Task.FromResult(Redirect("/User/User/Index"));

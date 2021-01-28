@@ -25,8 +25,10 @@
 
             <div class="profile column mat uk-box-shadow-medium">
                 <h3>تشکیل رستوران</h3>
-                <form class="" asp-action="ToRestaurant" asp-controller="User" asp-area="User" enctype="multipart/form-data">
+                <form class="" asp-action="Edit" asp-controller="User" asp-area="User" enctype="multipart/form-data">
                     <input type="hidden" asp-for="RestaurantId" name="RestaurantId"  />
+                    <input type="hidden" asp-for="MainBanner" name="MainBanner"  />
+                    <input type="hidden" asp-for="MainImage" name="MainImage"  />
                     <div class="inputs column">
                         <div class="upload-image uk-margin-auto-left">
                             <label class="title">لوگو رستوران <span>(نسبت یک در یک)</span></label>
@@ -150,7 +152,7 @@
                         </div>
                         <div class="form-group">
                             <label for="txtoptions" class="uk-margin-small-bottom" dir="rtl">امکانات</label>
-                            <textarea class="form-group-bg" dir="rtl" name="txtoptions" placeholder="لطفا با ، از هم جدا کنید(سیگار آزاد، فضای باز)"></textarea>
+                            <textarea class="form-group-bg" dir="rtl" asp-for="NameProperty" name="NameProperty" placeholder="لطفا با ، از هم جدا کنید(سیگار آزاد، فضای باز)"></textarea>
                             <span class="input-error" asp-validation-for="NameProperty"></span>
                         </div>
 
@@ -204,7 +206,17 @@
                     attribution: 'Mr Tab'
                 }).addTo(map);
 
-                var theMarker = {};
+                var iconSetting = L.Icon.extend({
+                    options: {
+                        iconSize: [20, 29],
+                        iconAnchor: [10, 29]
+                    }
+                });
+
+                var customIcon = new iconSetting({ iconUrl: '/location.png' });
+                var Lat = $("#Lat").val();
+                var Lon = $("#Lon").val();
+                L.marker([Lat, Lon], { icon: customIcon }).addTo(map).bindPopup($("#Name").val()).openPopup(); var theMarker = {};
 
                 map.on('click', function (e) {
                     lat = e.latlng.lat;
@@ -216,18 +228,12 @@
                         map.removeLayer(theMarker);
                     };
 
-                    var iconSetting = L.Icon.extend({
-                        options: {
-                            iconSize: [20, 29],
-                            iconAnchor: [10, 29]
-                        }
-                    });
 
-                    var customIcon = new iconSetting({ iconUrl: '/location.png' });
                     //Add a marker to show where you clicked.
                     $("#Lat").val(lat.toString());
                     $("#Lon").val(lon.toString());
-                    theMarker = L.marker([lat, lon], { icon: customIcon }).addTo(map).bindPopup('<h6 style="color:green">موقعیت فروشگاه شما ثبت شد</h6>').openPopup();
+                    theMarker = L.marker([lat, lon], { icon: customIcon }).addTo(map).bindPopup('<h6 style="color:green">موقعیت جدید رستوران ویرایش شد</h6>').openPopup();
                 });
+
             </script>
         }
