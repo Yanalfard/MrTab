@@ -23,6 +23,7 @@ namespace DataLayer.Models
         public virtual DbSet<TblCity> TblCity { get; set; }
         public virtual DbSet<TblComment> TblComment { get; set; }
         public virtual DbSet<TblConfig> TblConfig { get; set; }
+        public virtual DbSet<TblDoc> TblDoc { get; set; }
         public virtual DbSet<TblFood> TblFood { get; set; }
         public virtual DbSet<TblFoodType> TblFoodType { get; set; }
         public virtual DbSet<TblImage> TblImage { get; set; }
@@ -35,9 +36,9 @@ namespace DataLayer.Models
         public virtual DbSet<TblWorkTime> TblWorkTime { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-               => optionsBuilder
-             .UseLazyLoadingProxies()
-             .UseSqlServer("Data Source=103.216.62.27;Initial Catalog=MrTab;User ID=Yanal;Password=1710ahmad.fard");
+              => optionsBuilder
+            .UseLazyLoadingProxies()
+            .UseSqlServer("Data Source=103.216.62.27;Initial Catalog=MrTab;User ID=Yanal;Password=1710ahmad.fard");
         //  {
         //            if (!optionsBuilder.IsConfigured)
         //            {
@@ -59,8 +60,6 @@ namespace DataLayer.Models
 
                 entity.Property(e => e.IsReported).HasDefaultValueSql("((0))");
 
-                entity.Property(e => e.IsValid).HasDefaultValueSql("((0))");
-
                 entity.Property(e => e.LikeCount).HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.QualityPerPriceRate).HasDefaultValueSql("((0))");
@@ -75,6 +74,11 @@ namespace DataLayer.Models
                     .WithMany(p => p.InverseAnswer)
                     .HasForeignKey(d => d.AnswerId)
                     .HasConstraintName("FK_TblComment_TblComment");
+
+                entity.HasOne(d => d.Doc)
+                    .WithMany(p => p.TblComment)
+                    .HasForeignKey(d => d.DocId)
+                    .HasConstraintName("FK_TblComment_TblDoc");
 
                 entity.HasOne(d => d.Restaurant)
                     .WithMany(p => p.TblComment)
@@ -140,8 +144,6 @@ namespace DataLayer.Models
 
             modelBuilder.Entity<TblRestaurant>(entity =>
             {
-                entity.Property(e => e.IsValid).HasDefaultValueSql("((0))");
-
                 entity.HasOne(d => d.Catagory)
                     .WithMany(p => p.TblRestaurant)
                     .HasForeignKey(d => d.CatagoryId)
