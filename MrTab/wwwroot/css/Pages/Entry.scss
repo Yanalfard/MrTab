@@ -6,11 +6,13 @@ body, .entry-1, .entry-2, .entry-3 {
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: contain;
+    -ms-zoom: unset;
+    zoom: unset;
+    min-height: 100vh;
 }
 
 html {
     overflow-y: hidden !important;
-
 }
 
 body {
@@ -61,8 +63,8 @@ body {
     }
 
     body {
-        height: calc(112vh - 24px);
-        max-height: calc(112vh - 24px);
+        height: calc(100vh - 24px);
+        max-height: calc(100vh - 24px);
         overflow: hidden !important;
         background-color: #fff;
     }
@@ -70,8 +72,8 @@ body {
     .entry-wrapper {
         $wrapper-padding: 24px;
         padding: $wrapper-padding;
-        width: calc(112vw - 48px);
-        height: calc(112vh - 48px);
+        width: calc(100vw - 48px);
+        height: calc(100vh - 48px);
         margin-bottom: 12px !important;
         background-color: #fff;
     }
@@ -91,13 +93,13 @@ body {
     }
 
     .entry-wrapper {
-        width: 400px;
+        width: 380px;
         margin: auto;
         background-image: none;
         padding: 24px;
         @include mat;
         @include shadow-mega;
-        min-height: 460px;
+        min-height: 440px;
     }
 
     .entry-header {

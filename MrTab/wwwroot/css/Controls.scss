@@ -697,8 +697,8 @@ textarea:focus {
 
     > label {
         position: absolute;
-        top: 14px;
-        right: 14px;
+        top: 12px;
+        right: 12px;
         background: white;
         @include border-radius(32px,32px,32px,32px);
         color: $primary;
@@ -1129,4 +1129,54 @@ textarea:focus {
     border: 2px $primary solid;
     background: $primary;
     cursor: pointer;
+}
+
+.blog-block {
+    @include border-radius(12px,12px,12px,12px);
+    @include shadow-medium;
+    padding: 8px;
+    background-color: $CardBackground;
+
+    .imgs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "alpha beta" "alpha gamma";
+        grid-gap: 8px;
+        height: 180px;
+        position: relative;
+        overflow: hidden;
+
+        img {
+            @include obj;
+            @include border-radius(8px,8px,8px,8px);
+            min-height: 24px;
+            min-width: 24px;
+        }
+
+        img:nth-child(1) {
+            grid-area: alpha;
+            height: 100%;
+            width: auto;
+        }
+
+        img:nth-child(2) {
+            grid-area: beta;
+        }
+
+        img:nth-child(3) {
+            grid-area: gamma;
+        }
+    }
+
+    h4 {
+        font-size: 18px;
+        color: #333;
+        height: 51px;
+        @include max-line(2);
+        margin: 6px 0;
+    }
+
+    .action-panel {
+    }
 }

@@ -108,12 +108,25 @@
                 <label>جستجو</label>
             </a>
         </li>
-        <li>
-            <a href="/Home/Profile">
-                <span uk-icon="nav_User"></span>
-                <label>پروفایل</label>
-            </a>
-        </li>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <li>
+                <a href="/User/User/Index">
+                    <span uk-icon="nav_User"></span>
+                    <label>پروفایل</label>
+                </a>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a href="/User/User/Index">
+                    <span uk-icon="nav_User"></span>
+                    <label>ورود</label>
+                </a>
+            </li>
+        }
+
         <li>
             <a href="#Modal-Location" uk-toggle>
                 <span uk-icon="nav_Location"></span>

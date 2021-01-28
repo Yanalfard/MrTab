@@ -825,8 +825,8 @@ textarea:focus {
   position: relative; }
   .rest-block > label {
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 12px;
+    right: 12px;
     background: white;
     -moz-border-radius: 32px 32px 32px 32px;
     -webkit-border-radius: 32px 32px 32px 32px;
@@ -1233,3 +1233,51 @@ textarea:focus {
   border: 2px #FEB432 solid;
   background: #FEB432;
   cursor: pointer; }
+
+.blog-block {
+  -moz-border-radius: 12px 12px 12px 12px;
+  -webkit-border-radius: 12px 12px 12px 12px;
+  border-radius: 12px 12px 12px 12px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 -6px 16px;
+  padding: 8px;
+  background-color: #fff; }
+  .blog-block .imgs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "alpha beta" "alpha gamma";
+    grid-gap: 8px;
+    height: 180px;
+    position: relative;
+    overflow: hidden; }
+    .blog-block .imgs img {
+      -o-object-fit: cover;
+      object-fit: cover;
+      -o-object-position: center;
+      object-position: center;
+      -moz-border-radius: 8px 8px 8px 8px;
+      -webkit-border-radius: 8px 8px 8px 8px;
+      border-radius: 8px 8px 8px 8px;
+      min-height: 24px;
+      min-width: 24px; }
+    .blog-block .imgs img:nth-child(1) {
+      grid-area: alpha;
+      height: 100%;
+      width: auto; }
+    .blog-block .imgs img:nth-child(2) {
+      grid-area: beta; }
+    .blog-block .imgs img:nth-child(3) {
+      grid-area: gamma; }
+  .blog-block h4 {
+    font-size: 18px;
+    color: #333;
+    height: 51px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+    margin: 6px 0; }
