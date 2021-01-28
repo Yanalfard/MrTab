@@ -1,7 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataLayer.Metadata;
+using DataLayer.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MrTab.Utilities;
+using Services.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,6 +17,10 @@ namespace MrTab.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult About()
         {
             return View();
         }

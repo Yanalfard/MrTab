@@ -1,0 +1,38 @@
+﻿@model ConfigVm
+@{
+    ViewBag.Title = " تماس با ما";
+}
+<div class="flex-column card flex-div border-0 shadow">
+    <div class="card-header bg-white">
+        <h4>تماس با ما </h4>
+    </div>
+    <form asp-action="ContactUs" asp-controller="AboutContact" asp-area="Admin" enctype="multipart/form-data" method="post">
+        <input type="hidden" asp-for="Keyword" name="Keyword" value="ContactUs" />
+        <div class="card-body">
+            <div class="form-group mx-sm-1 mb-2">
+                <textarea asp-for="Value" id="Value" name="Value" class="form-control form-control-sm"></textarea>
+                <span class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="flex-row">
+                <button class="btn btn-primary">تایید</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+@section Scripts
+{
+
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckeditor/adapters/jquery.js"></script>
+
+
+
+    <script>
+        $('#Value').ckeditor();
+    </script>
+}
