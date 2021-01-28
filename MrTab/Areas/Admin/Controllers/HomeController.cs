@@ -1,7 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataLayer.Metadata;
+using DataLayer.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MrTab.Utilities;
+using Services.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,10 +25,6 @@ namespace MrTab.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult ContactUs()
-        {
-            return View();
-        }
         public IActionResult List()
         {
             return View();

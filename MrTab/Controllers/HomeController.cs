@@ -73,12 +73,12 @@ namespace MrTab.Controllers
 
         public IActionResult ContactUs()
         {
-            return View();
+            return View(db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("Gavanin")));
         }
 
         public IActionResult Rules()
         {
-            return View();
+            return View(db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("Gavanin")));
         }
 
     }
