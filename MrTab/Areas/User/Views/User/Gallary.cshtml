@@ -1,0 +1,98 @@
+﻿@model IEnumerable<TblImage>
+@{
+    ViewBag.Title = "منو";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles{
+    <link href="~/css/Pages/Profile.min.css" rel="stylesheet" />
+}
+
+<div class="uk-container uk-margin-medium-top column">
+
+    <div class="profile mat uk-box-shadow-medium">
+
+        <div class="column">
+            <h3 class="uk-margin-remove">
+                منو رستوران
+            </h3>
+            <p>
+                تعدادی عکس از منو های خود به صورت عمودی گرفته و آپلود کنید
+            </p>
+        </div>
+
+        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
+            <ul class="menu-uploader uk-slider-items
+                uk-child-width-1-3-at-s
+                uk-child-width-1-4-at-m
+                uk-child-width-1-5-at-l
+                uk-child-width-1-5-at-xl
+                ">
+                @foreach (var item in Model)
+                {
+                    <li  id="image_@item.ImageId">
+                        <div class="page">
+                            <button uk-icon="trash-outline" onclick="deleteGallary(@item.ImageId)" class="btn-icon"></button>
+                            <img src="~/Images/Restaurant/Gallery/@item.Url" alt="">
+                        </div>
+                    </li>
+                }
+            </ul>
+
+            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+        </div>
+    </div>
+
+    <div class="profile mat-margin-top mat uk-box-shadow-medium">
+        <h4>
+            اضافه کردن عکس جدید
+        </h4>
+        <form asp-action="AddImage" asp-controller="User" asp-area="User" enctype="multipart/form-data" class="column uk-margin-auto-right">
+            <div class="upload-image uk-margin-auto-left">
+                <input type="hidden" name="RestaurantId" value="@ViewBag.RestaurantId"/>
+                <label class="title">منوم <span>(نسبت عمودی)</span></label>
+                <img class="preview" src="" alt="" />
+                <label class="select">
+                    <span>
+                        فایل انتخاب نشده
+                    </span>
+                    <input type="file" accept="image/*" name="fileImage" onchange="imageSelected(this)" />
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary uk-margin-auto-bottom uk-margin-auto-left">اضافه</button>
+        </form>
+    </div>
+</div>
+<div class="space-double"></div>
+@section Scripts{
+    <script>
+        function imageSelected(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const img = input.parentElement.parentElement.querySelector('.preview');
+                    img.src = e.target.result.toString();
+                    img.style.backgroundImage = '';
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        function deleteGallary(id) {
+            if (confirm('آیا از حذف عکس مورد نظر مظمئن هستین؟')) {
+                $.get("/User/User/DeleteGallary/" + id, function (result) {
+                    if (result == "true") {
+                        $('#image_' + id).addClass('text-danger');
+                        $("#image_" + id).hide('slow');
+                    } else {
+                        alert(result);
+                    }
+                })
+            }
+        }
+    </script>
+}

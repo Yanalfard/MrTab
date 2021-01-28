@@ -195,11 +195,12 @@ namespace MrTab.Areas.User.Controllers
                 restaurant.TellNo1 = selectedRestaurant.TellNo1;
                 restaurant.TellNo2 = selectedRestaurant.TellNo2;
                 restaurant.IsValid = selectedRestaurant.IsValid;
-                restaurant.NameFood = string.Join("،", selectedRestaurant.TblFood.Select(t=>t.Name).ToList());
-                restaurant.NameFoodType = string.Join("،", selectedRestaurant.TblFoodType.Select(t=>t.Name).ToList());
-                restaurant.NameMealType = string.Join("،", selectedRestaurant.TblMealType.Select(t=>t.Name).ToList());
-                restaurant.NameWorkDay = string.Join("،", selectedRestaurant.TblWorkTime.Select(t=>t.Day).ToList());
-                restaurant.NameWorkTime = string.Join("،", selectedRestaurant.TblWorkTime.Select(t=>t.Time).ToList());
+                restaurant.NameFood = string.Join("،", selectedRestaurant.TblFood.Select(t => t.Name).ToList());
+                restaurant.NameFoodType = string.Join("،", selectedRestaurant.TblFoodType.Select(t => t.Name).ToList());
+                restaurant.NameMealType = string.Join("،", selectedRestaurant.TblMealType.Select(t => t.Name).ToList());
+                restaurant.NameProperty = string.Join("،", selectedRestaurant.TblProperty.Select(t => t.Name).ToList());
+                restaurant.NameWorkDay = string.Join("،", selectedRestaurant.TblWorkTime.Select(t => t.Day).ToList());
+                restaurant.NameWorkTime = string.Join("،", selectedRestaurant.TblWorkTime.Select(t => t.Time).ToList());
                 return await Task.FromResult(View(restaurant));
 
             }
@@ -259,7 +260,7 @@ namespace MrTab.Areas.User.Controllers
                             await fileBanner.CopyToAsync(stream);
                         }
                     }
-                    TblRestaurant updateRestaurant =db.Restaurant.GetById(restaurant.RestaurantId);
+                    TblRestaurant updateRestaurant = db.Restaurant.GetById(restaurant.RestaurantId);
                     updateRestaurant.Address = restaurant.Address;
                     updateRestaurant.CatagoryId = restaurant.CatagoryId;
                     updateRestaurant.CityId = restaurant.CityId;
@@ -276,7 +277,7 @@ namespace MrTab.Areas.User.Controllers
                     updateRestaurant.TellNo2 = restaurant.TellNo2;
                     updateRestaurant.UserId = SelectUser().UserId;
                     updateRestaurant.IsValid = false;
-                    db.Restaurant.Add(updateRestaurant);
+                    db.Restaurant.Update(updateRestaurant);
                     db.Restaurant.Save();
                     db.Food.Get().Where(t => t.RestaurantId == updateRestaurant.RestaurantId).ToList().ForEach(t => db.Food.Delete(t));
                     if (restaurant.NameFood != null)
@@ -390,5 +391,65 @@ namespace MrTab.Areas.User.Controllers
             return await Task.FromResult("خطا در حذف   لطفا بررسی فرمایید");
         }
 
+
+
+
+        public async Task<IActionResult> Gallary(int id)
+        {
+            ViewBag.RestaurantId = id;
+            List<TblImage> selectedImages = db.Image.Get(i => i.RestaurantId == id && i.Restaurant.UserId == SelectUser().UserId).ToList();
+            return await Task.FromResult(View(selectedImages));
+        }
+
+        public async Task<IActionResult> AddImage(TblImage Image, IFormFile fileImage)
+        {
+            if (fileImage != null)
+            {
+                bool check = db.Restaurant.Get().Any(i => i.RestaurantId == Image.RestaurantId && i.UserId == SelectUser().UserId);
+                if (check)
+                {
+                    Image.Url = Guid.NewGuid().ToString() + Path.GetExtension(fileImage.FileName);
+                    string savePath = Path.Combine(
+                        Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/Gallery/", Image.Url
+                    );
+                    using (var stream = new FileStream(savePath, FileMode.Create))
+                    {
+                        await fileImage.CopyToAsync(stream);
+                    }
+                    db.Image.Add(new TblImage()
+                    {
+                        Url = Image.Url,
+                        Status = 1,
+                        IsValid = false,
+                        RestaurantId = Image.RestaurantId,
+                    });
+                    db.Image.Save();
+                }
+            }
+            return await Task.FromResult(Redirect("/User/User/Gallary/" + Image.RestaurantId));
+        }
+
+        public async Task<string> DeleteGallary(int id)
+        {
+            TblImage selectedRestaurantById = db.Image.Get().SingleOrDefault(i => i.Restaurant.UserId == SelectUser().UserId && i.ImageId == id);
+            if (selectedRestaurantById != null)
+            {
+                bool delete = db.Image.Delete(selectedRestaurantById);
+                if (delete)
+                {
+                    if (selectedRestaurantById.Url != null)
+                    {
+                        var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/Gallery/", selectedRestaurantById.Url);
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
+                    }
+                    db.Image.Save();
+                    return await Task.FromResult("true");
+                }
+            }
+            return await Task.FromResult("خطا در حذف   لطفا بررسی فرمایید");
+        }
     }
 }
