@@ -15,7 +15,15 @@ namespace MrTab.Areas.Admin.Controllers
         {
             return View();
         }
+        public IActionResult About()
+        {
+            return View();
+        }
 
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
         public IActionResult List()
         {
             return View();

@@ -14,7 +14,6 @@ namespace DataLayer.Models
         [Key]
         [StringLength(100)]
         public string Keyword { get; set; }
-        [StringLength(1000)]
         public string Value { get; set; }
     }
 }
