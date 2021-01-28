@@ -52,8 +52,6 @@
 
 </div>
 
-<!-- #region Croppie -->
-<!-- #endregion -->
 <!-- #endregion -->
 <!-- #region Banner -->
 
@@ -143,39 +141,10 @@
                     </li>
                 }
             </ul>
-                    <a href="/resources/jpg/Food_1.jpg" data-caption="آپلود شده توسط: نام کاربر1"><img src="~/resources/jpg/Food_1.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_2.jpg" data-caption="آپلود شده توسط: نام کاربر2"><img src="~/resources/jpg/Food_2.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_3.jpg" data-caption="آپلود شده توسط: نام کاربر3"><img src="~/resources/jpg/Food_3.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_4.jpg" data-caption="4آپلود شده توسط: نام کاربر"><img src="~/resources/jpg/Food_4.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_1.jpg" data-caption="5آپلود شده توسط: نام کاربر"><img src="~/resources/jpg/Food_1.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_2.jpg" data-caption="آپلود شده توسط: نام کاربر6"><img src="~/resources/jpg/Food_2.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_3.jpg" data-caption="7آپلود شده توسط: نام کاربر"><img src="~/resources/jpg/Food_3.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>
-                <li>
-                    <a href="/resources/jpg/Food_4.jpg" data-caption="آپلود شده توسط: نام کاربر8"><img src="~/resources/jpg/Food_4.jpg" width="220" height="220" alt="عکس از رستوران" /></a>
-                </li>*@
-                @foreach (var item in Model.TblImage.Where(i => i.Status == 1))
-                {
-                    <li>
-                        <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="@Model.Name"><img src="~/Images/Restaurant/Gallery/@item.Url" width="220" height="365" alt="عکس از منو رستوران" /></a>
-                    </li>
-                }
-            </ul>
-    <!-- #endregion -->
-    <!-- #region Menu -->
-
+            <!-- #endregion -->
+            <!-- #region Menu -->
+        </div>
+    }
     @if (Model.TblFood.Count > 0)
     {
         <div class="carousel carousel-menu uk-box-shadow-medium
@@ -190,13 +159,13 @@
             uk-child-width-1-4-at-m
             uk-child-width-1-5-at-l
             uk-child-width-1-5-at-xl">
-            @foreach (var item in Model.TblImage.Where(i => i.Status == 1))
-            {
-                <li>
-                    <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="@Model.Name"><img src="~/Images/Restaurant/Gallery/@item.Url" width="220" height="365" alt="عکس از منو رستوران" /></a>
-                </li>
-            }
-        </ul>
+                @foreach (var item in Model.TblImage.Where(i => i.Status == 1))
+                {
+                    <li>
+                        <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="@Model.Name"><img src="~/Images/Restaurant/Gallery/@item.Url" width="220" height="365" alt="عکس از منو رستوران" /></a>
+                    </li>
+                }
+            </ul>
 
             <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 
@@ -311,9 +280,11 @@
     <!-- #endregion -->
 
 </div>
+
 <input type="hidden" asp-for="Lat" />
 <input type="hidden" asp-for="Lon" />
 <input type="hidden" asp-for="RestaurantId" id="RestaurantId" />
+
 
 <div id="Modal-View" uk-modal>
 
