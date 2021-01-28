@@ -14,6 +14,37 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\Images\Restaurant\0e66eafb-0d6b-4b9f-9328-bed3dea2eb30.JPG" />
+    <Content Remove="wwwroot\Images\Restaurant\1ff7d705-325e-46db-90bd-fb99e52e5ced.JPG" />
+    <Content Remove="wwwroot\Images\Restaurant\21d05707-d689-461c-b5be-567da21a68c1.JPG" />
+    <Content Remove="wwwroot\Images\Restaurant\285aae53-ae98-4947-a099-d4c344f26c20.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\2e6234a1-6108-4379-8ff2-c470359b2a02.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\450ec16b-dc59-4183-a87b-2944d194ff87.png" />
+    <Content Remove="wwwroot\Images\Restaurant\4547209f-ac2a-445b-964d-5133608b0fb2.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\4db4bdf6-42c7-43e1-a227-26b4473c75ee.jpeg" />
+    <Content Remove="wwwroot\Images\Restaurant\50968cb2-fbed-4434-ad32-0b0e52bdd491.JPG" />
+    <Content Remove="wwwroot\Images\Restaurant\5243a2f3-58da-4201-89a0-78661cb713f4.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\53adebbc-dd90-44a4-871d-6592a0105997.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\59223a3a-9861-4c52-bf7f-afb123757fc4.jpeg" />
+    <Content Remove="wwwroot\Images\Restaurant\5ffac967-db4a-498b-8e71-c7c45a57404c.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\6d33846f-e99b-4e7e-af33-b577d9120c51.JPG" />
+    <Content Remove="wwwroot\Images\Restaurant\759b22b6-40e8-4dea-a27c-87e4795a7c0b.png" />
+    <Content Remove="wwwroot\Images\Restaurant\7b1397c6-c652-4f9f-8ade-e9ae828f5625.JPG" />
+    <Content Remove="wwwroot\Images\Restaurant\7c38e5f8-883c-47d9-ae2a-d4b8eba3de76.png" />
+    <Content Remove="wwwroot\Images\Restaurant\821b5423-28ad-41e6-a074-bfeb2bc17089.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\9527723e-5caa-4867-8a96-0f366c9a3032.JPG" />
+    <Content Remove="wwwroot\Images\Restaurant\a816e3ed-0207-4571-863f-4f5c124ceadd.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\ab878afd-b967-48aa-9c80-e3dad9e1996b.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\b9bc7e1c-e98f-4642-b925-aa9580277859.JPG" />
+    <Content Remove="wwwroot\Images\Restaurant\c05f7a37-249b-4860-af34-2c96e3799747.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\d874748e-3b4b-45d4-8ab2-6ceaf378749e.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\decf7487-1aed-46ff-b208-8ddc063bcb70.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\e163ed99-87ca-4efa-a975-ecd608d8c435.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\e57ef5c4-24cb-43b9-9bab-f2bb212321e9.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\e7d40472-b556-4442-a63e-c067fb978a6b.JPG" />
+    <Content Remove="wwwroot\Images\Restaurant\e8c6922b-5e40-4b80-bc78-8db3dc9b9e9d.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\f435fcc0-8893-4a37-b55a-76c195503885.jpg" />
+    <Content Remove="wwwroot\Images\Restaurant\fbd6278e-8690-462c-9111-ea5103b3dfc7.JPG" />
   </ItemGroup>
 
   <ItemGroup>
