@@ -121,7 +121,6 @@
 
 <div class="uk-container" uk-scrollspy="cls:uk-animation-fade">
 
-    <!-- #region User Photos -->
 
     @if (Model.TblImage.Where(i => i.Status == 2 && i.IsValid).Count() > 0)
     {
@@ -145,6 +144,7 @@
             <!-- #region Menu -->
         </div>
     }
+
     @if (Model.TblFood.Count > 0)
     {
         <div class="carousel carousel-menu uk-box-shadow-medium
@@ -172,8 +172,6 @@
         </div>
     }
 
-    <!-- #endregion -->
-    <!-- #region Info -->
     <div class="info uk-margin-medium-top">
         <div class="mat meals" uk-scrollspy="cls:uk-animation-fade;delay:300">
             <h5 class="uk-h4">غذا ها</h5>
@@ -244,7 +242,7 @@
 
         <div class="map" id="map" style="height:400px;width:100%"></div>
     </div>
-    <!-- #endregion -->
+
     <!-- #region Comment Section -->
 
     <div class="comment-section mat mat-margin-top">
