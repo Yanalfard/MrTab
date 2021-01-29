@@ -21,6 +21,10 @@ namespace MrTab.Areas.Admin.Controllers
         {
             return View();
         }
+        public IActionResult IsValid()
+        {
+            return View();
+        }
 
         public async Task<IActionResult> Create()
         {

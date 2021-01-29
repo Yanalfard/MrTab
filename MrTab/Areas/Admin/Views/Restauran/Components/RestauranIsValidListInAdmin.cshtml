@@ -1,0 +1,85 @@
+﻿@model IEnumerable<TblRestaurant>
+
+@if (Model.Any())
+{
+    foreach (var item in Model)
+    {
+        <tr id="restaurant_@item.RestaurantId" class="list-item">
+            <td>@(Model.ToList().IndexOf(item)+1)</td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.User.Name
+            </td>
+            <td>
+                @if (item.MainImage != null)
+                {
+                    <img src="/Images/Restaurant/@item.MainImage" alt=" @item.Name" style="max-width:100px;" />
+                }
+                else
+                {
+                    <img src="/Images/NoImage.svg" alt="@item.Name" style="max-width:100px;" />
+                }
+            </td>
+            <td>
+                @if (item.MainBanner != null)
+                {
+                    <img src="/Images/Restaurant/@item.MainBanner" alt=" @item.Name" style="max-width:100px;" />
+                }
+                else
+                {
+                    <img src="/Images/NoImage.svg" alt="@item.Name" style="max-width:100px;" />
+                }
+            </td>
+            <td>
+                @item.Catagory.Name
+            </td>
+            <td>
+                @item.City.Name
+            </td>
+            <td>
+                @if (item.IsValid)
+                {
+                    <a href="#" onclick="activeDisableRestauran(@item.RestaurantId)" class="badge-success badge-pill">بله</a>
+                }
+                else
+                {
+                    <a href="#" onclick="activeDisableRestauran(@item.RestaurantId)" class="badge-danger badge-pill">خیر</a>
+                }
+            </td>
+            <td>
+                @item.Neighborhood
+            </td>
+            <td>
+                @item.TellNo1
+            </td>
+
+            @*<td>
+                    <a href="/Admin/Restauran/ReportSearch/@item.RestaurantId" class="fa fa-eye" title="گزارش ها " data-toggle="tooltip" data-placement="top">
+                    </a>
+                </td>
+                <td>
+                    <a href="/Admin/Comment/Index?restaurantId=@item.RestaurantId" class="fa fa-eye" title="پیام ها " data-toggle="tooltip" data-placement="top">
+                    </a>
+                </td>*@
+            <td>
+                @item.Rating
+            </td>
+            <td>
+                <a href="/Admin/Restauran/Gallery/@item.RestaurantId" class="btn btn-warning btn-sm">گالری </a>
+                <a class="btn btn-warning btn-sm" href="/Admin/Food/Index/@item.RestaurantId">غذاها </a>
+                <a class="btn btn-warning btn-sm" href="/Admin/FoodType/Index/@item.RestaurantId">نوع رستوران </a>
+                <a class="btn btn-warning btn-sm" href="/Admin/MealType/Index/@item.RestaurantId">سبک غذاها </a>
+                <a class="btn btn-warning btn-sm" href="/Admin/Property/Index/@item.RestaurantId">امکانات</a>
+                <a class="btn btn-warning btn-sm" href="/Admin/WorkTimes/Index/@item.RestaurantId">زمان رستوران</a>
+                <span data-placement="top" data-toggle="tooltip" title="" data-original-title="ویرایش">
+                    <a href="/Admin/Restauran/Edit/@item.RestaurantId"><i class="btn fas fa-edit mr-2 text-primary"></i></a>
+                </span>
+                <span data-placement="top" data-toggle="tooltip" title="" data-original-title="حذف">
+                    <a onclick="deleteRestauran(@item.RestaurantId)" data-toggle="modal" data-target="#modalSave"><i class="btn fas fa-trash mr-2 text-danger"></i></a>
+                </span>
+            </td>
+        </tr>
+    }
+}
