@@ -2571,6 +2571,9 @@
     <Folder Include="Scripts\" />
     <Folder Include="Views\Shared\Components\InformationFooterVm\" />
     <Folder Include="wwwroot\Images\Catagory\Icon\" />
+    <Folder Include="wwwroot\Images\Home\Baner\" />
+    <Folder Include="wwwroot\Images\Home\Image\" />
+    <Folder Include="wwwroot\Images\Home\MobileApp\" />
     <Folder Include="wwwroot\Images\UploadEditor\" />
     <Folder Include="wwwroot\Images\Restaurant\Gallery\" />
     <Folder Include="wwwroot\Images\Users\" />

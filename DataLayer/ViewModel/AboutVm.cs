@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace DataLayer.ViewModel
 {
-    public class AboutVm
+    public class AboutUsVm
     {
         [AllowHtml]
         public string AboutPar1 { get; set; }

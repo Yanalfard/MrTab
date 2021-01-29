@@ -70,10 +70,10 @@
                                     </a>
                                 </li>
                                 @*<li>
-                                    <a href="#" uk-toggle="#Modal-Location" class="uk-text-default">
-                                        تغییر مکان
-                                    </a>
-                                </li>*@
+                                        <a href="#" uk-toggle="#Modal-Location" class="uk-text-default">
+                                            تغییر مکان
+                                        </a>
+                                    </li>*@
                                 <li>
                                     <a href="/Account/LogOut" class="uk-text-danger">خروج</a>
                                 </li>
@@ -139,7 +139,7 @@
                     تبریز
                 </button>*@
             <form asp-action="Search" asp-controller="Home" asp-area="" id="txtSearch" class="material-darkglass margin-header-left btn-round row">
-                <button onclick="window.location='/Home/Search'" uk-icon="search-outline" aria-label="جستجو"
+                <button uk-icon="search-outline" aria-label="جستجو"
                         class="btn-icon-darkglass uk-margin-small-left uk-margin-small-right"></button>
                 <input class="input-darkglass input-invis btn-round row flex-1"
                        placeholder="جستجو..." dir="rtl"
@@ -153,8 +153,7 @@
 
     <button class="btn-icon uk-box-shadow-medium uk-box-shadow-hover-large" onclick="getLocation()"
             id="btnSuggestOnLocation" uk-tooltip="pos:right; title: جستجو بر اساس مکان"
-            uk-icon="icon:location-outline;ratio:1.32"
-            ></button>
+            uk-icon="icon:location-outline;ratio:1.32"></button>
 
     @RenderBody()
 
@@ -291,9 +290,12 @@
                 }
 
                 function showPosition(position) {
-                    UIkit.notification(`${position.coords.latitude} ${position.coords.longitude}`);
+                    //UIkit.notification(`${position.coords.latitude} ${position.coords.longitude}`);
                     localStorage.setItem('lat', position.coords.latitude);
                     localStorage.setItem('lon', position.coords.longitude);
+                    var lat = position.coords.latitude;
+                    var lon = position.coords.longitude;
+                    window.location.href = "/Home/Search?lat=" + lat + "&lon=" + lon;
                 }
 
             </script>

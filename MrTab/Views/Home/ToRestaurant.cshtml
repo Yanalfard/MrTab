@@ -239,10 +239,10 @@
                     <span class="input-error">این فیلد اشتباه وارد شده است</span>
                 </div>
                 @*<div class="form-group">
-                    <label for="txtFoodTypes" class="uk-margin-small-bottom" dir="rtl">سبک غذایی</label>
-                    <textarea class="form-group-bg" dir="rtl" name="txtFoodTypes" placeholder="فرنگی، ایرانی"></textarea>
-                    <span class="input-error">این فیلد اشتباه وارد شده است</span>
-                </div>*@
+                        <label for="txtFoodTypes" class="uk-margin-small-bottom" dir="rtl">سبک غذایی</label>
+                        <textarea class="form-group-bg" dir="rtl" name="txtFoodTypes" placeholder="فرنگی، ایرانی"></textarea>
+                        <span class="input-error">این فیلد اشتباه وارد شده است</span>
+                    </div>*@
                 <div class="form-group">
                     <label for="txtoptions" class="uk-margin-small-bottom" dir="rtl">امکانات</label>
                     <textarea class="form-group-bg" dir="rtl" name="txtoptions" placeholder="سیگار آزاد، فضای باز"></textarea>
@@ -251,6 +251,8 @@
                 <div class="button-panel uk-margin-top">
                     <button onclick="window.location = '/Home/Profile'" class="btn btn-primary">ثبت اطلاعات</button>
                     <a href="/Home/Profile" class="btn btn-secondary uk-margin-small-right">بازگشت</a>
+                    <a onclick="Click1()" class="btn btn-secondary uk-margin-small-right">باز22گشت</a>
+
                 </div>
             </div>
         </form>
@@ -267,6 +269,19 @@
 @section Scripts{
 
     <script name="Upload Image">
+        function Click1() {
+            //var lat = "38";
+            //var lon = "46";
+
+            //window.location.href = '/Home/Search?lat=' + lat + "&lon" + lon;
+            var lat = "38.04695468279228";
+            var lon = "46.349156498909004";
+
+            window.location.href = "/Home/Search?lat=" + lat + "&lon=" + lon;
+        }
+
+
+
         const optLogo = {
             viewport: {
                 width: 220,
@@ -339,7 +354,7 @@
                     return i;
                 });
             }
-            catch{
+            catch {
                 UIkit.notification('لطفا یک عکس انتخاب کنید');
             }
         }
