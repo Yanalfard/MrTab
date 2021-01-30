@@ -1,0 +1,146 @@
+﻿@model HomeImageTextVm
+@{
+    ViewBag.Title = " صفحه اصلی";
+}
+<div class="flex-column card flex-div border-0 shadow">
+    <div class="card-header bg-white">
+        <h4>صفحه اصلی </h4>
+    </div>
+    <form asp-action="Index" asp-controller="AboutContact" asp-area="Admin" enctype="multipart/form-data" method="post">
+        <input type="hidden" asp-for="MainBanner" name="MainBanner"  />
+        <input type="hidden" asp-for="MainImage" name="MainImage"  />
+        <input type="hidden" asp-for="MobileAppBackGroundImage" name="MobileAppBackGroundImage"  />
+        <div class="card-body">
+            <h1> رنگ بنر</h1>
+            <div class="form-group mx-sm-1 mb-2 text-center">
+                <input type="color" asp-for="MainColor" name="MainColor"  style="width:200px;height:50px;"/>
+                <span class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-body">
+            <h1> بنر اصلی پشت عکس </h1>
+            <div class="form-group">
+                <div class="upload-image uk-margin-auto-left">
+                    <label class="title"> بنر اصلی پشت عکس  <span>(نسبت یک در یک)</span></label>
+                    @if (Model.MainBanner != null)
+                    {
+                        <img class="preview" src="/Images/Home/Baner/@Model.MainBanner" alt=" @Model.MainBanner" />
+                    }
+                    else
+                    {
+                        <img class="preview" src="/Images/NoImage.svg" alt="@Model.MainBanner" />
+                    }
+                    <label class="select">
+                        <span>
+                            فایل انتخاب نشده
+                        </span>
+                        <input type="file" accept="image/*" name="MainBanner" onchange="imageSelected(this)" />
+                        <span class="text-danger" asp-validation-for="MainBanner"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <h1> عکس روی بنر</h1>
+            <div class="form-group">
+                <div class="upload-image uk-margin-auto-left">
+                    <label class="title"> عکس روی بنر  <span>(نسبت یک در یک)</span></label>
+                    @if (Model.MainImage != null)
+                    {
+                        <img class="preview" src="/Images/Home/Image/@Model.MainImage" alt=" @Model.MainImage" />
+                    }
+                    else
+                    {
+                        <img class="preview" src="/Images/NoImage.svg" alt="@Model.MainImage" />
+                    }
+                    <label class="select">
+                        <span>
+                            فایل انتخاب نشده
+                        </span>
+                        <input type="file" accept="image/*" name="MainImage" onchange="imageSelected(this)" />
+                        <span class="text-danger" asp-validation-for="MainImage"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <h1>متن روی بنر</h1>
+            <div class="form-group mx-sm-1 mb-2">
+                <textarea asp-for="MainText" id="MainText" name="MainText" class="form-control form-control-sm"></textarea>
+                <span class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="card-body">
+            <h1> عکس وسط صفحه که پایین صفحه است و پشت متن  </h1>
+            <div class="form-group">
+                <div class="upload-image uk-margin-auto-left">
+                    <label class="title"> عکس وسط صفحه که پایین صفحه است و پشت متن  <span>(نسبت یک در یک)</span></label>
+                    @if (Model.MobileAppBackGroundImage != null)
+                    {
+                        <img class="preview" src="/Images/Home/MobileApp/@Model.MobileAppBackGroundImage" alt=" @Model.MobileAppBackGroundImage" />
+                    }
+                    else
+                    {
+                        <img class="preview" src="/Images/NoImage.svg" alt="@Model.MobileAppBackGroundImage" />
+                    }
+                    <label class="select">
+                        <span>
+                            فایل انتخاب نشده
+                        </span>
+                        <input type="file" accept="image/*" name="MobileApp" onchange="imageSelected(this)" />
+                        <span class="text-danger" asp-validation-for="MobileAppBackGroundImage"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <h1> متن پایین صفحه  </h1>
+            <div class="form-group mx-sm-1 mb-2">
+                <textarea asp-for="MobileAppBackGroundText" id="MobileAppBackGroundText" name="MobileAppBackGroundText" class="form-control form-control-sm"></textarea>
+                <span class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="card-footer bg-white">
+            <div class="flex-row">
+                <button class="btn btn-primary" onclick="LoadingRun()">تایید</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+@section Scripts
+{
+
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckeditor/adapters/jquery.js"></script>
+
+
+
+    <script>
+        $('#MainText').ckeditor();
+        $('#MobileAppBackGroundText').ckeditor();
+    </script>
+
+
+    <script>
+        function imageSelected(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const img = input.parentElement.parentElement.querySelector('.preview');
+                    img.src = e.target.result.toString();
+                    img.style.backgroundImage = '';
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+    </script>
+}

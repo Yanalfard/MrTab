@@ -26,8 +26,7 @@
     <link href="~/admin/bootstrap/Paging/Paging.css" rel="stylesheet" />
 
     <!-- Loading-->
-    @*<link href="~/Content/Styles/Areas/Admin.min.css" rel="stylesheet" />*@
-
+    <link href="~/admin/Styles/Loading.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -79,6 +78,17 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a href="/Admin/AboutContact/Index">
+                                            صفحه اصلی
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Admin/AboutContact/About">
+                                            درباره ما
+                                        </a>
+                                    </li>
+
+                                    <li>
                                         <a href="/Admin/AboutContact/ContactUs">
                                             تماس با ما
                                         </a>
@@ -116,6 +126,11 @@
                                 <li>
                                     <a href="/Admin/Restauran">
                                         رستوران ها
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Restauran/IsValid">
+                                        رستوران های غیر فعال
                                     </a>
                                 </li>
                                 <li>
@@ -227,7 +242,6 @@
 
     <script>
         function LoadingRun(form) {
-            if (!$(form).valid()) return;
             $("#overlay").fadeIn(300);
         }
         function LoadingEnd(form) {

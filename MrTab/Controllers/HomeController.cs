@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataLayer.Models;
+using DataLayer.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Services.Services;
 
@@ -13,18 +14,51 @@ namespace MrTab.Controllers
         private Core db = new Core();
         public IActionResult Index()
         {
-            return View();
+            TblConfig updateConfig1 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainBanner"));
+            TblConfig updateConfig2 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainColor"));
+            TblConfig updateConfig3 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainImage"));
+            TblConfig updateConfig4 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainText"));
+            TblConfig updateConfig5 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundImage"));
+            TblConfig updateConfig6 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundText"));
+            HomeImageTextVm homeVm = new HomeImageTextVm();
+            homeVm.MainBanner = updateConfig1.Value;
+            homeVm.MainColor = updateConfig2.Value;
+            homeVm.MainImage = updateConfig3.Value;
+            homeVm.MainText = updateConfig4.Value;
+            homeVm.MobileAppBackGroundImage = updateConfig5.Value;
+            homeVm.MobileAppBackGroundText = updateConfig6.Value;
+            return View(homeVm);
         }
 
         public IActionResult About()
         {
-            return View();
+            TblConfig updateConfig1 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("AboutPar1"));
+            TblConfig updateConfig2 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("AboutPar2"));
+            TblConfig updateConfig3 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("AboutPar3"));
+            AboutUsVm aboutVm = new AboutUsVm();
+            aboutVm.AboutPar1 = updateConfig1.Value;
+            aboutVm.AboutPar2 = updateConfig2.Value;
+            aboutVm.AboutPar3 = updateConfig3.Value;
+            return View(aboutVm);
         }
-        public IActionResult Search(string name = null,string foodType=null, string nameFood = null, string CityInput = null,int orderBy=0)
+        public IActionResult Search(string name = null, string foodType = null, string nameFood = null, string CityInput = null, int orderBy = 0, string lat = null, string lon = null)
         {
             ViewBag.name = name;
             ViewBag.CityInput = CityInput;
+
             List<TblRestaurant> list = db.Restaurant.Get().Where(i => i.IsValid).ToList();
+            if (lat != null && lon != null)
+            {
+                double convertlat = Convert.ToDouble(lat);
+                double convertlon = Convert.ToDouble(lon);
+                ///Lot
+                double convertlatSmall = convertlat - 0.02;
+                double convertlatBig = convertlat + 0.02;
+                ///lon
+                double convertlonSmall = convertlon - 0.02;
+                double convertlonBig = convertlon + 0.02;
+                list = list.Where(i => Convert.ToDouble(i.Lat) > convertlatSmall && Convert.ToDouble(i.Lat) < convertlatBig && Convert.ToDouble(i.Lon) > convertlonSmall && Convert.ToDouble(i.Lon) < convertlonBig).ToList();
+            }
             if (name != null)
             {
                 list = list.Where(i => i.Name.Contains(name)).ToList();
@@ -49,7 +83,7 @@ namespace MrTab.Controllers
                 {
                     list.OrderByDescending(i => i.Rating);
                 }
-                else if(orderBy == 2)
+                else if (orderBy == 2)
                 {
                     list.OrderBy(i => i.Rating);
                 }
@@ -73,7 +107,7 @@ namespace MrTab.Controllers
 
         public IActionResult ContactUs()
         {
-            return View(db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("Gavanin")));
+            return View(db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("ContactUs")));
         }
 
         public IActionResult Rules()

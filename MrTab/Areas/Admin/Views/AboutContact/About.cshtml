@@ -1,0 +1,54 @@
+﻿@model AboutUsVm
+@{
+    ViewBag.Title = " درباره  ما";
+}
+<div class="flex-column card flex-div border-0 shadow">
+    <div class="card-header bg-white">
+        <h4>درباره ما </h4>
+    </div>
+    <form asp-action="About" asp-controller="AboutContact" asp-area="Admin" enctype="multipart/form-data" method="post">
+        <div class="card-body">
+            <h1> قسمت اول</h1>
+            <div class="form-group mx-sm-1 mb-2">
+                <textarea asp-for="AboutPar1" id="AboutPar1" name="AboutPar1" class="form-control form-control-sm"></textarea>
+                <span class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-body">
+            <h1> قسمت دوم</h1>
+            <div class="form-group mx-sm-1 mb-2">
+                <textarea asp-for="AboutPar2" id="AboutPar2" name="AboutPar2" class="form-control form-control-sm"></textarea>
+                <span class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-body">
+            <h1> قسمت سوم</h1>
+            <div class="form-group mx-sm-1 mb-2">
+                <textarea asp-for="AboutPar3" id="AboutPar3" name="AboutPar3" class="form-control form-control-sm"></textarea>
+                <span class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="flex-row">
+                <button class="btn btn-primary">تایید</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+@section Scripts
+{
+
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckeditor/adapters/jquery.js"></script>
+
+
+
+    <script>
+        $('#AboutPar1').ckeditor();
+        $('#AboutPar2').ckeditor();
+        $('#AboutPar3').ckeditor();
+    </script>
+}
