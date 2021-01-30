@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace MrTab.ViewComponents.Admin
 {
-    public class CommentListInAdminVm : ViewComponent
+    public class VideoListInAdminVm : ViewComponent
     {
         private Core db = new Core();
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return await Task.FromResult((IViewComponentResult)View("/Areas/Admin/Views/Comment/Components/CommentListInAdmin.cshtml", db.Comment.Get(i => i.DocId == null).OrderByDescending(i => i.DateSubmited)));
+            var list = db.Restaurant.Get();
+            return await Task.FromResult((IViewComponentResult)View("/Areas/Admin/Views/Video/Components/VideoListInAdmin.cshtml", db.Doc.Get().OrderByDescending(i => i.DocId)));
         }
-
     }
 }

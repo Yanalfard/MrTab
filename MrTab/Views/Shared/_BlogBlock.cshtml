@@ -1,19 +1,17 @@
-﻿<div class="blog-block">
+﻿@model TblDoc
+<div class="blog-block">
     <a href="/" class="imgs">
-        <img src="~/resources/jpg/Food_1.jpg" alt="" />
-        <img src="~/resources/jpg/Food_2.jpg" alt="" />
-        <img src="~/resources/jpg/Food_3.jpg" alt="" />
+        <img src="~/Images/Video/Images/@Model.MainImage1" alt="" />
+        <img src="~/Images/Video/Images/@Model.MainImage2" alt="" />
+        <img src="~/Images/Video/Images/@Model.MainImage3" alt="" />
     </a>
     <a href="/">
         <h4>
-            شعبه پیروزی مسعود هات داگ
-            شعبه پیروزی مسعود هات داگ
-            شعبه پیروزی مسعود هات داگ
+          @Model.Title
         </h4>
     </a>
     <div class="action-panel">
         <span class="row date uk-margin-auto-right">
-            <span>سه روز پیش</span>
             <span uk-icon="time-outline"></span>
         </span>
         @*<span class="row comment">
@@ -21,7 +19,7 @@
             <span uk-icon="chatbox-ellipses-outline"></span>
         </span>*@
         <span class="row like">
-            <span>149</span>
+            <span>@Model.LikeCount</span>
             <span uk-icon="heart-outline"></span>
         </span>
     </div>

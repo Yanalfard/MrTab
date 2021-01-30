@@ -12,7 +12,7 @@ namespace MrTab.ViewComponents.Admin
         private Core db = new Core();
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return await Task.FromResult((IViewComponentResult)View("/Areas/Admin/Views/CommentReport/Components/CommentReportListInAdmin.cshtml", db.Comment.Get().Where(i => i.IsReported == true).OrderByDescending(i => i.DateSubmited)));
+            return await Task.FromResult((IViewComponentResult)View("/Areas/Admin/Views/CommentReport/Components/CommentReportListInAdmin.cshtml", db.Comment.Get(i => i.DocId == null).Where(i => i.IsReported == true).OrderByDescending(i => i.DateSubmited)));
         }
 
     }

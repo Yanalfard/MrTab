@@ -1,6 +1,10 @@
 ﻿
 @{
-    ViewData["Title"] = "پیام های رستوران ها";
+    ViewData["Title"] = " تخلفات کامنت ها یا پیام ها ";
+}
+
+@{
+    ViewData["Title"] = "تخلفات رستوران ها";
 }
 <div class="card flex-div border-0 shadow">
     <div class="card-header bg-white">
@@ -10,7 +14,7 @@
                     <div class="form-input col-md-8">
                         <div class="form-inline">
                             <div class="form-group mx-sm-1 mb-2">
-                                <input class="form-control form-control-sm" id="name" name="name" type="text" value="@ViewBag.name" placeholder="نام رستوران">
+                                <input class="form-control form-control-sm" id="name" name="name" type="text" value="@ViewBag.name" placeholder="نام ویدیو">
                             </div>
                             <div class="form-group mx-sm-1 mb-2">
                                 <input class="form-control form-control-sm" id="user" name="user" type="text" value="@ViewBag.user" placeholder="نام کاربر">
@@ -30,7 +34,7 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">کد</th>
-                        <th scope="col">نام رستوران </th>
+                        <th scope="col">نام ویدیو </th>
                         <th scope="col">کاربر</th>
                         <th scope="col">تاریخ</th>
                         <th scope="col">توضیحات</th>
@@ -39,7 +43,7 @@
                     </tr>
                 </thead>
                 <tbody id="listComment" class="list-wrapper">
-                    @await Component.InvokeAsync("CommentListInAdminVm" )
+                    @await Component.InvokeAsync("CommentVideoListInAdminVm")
                 </tbody>
             </table>
         </div>
