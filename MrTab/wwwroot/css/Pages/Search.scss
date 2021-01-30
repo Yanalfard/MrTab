@@ -103,6 +103,7 @@
 
     #btnSearch {
         grid-area: search;
+        -webkit-appearance: none;
     }
 
     #btnFood {
@@ -111,6 +112,7 @@
 
     #selectOrder {
         grid-area: order;
+        -webkit-appearance: none;
     }
 
     #btnCity {
@@ -136,13 +138,10 @@
     }
 }
 
-
-
-
 @media only screen and (min-width: 1050px) {
     .search-filter {
         grid-template-columns: 100px 1fr 1fr 1fr 1fr 2fr;
-        grid-template-areas: "search order city food type name ";
+        grid-template-areas: "search order city food type name";
     }
 
     .space-search {
@@ -186,6 +185,14 @@
     }
 }
 
+@media only screen and (min-device-width: 481px) and (max-device-width: 496px) {
+    .search-filter {
+        #btnFood, #address {
+            width: calc(100% - 42px) !important;
+        }
+    }
+}
+
 @media only screen and (max-device-width: 480px) {
     .search-filter {
         grid-gap: 6px;
@@ -219,7 +226,11 @@
 
 @media only screen and (max-device-width: 380px) {
     .search-filter {
-        grid-template-columns: 64px 110px calc(112vw - 0) !important;
+        grid-template-columns: 64px 110px 1fr !important;
+
+        #btnFood, #address {
+            width: calc(100% - 26px);
+        }
     }
 
     .uk-container {
