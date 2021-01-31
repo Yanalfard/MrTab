@@ -1,10 +1,10 @@
 ﻿
 @{
-    ViewData["Title"] = " پیام های ویدیو ";
+    ViewData["Title"] = " تخلفات کامنت ها یا پیام ها ";
 }
 
 @{
-    ViewData["Title"] = " پیام های ویدیو";
+    ViewData["Title"] = "تخلفات  ویدیوها";
 }
 <div class="card flex-div border-0 shadow">
     <div class="card-header bg-white">
@@ -14,7 +14,7 @@
                     <div class="form-input col-md-8">
                         <div class="form-inline">
                             <div class="form-group mx-sm-1 mb-2">
-                                <input class="form-control form-control-sm" id="name" name="name" type="text" value="@ViewBag.name" placeholder="نام ویدیو">
+                                <input class="form-control form-control-sm" id="name" name="name" type="text" value="@ViewBag.name" placeholder="نام رستوران">
                             </div>
                             <div class="form-group mx-sm-1 mb-2">
                                 <input class="form-control form-control-sm" id="user" name="user" type="text" value="@ViewBag.user" placeholder="نام کاربر">
@@ -39,11 +39,12 @@
                         <th scope="col">تاریخ</th>
                         <th scope="col">توضیحات</th>
                         <th scope="col">نمایش</th>
+                        <th scope="col">علت مسدود سازی</th>
                         <th scope="col">عملیات</th>
                     </tr>
                 </thead>
-                <tbody id="listCommentVideo" class="list-wrapper">
-                    @await Component.InvokeAsync("CommentVideoListInAdminVm")
+                <tbody id="listCommentVideoReport" class="list-wrapper">
+                    @await Component.InvokeAsync("CommentVideoReportListInAdminVm")
                 </tbody>
             </table>
         </div>
@@ -68,29 +69,28 @@
             var name = $('#name').val();
             var user = $('#user').val();
             $.ajax({
-                url: "/Admin/CommentVideo/Search/",
+                url: "/Admin/CommentVideoReport/Search/",
                 data: { name: name, user: user}
             }).done(function (result) {
-                $('#listCommentVideo').html(result);
+                $('#listCommentVideoReport').html(result);
             })
         }
-        function deleteComment(id) {
-            if (confirm('آیا از حذف نظر مورد نظر مظمئن هستین؟')) {
-                $.get("/Admin/CommentVideo/DeleteComment/" + id, function (result) {
+        function deleteCommentReport(id) {
+            if (confirm('آیا از حذف  نظر از لیست مسدودسازی مورد نظر مظمئن هستین؟')) {
+                $.get("/Admin/CommentVideoReport/DeleteCommentReport/" + id, function (result) {
                     if (result == "true") {
-                        $('#comment_' + id).addClass('text-danger');
-                        $("#comment_" + id).hide('slow');
-                    } else {
-                        alert(result);
+                        $.get("/Admin/CommentVideoReport/ListCommentReport", function (res) {
+                            $('#listCommentVideoReport').html(res);
+                        });
                     }
                 })
             }
         }
-        function activeDisableComment(id) {
-            $.get("/Admin/CommentVideo/ActiveDisableComment/" + id, function (result) {
+        function activeDisableCommentReport(id) {
+            $.get("/Admin/CommentVideoReport/ActiveDisableCommentReport/" + id, function (result) {
                 if (result == "true") {
-                    $.get("/Admin/CommentVideo/ListComment", function (res) {
-                        $('#listCommentVideo').html(res);
+                    $.get("/Admin/CommentVideoReport/ListCommentReport", function (res) {
+                        $('#listCommentVideoReport').html(res);
                     });
                 }
             });

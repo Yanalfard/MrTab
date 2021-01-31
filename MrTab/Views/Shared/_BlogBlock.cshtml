@@ -1,23 +1,44 @@
 ﻿@model TblDoc
 <div class="blog-block">
-    <a href="/" class="imgs">
-        <img src="~/Images/Video/Images/@Model.MainImage1" alt="" />
-        <img src="~/Images/Video/Images/@Model.MainImage2" alt="" />
-        <img src="~/Images/Video/Images/@Model.MainImage3" alt="" />
+    <a href="/Blog/@Model.DocId/@Model.Title" class="imgs">
+        @if (Model.MainImage1 != null)
+        {
+            <img src="~/Images/Video/Images/@Model.MainImage1" alt="" />
+        }
+        else
+        {
+            <img class="preview" src="/Images/NoImage.svg" alt="@Model.Title" />
+        }
+        @if (Model.MainImage2 != null)
+        {
+            <img src="~/Images/Video/Images/@Model.MainImage2" alt="" />
+        }
+        else
+        {
+            <img class="preview" src="/Images/NoImage.svg" alt="@Model.Title" />
+        }
+        @if (Model.MainImage3 != null)
+        {
+            <img src="~/Images/Video/Images/@Model.MainImage3" alt="" />
+        }
+        else
+        {
+            <img class="preview" src="/Images/NoImage.svg" alt="@Model.Title" />
+        }
     </a>
     <a href="/">
         <h4>
-          @Model.Title
+            @Model.Title
         </h4>
     </a>
     <div class="action-panel">
         <span class="row date uk-margin-auto-right">
-            <span uk-icon="time-outline"></span>
+            @*<span uk-icon="time-outline"></span>*@
         </span>
-        @*<span class="row comment">
-            <span>149</span>
+        <span class="row comment">
+            <span>@Model.TblComment.Count()</span>
             <span uk-icon="chatbox-ellipses-outline"></span>
-        </span>*@
+        </span>
         <span class="row like">
             <span>@Model.LikeCount</span>
             <span uk-icon="heart-outline"></span>

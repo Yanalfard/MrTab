@@ -43,8 +43,6 @@ namespace MrTab.Controllers
         }
         public IActionResult Search(string name = null, string foodType = null, string nameFood = null, string CityInput = null, int orderBy = 0, string lat = null, string lon = null)
         {
-            ViewBag.name = name;
-            ViewBag.CityInput = CityInput;
 
             List<TblRestaurant> list = db.Restaurant.Get().Where(i => i.IsValid).ToList();
             if (lat != null && lon != null)

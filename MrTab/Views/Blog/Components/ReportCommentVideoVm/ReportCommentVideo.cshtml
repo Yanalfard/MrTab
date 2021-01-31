@@ -1,8 +1,10 @@
-﻿@model ReportCommentRestaurant
+﻿@model ReportCommentVideo
+
+
 <div class="uk-modal-dialog uk-modal-body">
-    <form class="column" asp-action="ReportCommentRestaurant" asp-controller="Restaurant" asp-area="">
+    <form class="column" asp-action="ReportCommentBlog" asp-controller="Blog" asp-area="">
         <input type="hidden" asp-for="CommentId" />
-        <input type="hidden" asp-for="RestaurantId" />
+        <input type="hidden" asp-for="DocId" />
         <h2 class="uk-h4 uk-margin-auto-left">این نظر چه مشکلی دارد؟</h2>
         <span class="uk-modal-close" uk-close></span>
         <ul>

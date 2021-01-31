@@ -23,7 +23,7 @@ namespace MrTab.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Search(int restaurantId = 0, string name = null, string user = null)
         {
-            List<TblComment> list = db.Comment.Get().ToList();
+            List<TblComment> list = db.Comment.Get(i => i.DocId == null && i.IsReported == true).ToList();
             if (restaurantId > 0)
             {
                 list = list.Where(i => i.Restaurant.RestaurantId == restaurantId).ToList();

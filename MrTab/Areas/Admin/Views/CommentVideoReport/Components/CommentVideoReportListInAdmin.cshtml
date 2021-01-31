@@ -4,7 +4,7 @@
 {
     foreach (var item in Model)
     {
-        <tr id="comment_@item.CommentId" class="list-item">
+        <tr id="commentReport_@item.CommentId" class="list-item">
             <td>@(Model.ToList().IndexOf(item)+1)</td>
             <td>
                 <a href="/Blog/@item.DocId/@item.Doc.Title.Replace(" ","-")">
@@ -24,16 +24,19 @@
             <td>
                 @if (item.IsValid)
                 {
-                    <a href="#" onclick="activeDisableComment(@item.CommentId)" class="badge-success badge-pill">بله</a>
+                    <a href="#" onclick="activeDisableCommentReport(@item.CommentId)" class="badge-success badge-pill">بله</a>
                 }
                 else
                 {
-                    <a href="#" onclick="activeDisableComment(@item.CommentId)" class="badge-danger badge-pill">خیر</a>
+                    <a href="#" onclick="activeDisableCommentReport(@item.CommentId)" class="badge-danger badge-pill">خیر</a>
                 }
             </td>
             <td>
+                @item.TextReport
+            </td>
+            <td>
                 <span data-placement="top" data-toggle="tooltip" title="" data-original-title="حذف">
-                    <a onclick="deleteComment(@item.CommentId)" data-toggle="modal" data-target="#modalSave"><i class="btn fas fa-trash mr-2 text-danger"></i></a>
+                    <a onclick="deleteCommentReport(@item.CommentId)" data-toggle="modal" data-target="#modalSave"><i class="btn fas fa-trash mr-2 text-danger"></i></a>
                 </span>
             </td>
         </tr>

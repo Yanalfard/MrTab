@@ -21,16 +21,12 @@ namespace MrTab.Areas.Admin.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> Search(int restaurantId = 0, string name = null, string user = null)
+        public async Task<IActionResult> Search(string name = null, string user = null)
         {
-            List<TblComment> list = db.Comment.Get().ToList();
-            if (restaurantId > 0)
-            {
-                list = list.Where(i => i.Restaurant.RestaurantId == restaurantId).ToList();
-            }
+            List<TblComment> list = db.Comment.Get(i => i.DocId != null).ToList();
             if (name != null)
             {
-                list = list.Where(i => i.Restaurant.Name.Contains(name)).ToList();
+                list = list.Where(i => i.Doc.Title.Contains(name)).ToList();
             }
             if (user != null)
             {
@@ -61,7 +57,7 @@ namespace MrTab.Areas.Admin.Controllers
 
         public IActionResult ListComment()
         {
-            return ViewComponent("CommentListInAdminVm");
+            return ViewComponent("CommentVideoListInAdminVm");
         }
     }
 }

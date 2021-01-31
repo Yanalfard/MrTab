@@ -20,7 +20,7 @@
              class="hero-image uk-margin-auto-right"
              width="430" height="386" alt="Hero image, man looking for food" />
         <div class="searcher">
-            <form asp-action="Search" asp-controller="Home" asp-area="" class="hero-button row uk-box-shadow-small uk-box-shadow-hover-large" uk-scrollspy="cls:uk-animation-fade;delay:1800">
+            <form asp-action="Search" asp-controller="Home" method="get" asp-area="" class="hero-button row uk-box-shadow-small uk-box-shadow-hover-large" uk-scrollspy="cls:uk-animation-fade;delay:1800">
                 <button uk-icon="search" class="flex-auto" aria-label="جستجو"></button>
                 <input type="text" id="txtCategory" oninput="txtTypeChanged(this.value)" name="nameFood" class="input-invis flex-1" dir="rtl" aria-label=" غذا" placeholder="نوع رستوران" />
                 <div class="category-drop" uk-drop="mode: click; pos: top-justify">
