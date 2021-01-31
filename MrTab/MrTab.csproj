@@ -2574,7 +2574,6 @@
     <Folder Include="wwwroot\Images\Home\Baner\" />
     <Folder Include="wwwroot\Images\Home\Image\" />
     <Folder Include="wwwroot\Images\Home\MobileApp\" />
-    <Folder Include="wwwroot\Images\UploadEditor\" />
     <Folder Include="wwwroot\Images\Restaurant\Gallery\" />
     <Folder Include="wwwroot\Images\Users\" />
     <Folder Include="wwwroot\Images\Video\Images\" />
