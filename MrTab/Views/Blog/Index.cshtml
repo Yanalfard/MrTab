@@ -7,14 +7,11 @@
 }
 
 <div class="uk-container">
-    <div class="mat column uk-margin-medium-top uk-margin-medium-bottom" uk-scrollspy="cls:uk-animation-fade;delay:0">
+    <div class="mat column uk-margin-medium-top" uk-scrollspy="cls:uk-animation-fade;delay:0">
         <video controls>
-            <source src="https://www.storyblocks.com/video/stock/4k-newspaper-with-breaking-news-titles-awm4yzw/" />
+            @*<source src="https://www.storyblocks.com/video/stock/4k-newspaper-with-breaking-news-titles-awm4yzw/" />*@
         </video>
         <div class="carousel carousel-image uk-position-relative uk-visible-toggle" uk-scrollspy="cls:uk-animation-fade" tabindex="-1" uk-slider>
-            <h4 class="uk-margin-remove-top">
-                عکس های کاربران
-            </h4>
             <ul uk-lightbox class="uk-slider-items
             uk-child-width-1-3-at-s
             uk-child-width-1-4-at-m
@@ -50,8 +47,69 @@
             لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر گرفته شده‌است. از آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متو
         </div>
 
-
+        <div class="button-panel uk-margin-top">
+            <div class="btn btn-round btn-primary btn-red row-reverse">
+                <div class="row-reverse uk-margin-auto">
+                    <span uk-icon="heart" class="uk-margin-small-left"></span>
+                    لایک
+                </div>
+            </div>
+        </div>
 
     </div>
+
+    <div class="comment-section mat mat-margin-top uk-margin-medium-bottom">
+        <div class="row-reverse uk-margin-small-bottom">
+            <h4 class="uk-h3 uk-margin-remove">نظرات کاربران</h4>
+            @* \/ *@
+            <button onclick="UIkit.modal(document.getElementById('Modal-Comment')).show();" type="button" class="row-reverse btn btn-primary btn-round uk-margin-auto-right">
+                <span uk-icon="chatbox-ellipses" class="uk-margin-small-left"></span>
+                ثبت نظر
+            </button>
+        </div>
+
+        <ul class="uk-margin-remove uk-padding-remove">
+            <li uk-scrollspy="cls:uk-animation-fade">
+                @*<partial name="_Comment" />*@
+                @*<partial name="_Comment" />*@
+                @*<partial name="_Comment" />*@
+                @*<partial name="_Comment" />*@
+                @*<partial name="_Comment" />*@
+                @*<partial name="_Comment" />*@
+                @*<partial name="_Comment" />*@
+                @*<partial name="_Comment" />*@
+                @*<partial name="_Comment" />*@
+                @*<partial name="_Comment" />*@
+            </li>
+
+
+        </ul>
+
+        @* Else \/ *@
+
+        <div class="column">
+            <img src="~/resources/svg/btfToComment.svg" width="164" height="164" class="uk-margin-auto uk-margin-medium-top" alt="کسی نظری نداده است" />
+            <h3 class="h4 uk-text-center uk-margin-remove-bottom uk-margin-top">اولین نظر را شما بدهید</h3>
+            <p class="uk-text-muted uk-text-center uk-margin-small-top">هنوز کسی درباره این مکان نظری نداده است</p>
+        </div>
+
+    </div>
+
 </div>
 
+<div id="Modal-Comment" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <form class="column" asp-action="SendCommentRestaurant" asp-controller="Restaurant" asp-area="">
+            <input type="hidden" name="RestaurantId" />
+            <h2 class="uk-h4">ثبت نظر</h2>
+            <span class="uk-modal-close" uk-close></span>
+            <div class="form-group">
+                <textarea dir="rtl" name="Comment" placeholder="نظر شما..."></textarea>
+            </div>
+            <div class="button-panel uk-margin-top uk-margin-auto">
+                <input type="submit" class="btn btn-round btn-primary" value="ثبت" />
+                <div class="btn btn-round btn-secondary uk-margin-small-right uk-modal-close">بازگشت</div>
+            </div>
+        </form>
+    </div>
+</div>
