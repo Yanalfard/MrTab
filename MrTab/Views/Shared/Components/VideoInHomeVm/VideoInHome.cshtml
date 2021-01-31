@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<TblDoc>
+@if (Model.Any())
+{
 <div class="blog-carousel">
     <div class="uk-container">
 
@@ -7,9 +9,9 @@
                 گزارش ها
             </h4>
             @*<a href="" tabindex="-1" dir="rtl" class="more uk-margin-auto-right uk-box-shadow-medium">
-                <span>بیشتر</span>
-                <span uk-icon="chevron-back"></span>
-            </a>*@
+                    <span>بیشتر</span>
+                    <span uk-icon="chevron-back"></span>
+                </a>*@
         </div>
 
         <div class="uk-position-relative uk-visible-toggle"
@@ -37,3 +39,4 @@
     </div>
 
 </div>
+}

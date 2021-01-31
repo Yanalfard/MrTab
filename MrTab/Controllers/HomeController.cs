@@ -41,7 +41,7 @@ namespace MrTab.Controllers
             aboutVm.AboutPar3 = updateConfig3.Value;
             return View(aboutVm);
         }
-        public IActionResult Search(string name = null, string foodType = null, string nameFood = null, string CityInput = null, int orderBy = 0, string lat = null, string lon = null)
+        public IActionResult Search(string name = null,string cat=null, string foodType = null, string nameFood = null, string CityInput = null, int orderBy = 0, string lat = null, string lon = null)
         {
 
             List<TblRestaurant> list = db.Restaurant.Get().Where(i => i.IsValid).ToList();
@@ -61,15 +61,25 @@ namespace MrTab.Controllers
             {
                 list = list.Where(i => i.Name.Contains(name)).ToList();
             }
+            if (cat != null)
+            {
+                list = list.Where(i => i.Catagory.Name.Contains(cat)).ToList();
+            }
             if (nameFood != null)
             {
                 List<TblRestaurant> food = db.Food.Get().Where(i => i.Name.Contains(nameFood)).Select(i => i.Restaurant).ToList();
-                list.AddRange(food.Distinct());
+                foreach (var item in food)
+                {
+                    list = list.Where(i => i.RestaurantId == item.RestaurantId).ToList();
+                }
             }
             if (foodType != null && foodType != "نوع غذا")
             {
                 List<TblRestaurant> food = db.FoodType.Get().Where(i => i.Name.Contains(foodType)).Select(i => i.Restaurant).ToList();
-                list.AddRange(food.Distinct());
+                foreach (var item in food)
+                {
+                    list = list.Where(i => i.RestaurantId == item.RestaurantId).ToList();
+                }
             }
             if (CityInput != null && CityInput != "شهر")
             {

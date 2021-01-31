@@ -23,285 +23,288 @@
     <link href="~/css/Global.min.css" rel="stylesheet" />
     <link href="~/css/Controls.min.css" rel="stylesheet" />
 
+
+
     @RenderSection("Styles", false)
 
 </head>
-<body>
+<body style="background-color: @await Component.InvokeAsync("BodyColorVm")!important;">
+    <partial name="/Views/Shared/_bodyColor.cshtml">
 
-    <!-- #region nav-header -->
+        <!-- #region nav-header -->
 
-    <div class="nav-header row-reverse uk-box-shadow-large">
-        <nav class="nav-header-right uk-margin-auto-vertical row-reverse uk-margin-auto-left">
-            <a href="/" class="logo btn-icon-darkglass" aria-label="خانه">
-                <img src="~/resources/svg/BurgerKing.svg" width="48" height="48" alt="لوگو وبسایت" />
-            </a>
-            <a href="#Side-Menu" id="NavMenu" aria-label="منو سایت"
-               uk-toggle class="btn-icon-darkglass display-none show-on-mobile">
-                <span uk-icon="icon:menu-outline;ratio:1.65"></span>
-            </a>
-            <a href="/" class="btn-icon-darkglass" aria-label="خانه">
-                <span class="hide-on-mobile">خانه</span>
-            </a>
-            <a href="/Home/About" class="btn-icon-darkglass" aria-label="درباره ما">
-                <span class="hide-on-mobile">درباره ما</span>
-            </a>
-            <a href="/Home/ContactUs" class="btn-icon-darkglass" aria-label="تماس با ما">
-                <span class="hide-on-mobile">تماس با ما</span>
-            </a>
-            <a href="/Home/Rules" class="btn-icon-darkglass" aria-label="قوانین">
-                <span class="hide-on-mobile">قوانین</span>
-            </a>
-        </nav>
-
-        <div class="nav-header-left row uk-margin-auto-right">
-            @if (User.Identity.IsAuthenticated)
-            {
-                @if (User.Claims.Last().Value == "user")
-                {
-                    <a href="/User/User/Index" type="button" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
-                        پروفایل
-                    </a>
-                    <div uk-drop="pos: bottom-right; offset:36">
-                        <div class="mat uk-box-shadow-large">
-                            <ul class="column uk-list">
-                                <li>
-                                    <a href="/User/User/Index" class="uk-text-default">
-                                        پروفایل
-                                    </a>
-                                </li>
-                                @*<li>
-                                        <a href="#" uk-toggle="#Modal-Location" class="uk-text-default">
-                                            تغییر مکان
-                                        </a>
-                                    </li>*@
-                                <li>
-                                    <a href="/Account/LogOut" class="uk-text-danger">خروج</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                }
-                else if (User.Claims.Last().Value == "author")
-                {
-                    <a href="/Admin/Home/Index" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
-                        پنل نویسنده
-                    </a>
-                    <div uk-drop="pos: bottom-right; offset:36">
-                        <div class="mat uk-box-shadow-large">
-                            <ul class="column uk-list">
-                                <li>
-                                    <a href="/Admin/Home/Index" class="uk-text-default">
-                                        پنل نویسنده
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Account/LogOut" class="uk-text-danger">خروج</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                }
-                else if (User.Claims.Last().Value == "admin")
-                {
-                    <a href="/Admin/Home/Index" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
-                        پنل مدیریت
-                    </a>
-                    <div uk-drop="pos: bottom-right; offset:36">
-                        <div class="mat uk-box-shadow-large">
-                            <ul class="column uk-list">
-                                <li>
-                                    <a href="/Admin/Home/Index" class="uk-text-default">
-                                        پنل مدیریت
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Account/LogOut" class="uk-text-danger">خروج</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                }
-            }
-            else
-            {
-                <a href="/Account/Register" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
-                    ثبت نام
+        <div class="nav-header row-reverse uk-box-shadow-large">
+            <nav class="nav-header-right uk-margin-auto-vertical row-reverse uk-margin-auto-left">
+                <a href="/" class="logo btn-icon-darkglass" aria-label="خانه">
+                    <img src="~/resources/svg/BurgerKing.svg" width="48" height="48" alt="لوگو وبسایت" />
                 </a>
-                <a href="/Account/Login" id="btnLogin" class="btn btn-round btn-darkglass margin-header-left hide-on-mobile">
-                    ورود
+                <a href="#Side-Menu" id="NavMenu" aria-label="منو سایت"
+                   uk-toggle class="btn-icon-darkglass display-none show-on-mobile">
+                    <span uk-icon="icon:menu-outline;ratio:1.65"></span>
                 </a>
-            }
+                <a href="/" class="btn-icon-darkglass" aria-label="خانه">
+                    <span class="hide-on-mobile">خانه</span>
+                </a>
+                <a href="/Home/About" class="btn-icon-darkglass" aria-label="درباره ما">
+                    <span class="hide-on-mobile">درباره ما</span>
+                </a>
+                <a href="/Home/ContactUs" class="btn-icon-darkglass" aria-label="تماس با ما">
+                    <span class="hide-on-mobile">تماس با ما</span>
+                </a>
+                <a href="/Home/Rules" class="btn-icon-darkglass" aria-label="قوانین">
+                    <span class="hide-on-mobile">قوانین</span>
+                </a>
+            </nav>
 
-
-            @* TODO *@
-            @*<button id="btnLocation" uk-icon="location-outline"
-                        class="btn btn-round btn-darkglass margin-header-left" type="button" uk-toggle="#Modal-Location">
-                    تبریز
-                </button>*@
-            <form asp-action="Search" asp-controller="Home" method="get" asp-area="" id="txtSearch" class="material-darkglass margin-header-left btn-round row">
-                <button uk-icon="search-outline" aria-label="جستجو"
-                        class="btn-icon-darkglass uk-margin-small-left uk-margin-small-right"></button>
-                <input class="input-darkglass input-invis btn-round row flex-1"
-                       placeholder="جستجو..." dir="rtl"
-                       type="search" aria-label="جستجوی رستوران" name="name" />
-            </form>
-        </div>
-    </div>
-
-    <div class="space-nav-header"></div>
-    <!-- #endregion -->
-
-    <button class="btn-icon uk-box-shadow-medium uk-box-shadow-hover-large" onclick="getLocation()"
-            id="btnSuggestOnLocation" uk-tooltip="pos:right; title: جستجو بر اساس مکان"
-            uk-icon="icon:location-outline;ratio:1.32"></button>
-
-    @RenderBody()
-
-    <!-- #region Footer -->
-
-    <footer class="footer column">
-        <ul class="footer-counters uk-box-shadow-large">
-            @*@await Component.InvokeAsync("InformationFooterVm")*@
-
-        </ul>
-        <ul class="footer-body">
-            <li>
-                <div class="footer-body-login column">
-                    @if (!User.Identity.IsAuthenticated)
+            <div class="nav-header-left row uk-margin-auto-right">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if (User.Claims.Last().Value == "user")
                     {
-                        @*@await Component.InvokeAsync("LoginFooterVm")*@
+                        <a href="/User/User/Index" type="button" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
+                            پروفایل
+                        </a>
+                        <div uk-drop="pos: bottom-right; offset:36">
+                            <div class="mat uk-box-shadow-large">
+                                <ul class="column uk-list">
+                                    <li>
+                                        <a href="/User/User/Index" class="uk-text-default">
+                                            پروفایل
+                                        </a>
+                                    </li>
+                                    @*<li>
+                                            <a href="#" uk-toggle="#Modal-Location" class="uk-text-default">
+                                                تغییر مکان
+                                            </a>
+                                        </li>*@
+                                    <li>
+                                        <a href="/Account/LogOut" class="uk-text-danger">خروج</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     }
-                </div>
-            </li>
-            <li>
-                <div class="footer-body-about uk-margin-left column">
-                    <h3>فودستان </h3>
-                    <p class="uk-margin-remove">
-                        یه شبکه اجتماعی رستوران گردی و کافه گردی که بهت کمک میکنه بهترین خوردنی فروشی های اطرافت رو پیدا کنی و دیگه هیچوقت غذای بد نخوری
-                    </p>
-                </div>
-            </li>
-            <li>
-                <div class="footer-body-menu column">
-                    <h3>منوی اصلی</h3>
-                    <div class="row-reverse">
-                        <div class="column">
-                            <a href="/">خانه</a>
-                            @*<a href="#">درباره</a>*@
-                            <a href="#">جستجو</a>
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                @if (User.Claims.Last().Value == "user")
-                                {
-                                    <a href="/User/User/Index">
-                                        پروفایل
-                                    </a>
-                                }
-                                else if (User.Claims.Last().Value == "author")
-                                {
-                                    <a href="/Account/Register">
-                                        پنل نویسنده
-                                    </a>
-                                }
-                                else if (User.Claims.Last().Value == "admin")
-                                {
-                                    <a href="/Admin/Home/Index">
-                                        پنل مدیریت
-                                    </a>
-                                }
-                            }
+                    else if (User.Claims.Last().Value == "author")
+                    {
+                        <a href="/Admin/Home/Index" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
+                            پنل نویسنده
+                        </a>
+                        <div uk-drop="pos: bottom-right; offset:36">
+                            <div class="mat uk-box-shadow-large">
+                                <ul class="column uk-list">
+                                    <li>
+                                        <a href="/Admin/Home/Index" class="uk-text-default">
+                                            پنل نویسنده
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Account/LogOut" class="uk-text-danger">خروج</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="column uk-margin-right">
-                            <a href="/Account/Login">ورود</a>
-                            <a href="/Account/Register">ثبت نام</a>
-                            <a href="#" class="btn-pwa">دریافت اپلیکیشن</a>
+                    }
+                    else if (User.Claims.Last().Value == "admin")
+                    {
+                        <a href="/Admin/Home/Index" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
+                            پنل مدیریت
+                        </a>
+                        <div uk-drop="pos: bottom-right; offset:36">
+                            <div class="mat uk-box-shadow-large">
+                                <ul class="column uk-list">
+                                    <li>
+                                        <a href="/Admin/Home/Index" class="uk-text-default">
+                                            پنل مدیریت
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Account/LogOut" class="uk-text-danger">خروج</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <div class="footer-social row-reverse">
-            <span class="credits">
-                تمامی حقوق مادی و معنوی این وب سایت برای
-                <a href="#">فودستان</a>
-                محفوظ می باشد
-                طراحی و توسعه توسط شرکت
-                <strong><a href="https://arvintavco.com/">ایده پرداز آروین تاو</a></strong>
-            </span>
-            <div class="media row">
-                <a href="#" class="social btn-round" aria-label="پینترست">
-                    <span uk-icon="logo-pinterest"></span>
-                </a>
-                <a href="#" class="social btn-round" aria-label="لینکدین">
-                    <span uk-icon="logo-linkedin"></span>
-                </a>
-                <a href="#" class="social btn-round row-reverse">
-                    <span class="uk-margin-small-right" uk-icon="logo-instagram"></span>
-                    <span class="uk-margin-small-right uk-margin-small-left">اینستاگرام</span>
-                </a>
+                    }
+                }
+                else
+                {
+                    <a href="/Account/Register" id="btnRegister" class="btn btn-round btn-primary btn-primary-lowglow">
+                        ثبت نام
+                    </a>
+                    <a href="/Account/Login" id="btnLogin" class="btn btn-round btn-darkglass margin-header-left hide-on-mobile">
+                        ورود
+                    </a>
+                }
+
+
+                @* TODO *@
+                @*<button id="btnLocation" uk-icon="location-outline"
+                            class="btn btn-round btn-darkglass margin-header-left" type="button" uk-toggle="#Modal-Location">
+                        تبریز
+                    </button>*@
+                <form asp-action="Search" asp-controller="Home" method="get" asp-area="" id="txtSearch" class="material-darkglass margin-header-left btn-round row">
+                    <button uk-icon="search-outline" aria-label="جستجو"
+                            class="btn-icon-darkglass uk-margin-small-left uk-margin-small-right"></button>
+                    <input class="input-darkglass input-invis btn-round row flex-1"
+                           placeholder="جستجو..." dir="rtl"
+                           type="search" aria-label="جستجوی رستوران" name="name" />
+                </form>
             </div>
         </div>
-    </footer>
 
-    <!-- #endregion -->
+        <div class="space-nav-header"></div>
+        <!-- #endregion -->
 
-    <div id="Modal-PopupIos" class="popup-ios" uk-modal>
-        <div class="column uk-padding">
-            <button class="uk-modal-close btn-icon uk-margin-auto-right" uk-icon="icon:close;ratio:1.5" aria-label="بستن"></button>
-            <h2 class="uk-h3 center">دانلود اپلیکیشن موبایل</h2>
-            <h3 class="uk-h5 center uk-margin-bottom">برای دریافت اپ موبایل برنامه را به صفحه اصلی اضافه کنید</h3>
-            <img class="uk-margin-auto" src="~/resources/svg/Iphone.svg" />
-            <span class="btn-icon uk-margin-auto" uk-icon="icon:arrow-down-circle;ratio:3"></span>
-        </div>
-    </div>
+        <button class="btn-icon uk-box-shadow-medium uk-box-shadow-hover-large" onclick="getLocation()"
+                id="btnSuggestOnLocation" uk-tooltip="pos:right; title: جستجو بر اساس مکان"
+                uk-icon="icon:location-outline;ratio:1.32"></button>
 
-    <!-- #region Location -->
-    <partial name="/Views/Shared/_CitySelector.cshtml">
+        @RenderBody()
+
+        <!-- #region Footer -->
+
+        <footer class="footer column">
+            <ul class="footer-counters uk-box-shadow-large">
+                @*@await Component.InvokeAsync("InformationFooterVm")*@
+
+            </ul>
+            <ul class="footer-body">
+                <li>
+                    <div class="footer-body-login column">
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            @*@await Component.InvokeAsync("LoginFooterVm")*@
+                        }
+                    </div>
+                </li>
+                <li>
+                    <div class="footer-body-about uk-margin-left column">
+                        <h3>فودستان </h3>
+                        <p class="uk-margin-remove">
+                            یه شبکه اجتماعی رستوران گردی و کافه گردی که بهت کمک میکنه بهترین خوردنی فروشی های اطرافت رو پیدا کنی و دیگه هیچوقت غذای بد نخوری
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="footer-body-menu column">
+                        <h3>منوی اصلی</h3>
+                        <div class="row-reverse">
+                            <div class="column">
+                                <a href="/">خانه</a>
+                                @*<a href="#">درباره</a>*@
+                                <a href="#">جستجو</a>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    @if (User.Claims.Last().Value == "user")
+                                    {
+                                        <a href="/User/User/Index">
+                                            پروفایل
+                                        </a>
+                                    }
+                                    else if (User.Claims.Last().Value == "author")
+                                    {
+                                        <a href="/Account/Register">
+                                            پنل نویسنده
+                                        </a>
+                                    }
+                                    else if (User.Claims.Last().Value == "admin")
+                                    {
+                                        <a href="/Admin/Home/Index">
+                                            پنل مدیریت
+                                        </a>
+                                    }
+                                }
+                            </div>
+                            <div class="column uk-margin-right">
+                                <a href="/Account/Login">ورود</a>
+                                <a href="/Account/Register">ثبت نام</a>
+                                <a href="#" class="btn-pwa">دریافت اپلیکیشن</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="footer-social row-reverse">
+                <span class="credits">
+                    تمامی حقوق مادی و معنوی این وب سایت برای
+                    <a href="#">فودستان</a>
+                    محفوظ می باشد
+                    طراحی و توسعه توسط شرکت
+                    <strong><a href="https://arvintavco.com/">ایده پرداز آروین تاو</a></strong>
+                </span>
+                <div class="media row">
+                    <a href="#" class="social btn-round" aria-label="پینترست">
+                        <span uk-icon="logo-pinterest"></span>
+                    </a>
+                    <a href="#" class="social btn-round" aria-label="لینکدین">
+                        <span uk-icon="logo-linkedin"></span>
+                    </a>
+                    <a href="#" class="social btn-round row-reverse">
+                        <span class="uk-margin-small-right" uk-icon="logo-instagram"></span>
+                        <span class="uk-margin-small-right uk-margin-small-left">اینستاگرام</span>
+                    </a>
+                </div>
+            </div>
+        </footer>
 
         <!-- #endregion -->
 
-        <div class="space-nav-bottom uk-margin-top"></div>
-        <partial name="/Views/Shared/_MobileNav.cshtml">
+        <div id="Modal-PopupIos" class="popup-ios" uk-modal>
+            <div class="column uk-padding">
+                <button class="uk-modal-close btn-icon uk-margin-auto-right" uk-icon="icon:close;ratio:1.5" aria-label="بستن"></button>
+                <h2 class="uk-h3 center">دانلود اپلیکیشن موبایل</h2>
+                <h3 class="uk-h5 center uk-margin-bottom">برای دریافت اپ موبایل برنامه را به صفحه اصلی اضافه کنید</h3>
+                <img class="uk-margin-auto" src="~/resources/svg/Iphone.svg" />
+                <span class="btn-icon uk-margin-auto" uk-icon="icon:arrow-down-circle;ratio:3"></span>
+            </div>
+        </div>
 
-            <!-- PWA -->
-            @*<script src="~/app.js"></script>*@
+        <!-- #region Location -->
+        <partial name="/Views/Shared/_CitySelector.cshtml">
 
-            <!--Static Js-->
-            <script src="~/js/uikit.min.js"></script>
-            <script src="~/js/uikit-icons.js"></script>
-            <script src="~/js/croppie.js"></script>
-            @*<script src="~/js/ImageLoadFailed.js"></script>*@
-            <script src="~/js/CopyText.js"></script>
-            <!--Page Dependant Js-->
+            <!-- #endregion -->
 
-            <script src="~/js/jquery-3.5.1.min.js"></script>
-            <script src="~/js/jquery.validate.min.js"></script>
-            <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
-            <script src="~/js/jquery.unobtrusive-ajax.min.js"></script>
+            <div class="space-nav-bottom uk-margin-top"></div>
+            <partial name="/Views/Shared/_MobileNav.cshtml">
 
-            <script>
+                <!-- PWA -->
+                @*<script src="~/app.js"></script>*@
 
-                var x = document.getElementById("btnSuggestOnLocation");
-                function getLocation() {
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(showPosition);
-                    } else {
-                        x.innerHTML = "Geolocation is not supported by this browser.";
+                <!--Static Js-->
+                <script src="~/js/uikit.min.js"></script>
+                <script src="~/js/uikit-icons.js"></script>
+                <script src="~/js/croppie.js"></script>
+                @*<script src="~/js/ImageLoadFailed.js"></script>*@
+                <script src="~/js/CopyText.js"></script>
+                <!--Page Dependant Js-->
+
+                <script src="~/js/jquery-3.5.1.min.js"></script>
+                <script src="~/js/jquery.validate.min.js"></script>
+                <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+                <script src="~/js/jquery.unobtrusive-ajax.min.js"></script>
+
+                <script>
+
+                    var x = document.getElementById("btnSuggestOnLocation");
+                    function getLocation() {
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(showPosition);
+                        } else {
+                            x.innerHTML = "Geolocation is not supported by this browser.";
+                        }
                     }
-                }
 
-                function showPosition(position) {
-                    //UIkit.notification(`${position.coords.latitude} ${position.coords.longitude}`);
-                    localStorage.setItem('lat', position.coords.latitude);
-                    localStorage.setItem('lon', position.coords.longitude);
-                    var lat = position.coords.latitude;
-                    var lon = position.coords.longitude;
-                    window.location.href = "/Home/Search?lat=" + lat + "&lon=" + lon;
-                }
+                    function showPosition(position) {
+                        //UIkit.notification(`${position.coords.latitude} ${position.coords.longitude}`);
+                        localStorage.setItem('lat', position.coords.latitude);
+                        localStorage.setItem('lon', position.coords.longitude);
+                        var lat = position.coords.latitude;
+                        var lon = position.coords.longitude;
+                        window.location.href = "/Home/Search?lat=" + lat + "&lon=" + lon;
+                    }
 
-            </script>
+                </script>
 
-            @RenderSection("Scripts", false)
+                @RenderSection("Scripts", false)
 
 </body>
 </html>
