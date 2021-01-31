@@ -32,8 +32,8 @@
                     @if (Model.VideoUrl != null)
                     {
 
-                        <video class="uk-margin-small-bottom" controls controlsList="nodownload">
-                            <source src="/Images/Video/Videos/@Model.VideoUrl" type="video/mp4">
+                        <video controls="controls">
+                            <source src="~/Images/Video/Videos/@Model.VideoUrl" type="video/mp4" />
                         </video>
                     }
                     else
@@ -44,7 +44,7 @@
                         <span>
                             فایل انتخاب نشده
                         </span>
-                        <input type="file" accept="image/*" name="VideoUrl" onchange="imageSelected(this)" />
+                        <input type="file"  name="VideoUrl" onchange="imageSelected(this)" />
                         <span class="text-danger" asp-validation-for="VideoUrl"></span>
                     </label>
                 </div>

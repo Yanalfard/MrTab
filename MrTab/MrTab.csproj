@@ -2578,7 +2578,6 @@
     <Folder Include="wwwroot\Images\Restaurant\Gallery\" />
     <Folder Include="wwwroot\Images\Users\" />
     <Folder Include="wwwroot\Images\Video\Images\" />
-    <Folder Include="wwwroot\Images\Video\Videos\" />
   </ItemGroup>
 
 </Project>
