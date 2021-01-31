@@ -256,6 +256,24 @@ button, a, a:hover .js-upload, input[type=file] {
     color: white;
 }
 
+.btn-red {
+    background-color: #ee163d;
+    color: #fff;
+    @include subtle-glow(transparentize(#ee163d,.6))
+}
+
+.btn-red:hover {
+    background-color: lighten(#ee163d,12%);
+    @include subtle-glow(transparentize(#ee163d,.5))
+}
+
+.btn-red:focus {
+    -moz-box-shadow: 0 0 0 6px transparentize(#ee163d,.5);
+    -webkit-box-shadow: 0 0 0 6px transparentize(#ee163d,.5);
+    box-shadow: 0 0 0 6px transparentize(#ee163d,.5);
+}
+
+
 .input-darkglass {
     background: $darkglass;
     padding: 8px 20px;
