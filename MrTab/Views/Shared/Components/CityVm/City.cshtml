@@ -14,7 +14,9 @@
             </div>
             <div class="even-taglist column uk-margin-small-top">
                 <ul id="citiesList" class="tag-grid uk-padding-remove">
-
+                    @*<li>
+                        <button class="even-tag uk-modal-close" onclick="if (document.getElementById('CityInput')) document.getElementById('CityInput').value = this.textContent;searchWithlocation()">اطراف من</button>
+                    </li>*@
                     @foreach (var item in Model)
                     {
                         <li>
