@@ -1,0 +1,135 @@
+﻿@model TblDoc
+@{
+    ViewData["Title"] = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/css/Pages/Restaurant.min.css" rel="stylesheet" />
+}
+
+<div class="uk-container">
+    <div class="mat column uk-margin-medium-top" uk-scrollspy="cls:uk-animation-fade;delay:0">
+        <video controls>
+            <source src="~/Images/Video/Videos/@Model.VideoUrl" />
+        </video>
+        <div class="carousel carousel-image uk-position-relative uk-visible-toggle" uk-scrollspy="cls:uk-animation-fade" tabindex="-1" uk-slider>
+            <ul uk-lightbox class="uk-slider-items
+            uk-child-width-1-3-at-s
+            uk-child-width-1-4-at-m
+            uk-child-width-1-5-at-l
+            uk-child-width-1-5-at-xl">
+                @if (Model.MainImage1 != null)
+                {
+                    <li>
+                        <a href="~/Images/Video/Images/@Model.MainImage1" data-caption="@Model.Title"><img src="~/Images/Video/Images/@Model.MainImage1" width="220" height="220" alt="@Model.Title" /></a>
+                    </li>
+                }
+                @if (Model.MainImage2 != null)
+                {
+                    <li>
+                        <a href="~/Images/Video/Images/@Model.MainImage2" data-caption="@Model.Title"><img src="~/Images/Video/Images/@Model.MainImage2" width="220" height="220" alt="@Model.Title" /></a>
+                    </li>
+                }
+                @if (Model.MainImage3 != null)
+                {
+                    <li>
+                        <a href="~/Images/Video/Images/@Model.MainImage3" data-caption="@Model.Title"><img src="~/Images/Video/Images/@Model.MainImage3" width="220" height="220" alt="@Model.Title" /></a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <h3>@Model.Title</h3>
+        <div>
+            @Html.Raw(Model.BodyHtml)
+        </div>
+        <div class="button-panel uk-margin-top">
+            <div class="btn btn-round btn-primary btn-red row-reverse">
+                <div class="row-reverse uk-margin-auto">
+                    <span uk-icon="heart" class="uk-margin-small-left"></span>
+                    لایک
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="comment-section mat mat-margin-top uk-margin-medium-bottom">
+        <div class="row-reverse uk-margin-small-bottom">
+            <h4 class="uk-h3 uk-margin-remove">نظرات کاربران</h4>
+            @* \/ *@
+            <button onclick="UIkit.modal(document.getElementById('Modal-Comment')).show();" type="button" class="row-reverse btn btn-primary btn-round uk-margin-auto-right">
+                <span uk-icon="chatbox-ellipses" class="uk-margin-small-left"></span>
+                ثبت نظر
+            </button>
+        </div>
+
+        @if (Model.TblComment.Any(i => i.IsValid))
+        {
+
+            <ul class="uk-margin-remove uk-padding-remove">
+                <li uk-scrollspy="cls:uk-animation-fade">
+                    @foreach (var item in Model.TblComment.Where(i => i.IsValid))
+                    {
+                        <partial name="_Comment" model="item" />
+                    }
+                </li>
+            </ul>
+        }
+        else
+        {
+
+
+            @* Else \/ *@
+
+            <div class="column">
+                <img src="~/resources/svg/btfToComment.svg" width="164" height="164" class="uk-margin-auto uk-margin-medium-top" alt="کسی نظری نداده است" />
+                <h3 class="h4 uk-text-center uk-margin-remove-bottom uk-margin-top">اولین نظر را شما بدهید</h3>
+                <p class="uk-text-muted uk-text-center uk-margin-small-top">هنوز کسی درباره این مکان نظری نداده است</p>
+            </div>
+        }
+
+    </div>
+
+</div>
+
+<div id="Modal-Comment" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <form class="column" asp-action="SendCommentVideo" asp-controller="Blog" asp-area="">
+            <input type="hidden" name="DocId" asp-for="DocId" value="@Model.DocId" />
+            <h2 class="uk-h4">ثبت نظر</h2>
+            <span class="uk-modal-close" uk-close></span>
+            <div class="form-group">
+                <textarea dir="rtl" name="Text" required placeholder="نظر شما..."></textarea>
+            </div>
+            <div class="button-panel uk-margin-top uk-margin-auto">
+                <input type="submit" class="btn btn-round btn-primary" value="ثبت" />
+                <div class="btn btn-round btn-secondary uk-margin-small-right uk-modal-close">بازگشت</div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="Modal-Report-CommentVideo" uk-modal>
+    <h1>
+        mehdi
+    </h1>
+</div>
+<input type="hidden" asp-for="DocId" id="DocId" />
+@section Scripts{
+    <script src="~/js/jquery-3.5.1.min.js"></script>
+
+    <script>
+        function reportCommentRestaurant(id) {
+            var DocId = $('#DocId').val();
+            var CommentId = id;
+            $.get("/Blog/ReportCommentBlog?DocId=" + DocId + "&CommentId=" + CommentId,
+                function (result) {
+                    UIkit.modal(document.getElementById('Modal-Report-CommentVideo')).show();
+                    $("#Modal-Report-CommentVideo").html(result);
+                }
+            );
+        }
+    </script>
+
+}

@@ -52,7 +52,7 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden !important;
   min-height: 100vh;
-  background: #EDEDED !important;
+  background: #EDEDED;
   /*ScrollBar*/
   /* width */
   /* Track */
@@ -75,7 +75,8 @@ html {
  */
 body {
   margin: 0;
-  background: linear-gradient(252.46deg, #F5F3F0 0%, #FDF4E7 100%);
+  /*background: linear-gradient(252.46deg, #F5F3F0 0%, #FDF4E7 100%);*/
+  background-color: #F9F4EC;
   overflow: hidden !important;
   min-height: 112vh;
   -ms-zoom: 90%;

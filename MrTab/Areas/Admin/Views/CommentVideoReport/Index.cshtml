@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewData["Title"] = " تخلفات کامنت ها یا پیام ها ";
+}
+
+@{
+    ViewData["Title"] = "تخلفات  ویدیوها";
+}
+<div class="card flex-div border-0 shadow">
+    <div class="card-header bg-white">
+        <div class="row justify-content-end">
+            <div class="col-md-10 col-12">
+                <div class="card-form row">
+                    <div class="form-input col-md-8">
+                        <div class="form-inline">
+                            <div class="form-group mx-sm-1 mb-2">
+                                <input class="form-control form-control-sm" id="name" name="name" type="text" value="@ViewBag.name" placeholder="نام رستوران">
+                            </div>
+                            <div class="form-group mx-sm-1 mb-2">
+                                <input class="form-control form-control-sm" id="user" name="user" type="text" value="@ViewBag.user" placeholder="نام کاربر">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-toolbar col-md-3">
+                        <input type="submit" value="جستجو" class="btn btn-primary btn-sm" onclick="search()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="card-table" class="p-0 card-body flex-div">
+        <div class="table-responsive flex">
+            <table class="table fixed pr-3 text-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">کد</th>
+                        <th scope="col">نام ویدیو </th>
+                        <th scope="col">کاربر</th>
+                        <th scope="col">تاریخ</th>
+                        <th scope="col">توضیحات</th>
+                        <th scope="col">نمایش</th>
+                        <th scope="col">علت مسدود سازی</th>
+                        <th scope="col">عملیات</th>
+                    </tr>
+                </thead>
+                <tbody id="listCommentVideoReport" class="list-wrapper">
+                    @await Component.InvokeAsync("CommentVideoReportListInAdminVm")
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer bg-white">
+        <nav aria-label="Page navigation example">
+            <div id="pagination-container"></div>
+        </nav>
+    </div>
+</div>
+
+
+
+<!-- Button trigger modal -->
+@section Scripts{
+    <script src="~/admin/bootstrap/js/jquery.validate.min.js"></script>
+    <script src="~/admin/bootstrap/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/admin/bootstrap/js/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+        function search() {
+            var name = $('#name').val();
+            var user = $('#user').val();
+            $.ajax({
+                url: "/Admin/CommentVideoReport/Search/",
+                data: { name: name, user: user}
+            }).done(function (result) {
+                $('#listCommentVideoReport').html(result);
+            })
+        }
+        function deleteCommentReport(id) {
+            if (confirm('آیا از حذف  نظر از لیست مسدودسازی مورد نظر مظمئن هستین؟')) {
+                $.get("/Admin/CommentVideoReport/DeleteCommentReport/" + id, function (result) {
+                    if (result == "true") {
+                        $.get("/Admin/CommentVideoReport/ListCommentReport", function (res) {
+                            $('#listCommentVideoReport').html(res);
+                        });
+                    }
+                })
+            }
+        }
+        function activeDisableCommentReport(id) {
+            $.get("/Admin/CommentVideoReport/ActiveDisableCommentReport/" + id, function (result) {
+                if (result == "true") {
+                    $.get("/Admin/CommentVideoReport/ListCommentReport", function (res) {
+                        $('#listCommentVideoReport').html(res);
+                    });
+                }
+            });
+        }
+    </script>
+}

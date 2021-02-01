@@ -7,6 +7,7 @@
 @section Styles {
     <link href="~/css/Pages/Restaurant.min.css" rel="stylesheet" />
     <link href="~/css/Packages/leaflet.min.css" rel="stylesheet" />
+    <link href="~/leaflet-routing-machine.css" rel="stylesheet" />
 }
 
 <div class="actions-adrift" uk-scrollspy="cls:uk-animation-slide-bottom-medium">
@@ -99,11 +100,11 @@
                 }
 
             </div>
-            <p class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom"
-               onclick="copy('@Model.Address','آدرس کپی شد')">
+            <a class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom"
+               href="https://www.google.com/maps/dir/Current+Location/(@Model.Lat,@Model.Lon" target="_blank">
                 <span uk-icon="location-sharp"></span>
                 @Model.Address
-            </p>
+            </a>
         </div>
     </div>
     <div class="banner-action column">
@@ -261,7 +262,6 @@
                 {
                     <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" model="item" /></li>
                 }
-
             </ul>
         }
         else
@@ -294,7 +294,20 @@
     <link href="~/leaflet/leaflet.css" rel="stylesheet" />
     <script src="~/leaflet/leaflet.js"></script>
 
+    <script src="~/leaflet-routing-machine.js"></script>
+
     <script>
+
+        function openMap() {
+            L.Routing.control({
+                waypoints: [
+                    L.latLng(57.74, 11.94),
+                    L.latLng(57.6792, 11.949)
+                ]
+            }).addTo(map);
+        }
+
+
         function uploadImage() {
             var id = $('#RestaurantId').val()
             $.get("/Restaurant/UploadImage/" + id,

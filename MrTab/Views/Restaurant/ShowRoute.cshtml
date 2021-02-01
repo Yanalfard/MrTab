@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/css/Packages/leaflet.min.css" rel="stylesheet" />
+    <link href="~/leaflet-routing-machine.css" rel="stylesheet" />
+}
+
+<div class="map" id="map" style="height:1000px;width:100%"></div>
+
+@section Scripts{
+
+    <script src="~/js/jquery-3.5.1.min.js"></script>
+    <link href="~/leaflet/leaflet.css" rel="stylesheet" />
+    <script src="~/leaflet/leaflet.js"></script>
+
+    <script src="~/leaflet-routing-machine.js"></script>
+
+    <script>
+
+
+        var Lat = '38.04695468279228';
+        var Lon = '46.349156498909004';
+        var map = L.map('map').setView([Lat, Lon], 15);
+
+        L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'mehdi'
+        }).addTo(map);
+
+        L.Routing.control({
+            waypoints: [
+                L.latLng(38.06180655698778, 46.36592030525208),
+                L.latLng(38.04695468279228, 46.349156498909004)
+            ]
+        }).addTo(map);
+
+
+    </script>
+}

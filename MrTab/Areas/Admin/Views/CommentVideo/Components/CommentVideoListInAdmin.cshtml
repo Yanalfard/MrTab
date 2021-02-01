@@ -7,8 +7,8 @@
         <tr id="comment_@item.CommentId" class="list-item">
             <td>@(Model.ToList().IndexOf(item)+1)</td>
             <td>
-                <a href="/ViewSingle/@item.RestaurantId/@item.Restaurant.Name.Replace(" ","-")">
-                    @item.Restaurant.Name
+                <a href="/Blog/@item.DocId/@item.Doc.Title.Replace(" ","-")">
+                    @item.Doc.Title
 
                 </a>
             </td>

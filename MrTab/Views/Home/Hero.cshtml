@@ -1,28 +1,28 @@
 ﻿@model HomeImageTextVm
-<div class="hero column">
+<div class="hero column"style="background-image:url('/Images/Home/Baner/@Model.MainBanner')">
     <div class="hero-alternate uk-margin-auto-vertical">
         @*<div class="hero-navi row">
                 <a href="" uk-icon="icon:person-circle-outline;ratio:1" class="button-icon"></a>
                 <a href="" uk-icon="icon:logo-angular;ratio:1" class="button-icon uk-margin-auto-left"></a>
             </div>*@
         <div class="hero-splash uk-margin-auto-vertical">
-            @*@Html.Raw(Model.MainText)*@
-            <h1 class="uk-h1  uk-margin-small-bottom" uk-scrollspy="cls:uk-animation-fade;delay:200">
+            @Html.Raw(Model.MainText)
+            @*<h1 class="uk-h1  uk-margin-small-bottom" uk-scrollspy="cls:uk-animation-fade;delay:200">
                 دنبال یه جای خوب برای
                 <br />
                 وقت گذروندن می گردی؟
             </h1>
             <h2 class="uk-h1 uk-margin-remove-top" uk-scrollspy="cls:uk-animation-fade;delay:1000">
                 <strong dir="rtl"> جای درستی اومدی...</strong>
-            </h2>
+            </h2>*@
         </div>
-        <img src="~/resources/svg/LookingForFood.svg" uk-scrollspy="cls:uk-animation-fade;delay:200"
+        <img src="~/Images/Home/Image/@Model.MainImage" uk-scrollspy="cls:uk-animation-fade;delay:200"
              class="hero-image uk-margin-auto-right"
              width="430" height="386" alt="Hero image, man looking for food" />
         <div class="searcher">
-            <form asp-action="Search" asp-controller="Home" asp-area="" class="hero-button row uk-box-shadow-small uk-box-shadow-hover-large" uk-scrollspy="cls:uk-animation-fade;delay:1800">
+            <form asp-action="Search" asp-controller="Home" method="get" asp-area="" class="hero-button row uk-box-shadow-small uk-box-shadow-hover-large" uk-scrollspy="cls:uk-animation-fade;delay:1800">
                 <button uk-icon="search" class="flex-auto" aria-label="جستجو"></button>
-                <input type="text" id="txtCategory" oninput="txtTypeChanged(this.value)" name="nameFood" class="input-invis flex-1" dir="rtl" aria-label=" غذا" placeholder="نوع رستوران" />
+                <input type="text" id="cat" oninput="txtTypeChanged(this.value)" name="cat" class="input-invis flex-1" dir="rtl" aria-label=" غذا" placeholder="نوع رستوران" />
                 <div class="category-drop" uk-drop="mode: click; pos: top-justify">
                     <ul class="uk-margin-remove" id="drop"></ul>
                 </div>

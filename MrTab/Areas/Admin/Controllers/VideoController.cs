@@ -34,6 +34,7 @@ namespace MrTab.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 if (VideoUrl == null)
                 {
                     ModelState.AddModelError("VideoUrl", "ویدیو خالیست");
@@ -42,12 +43,21 @@ namespace MrTab.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError("MainImage1", "حداقل یک عکس الزامیست");
                 }
+                else if (VideoUrl != null && VideoUrl.Length > 104857600)
+                {
+                    ModelState.AddModelError("VideoUrl", "حجم ویدیو بیشتر از 100 مگابایات است");
+                }
                 else
                 {
                     if (MainImage.Count() != 0)
                     {
                         for (int i = 0; i <= MainImage.Count; i++)
                         {
+                            if (MainImage[i].Length > 20485760)
+                            {
+                                ModelState.AddModelError("MainImage1", "حجم عکس بیشتر از 2 مگابایات است");
+                                return await Task.FromResult(RedirectToAction(nameof(Index)));
+                            }
                             string savePath;
                             if (i == 0)
                             {

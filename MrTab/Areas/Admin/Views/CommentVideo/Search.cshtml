@@ -7,8 +7,8 @@
         <tr id="comment_@item.CommentId" class="list-item">
             <td>@(Model.ToList().IndexOf(item)+1)</td>
             <td>
-                <a href="/ViewSingle/@item.RestaurantId/@item.Restaurant.Name.Replace(" ","-")">
-                    @item.Restaurant.Name
+                <a href="/Blog/@item.DocId/@item.Doc.Title.Replace(" ","-")">
+                    @item.Doc.Title
 
                 </a>
             </td>
@@ -20,6 +20,16 @@
             </td>
             <td>
                 @item.Text
+            </td>
+            <td>
+                @if (item.IsValid)
+                {
+                    <a href="#" onclick="activeDisableComment(@item.CommentId)" class="badge-success badge-pill">بله</a>
+                }
+                else
+                {
+                    <a href="#" onclick="activeDisableComment(@item.CommentId)" class="badge-danger badge-pill">خیر</a>
+                }
             </td>
             <td>
                 <span data-placement="top" data-toggle="tooltip" title="" data-original-title="حذف">
