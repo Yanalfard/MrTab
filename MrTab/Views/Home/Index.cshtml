@@ -146,6 +146,13 @@
 
     <script>
 
+        $("#checkboxLocation").on('change', function () {
+            if ($(this).is(':checked')) {
+                getLocation2()
+            } else {
+                clearLocation()
+            }
+        });
         //const categories = [
         //    'کافه',
         //    'رستوران',

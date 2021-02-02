@@ -31,8 +31,10 @@
                     <span uk-icon="location-outline" id="iconLocation" uk-tooltip="جستجو در اطراف من"></span>
                     <input type="checkbox"
                            onchange="document.getElementById('iconLocation').children[0].style.fill = (this.checked) ? '#FEB432' : '#000'"
-                           name="around" value="" id="" />
+                           name="around" value="" id="checkboxLocation" />
                 </label>
+                <input type="hidden" name="lat" class="latLocation" />
+                <input type="hidden" name="lon" class="lonLocation" />
                 <input type="text" id="txtSearcher" name="name" class="input-invis flex-3" dir="rtl" aria-label="جستجو" placeholder="جستجو..." />
             </form>
             <div class="category-slider uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-scrollspy="cls:uk-animation-fade;delay:2600"
