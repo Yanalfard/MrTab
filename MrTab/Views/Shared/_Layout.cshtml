@@ -34,28 +34,28 @@
 
         <!-- #region nav-header -->
 
-    <div class="nav-header row-reverse uk-box-shadow-large">
-        <nav class="nav-header-right uk-margin-auto-vertical row-reverse uk-margin-auto-left">
-            <a href="/" class="logo btn-icon-darkglass" aria-label="خانه">
-                <img src="~/resources/png/Logo.png" width="48" height="48" alt="لوگو وبسایت" />
-            </a>
-            <a href="#Side-Menu" id="NavMenu" aria-label="منو سایت"
-               uk-toggle class="btn-icon-darkglass display-none show-on-mobile">
-                <span uk-icon="icon:menu-outline;ratio:1.65"></span>
-            </a>
-            <a href="/" class="btn-icon-darkglass" aria-label="خانه">
-                <span class="hide-on-mobile">خانه</span>
-            </a>
-            <a href="/Home/About" class="btn-icon-darkglass" aria-label="درباره ما">
-                <span class="hide-on-mobile">درباره ما</span>
-            </a>
-            <a href="/Home/ContactUs" class="btn-icon-darkglass" aria-label="تماس با ما">
-                <span class="hide-on-mobile">تماس با ما</span>
-            </a>
-            <a href="/Home/Rules" class="btn-icon-darkglass" aria-label="قوانین">
-                <span class="hide-on-mobile">قوانین</span>
-            </a>
-        </nav>
+        <div class="nav-header row-reverse uk-box-shadow-large">
+            <nav class="nav-header-right uk-margin-auto-vertical row-reverse uk-margin-auto-left">
+                <a href="/" class="logo btn-icon-darkglass" aria-label="خانه">
+                    <img src="~/resources/png/Logo.png" width="48" height="48" alt="لوگو وبسایت" />
+                </a>
+                <a href="#Side-Menu" id="NavMenu" aria-label="منو سایت"
+                   uk-toggle class="btn-icon-darkglass display-none show-on-mobile">
+                    <span uk-icon="icon:menu-outline;ratio:1.65"></span>
+                </a>
+                <a href="/" class="btn-icon-darkglass" aria-label="خانه">
+                    <span class="hide-on-mobile">خانه</span>
+                </a>
+                <a href="/Home/About" class="btn-icon-darkglass" aria-label="درباره ما">
+                    <span class="hide-on-mobile">درباره ما</span>
+                </a>
+                <a href="/Home/ContactUs" class="btn-icon-darkglass" aria-label="تماس با ما">
+                    <span class="hide-on-mobile">تماس با ما</span>
+                </a>
+                <a href="/Home/Rules" class="btn-icon-darkglass" aria-label="قوانین">
+                    <span class="hide-on-mobile">قوانین</span>
+                </a>
+            </nav>
 
             <div class="nav-header-left row uk-margin-auto-right">
                 @if (User.Identity.IsAuthenticated)
@@ -155,9 +155,13 @@
         <div class="space-nav-header"></div>
         <!-- #endregion -->
 
-        <button class="btn-icon uk-box-shadow-medium uk-box-shadow-hover-large" onclick="getLocation()"
-                id="btnSuggestOnLocation" uk-tooltip="pos:right; title: جستجو بر اساس مکان"
+        <button class="btn-icon uk-box-shadow-medium uk-box-shadow-hover-large" 
+                dim="delay:5000;text:یافتن رستوران های اطراف شما;pos:right;offset:50" onclick="getLocation()"
+                id="btnSuggestOnLocation" 
                 uk-icon="icon:location-outline;ratio:1.32"></button>
+
+        @*<div n="2" dim="delay:2000;text:hello;pos:left"></div>
+        <div n="3" dim="delay:2000;text:hello;pos:left"></div>*@
 
         @RenderBody()
 
@@ -318,30 +322,30 @@
                         $('#lonLocation').val("");
                     }
 
-                    //function searchWithlocation() {
-                    //    alert('1');
-                    //    if (navigator.geolocation) {
-                    //        alert('2');
-                    //        navigator.geolocation.getCurrentPosition(showPosition2);
-                    //    } else {
-                    //        alert('3');
+                                    //function searchWithlocation() {
+                                    //    alert('1');
+                                    //    if (navigator.geolocation) {
+                                    //        alert('2');
+                                    //        navigator.geolocation.getCurrentPosition(showPosition2);
+                                    //    } else {
+                                    //        alert('3');
 
-                    //        x.innerHTML = "Geolocation is not supported by this browser.";
-                    //    }
-                    //}
-                    //function showPosition2(position) {
-                    //    alert('4');
+                                    //        x.innerHTML = "Geolocation is not supported by this browser.";
+                                    //    }
+                                    //}
+                                    //function showPosition2(position) {
+                                    //    alert('4');
 
-                    //    //UIkit.notification(`${position.coords.latitude} ${position.coords.longitude}`);
-                    //    localStorage.setItem('lat', position.coords.latitude);
-                    //    localStorage.setItem('lon', position.coords.longitude);
-                    //    alert('5');
+                                    //    //UIkit.notification(`${position.coords.latitude} ${position.coords.longitude}`);
+                                    //    localStorage.setItem('lat', position.coords.latitude);
+                                    //    localStorage.setItem('lon', position.coords.longitude);
+                                    //    alert('5');
 
-                    //    var lat = position.coords.latitude;
-                    //    var lon = position.coords.longitude;
-                    //    alert(lat);
-                    //    //window.location.href = "/Home/Search?lat=" + lat + "&lon=" + lon;
-                    //}
+                                    //    var lat = position.coords.latitude;
+                                    //    var lon = position.coords.longitude;
+                                    //    alert(lat);
+                                    //    //window.location.href = "/Home/Search?lat=" + lat + "&lon=" + lon;
+                                    //}
                 </script>
 
                 @RenderSection("Scripts", false)
