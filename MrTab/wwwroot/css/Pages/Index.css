@@ -113,6 +113,13 @@ backdrop-filter: saturate(80%);
       border-radius: 12px 12px 12px 12px;
       padding: 12px;
       width: 80%; }
+      .hero .searcher .hero-button .location-checkbox {
+        min-width: 24px;
+        min-height: 24px; }
+        .hero .searcher .hero-button .location-checkbox input[type=checkbox] {
+          width: 0;
+          height: 0;
+          visibility: collapse; }
       .hero .searcher .hero-button button {
         min-width: 24px;
         max-width: 24px;
@@ -120,6 +127,7 @@ backdrop-filter: saturate(80%);
       .hero .searcher .hero-button .divider {
         border-right: 1px #dfdfdf solid;
         margin-left: 8px;
+        margin-right: 8px;
         margin-top: -12px;
         margin-bottom: -12px;
         height: 48px; }
@@ -221,6 +229,9 @@ backdrop-filter: saturate(80%);
     .hero .hero-button {
       margin: 12px auto auto auto !important;
       font-size: 18px; }
+    .hero #txtSearcher {
+      max-width: 130px !important;
+      margin-left: auto; }
     .hero .category-slider {
       margin: 16px auto 0 auto; }
       .hero .category-slider .uk-slider-items li {
@@ -234,9 +245,11 @@ backdrop-filter: saturate(80%);
       font-size: 18px;
       width: calc(100% - 24px); }
       .hero .searcher .hero-button #txtCategory {
-        max-width: 92px; }
+        max-width: 85px !important; }
+      .hero .searcher .hero-button #cat {
+        max-width: 100px !important; }
       .hero .searcher .hero-button #txtSearcher {
-        max-width: 132px !important;
+        max-width: 120px !important;
         margin-left: auto; }
       .hero .searcher .hero-button .divider {
         margin-left: 6px; }

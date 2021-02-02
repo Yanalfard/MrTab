@@ -1,5 +1,5 @@
 ﻿@model HomeImageTextVm
-<div class="hero column"style="background-image:url('/Images/Home/Baner/@Model.MainBanner')">
+<div class="hero column" style="background-image:url('/Images/Home/Baner/@Model.MainBanner')">
     <div class="hero-alternate uk-margin-auto-vertical">
         @*<div class="hero-navi row">
                 <a href="" uk-icon="icon:person-circle-outline;ratio:1" class="button-icon"></a>
@@ -8,13 +8,13 @@
         <div class="hero-splash uk-margin-auto-vertical">
             @Html.Raw(Model.MainText)
             @*<h1 class="uk-h1  uk-margin-small-bottom" uk-scrollspy="cls:uk-animation-fade;delay:200">
-                دنبال یه جای خوب برای
-                <br />
-                وقت گذروندن می گردی؟
-            </h1>
-            <h2 class="uk-h1 uk-margin-remove-top" uk-scrollspy="cls:uk-animation-fade;delay:1000">
-                <strong dir="rtl"> جای درستی اومدی...</strong>
-            </h2>*@
+                    دنبال یه جای خوب برای
+                    <br />
+                    وقت گذروندن می گردی؟
+                </h1>
+                <h2 class="uk-h1 uk-margin-remove-top" uk-scrollspy="cls:uk-animation-fade;delay:1000">
+                    <strong dir="rtl"> جای درستی اومدی...</strong>
+                </h2>*@
         </div>
         <img src="~/Images/Home/Image/@Model.MainImage" uk-scrollspy="cls:uk-animation-fade;delay:200"
              class="hero-image uk-margin-auto-right"
@@ -27,6 +27,12 @@
                     <ul class="uk-margin-remove" id="drop"></ul>
                 </div>
                 <div role="none" class="divider"></div>
+                <label class="location-checkbox">
+                    <span uk-icon="location-outline" id="iconLocation" uk-tooltip="جستجو در اطراف من"></span>
+                    <input type="checkbox"
+                           onchange="document.getElementById('iconLocation').children[0].style.fill = (this.checked) ? '#FEB432' : '#000'"
+                           name="around" value="" id="" />
+                </label>
                 <input type="text" id="txtSearcher" name="name" class="input-invis flex-3" dir="rtl" aria-label="جستجو" placeholder="جستجو..." />
             </form>
             <div class="category-slider uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-scrollspy="cls:uk-animation-fade;delay:2600"
