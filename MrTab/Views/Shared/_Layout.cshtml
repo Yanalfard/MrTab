@@ -306,8 +306,8 @@
                         //UIkit.notification(`${position.coords.latitude} ${position.coords.longitude}`);
                         localStorage.setItem('lat', position.coords.latitude);
                         localStorage.setItem('lon', position.coords.longitude);
-                        $('#latLocation').val(position.coords.latitude);
-                        $('#lonLocation').val(position.coords.longitude);
+                        $('.latLocation').val(position.coords.latitude);
+                        $('.lonLocation').val(position.coords.longitude);
                     }
                     function showPosition(position) {
                         //UIkit.notification(`${position.coords.latitude} ${position.coords.longitude}`);
@@ -318,8 +318,8 @@
                         window.location.href = "/Home/Search?lat=" + lat + "&lon=" + lon;
                     }
                     function clearLocation(){
-                        $('#latLocation').val("");
-                        $('#lonLocation').val("");
+                        $('.latLocation').val("");
+                        $('.lonLocation').val("");
                     }
 
                                     //function searchWithlocation() {
