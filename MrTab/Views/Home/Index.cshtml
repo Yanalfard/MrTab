@@ -25,15 +25,15 @@
 
 <!-- #region Parallax -->
 
-<div  style="background-image:url('/Images/Home/MobileApp/@Model.MobileAppBackGroundImage')" class="parallax-download uk-margin-medium-top uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex uk-flex-top"
+<div style="background-image:url('/Images/Home/MobileApp/@Model.MobileAppBackGroundImage')" class="parallax-download uk-margin-medium-top uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex uk-flex-top"
      uk-parallax="bgy: -300">
     <div class="parralax-overlay-blur"></div>
     <div class="parralax-content uk-width-1-2-at-l uk-width-2-3-at-m uk-width-4-5-at-s column uk-text-center uk-margin-auto uk-margin-auto-vertical">
         @Html.Raw(Model.MobileAppBackGroundText)
         @*<h1 class=" uk-margin-auto">دانلود اپلیکیشن</h1>B
-        <p class="uk-margin-left uk-margin-right uk-margin-remove-top">
-            یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه د آنها به نوعی وابسته به متن می‌باشد آنها با استفاد ساختگی، صفحه گرافیکی خود
-        </p>*@
+            <p class="uk-margin-left uk-margin-right uk-margin-remove-top">
+                یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه د آنها به نوعی وابسته به متن می‌باشد آنها با استفاد ساختگی، صفحه گرافیکی خود
+            </p>*@
         <button class="uk-margin-auto-left uk-margin-auto-right btn btn-primary btn-round btn-pwa">
             <span class="uk-margin-auto-vertical">دانلود</span>
             <span uk-icon="phone-portrait-outline"></span>
@@ -180,4 +180,132 @@
 
     </script>
 
+    <script>
+
+        if (!localStorage.getItem('locationHinted')) {
+
+            const dimAttr = 'dim';
+            const dimables = document.querySelectorAll(`[${dimAttr}]`);
+            let offset = 16;
+
+            const blackout = document.createElement('div');
+            blackout.style.display = 'none';
+            blackout.style.position = 'fixed';
+            blackout.style.left = 0;
+            blackout.style.right = 0;
+            blackout.style.bottom = 0;
+            blackout.style.top = 0;
+            blackout.style.backdropFilter = 'blur(4px)';
+            blackout.style.backgroundColor = 'rgba(0,0,0,.42)';
+            blackout.style.transition = 'all ease 0.2';
+            document.body.appendChild(blackout);
+            blackout.style.opacity = 0;
+
+            if (!dimables) console.warn('no dimables were found');
+
+            //for (var i = 0; i < dimables.length; i++) {
+            //    dim(dimables[i]).then(() => { if (dimables[i + 1]) { dim(dimables[i + 1]); beep(); } });
+            //}
+
+            dim(dimables[0]);
+
+            function dim(dimable) {
+
+                let properies = {};
+                const raw = dimable.getAttribute(dimAttr);
+
+                if (!raw) console.warn('no properties were found');
+
+                raw.split(';').forEach(i => {
+                    let key = i.split(':')[0];
+                    let val = i.split(':')[1];
+
+                    if (!key) throw 'key was undefined';
+                    if (!val) throw 'val was undefined';
+
+                    properies[key] = val;
+                })
+
+                //properies.getOwnPropertyNames().forEach(i => {
+                //    if (!['delay', 'text', 'pos'].includes(i)) throw 'unknown property'
+                //});
+
+                const dimableClone = dimable.cloneNode();
+
+                let myFirstPromise = new Promise((resolve, reject) => {
+
+                    setTimeout(() => {
+
+                        dimable.style.zIndex = 2000;
+                        blackout.style.zIndex = 1999;
+                        blackout.style.display = 'block';
+
+                        const text = document.createElement('label');
+                        text.style.zIndex = 2001;
+                        text.style.position = 'fixed';
+                        text.style.fontSize = '18px';
+                        text.style.padding = '6px';
+                        text.style.backdropFilter = 'blur(4px)';
+                        text.style.borderRadius = '4px';
+                        text.style.backgroundColor = 'rgba(0,0,0,.04)';
+                        text.style.color = '#fff';
+                        text.style.opacity = 0;
+                        text.style.transition = 'all ease 0.2';
+
+                        text.innerText = properies.text;
+
+                        offset ?? properies.offset;
+
+                        console.log(text.offsetWidth);
+
+                        switch (properies.pos) {
+                            case 'left':
+                                text.style.top = `${dimable.offsetTop + ((dimable.offsetHeight - text.offsetHeight) / 2)}px`;
+                                text.style.left = `${(dimable.offsetLeft - text.offsetWidth) - offset}px`;
+                                break;
+                            case 'right':
+                                text.style.top = `${dimable.offsetTop}px`;
+                                text.style.left = `${dimable.offsetLeft + dimable.offsetWidth + offset}px`;
+                                break;
+                            case 'top':
+                                text.style.top = `${(dimable.offsetTop - text.offsetHeight) - offset}px`;
+                                text.style.left = `${dimable.offsetLeft}px`;
+                                break;
+                            case 'bottom':
+                                text.style.top = `${dimable.offsetTop + dimable.offsetHeight + offset}px`;
+                                text.style.left = `${dimable.offsetLeft}px`;
+                                break;
+                            default:
+                        }
+
+                        document.body.appendChild(text);
+                        text.style.opacity = 1;
+                        blackout.style.opacity = 1;
+                        dimable.style.boxShadow = '0 0 0 8px rgba(254, 195, 91,.8)';
+
+                        blackout.addEventListener('click', () => {
+                            blackout.style.display = 'none';
+                            blackout.style.opacity = 0;
+                            text.style.display = 'none';
+                            text.style.opacity = 0;
+                            dimable.style.boxShadow = dimableClone.style.boxShadow;
+
+                            localStorage.setItem('locationHinted', '1');
+
+                            resolve('Oi')
+                        });
+
+                    }, properies.delay);
+                })
+
+                return myFirstPromise;
+            }
+
+        }
+
+    </script>
+
+
 }
+
+
