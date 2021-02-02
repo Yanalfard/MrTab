@@ -61,6 +61,26 @@ namespace MrTab.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError("MainImage", "عکس  خالیست");
                 }
+                else if (MainImage.Length > 20485760)
+                {
+                    ModelState.AddModelError("MainImage", "حجم عکس بیشتر از 2 مگابایات است");
+                    return await Task.FromResult(RedirectToAction(nameof(Index)));
+                }
+                else if (!MainImage.IsImage())
+                {
+                    ModelState.AddModelError("MainImage", "عکس معتبر نمی باشد");
+                    return await Task.FromResult(RedirectToAction(nameof(Index)));
+                }
+                else if (MainBanner.Length > 20485760)
+                {
+                    ModelState.AddModelError("MainBanner", "حجم عکس بیشتر از 2 مگابایات است");
+                    return await Task.FromResult(RedirectToAction(nameof(Index)));
+                }
+                else if (!MainBanner.IsImage())
+                {
+                    ModelState.AddModelError("MainBanner", "عکس معتبر نمی باشد");
+                    return await Task.FromResult(RedirectToAction(nameof(Index)));
+                }
                 else
                 {
                     if (MainImage != null)
@@ -147,6 +167,16 @@ namespace MrTab.Areas.Admin.Controllers
             {
                 if (MainImage != null)
                 {
+                    if (MainImage.Length > 20485760)
+                    {
+                        ModelState.AddModelError("MainImage", "حجم عکس بیشتر از 2 مگابایات است");
+                        return await Task.FromResult(RedirectToAction(nameof(Index)));
+                    }
+                    else if (!MainImage.IsImage())
+                    {
+                        ModelState.AddModelError("MainImage", "عکس معتبر نمی باشد");
+                        return await Task.FromResult(RedirectToAction(nameof(Index)));
+                    }
                     if (restaurant.MainImage != null)
                     {
                         var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/", restaurant.MainImage);
@@ -168,6 +198,16 @@ namespace MrTab.Areas.Admin.Controllers
                 {
                     if (restaurant.MainBanner != null)
                     {
+                        if (MainBanner.Length > 20485760)
+                        {
+                            ModelState.AddModelError("MainBanner", "حجم عکس بیشتر از 2 مگابایات است");
+                            return await Task.FromResult(RedirectToAction(nameof(Index)));
+                        }
+                        else if (!MainBanner.IsImage())
+                        {
+                            ModelState.AddModelError("MainBanner", "عکس معتبر نمی باشد");
+                            return await Task.FromResult(RedirectToAction(nameof(Index)));
+                        }
                         var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/", restaurant.MainBanner);
                         if (System.IO.File.Exists(imagePath))
                         {

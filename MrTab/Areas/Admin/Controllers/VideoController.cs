@@ -34,7 +34,6 @@ namespace MrTab.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                
                 if (VideoUrl == null)
                 {
                     ModelState.AddModelError("VideoUrl", "ویدیو خالیست");
@@ -51,13 +50,20 @@ namespace MrTab.Areas.Admin.Controllers
                 {
                     if (MainImage.Count() != 0)
                     {
-                        for (int i = 0; i <= MainImage.Count; i++)
+                        for (int i = 0; i < MainImage.Count; i++)
                         {
                             if (MainImage[i].Length > 20485760)
                             {
                                 ModelState.AddModelError("MainImage1", "حجم عکس بیشتر از 2 مگابایات است");
                                 return await Task.FromResult(RedirectToAction(nameof(Index)));
                             }
+                            if (!MainImage[i].IsImage())
+                            {
+                                ModelState.AddModelError("MainImage1", "عکس معتبر نمی باشد");
+                                return await Task.FromResult(RedirectToAction(nameof(Index)));
+                            }
+
+                            string PasVideoUrl = Path.GetExtension(MainImage[i].FileName).ToLower();
                             string savePath;
                             if (i == 0)
                             {
@@ -143,6 +149,16 @@ namespace MrTab.Areas.Admin.Controllers
             {
                 if (MainImage1 != null)
                 {
+                    if (MainImage1.Length > 20485760)
+                    {
+                        ModelState.AddModelError("MainImage1", "حجم عکس بیشتر از 2 مگابایات است");
+                        return await Task.FromResult(RedirectToAction(nameof(Index)));
+                    }
+                    if (!MainImage1.IsImage())
+                    {
+                        ModelState.AddModelError("MainImage1", "عکس معتبر نمی باشد");
+                        return await Task.FromResult(RedirectToAction(nameof(Index)));
+                    }
                     if (video.MainImage1 != null)
                     {
                         var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/", video.MainImage1);
@@ -162,6 +178,16 @@ namespace MrTab.Areas.Admin.Controllers
                 }
                 if (MainImage2 != null)
                 {
+                    if (MainImage2.Length > 20485760)
+                    {
+                        ModelState.AddModelError("MainImage2", "حجم عکس بیشتر از 2 مگابایات است");
+                        return await Task.FromResult(RedirectToAction(nameof(Index)));
+                    }
+                    if (!MainImage2.IsImage())
+                    {
+                        ModelState.AddModelError("MainImage2", "عکس معتبر نمی باشد");
+                        return await Task.FromResult(RedirectToAction(nameof(Index)));
+                    }
                     if (video.MainImage2 != null)
                     {
                         var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/", video.MainImage2);
@@ -181,6 +207,16 @@ namespace MrTab.Areas.Admin.Controllers
                 }
                 if (MainImage3 != null)
                 {
+                    if (MainImage3.Length > 20485760)
+                    {
+                        ModelState.AddModelError("MainImage3", "حجم عکس بیشتر از 2 مگابایات است");
+                        return await Task.FromResult(RedirectToAction(nameof(Index)));
+                    }
+                    if (!MainImage3.IsImage())
+                    {
+                        ModelState.AddModelError("MainImage3", "عکس معتبر نمی باشد");
+                        return await Task.FromResult(RedirectToAction(nameof(Index)));
+                    }
                     if (video.MainImage3 != null)
                     {
                         var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/", video.MainImage3);

@@ -80,24 +80,35 @@ namespace MrTab.Areas.User.Controllers
         {
             if (files != null)
             {
-                TblUser selectedUser = db.User.GetById(SelectUser().UserId);
-                var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Users/", selectedUser.ImageUrl);
-                if (System.IO.File.Exists(imagePath))
+                if (files != null && files.Length > 104857600)
                 {
-                    System.IO.File.Delete(imagePath);
+                    ModelState.AddModelError("ImageUrl", "حجم عکس بیشتر از 2 مگابایات است");
                 }
+                else if (!files.IsImage())
+                {
+                    ModelState.AddModelError("ImageUrl", "عکس معتبر نمی باشد");
+                }
+                else
+                {
+                    TblUser selectedUser = db.User.GetById(SelectUser().UserId);
+                    var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Users/", selectedUser.ImageUrl);
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        System.IO.File.Delete(imagePath);
+                    }
 
-                uploadImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(files.FileName);
-                string savePath = Path.Combine(
-                    Directory.GetCurrentDirectory(), "wwwroot/Images/Users/", uploadImage.Image
-                );
-                using (var stream = new FileStream(savePath, FileMode.Create))
-                {
-                    await files.CopyToAsync(stream);
+                    uploadImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(files.FileName);
+                    string savePath = Path.Combine(
+                        Directory.GetCurrentDirectory(), "wwwroot/Images/Users/", uploadImage.Image
+                    );
+                    using (var stream = new FileStream(savePath, FileMode.Create))
+                    {
+                        await files.CopyToAsync(stream);
+                    }
+                    selectedUser.ImageUrl = uploadImage.Image;
+                    db.User.Save();
+                    return await Task.FromResult(Redirect("/User/User/Index"));
                 }
-                selectedUser.ImageUrl = uploadImage.Image;
-                db.User.Save();
-                return await Task.FromResult(Redirect("/User/User/Index"));
             }
             return await Task.FromResult(Redirect("/User/User/Index"));
         }
