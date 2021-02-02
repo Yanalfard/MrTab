@@ -57,6 +57,16 @@ namespace MrTab.Areas.Admin.Controllers
                 {
                     if (imgup != null)
                     {
+                        if (imgup.Length > 20485760)
+                        {
+                            ModelState.AddModelError("ImageUrl", "حجم عکس بیشتر از 2 مگابایات است");
+                            return await Task.FromResult(RedirectToAction(nameof(Index)));
+                        }
+                        else if (!imgup.IsImage())
+                        {
+                            ModelState.AddModelError("ImageUrl", "عکس معتبر نمی باشد");
+                            return await Task.FromResult(RedirectToAction(nameof(Index)));
+                        }
                         user.ImageUrl = Guid.NewGuid().ToString() + Path.GetExtension(imgup.FileName);
                         string savePath = Path.Combine(
                             Directory.GetCurrentDirectory(), "wwwroot/Images/Users/", user.ImageUrl
@@ -155,6 +165,16 @@ namespace MrTab.Areas.Admin.Controllers
                 {
                     if (imgup != null)
                     {
+                        if (imgup.Length > 20485760)
+                        {
+                            ModelState.AddModelError("ImageUrl", "حجم عکس بیشتر از 2 مگابایات است");
+                            return await Task.FromResult(RedirectToAction(nameof(Index)));
+                        }
+                        else if (!imgup.IsImage())
+                        {
+                            ModelState.AddModelError("ImageUrl", "عکس معتبر نمی باشد");
+                            return await Task.FromResult(RedirectToAction(nameof(Index)));
+                        }
                         if (user.ImageUrl == null)
                         {
                             user.ImageUrl = Guid.NewGuid().ToString() + Path.GetExtension(imgup.FileName);

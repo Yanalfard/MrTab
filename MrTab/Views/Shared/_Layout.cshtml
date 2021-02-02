@@ -282,9 +282,7 @@
                 <script src="~/js/jquery.validate.min.js"></script>
                 <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
                 <script src="~/js/jquery.unobtrusive-ajax.min.js"></script>
-
                 <script>
-
                     var x = document.getElementById("btnSuggestOnLocation");
                     function getLocation() {
                         if (navigator.geolocation) {
@@ -293,7 +291,20 @@
                             x.innerHTML = "Geolocation is not supported by this browser.";
                         }
                     }
-
+                    function getLocation2() {
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(showPosition2);
+                        } else {
+                            x.innerHTML = "Geolocation is not supported by this browser.";
+                        }
+                    }
+                    function showPosition2(position) {
+                        //UIkit.notification(`${position.coords.latitude} ${position.coords.longitude}`);
+                        localStorage.setItem('lat', position.coords.latitude);
+                        localStorage.setItem('lon', position.coords.longitude);
+                        $('#latLocation').val(position.coords.latitude);
+                        $('#lonLocation').val(position.coords.longitude);
+                    }
                     function showPosition(position) {
                         //UIkit.notification(`${position.coords.latitude} ${position.coords.longitude}`);
                         localStorage.setItem('lat', position.coords.latitude);
@@ -302,7 +313,10 @@
                         var lon = position.coords.longitude;
                         window.location.href = "/Home/Search?lat=" + lat + "&lon=" + lon;
                     }
-
+                    function clearLocation(){
+                        $('#latLocation').val("");
+                        $('#lonLocation').val("");
+                    }
 
                     //function searchWithlocation() {
                     //    alert('1');

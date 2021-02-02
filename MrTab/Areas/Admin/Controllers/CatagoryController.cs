@@ -22,17 +22,27 @@ namespace MrTab.Areas.Admin.Controllers
             return View();
         }
 
-         public async Task<IActionResult> Create()
+        public async Task<IActionResult> Create()
         {
             return await Task.FromResult(PartialView());
         }
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(TblCatagory cat, IFormFile ImageUrl,IFormFile IconUrl)
+        public async Task<IActionResult> CreateAsync(TblCatagory cat, IFormFile ImageUrl, IFormFile IconUrl)
         {
             if (ModelState.IsValid)
             {
                 if (ImageUrl != null)
                 {
+                    if (ImageUrl.Length > 20485760)
+                    {
+                        ModelState.AddModelError("ImageUrl", "حجم عکس بیشتر از 2 مگابایات است");
+                        return await Task.FromResult(RedirectToAction(nameof(Index)));
+                    }
+                    else if (!ImageUrl.IsImage())
+                    {
+                        ModelState.AddModelError("ImageUrl", "عکس معتبر نمی باشد");
+                        return await Task.FromResult(RedirectToAction(nameof(Index)));
+                    }
                     cat.ImageUrl = Guid.NewGuid().ToString() + Path.GetExtension(ImageUrl.FileName);
                     string savePath = Path.Combine(
                         Directory.GetCurrentDirectory(), "wwwroot/Images/Catagory/", cat.ImageUrl
@@ -75,6 +85,16 @@ namespace MrTab.Areas.Admin.Controllers
             {
                 if (ImageUrl != null)
                 {
+                    if (ImageUrl.Length > 20485760)
+                    {
+                        ModelState.AddModelError("ImageUrl", "حجم عکس بیشتر از 2 مگابایات است");
+                        return await Task.FromResult(RedirectToAction(nameof(Index)));
+                    }
+                    else if (!ImageUrl.IsImage())
+                    {
+                        ModelState.AddModelError("ImageUrl", "عکس معتبر نمی باشد");
+                        return await Task.FromResult(RedirectToAction(nameof(Index)));
+                    }
                     if (cat.ImageUrl == null)
                     {
                         cat.ImageUrl = Guid.NewGuid().ToString() + Path.GetExtension(ImageUrl.FileName);
