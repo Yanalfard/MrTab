@@ -621,6 +621,10 @@ textarea:focus {
     }
 }
 
+.credits-mobile {
+    display: none;
+}
+
 @media only screen and (max-device-width: 512px) {
     /*    .footer {
         &-counters {
@@ -650,6 +654,22 @@ textarea:focus {
     }*/
     footer {
         display: none !important;
+    }
+
+    .credits-mobile {
+        padding: 10px;
+        padding-top: 20px;
+        display: flex;
+        @include row;
+        -ms-align-content: center;
+        -webkit-align-content: center;
+        align-content: center;
+
+        * {
+            text-align: center;
+            color: #cdc8c3 !important;
+            font-size: 11px;
+        }
     }
 }
 
