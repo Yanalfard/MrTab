@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v0.0.5';
+const staticCacheName = 'site-static-v0.0.6';
 const isOnline = navigator.onLine;
 
 const assets = [
@@ -33,23 +33,24 @@ self.addEventListener('fetch', (evt) => {
     evt.respondWith(
         caches.match(evt.request)
             .then(cacheRes => {
-                return cacheRes || fetch(evt.request)
-                    .then(fetchRes => {
+                return cacheRes
+                    || fetch(evt.request)
+                        .then(fetchRes => {
 
-                        //if the url is a resource, cache it
-                        if (evt.request.url.includes('/css/')
-                            || evt.request.url.includes('/fonts/')
-                            || evt.request.url.includes('/js/')
-                            || evt.request.url.includes('/resources/')) {
-                            return caches.open(staticCacheName).then(cache => {
-                                cache.put(evt.request.url, fetchRes.clone());
+                            //if the url is a resource, cache it
+                            if (evt.request.url.includes('/css/')
+                                || evt.request.url.includes('/fonts/')
+                                || evt.request.url.includes('/js/')
+                                || evt.request.url.includes('/resources/')) {
+                                return caches.open(staticCacheName).then(cache => {
+                                    cache.put(evt.request.url, fetchRes.clone());
 
-                                return fetchRes;
-                            })
-                        }
+                                    return fetchRes;
+                                })
+                            }
 
-                        return fetchRes;
-                    })
+                            return fetchRes;
+                        })
             })
     )
 })

@@ -664,11 +664,19 @@ textarea:focus {
         -ms-align-content: center;
         -webkit-align-content: center;
         align-content: center;
+        text-align: center;
+        color: #cdc8c3 !important;
+        font-size: 10px;
 
-        * {
+        span {
             text-align: center;
             color: #cdc8c3 !important;
-            font-size: 11px;
+            font-size: 10px;
+            margin: auto;
+
+            a {
+                color: #b4aea8 !important;
+            }
         }
     }
 }
