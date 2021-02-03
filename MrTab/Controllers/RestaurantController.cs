@@ -142,9 +142,9 @@ namespace MrTab.Controllers
             return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/" + select.Name.Replace(" ", "-")));
 
         }
-        public async Task<IActionResult> ShowRoute()
+        public async Task<IActionResult> ShowRoute(LocationVm location)
         {
-            return await Task.FromResult(View());
+            return await Task.FromResult(View(location));
         }
 
 

@@ -100,8 +100,10 @@
                 }
 
             </div>
+            @*<a class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom"
+                href="https://www.google.com/maps/dir/Current+Location/(@Model.Lat,@Model.Lon" target="_blank">*@
             <a class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom"
-               href="https://www.google.com/maps/dir/Current+Location/(@Model.Lat,@Model.Lon" target="_blank">
+               onclick="showMapInLocation()">
                 <span uk-icon="location-sharp"></span>
                 @Model.Address
             </a>
@@ -281,6 +283,7 @@
 
 <input type="hidden" asp-for="Lat" />
 <input type="hidden" asp-for="Lon" />
+<input type="hidden"  asp-for="Name" value="@Model.Name.Replace(' ','-')" />
 <input type="hidden" asp-for="RestaurantId" id="RestaurantId" />
 
 
@@ -344,6 +347,26 @@
                     $("#Modal-Report-Comment").html(result);
                 }
             );
+        }
+
+
+        function showMapInLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showMapInLocationshowPosition2);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+        function showMapInLocationshowPosition2(position) {
+            localStorage.setItem('lat', position.coords.latitude);
+            localStorage.setItem('lon', position.coords.longitude);
+
+            var LatMabda = position.coords.latitude;
+            var LonMabda = position.coords.longitude;
+            var LatMagsad = $("#Lat").val();
+            var LonMagsad = $("#Lon").val();
+            var Name = $('#Name').val();
+            window.location.href = "/Restaurant/ShowRoute?LatMabda=" + LatMabda + "&LonMabda=" + LonMabda + "&LatMagsad=" + LatMagsad + "&LonMagsad=" + LonMagsad + "&Name=" + Name;
         }
     </script>
 
