@@ -802,11 +802,17 @@ textarea:focus {
     flex-direction: row;
     -ms-align-content: center;
     -webkit-align-content: center;
-    align-content: center; }
-    .credits-mobile * {
+    align-content: center;
+    text-align: center;
+    color: #cdc8c3 !important;
+    font-size: 10px; }
+    .credits-mobile span {
       text-align: center;
       color: #cdc8c3 !important;
-      font-size: 11px; } }
+      font-size: 10px;
+      margin: auto; }
+      .credits-mobile span a {
+        color: #b4aea8 !important; } }
 
 @media only screen and (max-width: 724px) {
   .footer-counters {

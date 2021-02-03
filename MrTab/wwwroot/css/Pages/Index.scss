@@ -54,6 +54,8 @@
                     width: 0;
                     height: 0;
                     visibility: collapse;
+                    -webkit-appearance: none;
+                    flex: 0;
                 }
             }
 
@@ -317,6 +319,8 @@
                 height: 24px;
                 line-height: 24px;
                 font-size: 17px;
+                vertical-align: central;
+                margin: auto;
 
                 svg {
                     height: 24px;
