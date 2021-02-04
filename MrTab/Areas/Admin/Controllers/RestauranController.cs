@@ -462,5 +462,14 @@ namespace MrTab.Areas.Admin.Controllers
         {
             return View(db.Image.Get(i => i.IsValid == false && i.Status == 2));
         }
+
+        public IActionResult ShowHideImageUser(int id)
+        {
+            TblImage updateImage = db.Image.GetById(id);
+            updateImage.IsValid = !updateImage.IsValid;
+            db.Image.Update(updateImage);
+            db.Image.Save();
+            return RedirectToAction("ImagesUser");
+        }
     }
 }

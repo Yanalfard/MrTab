@@ -13,7 +13,6 @@
                     <th>ردیف</th>
                     <th>نام رستوران</th>
                     <th>تصویر</th>
-                    <th>عنوان</th>
                     <th>وضعیت</th>
                     <th></th>
                 </tr>
@@ -35,11 +34,16 @@
                                 <img style="max-width:250px" src="~/Images/Restaurant/Gallery/@item.Url" class="thumbnail" />
                             </a>
                         </td>
+
                         <td>
-                            <a href="#" class=" badge-pill">رستوران</a>
-                        </td>
-                        <td>
-                            <a class="badge-danger badge-pill">مخفی</a>
+                            @if (item.IsValid)
+                            {
+                                <a href="/Admin/Restauran/ShowHideImageUser/@item.ImageId" class="badge-success badge-pill">نمایش</a>
+                            }
+                            else
+                            {
+                                <a href="/Admin/Restauran/ShowHideImageUser/@item.ImageId" class="badge-danger badge-pill">مخفی</a>
+                            }
                         </td>
                         <td>
                             <span data-placement="top" data-toggle="tooltip" title="" data-original-title="حذف">
