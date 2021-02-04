@@ -36,7 +36,7 @@ namespace MrTab.Controllers
         public async Task<IActionResult> UploadImageAsync(UploadImageRestaurant uploadImage, IFormFile files)
         {
             TblRestaurant select = db.Restaurant.GetById(uploadImage.id);
-            if (files != null)
+            if (files != null && files.IsImage() && files.Length < 20485760)
             {
                 uploadImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(files.FileName);
                 string savePath = Path.Combine(
@@ -53,7 +53,7 @@ namespace MrTab.Controllers
                 db.Image.Add(addImage);
                 db.User.Save();
                 string name = select.Name.Replace(" ", "-");
-                return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/" ));
+                return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/"));
             }
             return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/"));
 
