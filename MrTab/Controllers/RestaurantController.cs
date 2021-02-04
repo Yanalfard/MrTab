@@ -23,13 +23,11 @@ namespace MrTab.Controllers
             TblUser selectUser = db.User.GetById(userId);
             return selectUser;
         }
-        [Route("ViewSingle/{id}/{name}")]
+        [Route("ViewSingle/{id}/{name?}")]
         public IActionResult ViewSingle(int id, string name)
         {
             return View(db.Restaurant.GetById(id));
         }
-
-
         public async Task<IActionResult> UploadImage(int id)
         {
             return await Task.FromResult(ViewComponent("UploadImageRestaurantVm", new { id = id }));
@@ -54,9 +52,10 @@ namespace MrTab.Controllers
                 addImage.Status = 2;
                 db.Image.Add(addImage);
                 db.User.Save();
-                return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/" + select.Name.Replace(" ", "-")));
+                string name = select.Name.Replace(" ", "-");
+                return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/" ));
             }
-            return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/" + select.Name.Replace(" ", "-")));
+            return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/"));
 
         }
 
@@ -70,7 +69,7 @@ namespace MrTab.Controllers
             TblRestaurant select = db.Restaurant.GetById(report.RestaurantId);
             db.Report.Add(report);
             db.Report.Save();
-            return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/" + select.Name.Replace(" ", "-")));
+            return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/"));
 
         }
 
@@ -122,7 +121,7 @@ namespace MrTab.Controllers
             var c = db.Comment.Add(addComment);
             db.Restaurant.Update(select);
             db.Restaurant.Save();
-            return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/" + select.Name.Replace(" ", "-")));
+            return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/"));
 
         }
 
@@ -139,7 +138,7 @@ namespace MrTab.Controllers
             selectComment.IsReported = true;
             db.Comment.Update(selectComment);
             db.Comment.Save();
-            return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/" + select.Name.Replace(" ", "-")));
+            return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/"));
 
         }
         public async Task<IActionResult> ShowRoute(LocationVm location)

@@ -148,7 +148,7 @@
         </div>
     }
 
-    @if (Model.TblFood.Count > 0)
+    @if (Model.TblImage.Where(i => i.Status == 1 && i.IsValid).Count() > 0)
     {
         <div class="carousel carousel-menu uk-box-shadow-medium
          uk-position-relative uk-visible-toggle" uk-scrollspy="cls:uk-animation-fade" tabindex="-1" uk-slider>

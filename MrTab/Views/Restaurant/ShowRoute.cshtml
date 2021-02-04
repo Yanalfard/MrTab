@@ -17,9 +17,15 @@
 <input type="hidden" asp-for="LatMagsad"  />
 <input type="hidden" asp-for="LonMagsad"  />
 <input type="hidden" asp-for="Name"  />
+<style>
+    /*leaflet-routing-container leaflet-bar leaflet-control*/
+    .leaflet-control-container {
+        display: none !important;
+    }
+</style>
 @section Scripts{
 
-    <script src="~/js/jquery-3.5.1.min.js"></script>
+    <script src="~/js/jquery-3.5.1.min.js" ></script>
     <link href="~/leaflet/leaflet.css" rel="stylesheet" />
     <script src="~/leaflet/leaflet.js"></script>
 

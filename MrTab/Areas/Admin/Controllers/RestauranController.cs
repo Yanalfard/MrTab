@@ -457,5 +457,10 @@ namespace MrTab.Areas.Admin.Controllers
         {
             return ViewComponent("RestauranListInAdminVm");
         }
+
+        public IActionResult ImagesUser()
+        {
+            return View(db.Image.Get(i => i.IsValid == false && i.Status == 2));
+        }
     }
 }
