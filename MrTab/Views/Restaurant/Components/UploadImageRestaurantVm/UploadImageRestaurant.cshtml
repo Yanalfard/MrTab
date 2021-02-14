@@ -1,13 +1,13 @@
 ﻿@model UploadImageRestaurant
 <div class="uk-modal-dialog background-transparent uk-flex">
     <div class="popup-croppie column uk-margin-auto" id="uploadImage">
-        <form asp-action="UploadImage" asp-controller="Restaurant" asp-area="" enctype="multipart/form-data" class="controls uk-width-1-1 row ">
+        <div class="controls uk-width-1-1 row ">
             <input type="hidden" name="id" asp-for="id" />
             <input type="file" id="files" required name="files" onchange="fileSelected(this)" class="display-none">
             <label class="button-icon" for="files">
                 <span uk-icon="image"></span>
             </label>
-            <button class="button-icon" onclick="crop()">
+            <button class="button-icon" onclick="uploadImageResturant()">
                 <span uk-icon="crop"></span>
             </button>
             @*<button class="button-icon uk-margin-auto-left" onclick="window.history.back()">
@@ -16,10 +16,63 @@
             <button class="button-icon uk-margin-auto-left uk-modal-close" id="sendImage" disabled>
                 <span uk-icon="close"></span>
             </button>
-        </form>
+        </div>
         <img src="~/resources/svg/Image.svg" id="item" />
     </div>
 </div>
 
 <script src="~/js/jquery.validate.min.js"></script>
 <script src="~/js/jquery.validate.unobtrusive.js"></script>
+
+<script>
+
+
+    function uploadImageResturant() {
+
+        var fileUpload = $("#files").get(0);
+
+        var files = fileUpload.files;
+
+        var data = new FormData();
+        var id = $('#id').val();
+
+        data.append(files[0].name, files[0]);
+
+        $.ajax({
+
+            type: "POST",
+
+            url: "/Restaurant/Upload_File/" + id,
+
+            contentType: false,
+
+            processData: false,
+
+            data: data,
+
+            async: false,
+
+            beforeSend: function () {
+            },
+            success: function (message) {
+                if (message == "true") {
+                    UIkit.notification('عکس شما ارسال شد');
+                    UIkit.modal(document.getElementById('Modal-View')).hide();
+                }
+                else if (message == "false") {
+                    UIkit.notification('عکس مورد نظر معتبر نیست');
+                }
+            },
+
+            error: function () {
+                alert("Error!");
+
+            },
+
+            complete: function () {
+            }
+
+        });
+
+    }
+</script>

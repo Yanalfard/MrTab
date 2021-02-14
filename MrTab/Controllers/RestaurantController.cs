@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using DataLayer.Models;
 using DataLayer.ViewModel;
@@ -33,32 +34,67 @@ namespace MrTab.Controllers
             return await Task.FromResult(ViewComponent("UploadImageRestaurantVm", new { id = id }));
         }
         [HttpPost]
-        public async Task<IActionResult> UploadImageAsync(UploadImageRestaurant uploadImage, IFormFile files)
+        public async Task<string> UploadImage(UploadImageRestaurant uploadImage)
         {
+            var file = Request.Form.Files;
             TblRestaurant select = db.Restaurant.GetById(uploadImage.id);
-            if (files != null && files.IsImage() && files.Length < 20485760)
-            {
-                uploadImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(files.FileName);
-                string savePath = Path.Combine(
-                    Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/Gallery/", uploadImage.Image
-                );
-                using (var stream = new FileStream(savePath, FileMode.Create))
-                {
-                    await files.CopyToAsync(stream);
-                }
-                TblImage addImage = new TblImage();
-                addImage.RestaurantId = uploadImage.id;
-                addImage.Url = uploadImage.Image;
-                addImage.Status = 2;
-                db.Image.Add(addImage);
-                db.User.Save();
-                string name = select.Name.Replace(" ", "-");
-                return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/"));
-            }
-            return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/"));
+            //if (files != null && files.IsImage() && files.Length < 20485760)
+            //{
+            //    uploadImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(files.FileName);
+            //    string savePath = Path.Combine(
+            //        Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/Gallery/", uploadImage.Image
+            //    );
+            //    using (var stream = new FileStream(savePath, FileMode.Create))
+            //    {
+            //        await files.CopyToAsync(stream);
+            //    }
+            //    TblImage addImage = new TblImage();
+            //    addImage.RestaurantId = uploadImage.id;
+            //    addImage.Url = uploadImage.Image;
+            //    addImage.Status = 2;
+            //    db.Image.Add(addImage);
+            //    db.User.Save();
+            //    string name = select.Name.Replace(" ", "-");
+            //    return await Task.FromResult("true");
+            //}
+            return await Task.FromResult("false");
+            // return await Task.FromResult(Redirect("/ViewSingle/" + select.RestaurantId + "/"));
 
         }
 
+        [HttpPost]
+
+        public string Upload_File(UploadImageRestaurant uploadImage)
+        {
+            string result = string.Empty;
+            try
+            {
+                var files = Request.Form.Files.First();
+                if (files != null && files.IsImage() && files.Length < 20485760)
+                {
+                    uploadImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(files.FileName);
+                    string savePath = Path.Combine(
+                        Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/Gallery/", uploadImage.Image
+                    );
+                    using (var stream = new FileStream(savePath, FileMode.Create))
+                    {
+                         files.CopyToAsync(stream);
+                    }
+                    TblImage addImage = new TblImage();
+                    addImage.RestaurantId = uploadImage.id;
+                    addImage.Url = uploadImage.Image;
+                    addImage.Status = 2;
+                    db.Image.Add(addImage);
+                    db.User.Save();
+                    return "true";
+                }
+            }
+            catch (Exception ex)
+            {
+                result = ex.Message;
+            }
+            return "false";
+        }
         public async Task<IActionResult> ReportRestaurant(int id)
         {
             return await Task.FromResult(ViewComponent("ReportRestaurantVm", new { id = id }));
