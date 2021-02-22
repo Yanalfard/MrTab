@@ -45,10 +45,33 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 function hidePwaButtons() {
+
+    let ShouldHide = false;
     isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches;
-    if (!isInStandaloneMode) return;
+
+    let ios_webview = false;
+    if (navigator.platform.substr(0, 2) === 'iP') {
+        if (window.indexedDB) {
+            // WKWebView
+            ios_webview = true;
+        }
+    }
+
+    ShouldHide ||= isInStandaloneMode;
+
+    try {
+        ShouldHide ||= myWebView.getSettings().setUserAgentString("Android");
+    } catch (e) { }
+
+    ShouldHide ||= ios_webview;
+
+    if (!ShouldHide) return;
     for (let addBtn of addButtons) {
         addBtn.style.display = "none";
+    }
+
+    for (let item of document.querySelectorAll('.hideOnStandalone')) {
+        item.style.display = 'none';
     }
 
     const a = document.getElementsByClassName('parallax-download')[0];

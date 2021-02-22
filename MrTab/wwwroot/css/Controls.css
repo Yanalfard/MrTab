@@ -285,6 +285,10 @@ backdrop-filter: saturate(80%);
     padding: 8px 12px;
     min-width: 75px; }
 
+@media only screen and (max-device-width: 512px) {
+  .hideOnStandalone {
+    display: none !important; } }
+
 .show-on-mobile {
   display: none; }
 

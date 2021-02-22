@@ -78,6 +78,12 @@
     }
 }
 
+@media only screen and (max-device-width: 512px) {
+    .hideOnStandalone {
+        display: none!important;
+    }
+}
+
 .show-on-mobile {
     display: none;
 }

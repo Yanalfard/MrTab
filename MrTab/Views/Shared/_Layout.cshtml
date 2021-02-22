@@ -25,7 +25,6 @@
     <link href="~/css/Controls.min.css" rel="stylesheet" />
 
 
-
     @RenderSection("Styles", false)
 
 </head>
@@ -167,7 +166,7 @@
 
         <!-- #region Footer -->
 
-        <footer class="footer column">
+        <footer class="footer column hideOnStandalone" style="display:none">
             <ul class="footer-counters uk-box-shadow-large">
                 @*@await Component.InvokeAsync("InformationFooterVm")*@
 
@@ -251,7 +250,7 @@
             </div>
         </footer>
 
-        <div class="credits-mobile">
+        <div class="credits-mobile hideOnStandalone">
             <span>
                 تمامی حقوق مادی و معنوی این وب سایت برای
                 <a href="#">فودستان</a>
@@ -263,7 +262,7 @@
 
         <!-- #endregion -->
 
-        <div id="Modal-PopupIos" class="popup-ios" uk-modal>
+        <div id="Modal-PopupIos" style="display:none!important" class=" popup-ios hideOnStandalone" uk-modal>
             <div class="column uk-padding">
                 <button class="uk-modal-close btn-icon uk-margin-auto-right" uk-icon="icon:close;ratio:1.5" aria-label="بستن"></button>
                 <h2 class="uk-h3 center">دانلود اپلیکیشن موبایل</h2>
@@ -327,7 +326,7 @@
                         var lon = position.coords.longitude;
                         window.location.href = "/Home/Search?lat=" + lat + "&lon=" + lon;
                     }
-                    function clearLocation(){
+                    function clearLocation() {
                         $('.latLocation').val("");
                         $('.lonLocation').val("");
                     }
