@@ -181,7 +181,5 @@ namespace MrTab.Controllers
         {
             return await Task.FromResult(View(location));
         }
-
-
     }
 }
