@@ -122,10 +122,13 @@ namespace MrTab.Areas.Admin.Controllers
                 {
                     if (updateConfig1.Value != null)
                     {
-                        var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Home/Baner/", homeVm.MainBanner);
-                        if (System.IO.File.Exists(imagePath))
+                        if (homeVm.MainBanner != null)
                         {
-                            System.IO.File.Delete(imagePath);
+                            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Home/Baner/", homeVm.MainBanner);
+                            if (System.IO.File.Exists(imagePath))
+                            {
+                                System.IO.File.Delete(imagePath);
+                            }
                         }
                     }
                     homeVm.MainBanner = Guid.NewGuid().ToString() + Path.GetExtension(MainBanner.FileName);
@@ -134,7 +137,7 @@ namespace MrTab.Areas.Admin.Controllers
                    );
                     using (var stream = new FileStream(savePath, FileMode.Create))
                     {
-                       await MainBanner.CopyToAsync(stream);
+                        await MainBanner.CopyToAsync(stream);
                     }
                 }
                 updateConfig1.Value = homeVm.MainBanner;
@@ -149,11 +152,16 @@ namespace MrTab.Areas.Admin.Controllers
                 {
                     if (updateConfig3.Value != null)
                     {
-                        var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Home/Image/", homeVm.MainImage);
-                        if (System.IO.File.Exists(imagePath))
+
+                        if (homeVm.MainImage != null)
                         {
-                            System.IO.File.Delete(imagePath);
+                            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Home/Image/", homeVm.MainImage);
+                            if (System.IO.File.Exists(imagePath))
+                            {
+                                System.IO.File.Delete(imagePath);
+                            }
                         }
+
                     }
                     homeVm.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(MainImage.FileName);
                     string savePath = Path.Combine(
@@ -176,10 +184,14 @@ namespace MrTab.Areas.Admin.Controllers
                 {
                     if (updateConfig5.Value != null)
                     {
-                        var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Home/MobileApp/", homeVm.MobileAppBackGroundImage);
-                        if (System.IO.File.Exists(imagePath))
+                        if (homeVm.MobileAppBackGroundImage != null)
                         {
-                            System.IO.File.Delete(imagePath);
+
+                            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Home/MobileApp/", homeVm.MobileAppBackGroundImage);
+                            if (System.IO.File.Exists(imagePath))
+                            {
+                                System.IO.File.Delete(imagePath);
+                            }
                         }
                     }
                     homeVm.MobileAppBackGroundImage = Guid.NewGuid().ToString() + Path.GetExtension(MobileApp.FileName);

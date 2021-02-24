@@ -228,6 +228,9 @@ h5.uk-h4 {
     grid-area: action;
     padding: 0 25px 25px 25px; }
 
+.max-height-50vh {
+  max-height: 50vh !important; }
+
 .image-container {
   overflow: hidden;
   top: 68px;

@@ -149,10 +149,13 @@ namespace MrTab.Areas.Admin.Controllers
                 }
                 if (selectedCatById.IconUrl != null)
                 {
-                    var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Catagory/Icon/", selectedCatById.IconUrl);
-                    if (System.IO.File.Exists(imagePath))
+                    if (selectedCatById.IconUrl != null)
                     {
-                        System.IO.File.Delete(imagePath);
+                        var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Catagory/Icon/", selectedCatById.IconUrl);
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
                     }
                 }
                 db.Catagory.Save();

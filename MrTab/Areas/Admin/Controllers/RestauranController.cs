@@ -208,10 +208,14 @@ namespace MrTab.Areas.Admin.Controllers
                             ModelState.AddModelError("MainBanner", "عکس معتبر نمی باشد");
                             return await Task.FromResult(RedirectToAction(nameof(Index)));
                         }
-                        var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/", restaurant.MainBanner);
-                        if (System.IO.File.Exists(imagePath))
+
+                        if (restaurant.MainBanner != null)
                         {
-                            System.IO.File.Delete(imagePath);
+                            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/", restaurant.MainBanner);
+                            if (System.IO.File.Exists(imagePath))
+                            {
+                                System.IO.File.Delete(imagePath);
+                            }
                         }
                     }
                     restaurant.MainBanner = Guid.NewGuid().ToString() + Path.GetExtension(MainBanner.FileName);

@@ -91,10 +91,13 @@ namespace MrTab.Areas.User.Controllers
                 else
                 {
                     TblUser selectedUser = db.User.GetById(SelectUser().UserId);
-                    var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Users/", selectedUser.ImageUrl);
-                    if (System.IO.File.Exists(imagePath))
+                    if (selectedUser.ImageUrl != null)
                     {
-                        System.IO.File.Delete(imagePath);
+                        var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Users/", selectedUser.ImageUrl);
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
                     }
 
                     uploadImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(files.FileName);
