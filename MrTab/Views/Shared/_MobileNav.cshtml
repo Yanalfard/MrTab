@@ -110,7 +110,7 @@
         </li>
         @if (User.Identity.IsAuthenticated)
         {
-            <li>
+            <li style="display:none">
                 <a href="/User/User/Index">
                     <span uk-icon="nav_User"></span>
                     <label>پروفایل</label>
@@ -119,7 +119,7 @@
         }
         else
         {
-            <li>
+            <li style="display:none">
                 <a href="/User/User/Index">
                     <span uk-icon="nav_User"></span>
                     <label>ورود</label>
