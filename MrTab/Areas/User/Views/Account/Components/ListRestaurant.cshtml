@@ -2,7 +2,7 @@
 
 @if (Model.Any())
 {
-    <div class="profile mat mat-margin-top uk-box-shadow-medium">
+    <div class="profile mat mat-margin-top uk-box-shadow-medium" style="overflow-x:scroll">
         <h3 class="uk-margin-auto-left">
             رستوران های شما
         </h3>
@@ -20,7 +20,7 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr  id="restaurant_@item.RestaurantId">
+                    <tr id="restaurant_@item.RestaurantId">
                         <td>
                             <div uk-lightbox>
                                 @if (item.MainImage != null)

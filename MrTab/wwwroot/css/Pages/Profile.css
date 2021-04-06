@@ -187,7 +187,8 @@ backdrop-filter: saturate(80%);
   flex-direction: row-reverse;
   grid-gap: 12px;
   margin-right: auto;
-  margin-bottom: 16px; }
+  margin-bottom: 16px;
+  min-width: 124px; }
 
 .upload-image {
   display: flex;
