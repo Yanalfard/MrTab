@@ -58,14 +58,14 @@ namespace MrTab.Areas.User.Controllers
                 {
                     ModelState.AddModelError("CatagoryId", "دسته بندی وجود ندارد  ");
                 }
-                else if (fileBanner == null)
-                {
-                    ModelState.AddModelError("MainBanner", "عکس بنر خالیست");
-                }
-                else if (fileImage == null)
-                {
-                    ModelState.AddModelError("MainImage", "عکس  خالیست");
-                }
+                //else if (fileBanner == null)
+                //{
+                //    ModelState.AddModelError("MainBanner", "عکس بنر خالیست");
+                //}
+                //else if (fileImage == null)
+                //{
+                //    ModelState.AddModelError("MainImage", "عکس  خالیست");
+                //}
                 else
                 {
                     if (fileImage != null)
