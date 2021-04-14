@@ -3779,11 +3779,10 @@ select.uk-form-width-xsmall {
   /* 4 */
   padding: 15px 15px;
   /* 5 */
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.64);
   /* 6 */
   opacity: 0;
-  transition: opacity 0.15s linear;
-  backdrop-filter: blur(5px); }
+  transition: opacity 0.15s linear; }
 
 /* Phone landscape and bigger */
 @media (min-width: 640px) {
@@ -3835,7 +3834,8 @@ select.uk-form-width-xsmall {
   opacity: 0;
   transform: translateY(-100px);
   transition: 0.3s linear;
-  transition-property: opacity, transform; }
+  transition-property: opacity, transform;
+  backdrop-filter: brightness(50%); }
 
 .uk-modal-dialog.uk-flex.background-transparent {
   width: 320px; }
@@ -4258,7 +4258,7 @@ select.uk-form-width-xsmall {
 .uk-offcanvas-overlay {
   /* 1 */
   width: 112vw;
-  backdrop-filter: blur(6px) brightness(80%);
+  backdrop-filter: brightness(50%);
   /* 2 */
   touch-action: none; }
 

@@ -30,6 +30,11 @@ namespace MrTab.Controllers
             return View(homeVm);
         }
 
+        public IActionResult PrivacyPolicy()
+        {
+            return View();
+        }
+
         public IActionResult About()
         {
             TblConfig updateConfig1 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("AboutPar1"));
