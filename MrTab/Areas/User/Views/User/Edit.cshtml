@@ -30,7 +30,7 @@
                     <input type="hidden" asp-for="MainBanner" name="MainBanner"  />
                     <input type="hidden" asp-for="MainImage" name="MainImage"  />
                     <div class="inputs column">
-                        @*<div class="upload-image uk-margin-auto-left">
+                        <div class="upload-image uk-margin-auto-left">
                             <label class="title">لوگو رستوران <span>(نسبت یک در یک)</span></label>
                             @if (Model.MainImage != null)
                             {
@@ -66,7 +66,7 @@
                                 <input type="file" accept="image/*" id="MainBanner" name="fileBanner" onchange="imageSelected(this)" />
                             </label>
                             <span class="input-error uk-text-danger" asp-validation-for="MainBanner"></span>
-                        </div>*@
+                        </div>
 
                         <div class="form-group">
                             <label autocomplete="username" for="txtName" class="uk-margin-small-bottom" dir="rtl">نام رستوران</label>

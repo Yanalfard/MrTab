@@ -21,7 +21,7 @@
                 @foreach (var item in Model)
                 {
                     <tr  id="restaurant_@item.RestaurantId">
-                        @*<td>
+                        <td>
                             <div uk-lightbox>
                                 @if (item.MainImage != null)
                                 {
@@ -36,7 +36,7 @@
                                     </a>
                                 }
                             </div>
-                        </td>*@
+                        </td>
                         <td>@item.Name</td>
                         <td>@item.City.Name</td>
                         <td class="row">

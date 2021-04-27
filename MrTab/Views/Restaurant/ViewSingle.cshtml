@@ -82,11 +82,12 @@
     <div class="banner-info">
         <div class="column">
             <div class="alternate">
-                <h3 class="uk-margin-remove clickable uk-h5 row banner-material"
+                <a  href="tel:@Model.TellNo1" class="uk-margin-remove clickable uk-h5 row banner-material"
                     onclick="copy('@Model.TellNo1','شماره تلفن کپی شد')">
                     <i uk-icon="call"></i>
                     <span class="uk-margin-small-left">@Model.TellNo1</span>
-                </h3>
+                </a>
+
                 @foreach (var item in Model.TblWorkTime)
                 {
                     <h3 class="uk-margin-small-left clickable uk-margin-remove-vertical uk-h5 row banner-material"
