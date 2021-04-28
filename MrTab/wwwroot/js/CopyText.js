@@ -124,3 +124,22 @@ if (isSafari && isIos) {
         }, 30000);
     }
 }
+
+function share(url, title = "فودستان", text = "شبکه اجتماعی فود توریسم فودستان") {
+
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            text: text,
+            url: url
+        }).then((e) => {
+            console.log(e)
+        }).catch((e) => {
+            console.log(e)
+        });
+    }
+    else {
+        copy(text, 'لینک اشتراک کپی شد');
+    }
+
+}

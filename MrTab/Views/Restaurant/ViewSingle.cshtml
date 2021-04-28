@@ -3,7 +3,7 @@
     ViewBag.Title = Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+`
 @section Styles {
     <link href="~/css/Pages/Restaurant.min.css" rel="stylesheet" />
     <link href="~/css/Packages/leaflet.min.css" rel="stylesheet" />
@@ -31,7 +31,7 @@
             </button>
         </li>
         <li>
-            <button onclick="copy(window.location.href,'لینک صفحه کپی شد')">
+            <button onclick="share(window.location.href, '@Model.Name' , '@Model.Address')">
                 <span uk-icon="share-social"></span>
                 <span>اشتراک گزاری</span>
             </button>
@@ -82,8 +82,9 @@
     <div class="banner-info">
         <div class="column">
             <div class="alternate">
-                <a  href="tel:@Model.TellNo1" class="uk-margin-remove clickable uk-h5 row banner-material"
-                    onclick="copy('@Model.TellNo1','شماره تلفن کپی شد')">
+                @*href="tel:+98@(Model.TellNo1.Substring(1))"*@
+                <a href="tel:@(Model.TellNo1)" class="uk-margin-remove clickable uk-h5 row banner-material"
+                   onclick="copy('@Model.TellNo1','شماره تلفن کپی شد')">
                     <i uk-icon="call"></i>
                     <span class="uk-margin-small-left">@Model.TellNo1</span>
                 </a>
@@ -115,7 +116,7 @@
             <a href="#" onclick="uploadImage()" uk-tooltip="آپلود عکس" class="banner-material clickable uk-margin-small-right" uk-icon="image"></a>
             <a href="#" onclick="reportRestaurant()" uk-tooltip="گزارش مشکل" class="banner-material clickable uk-margin-auto-right" uk-icon="megaphone-outline"></a>
             <span uk-tooltip="اشتراک گذاری رستوران" class="banner-material uk-margin-small-right clickable" uk-icon="share-social-outline"
-                  onclick="copy(window.location.href,'لینک صفحه کپی شد')"></span>
+                  onclick="share(window.location.href, '@Model.Name' , '@Model.Address')"></span>
             <a href="@Model.InstagramUrl" uk-tooltip="پیج اینستاگرام" class="banner-material clickable" uk-icon="logo-instagram"></a>
         </div>
     </div>
@@ -284,7 +285,7 @@
 
 <input type="hidden" asp-for="Lat" />
 <input type="hidden" asp-for="Lon" />
-<input type="hidden"  asp-for="Name" value="@Model.Name.Replace(' ','-')" />
+<input type="hidden" asp-for="Name" value="@Model.Name.Replace(' ','-')" />
 <input type="hidden" asp-for="RestaurantId" id="RestaurantId" />
 
 
@@ -408,10 +409,6 @@
                 counter++;
             }
         </script>*@
-
-    <script>
-        //UIkit.modal(document.getElementById('Modal-Report')).show();
-    </script>
 
     <script name="Upload Image">
         const opt = {
