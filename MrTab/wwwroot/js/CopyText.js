@@ -115,13 +115,11 @@ function btnDownloadClick(e) {
     });
 }
 
-if (isSafari && isIos) {
+if (isIos) {
     if (localStorage.getItem('HasShownPrompt') !== 'shown') {
-        setTimeout(() => {
-            UIkit.modal(document.getElementById('Modal-PopupIos')).show();
-            localStorage.setItem('HasShownPrompt', 'shown');
 
-        }, 30000);
+        UIkit.modal(document.getElementById('Modal-PopupIos')).show();
+        localStorage.setItem('HasShownPrompt', 'shown');
     }
 }
 
