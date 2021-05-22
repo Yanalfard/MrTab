@@ -1,8 +1,6 @@
 ﻿@model TblRestaurant
-@{
-    ViewBag.Title = Model.Name;
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = Model.Name;
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 `
 @section Styles {
     <link href="~/css/Pages/Restaurant.min.css" rel="stylesheet" />
@@ -91,15 +89,14 @@
 
                 @foreach (var item in Model.TblWorkTime)
                 {
-                    <h3 class="uk-margin-small-left clickable uk-margin-remove-vertical uk-h5 row banner-material"
-                        onclick="copy('@item.Day @item.Time','زمان کاری کپی شد')">
-                        <i uk-icon="time-outline"></i>
-                        <span class="rowr">
-                            <span class="uk-margin-small-left" dir="rtl">@item.Time</span>
-                            <span dir="rtl"> @item.Day</span>
-                        </span>
-                    </h3>
-                }
+    <h3 class="uk-margin-small-left clickable uk-margin-remove-vertical uk-h5 row banner-material"
+        onclick="copy('@item.Day @item.Time','زمان کاری کپی شد')">
+        <i uk-icon="time-outline"></i>
+        <span class="rowr">
+            <span class="uk-margin-small-left" dir="rtl">@item.Time</span>
+            <span dir="rtl"> @item.Day</span>
+        </span>
+    </h3>}
 
             </div>
             @*<a class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom"
@@ -129,53 +126,49 @@
 
     @if (Model.TblImage.Where(i => i.Status == 2 && i.IsValid).Count() > 0)
     {
-        <div class="carousel carousel-image uk-position-relative uk-visible-toggle" uk-scrollspy="cls:uk-animation-fade" tabindex="-1" uk-slider>
-            <h4 class="uk-margin-remove-top">
-                عکس های کاربران
-            </h4>
-            <ul uk-lightbox class="uk-slider-items
+<div class="carousel carousel-image uk-position-relative uk-visible-toggle" uk-scrollspy="cls:uk-animation-fade" tabindex="-1" uk-slider>
+    <h4 class="uk-margin-remove-top">
+        عکس های کاربران
+    </h4>
+    <ul uk-lightbox class="uk-slider-items
             uk-child-width-1-3-at-s
             uk-child-width-1-4-at-m
             uk-child-width-1-5-at-l
             uk-child-width-1-5-at-xl">
-                @foreach (var item in Model.TblImage.Where(i => i.Status == 2 && i.IsValid))
-                {
-                    <li>
-                        <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="آپلود شده توسط: نام کاربر1"><img src="~/Images/Restaurant/Gallery/@item.Url" width="220" height="220" alt="عکس از رستوران" /></a>
-                    </li>
-                }
-            </ul>
-            <!-- #endregion -->
-            <!-- #region Menu -->
-        </div>
-    }
+        @foreach (var item in Model.TblImage.Where(i => i.Status == 2 && i.IsValid))
+        {
+<li>
+    <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="آپلود شده توسط: نام کاربر1"><img src="~/Images/Restaurant/Gallery/@item.Url" width="220" height="220" alt="عکس از رستوران" /></a>
+</li>                }
+    </ul>
+    <!-- #endregion -->
+    <!-- #region Menu -->
+</div>}
 
     @if (Model.TblImage.Where(i => i.Status == 1 && i.IsValid).Count() > 0)
     {
-        <div class="carousel carousel-menu uk-box-shadow-medium
+<div class="carousel carousel-menu uk-box-shadow-medium
          uk-position-relative uk-visible-toggle" uk-scrollspy="cls:uk-animation-fade" tabindex="-1" uk-slider>
 
-            <h4 class="uk-margin-remove-top">
-                منو رستوران
-            </h4>
+    <h4 class="uk-margin-remove-top">
+        منو رستوران
+    </h4>
 
-            <ul uk-lightbox class="uk-slider-items
+    <ul uk-lightbox class="uk-slider-items
             uk-child-width-1-3-at-s
             uk-child-width-1-4-at-m
             uk-child-width-1-5-at-l
             uk-child-width-1-5-at-xl">
-                @foreach (var item in Model.TblImage.Where(i => i.Status == 1))
-                {
-                    <li>
-                        <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="@Model.Name"><img src="~/Images/Restaurant/Gallery/@item.Url" width="220" height="365" alt="عکس از منو رستوران" /></a>
-                    </li>
-                }
-            </ul>
+        @foreach (var item in Model.TblImage.Where(i => i.Status == 1))
+        {
+<li>
+    <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="@Model.Name"><img src="~/Images/Restaurant/Gallery/@item.Url" width="220" height="365" alt="عکس از منو رستوران" /></a>
+</li>                }
+    </ul>
 
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+    <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 
-        </div>
-    }
+</div>}
 
     <div class="info uk-margin-medium-top">
         <div class="mat meals" uk-scrollspy="cls:uk-animation-fade;delay:300">
@@ -183,10 +176,9 @@
             <ul class="auto-row uk-margin-remove-bottom uk-padding-remove">
                 @foreach (var item in Model.TblFood)
                 {
-                    <li>
-                        <a>@item.Name</a>
-                    </li>
-                }
+    <li>
+        <a>@item.Name</a>
+    </li>}
             </ul>
         </div>
         <div class="mat progbar foodstyle" uk-scrollspy="cls:uk-animation-fade;delay:300">
@@ -236,11 +228,10 @@
             <ul class="uk-margin-remove ">
                 @foreach (var item in Model.TblProperty)
                 {
-                    <li>
-                        <span uk-icon="checkmark-circle"></span>
-                        <span>@item.Name</span>
-                    </li>
-                }
+    <li>
+        <span uk-icon="checkmark-circle"></span>
+        <span>@item.Name</span>
+    </li>}
 
             </ul>
         </div>
@@ -261,21 +252,18 @@
 
         @if (Model.TblComment.Where(i => i.IsValid).Count() > 0)
         {
-            <ul class="uk-margin-remove uk-padding-remove">
-                @foreach (var item in Model.TblComment.Where(i => i.IsValid))
-                {
-                    <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" model="item" /></li>
-                }
-            </ul>
-        }
-        else
-        {
-            <div class="column">
-                <img src="~/resources/svg/btfToComment.svg" width="164" height="164" class="uk-margin-auto uk-margin-medium-top" alt="کسی نظری نداده است" />
-                <h3 class="h4 uk-text-center uk-margin-remove-bottom uk-margin-top">اولین نظر را شما بدهید</h3>
-                <p class="uk-text-muted uk-text-center uk-margin-small-top">هنوز کسی درباره این مکان نظری نداده است</p>
-            </div>
-        }
+<ul class="uk-margin-remove uk-padding-remove">
+    @foreach (var item in Model.TblComment.Where(i => i.IsValid))
+    {
+<li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" model="item" /></li>                }
+</ul> }
+            else
+            {
+<div class="column">
+    <img src="~/resources/svg/btfToComment.svg" width="164" height="164" class="uk-margin-auto uk-margin-medium-top" alt="کسی نظری نداده است" />
+    <h3 class="h4 uk-text-center uk-margin-remove-bottom uk-margin-top">اولین نظر را شما بدهید</h3>
+    <p class="uk-text-muted uk-text-center uk-margin-small-top">هنوز کسی درباره این مکان نظری نداده است</p>
+</div>}
 
     </div>
 

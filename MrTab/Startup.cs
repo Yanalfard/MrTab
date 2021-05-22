@@ -1,3 +1,4 @@
+using Elmah.Io.AspNetCore;
 using GoogleReCaptcha.V3;
 using GoogleReCaptcha.V3.Interface;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -42,6 +43,14 @@ namespace MrTab
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(43200);
             });
             #endregion
+
+
+
+            services.AddElmahIo(o =>
+            {
+                o.ApiKey = "147813aa9baa4d7f9b9a92fbcb64e83c";
+                o.LogId = new Guid("7dec2868-52e9-4d91-9cbd-c43fee492857");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,7 +68,7 @@ namespace MrTab
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
-
+            app.UseElmahIo();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
