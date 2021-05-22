@@ -4,11 +4,13 @@
         <div class="controls uk-width-1-1 row ">
             <input type="hidden" name="id" asp-for="id" />
             <input type="file" id="files" required name="files" onchange="fileSelected(this)" class="display-none">
-            <label class="button-icon" for="files">
+            <label class="btn-icon" style="margin: auto 16px" for="files">
+                <span>انتخاب</span>
                 <span uk-icon="image"></span>
             </label>
-            <button class="button-icon" onclick="uploadImageResturant()">
-                <span uk-icon="crop"></span>
+            <button class="btn-icon uk-margin-small-left" onclick="uploadImageResturant()">
+                <span >آپلود</span>
+                <span uk-icon="cloud-upload-outline"></span>
             </button>
             @*<button class="button-icon uk-margin-auto-left" onclick="window.history.back()">
                             <span uk-icon="close"></span>
