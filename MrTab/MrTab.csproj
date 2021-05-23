@@ -2541,6 +2541,7 @@
 
   <ItemGroup>
     <PackageReference Include="AspNetCore.RouteAnalyzer" Version="0.5.3" />
+    <PackageReference Include="CoreCompat.System.Drawing.v2" Version="5.2.0-preview1-r131" />
     <PackageReference Include="Elmah.Io.AspNetCore" Version="3.11.17" />
     <PackageReference Include="GoogleReCaptcha.V3" Version="1.3.0" />
     <PackageReference Include="kavenegar" Version="1.2.4" />
@@ -2575,9 +2576,11 @@
     <Folder Include="wwwroot\Images\Home\Baner\" />
     <Folder Include="wwwroot\Images\Home\Image\" />
     <Folder Include="wwwroot\Images\Home\MobileApp\" />
-    <Folder Include="wwwroot\Images\Restaurant\Gallery\" />
-    <Folder Include="wwwroot\Images\Users\" />
-    <Folder Include="wwwroot\Images\Video\Images\" />
+    <Folder Include="wwwroot\Images\Restaurant\Gallery\thumb\" />
+    <Folder Include="wwwroot\Images\Restaurant\thumb\" />
+    <Folder Include="wwwroot\Images\Users\thumb\" />
+    <Folder Include="wwwroot\Images\Video\Images\thumb\" />
+    <Folder Include="wwwroot\Images\Video\thumb\" />
   </ItemGroup>
 
 </Project>

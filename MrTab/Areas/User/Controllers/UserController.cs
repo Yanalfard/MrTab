@@ -78,6 +78,11 @@ namespace MrTab.Areas.User.Controllers
                         {
                             await fileImage.CopyToAsync(stream);
                         }
+                        /// #region resize Image
+                        ImageConvertor imgResizer = new ImageConvertor();
+                        string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/thumb", restaurant.MainImage);
+                         imgResizer.Image_resize(savePath, thumbPath, 200);
+                        /// #endregion
                     }
                     if (fileBanner != null)
                     {
@@ -89,6 +94,11 @@ namespace MrTab.Areas.User.Controllers
                         {
                             await fileBanner.CopyToAsync(stream);
                         }
+                        /// #region resize Image
+                        ImageConvertor imgResizer = new ImageConvertor();
+                        string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/thumb", restaurant.MainBanner);
+                         imgResizer.Image_resize(savePath, thumbPath, 200);
+                        /// #endregion
                     }
                     TblRestaurant addRestaurant = new TblRestaurant();
                     addRestaurant.Address = restaurant.Address;
@@ -231,6 +241,11 @@ namespace MrTab.Areas.User.Controllers
                             {
                                 System.IO.File.Delete(imagePath);
                             }
+                            var imagePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/thumb", restaurant.MainImage);
+                            if (System.IO.File.Exists(imagePath2))
+                            {
+                                System.IO.File.Delete(imagePath2);
+                            }
                         }
                         restaurant.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(fileImage.FileName);
                         string savePath = Path.Combine(
@@ -240,6 +255,11 @@ namespace MrTab.Areas.User.Controllers
                         {
                             await fileImage.CopyToAsync(stream);
                         }
+                        /// #region resize Image
+                        ImageConvertor imgResizer = new ImageConvertor();
+                        string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/thumb", restaurant.MainImage);
+                         imgResizer.Image_resize(savePath, thumbPath, 200);
+                        /// #endregion
                     }
                     if (fileBanner != null)
                     {
@@ -250,6 +270,11 @@ namespace MrTab.Areas.User.Controllers
                             {
                                 System.IO.File.Delete(imagePath);
                             }
+                            var imagePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/thumb", restaurant.MainBanner);
+                            if (System.IO.File.Exists(imagePath2))
+                            {
+                                System.IO.File.Delete(imagePath2);
+                            }
                         }
                         restaurant.MainBanner = Guid.NewGuid().ToString() + Path.GetExtension(fileBanner.FileName);
                         string savePath = Path.Combine(
@@ -259,6 +284,11 @@ namespace MrTab.Areas.User.Controllers
                         {
                             await fileBanner.CopyToAsync(stream);
                         }
+                        /// #region resize Image
+                        ImageConvertor imgResizer = new ImageConvertor();
+                        string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/thumb", restaurant.MainBanner);
+                         imgResizer.Image_resize(savePath, thumbPath, 200);
+                        /// #endregion
                     }
                     TblRestaurant updateRestaurant = db.Restaurant.GetById(restaurant.RestaurantId);
                     updateRestaurant.Address = restaurant.Address;
@@ -359,6 +389,11 @@ namespace MrTab.Areas.User.Controllers
                         {
                             System.IO.File.Delete(imagePath);
                         }
+                        var imagePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/thumb", selectedRestaurantById.MainImage);
+                        if (System.IO.File.Exists(imagePath2))
+                        {
+                            System.IO.File.Delete(imagePath2);
+                        }
                     }
                     if (selectedRestaurantById.MainBanner != null)
                     {
@@ -366,6 +401,11 @@ namespace MrTab.Areas.User.Controllers
                         if (System.IO.File.Exists(imagePath))
                         {
                             System.IO.File.Delete(imagePath);
+                        }
+                        var imagePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/thumb", selectedRestaurantById.MainBanner);
+                        if (System.IO.File.Exists(imagePath2))
+                        {
+                            System.IO.File.Delete(imagePath2);
                         }
                     }
                     List<TblImage> selectImages = db.Image.Get().Where(i => i.RestaurantId == id).ToList();
@@ -379,6 +419,11 @@ namespace MrTab.Areas.User.Controllers
                                 if (System.IO.File.Exists(imagePath))
                                 {
                                     System.IO.File.Delete(imagePath);
+                                }
+                                var imagePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/Gallery/thumb", item.Url);
+                                if (System.IO.File.Exists(imagePath2))
+                                {
+                                    System.IO.File.Delete(imagePath2);
                                 }
                             }
                         }
@@ -416,6 +461,11 @@ namespace MrTab.Areas.User.Controllers
                     {
                         await fileImage.CopyToAsync(stream);
                     }
+                    /// #region resize Image
+                    ImageConvertor imgResizer = new ImageConvertor();
+                    string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/Gallery/thumb", Image.Url);
+                     imgResizer.Image_resize(savePath, thumbPath, 200);
+                    /// #endregion
                     db.Image.Add(new TblImage()
                     {
                         Url = Image.Url,
@@ -444,6 +494,12 @@ namespace MrTab.Areas.User.Controllers
                         {
                             System.IO.File.Delete(imagePath);
                         }
+                        var imagePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/Gallery/thumb", selectedRestaurantById.Url);
+                        if (System.IO.File.Exists(imagePath2))
+                        {
+                            System.IO.File.Delete(imagePath2);
+                        }
+
                     }
                     db.Image.Save();
                     return await Task.FromResult("true");

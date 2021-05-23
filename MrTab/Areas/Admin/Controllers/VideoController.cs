@@ -75,6 +75,12 @@ namespace MrTab.Areas.Admin.Controllers
                                 {
                                     await MainImage[i].CopyToAsync(stream);
                                 }
+                                /// #region resize Image
+                                ImageConvertor imgResizer = new ImageConvertor();
+                                string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/thumb/", video.MainImage1);
+                                imgResizer.Image_resize(savePath, thumbPath, 200);
+                                /// #endregion
+
                             }
                             else if (i == 1)
                             {
@@ -86,6 +92,11 @@ namespace MrTab.Areas.Admin.Controllers
                                 {
                                     await MainImage[i].CopyToAsync(stream);
                                 }
+                                /// #region resize Image
+                                ImageConvertor imgResizer = new ImageConvertor();
+                                string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/thumb/", video.MainImage2);
+                                imgResizer.Image_resize(savePath, thumbPath, 200);
+                                /// #endregion
                             }
                             else if (i == 2)
                             {
@@ -97,6 +108,11 @@ namespace MrTab.Areas.Admin.Controllers
                                 {
                                     await MainImage[i].CopyToAsync(stream);
                                 }
+                                /// #region resize Image
+                                ImageConvertor imgResizer = new ImageConvertor();
+                                string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/thumb/", video.MainImage3);
+                                imgResizer.Image_resize(savePath, thumbPath, 200);
+                                /// #endregion
                             }
 
                         }
@@ -111,6 +127,7 @@ namespace MrTab.Areas.Admin.Controllers
                         {
                             await VideoUrl.CopyToAsync(stream);
                         }
+
                     }
                     TblDoc addDoc = new TblDoc();
                     addDoc.Title = video.Title;
@@ -166,6 +183,11 @@ namespace MrTab.Areas.Admin.Controllers
                         {
                             System.IO.File.Delete(imagePath);
                         }
+                        var imagePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/thumb/", video.MainImage1);
+                        if (System.IO.File.Exists(imagePath2))
+                        {
+                            System.IO.File.Delete(imagePath2);
+                        }
                     }
                     video.MainImage1 = Guid.NewGuid().ToString() + Path.GetExtension(MainImage1.FileName);
                     string savePath = Path.Combine(
@@ -175,6 +197,11 @@ namespace MrTab.Areas.Admin.Controllers
                     {
                         await MainImage1.CopyToAsync(stream);
                     }
+                    /// #region resize Image
+                    ImageConvertor imgResizer = new ImageConvertor();
+                    string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/thumb/", video.MainImage1);
+                    imgResizer.Image_resize(savePath, thumbPath, 200);
+                    /// #endregion
                 }
                 if (MainImage2 != null)
                 {
@@ -195,6 +222,11 @@ namespace MrTab.Areas.Admin.Controllers
                         {
                             System.IO.File.Delete(imagePath);
                         }
+                        var imagePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/thumb/", video.MainImage2);
+                        if (System.IO.File.Exists(imagePath2))
+                        {
+                            System.IO.File.Delete(imagePath2);
+                        }
                     }
                     video.MainImage2 = Guid.NewGuid().ToString() + Path.GetExtension(MainImage2.FileName);
                     string savePath = Path.Combine(
@@ -204,6 +236,11 @@ namespace MrTab.Areas.Admin.Controllers
                     {
                         await MainImage2.CopyToAsync(stream);
                     }
+                    /// #region resize Image
+                    ImageConvertor imgResizer = new ImageConvertor();
+                    string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/thumb/", video.MainImage2);
+                    imgResizer.Image_resize(savePath, thumbPath, 200);
+                    /// #endregion
                 }
                 if (MainImage3 != null)
                 {
@@ -224,6 +261,11 @@ namespace MrTab.Areas.Admin.Controllers
                         {
                             System.IO.File.Delete(imagePath);
                         }
+                        var imagePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/thumb/", video.MainImage3);
+                        if (System.IO.File.Exists(imagePath2))
+                        {
+                            System.IO.File.Delete(imagePath2);
+                        }
                     }
                     video.MainImage3 = Guid.NewGuid().ToString() + Path.GetExtension(MainImage3.FileName);
                     string savePath = Path.Combine(
@@ -233,6 +275,11 @@ namespace MrTab.Areas.Admin.Controllers
                     {
                         await MainImage3.CopyToAsync(stream);
                     }
+                    /// #region resize Image
+                    ImageConvertor imgResizer = new ImageConvertor();
+                    string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/thumb/", video.MainImage3);
+                    imgResizer.Image_resize(savePath, thumbPath, 200);
+                    /// #endregion
                 }
                 if (VideoUrl != null)
                 {
@@ -275,26 +322,41 @@ namespace MrTab.Areas.Admin.Controllers
             {
                 if (selectedDocById.MainImage1 != null)
                 {
-                    var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Vidoe/Images/", selectedDocById.MainImage1);
+                    var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/", selectedDocById.MainImage1);
                     if (System.IO.File.Exists(imagePath))
                     {
                         System.IO.File.Delete(imagePath);
+                    }
+                    var imagePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/thumb/", selectedDocById.MainImage1);
+                    if (System.IO.File.Exists(imagePath2))
+                    {
+                        System.IO.File.Delete(imagePath2);
                     }
                 }
                 if (selectedDocById.MainImage2 != null)
                 {
-                    var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Vidoe/Images/", selectedDocById.MainImage2);
+                    var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/", selectedDocById.MainImage2);
                     if (System.IO.File.Exists(imagePath))
                     {
                         System.IO.File.Delete(imagePath);
                     }
+                    var imagePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/thumb/", selectedDocById.MainImage2);
+                    if (System.IO.File.Exists(imagePath2))
+                    {
+                        System.IO.File.Delete(imagePath2);
+                    }
                 }
                 if (selectedDocById.MainImage3 != null)
                 {
-                    var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Vidoe/Images/", selectedDocById.MainImage3);
+                    var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/", selectedDocById.MainImage3);
                     if (System.IO.File.Exists(imagePath))
                     {
                         System.IO.File.Delete(imagePath);
+                    }
+                    var imagePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Video/Images/thumb/", selectedDocById.MainImage3);
+                    if (System.IO.File.Exists(imagePath2))
+                    {
+                        System.IO.File.Delete(imagePath2);
                     }
                 }
                 if (selectedDocById.VideoUrl != null)

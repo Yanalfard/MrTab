@@ -34,7 +34,7 @@
                             <label class="title">لوگو رستوران <span>(نسبت یک در یک)</span></label>
                             @if (Model.MainImage != null)
                             {
-                                <img class="preview" src="/Images/Restaurant/@Model.MainImage" alt=" @Model.Name" />
+                                <img class="preview" src="/Images/Restaurant/thumb/@Model.MainImage" alt=" @Model.Name" />
                             }
                             else
                             {
@@ -53,7 +53,7 @@
                             <label class="title">عکس بنر <span>(بدون نسبت)</span></label>
                             @if (Model.MainBanner != null)
                             {
-                                <img class="preview" src="/Images/Restaurant/@Model.MainBanner" alt=" @Model.Name" />
+                                <img class="preview" src="/Images/Restaurant/thumb/@Model.MainBanner" alt=" @Model.Name" />
                             }
                             else
                             {
