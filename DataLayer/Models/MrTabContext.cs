@@ -34,15 +34,18 @@ namespace DataLayer.Models
         public virtual DbSet<TblRole> TblRole { get; set; }
         public virtual DbSet<TblUser> TblUser { get; set; }
         public virtual DbSet<TblWorkTime> TblWorkTime { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=185.55.224.183;Initial Catalog=asamedc1_Foodestan;User ID=asamedc1_Yanal2;Password=2fjS9CYVYkgS5V8");
-            }
-        }
+=> optionsBuilder
+.UseLazyLoadingProxies()
+.UseSqlServer("Data Source=185.55.224.183;Initial Catalog=asamedc1_Foodestan;User ID=asamedc1_Yanal2;Password=2fjS9CYVYkgS5V8");
+        //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //        {
+        //            if (!optionsBuilder.IsConfigured)
+        //            {
+        //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+        //                optionsBuilder.UseSqlServer("Data Source=185.55.224.183;Initial Catalog=asamedc1_Foodestan;User ID=asamedc1_Yanal2;Password=2fjS9CYVYkgS5V8");
+        //            }
+        //        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
