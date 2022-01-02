@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace DataLayer.Models
+namespace DataLayer.Models1
 {
     [Table("TblUser", Schema = "dbo")]
     public partial class TblUser

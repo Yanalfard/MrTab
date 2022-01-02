@@ -2545,6 +2545,7 @@
     <PackageReference Include="Elmah.Io.AspNetCore" Version="3.11.17" />
     <PackageReference Include="GoogleReCaptcha.V3" Version="1.3.0" />
     <PackageReference Include="kavenegar" Version="1.2.4" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

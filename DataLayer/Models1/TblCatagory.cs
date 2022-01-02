@@ -7,23 +7,28 @@ using System.ComponentModel.DataAnnotations.Schema;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace DataLayer.Models
+namespace DataLayer.Models1
 {
-    [Table("TblCity", Schema = "dbo")]
-    public partial class TblCity
+    [Table("TblCatagory", Schema = "dbo")]
+    public partial class TblCatagory
     {
-        public TblCity()
+        public TblCatagory()
         {
             TblRestaurant = new HashSet<TblRestaurant>();
         }
 
         [Key]
-        public int CityId { get; set; }
+        public int CatagoryId { get; set; }
         [Required]
         [StringLength(150)]
         public string Name { get; set; }
+        [StringLength(500)]
+        public string ImageUrl { get; set; }
+        public bool IsHome { get; set; }
+        [StringLength(150)]
+        public string IconUrl { get; set; }
 
-        [InverseProperty("City")]
+        [InverseProperty("Catagory")]
         public virtual ICollection<TblRestaurant> TblRestaurant { get; set; }
     }
 }

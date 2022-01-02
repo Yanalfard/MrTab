@@ -9,6 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataLayer.Models
 {
+    [Table("TblImage", Schema = "dbo")]
     public partial class TblImage
     {
         [Key]

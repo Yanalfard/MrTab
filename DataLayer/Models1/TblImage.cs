@@ -7,20 +7,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace DataLayer.Models
+namespace DataLayer.Models1
 {
-    [Table("TblFoodType", Schema = "dbo")]
-    public partial class TblFoodType
+    [Table("TblImage", Schema = "dbo")]
+    public partial class TblImage
     {
         [Key]
-        public int FoodTypeId { get; set; }
-        [Required]
-        [StringLength(150)]
-        public string Name { get; set; }
+        public int ImageId { get; set; }
+        [StringLength(1000)]
+        public string Url { get; set; }
+        public int Status { get; set; }
         public int RestaurantId { get; set; }
+        public bool IsValid { get; set; }
 
         [ForeignKey(nameof(RestaurantId))]
-        [InverseProperty(nameof(TblRestaurant.TblFoodType))]
+        [InverseProperty(nameof(TblRestaurant.TblImage))]
         public virtual TblRestaurant Restaurant { get; set; }
     }
 }

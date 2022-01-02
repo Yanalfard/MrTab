@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace DataLayer.Models
+namespace DataLayer.Models1
 {
     [Table("TblDoc", Schema = "dbo")]
     public partial class TblDoc
@@ -31,9 +31,10 @@ namespace DataLayer.Models
         public string MainImage2 { get; set; }
         [StringLength(500)]
         public string MainImage3 { get; set; }
-        [StringLength(500)]
+        [StringLength(150)]
         public string Title { get; set; }
-        public int LikeCount { get; set; }
+        public int? LikeCount { get; set; }
+
         [InverseProperty("Doc")]
         public virtual ICollection<TblComment> TblComment { get; set; }
     }
