@@ -14,18 +14,6 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
-    <Content Remove="wwwroot\Images\Catagory\4547209f-ac2a-445b-964d-5133608b0fb2.jpg" />
-    <Content Remove="wwwroot\Images\Catagory\53adebbc-dd90-44a4-871d-6592a0105997.jpg" />
-    <Content Remove="wwwroot\Images\Catagory\59223a3a-9861-4c52-bf7f-afb123757fc4.jpeg" />
-    <Content Remove="wwwroot\Images\Catagory\decf7487-1aed-46ff-b208-8ddc063bcb70.jpg" />
-    <Content Remove="wwwroot\Images\Catagory\e163ed99-87ca-4efa-a975-ecd608d8c435.jpg" />
-    <Content Remove="wwwroot\Images\Catagory\e57ef5c4-24cb-43b9-9bab-f2bb212321e9.jpg" />
-    <Content Remove="wwwroot\Images\Catagory\Icon\06525350-43b2-412f-9e5f-04a04edff8c6.svg" />
-    <Content Remove="wwwroot\Images\Catagory\Icon\2ef3575c-c457-4995-977f-53b018b78a4b.svg" />
-    <Content Remove="wwwroot\Images\Catagory\Icon\8ce70706-ee22-41c5-81cd-ca384aecac85.svg" />
-    <Content Remove="wwwroot\Images\Catagory\Icon\910c5305-6049-42d3-9056-3ed7702aa35d.svg" />
-    <Content Remove="wwwroot\Images\Catagory\Icon\9d20acfd-7d8a-43a3-9de9-7958c4913562.svg" />
-    <Content Remove="wwwroot\Images\Catagory\Icon\e9495eb9-0bcc-4560-b222-3ec9cf28c51b.svg" />
     <Content Remove="wwwroot\Images\Restaurant\0e66eafb-0d6b-4b9f-9328-bed3dea2eb30.JPG" />
     <Content Remove="wwwroot\Images\Restaurant\1bdff55d-237b-443f-ab9d-b0b0125c66ec.GIF" />
     <Content Remove="wwwroot\Images\Restaurant\1ff7d705-325e-46db-90bd-fb99e52e5ced.JPG" />
@@ -2535,6 +2523,15 @@
     <None Include="wwwroot\ckeditor\_source\skins\office2003\skin.js" />
     <None Include="wwwroot\ckeditor\_source\skins\v2\skin.js" />
     <None Include="wwwroot\ckeditor\_source\themes\default\theme.js" />
+    <None Include="wwwroot\Images\Catagory\Icon\06525350-43b2-412f-9e5f-04a04edff8c6.svg" />
+    <None Include="wwwroot\Images\Catagory\Icon\2ef3575c-c457-4995-977f-53b018b78a4b.svg" />
+    <None Include="wwwroot\Images\Catagory\Icon\495b4e11-b6ce-4317-bafb-3fc1262e4b0b.svg" />
+    <None Include="wwwroot\Images\Catagory\Icon\8ce70706-ee22-41c5-81cd-ca384aecac85.svg" />
+    <None Include="wwwroot\Images\Catagory\Icon\910c5305-6049-42d3-9056-3ed7702aa35d.svg" />
+    <None Include="wwwroot\Images\Catagory\Icon\9d20acfd-7d8a-43a3-9de9-7958c4913562.svg" />
+    <None Include="wwwroot\Images\Catagory\Icon\c533a9d5-7322-4514-ba2d-8c5330adf0f3.svg" />
+    <None Include="wwwroot\Images\Catagory\Icon\e9495eb9-0bcc-4560-b222-3ec9cf28c51b.svg" />
+    <None Include="wwwroot\Images\Catagory\Icon\ebc56a09-edb3-4617-abaa-15eeac20adc3.svg" />
     <None Include="wwwroot\leaflet\leaflet.js" />
     <None Include="wwwroot\sw.js" />
   </ItemGroup>
@@ -2573,10 +2570,6 @@
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Scripts\" />
     <Folder Include="Views\Shared\Components\InformationFooterVm\" />
-    <Folder Include="wwwroot\Images\Catagory\Icon\" />
-    <Folder Include="wwwroot\Images\Home\Baner\" />
-    <Folder Include="wwwroot\Images\Home\Image\" />
-    <Folder Include="wwwroot\Images\Home\MobileApp\" />
     <Folder Include="wwwroot\Images\Restaurant\Gallery\thumb\" />
     <Folder Include="wwwroot\Images\Restaurant\thumb\" />
     <Folder Include="wwwroot\Images\Users\thumb\" />
