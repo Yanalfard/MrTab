@@ -114,7 +114,7 @@ backdrop-filter: saturate(80%);
       padding: 12px;
       width: 80%; }
       .hero .searcher .hero-button .location-checkbox {
-        min-width: 24px;
+        min-width: 30px;
         min-height: 24px; }
         .hero .searcher .hero-button .location-checkbox input[type=checkbox] {
           width: 0;

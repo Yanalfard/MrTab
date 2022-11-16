@@ -123,7 +123,7 @@ if (isIos) {
     }
 }
 
-function share(url, title = "فودستان", text = "شبکه اجتماعی فود توریسم فودستان") {
+function share(url, title = "مستر فود", text = "شبکه اجتماعی فود توریسم مستر فود") {
 
     if (navigator.share) {
         navigator.share({

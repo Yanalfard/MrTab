@@ -1,6 +1,8 @@
 ﻿@model TblRestaurant
-@{ ViewBag.Title = Model.Name;
-    Layout = "~/Views/Shared/_Layout.cshtml"; }
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 `
 @section Styles {
     <link href="~/css/Pages/Restaurant.min.css" rel="stylesheet" />
@@ -8,104 +10,108 @@
     <link href="~/leaflet-routing-machine.css" rel="stylesheet" />
 }
 
-<div class="actions-adrift" uk-scrollspy="cls:uk-animation-slide-bottom-medium">
-    <ul>
-        <li>
-            <button type="button" onclick="uploadImage()">
-                <span uk-icon="image"></span>
-                <span>آپلود عکس</span>
-            </button>
-        </li>
-        <li>
-            <button type="button" onclick="sendCommentRestaurant()">
-                <span uk-icon="chatbox-ellipses"></span>
-                <span>ثبت نظر</span>
-            </button>
-        </li>
-        <li>
-            <button type="button" onclick="reportRestaurant()">
-                <span uk-icon="megaphone"></span>
-                <span>گزارش مکان</span>
-            </button>
-        </li>
-        <li>
-            <button onclick="share(window.location.href, '@Model.Name' , '@Model.Address')">
-                <span uk-icon="share-social"></span>
-                <span>اشتراک گزاری</span>
-            </button>
-        </li>
-    </ul>
-</div>
+    <div class="actions-adrift" uk-scrollspy="cls:uk-animation-slide-bottom-medium">
+        <ul>
+            <li>
+                <button type="button" onclick="uploadImage()">
+                    <span uk-icon="image"></span>
+                    <span>آپلود عکس</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" onclick="sendCommentRestaurant()">
+                    <span uk-icon="chatbox-ellipses"></span>
+                    <span>ثبت نظر</span>
+                </button>
+            </li>
+            <li>
+                <button type="button" onclick="reportRestaurant()">
+                    <span uk-icon="megaphone"></span>
+                    <span>گزارش مکان</span>
+                </button>
+            </li>
+            <li>
+                <button onclick="share(window.location.href, '@Model.Name' , '@Model.Address')">
+                    <span uk-icon="share-social"></span>
+                    <span>اشتراک گزاری</span>
+                </button>
+            </li>
+        </ul>
+    </div>
 
-<!-- #region Modals -->
+    <!-- #region Modals -->
 
-<div id="Modal-Comment" uk-modal>
+    <div id="Modal-Comment" uk-modal>
+    </div>
 
-</div>
+    <div id="Modal-Report" uk-modal>
+    </div>
 
-<div id="Modal-Report" uk-modal>
+    <div id="Modal-Report-Comment" uk-modal>
+    </div>
 
-</div>
+    <!-- #endregion -->
+    <!-- #region Banner -->
 
-<div id="Modal-Report-Comment" uk-modal>
+    <div class="image-container uk-box-shadow-large">
+        <img class="banner-image" width="500" height="350" src="/Images/Restaurant/thumb/@Model.MainBanner" alt="Restaurant Banner" />
+    </div>
 
-</div>
-
-<!-- #endregion -->
-<!-- #region Banner -->
-
-<div class="image-container uk-box-shadow-large">
-    <img class="banner-image" width="500" height="350" src="/Images/Restaurant/thumb/@Model.MainBanner" alt="Restaurant Banner" />
-</div>
-
-<div class="banner uk-margin-small-bottom">
-    <div class="banner-logo">
-        <div class="row-reverse">
-            <div uk-lightbox>
-                <a href="/Images/Restaurant/thumb/@Model.MainImage" data-caption="@Model.Name" data-alt="Restaurant Logo">
-                    <img class="logo uk-box-shadow-medium"
+    <div class="banner uk-margin-small-bottom">
+        <div class="banner-logo">
+            <div class="row-reverse">
+                <div uk-lightbox>
+                    <a href="/Images/Restaurant/thumb/@Model.MainImage" data-caption="@Model.Name" data-alt="Restaurant Logo">
+                        <img class="logo uk-box-shadow-medium"
                          src="/Images/Restaurant/thumb/@Model.MainImage" width="100" height="100" alt="Restaurant Logo" />
-                </a>
-            </div>
-            <div class="column">
-                <h1 class="uk-h3">
-                    @Model.Name
-                </h1>
-                <div class="star-container uk-margin-auto-top uk-margin-auto-right banner-material row" uk-tooltip="@(Model.Rating/20)" dir="rtl">
-                    <div class="Stars" style="--rating:   @(Model.Rating/20);" aria-label="Rating of this product is  @(Model.Rating/20) out of 5."></div>
+                    </a>
+                </div>
+                <div class="column">
+                    <h1 class="uk-h3">
+                        @Model.Name
+                    </h1>
+                    <div class="star-container uk-margin-auto-top uk-margin-auto-right banner-material row" uk-tooltip="@(Model.Rating/20)" dir="rtl">
+                        <div class="Stars" style="--rating:   @(Model.Rating/20);" aria-label="Rating of this product is  @(Model.Rating/20) out of 5."></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="banner-info">
-        <div class="column">
-            <div class="alternate">
-                @*href="tel:+98@(Model.TellNo1.Substring(1))"*@
-                <a href="tel:@(Model.TellNo1)" class="uk-margin-remove clickable uk-h5 row banner-material"
+        <div class="banner-info">
+            <div class="column">
+                <div class="alternate">
+                    @*href="tel:+98@(Model.TellNo1.Substring(1))"*@
+                    <a href="tel:@(Model.TellNo1)" class="uk-margin-remove clickable uk-h5 row banner-material"
                    onclick="copy('@Model.TellNo1','شماره تلفن کپی شد')">
-                    <i uk-icon="call"></i>
-                    <span class="uk-margin-small-left">@Model.TellNo1</span>
-                </a>
+                        <i uk-icon="call"></i>
+                        <span class="uk-margin-small-left">@Model.TellNo1</span>
+                    </a>
 
                 @foreach (var item in Model.TblWorkTime)
                 {
                     <h3 class="uk-margin-small-left clickable uk-margin-remove-vertical uk-h5 row banner-material"
-                        onclick="copy('@item.Day @item.Time','زمان کاری کپی شد')">
+                    onclick="copy('@item.Day @item.Time','زمان کاری کپی شد')">
                         <i uk-icon="time-outline"></i>
                         <span class="rowr">
                             <span class="uk-margin-small-left" dir="rtl">@item.Time</span>
                             <span dir="rtl"> @item.Day</span>
                         </span>
-                    </h3>}
+                    </h3>
+                }
 
             </div>
             @*<a class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom"
-                href="https://www.google.com/maps/dir/Current+Location/(@Model.Lat,@Model.Lon" target="_blank">*@
+            href="https://www.google.com/maps/dir/Current+Location/(@Model.Lat,@Model.Lon" target="_blank">*@
             <a class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom"
                onclick="showMapInLocation()">
                 <span uk-icon="location-sharp"></span>
                 @Model.Address
             </a>
+            @if (!string.IsNullOrEmpty(Model.ShortDesc))
+            {
+                <a  class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom">
+                    @Model.ShortDesc
+                </a>
+            }
         </div>
     </div>
     <div class="banner-action column">
@@ -114,7 +120,7 @@
             <a href="#" onclick="reportRestaurant()" uk-tooltip="گزارش مشکل" class="banner-material clickable uk-margin-auto-right" uk-icon="megaphone-outline"></a>
             <span uk-tooltip="اشتراک گذاری رستوران" class="banner-material uk-margin-small-right clickable" uk-icon="share-social-outline"
                   onclick="share(window.location.href, '@Model.Name' , '@Model.Address')"></span>
-            <a href="@Model.InstagramUrl" uk-tooltip="پیج اینستاگرام" class="banner-material clickable" uk-icon="logo-instagram"></a>
+            <a href="https://www.instagram.com/@Model.InstagramUrl" uk-tooltip="پیج اینستاگرام" class="banner-material clickable" uk-icon="logo-instagram"></a>
         </div>
     </div>
 </div>
@@ -140,11 +146,12 @@
                     <li>
                         <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="آپلود شده توسط: نام کاربر1"><img src="~/Images/Restaurant/Gallery/thumb/@item.Url" width="220" height="220" alt="عکس از رستوران" /></a>
                     </li>
-           }
+                }
             </ul>
             <!-- #endregion -->
             <!-- #region Menu -->
-        </div>}
+        </div>
+    }
 
     @if (Model.TblImage.Where(i => i.Status == 1 && i.IsValid).Count() > 0)
     {
@@ -165,12 +172,13 @@
                     <li>
                         <a href="~/Images/Restaurant/Gallery/@item.Url" data-caption="@Model.Name"><img src="~/Images/Restaurant/Gallery/thumb/@item.Url" width="220" height="365" alt="عکس از منو رستوران" /></a>
                     </li>
-           }
+                }
             </ul>
 
             <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 
-        </div>}
+        </div>
+    }
 
     <div class="info uk-margin-medium-top">
         <div class="mat meals" uk-scrollspy="cls:uk-animation-fade;delay:300">
@@ -181,7 +189,7 @@
                     <li>
                         <a>@item.Name</a>
                     </li>
-}
+                }
             </ul>
         </div>
         <div class="mat progbar foodstyle" uk-scrollspy="cls:uk-animation-fade;delay:300">
@@ -235,11 +243,17 @@
                         <span uk-icon="checkmark-circle"></span>
                         <span>@item.Name</span>
                     </li>
-}
+                }
 
             </ul>
         </div>
-
+        @if (!string.IsNullOrEmpty(Model.LongDesc))
+        {
+            <div class="mat options" uk-scrollspy="cls:uk-animation-fade;delay:100">
+                <h5 class="uk-h4">امکانات</h5>
+                @Model.LongDesc
+            </div>
+        }
         <div class="map" id="map" style="height:400px;width:100%"></div>
     </div>
 
@@ -260,15 +274,17 @@
                 @foreach (var item in Model.TblComment.Where(i => i.IsValid))
                 {
                     <li uk-scrollspy="cls:uk-animation-fade"><partial name="_Comment" model="item" /></li>
-}
-            </ul> }
+                }
+            </ul>
+        }
         else
         {
             <div class="column">
                 <img src="~/resources/svg/btfToComment.svg" width="164" height="164" class="uk-margin-auto uk-margin-medium-top" alt="کسی نظری نداده است" />
                 <h3 class="h4 uk-text-center uk-margin-remove-bottom uk-margin-top">اولین نظر را شما بدهید</h3>
                 <p class="uk-text-muted uk-text-center uk-margin-small-top">هنوز کسی درباره این مکان نظری نداده است</p>
-            </div>}
+            </div>
+        }
 
     </div>
 
@@ -283,7 +299,6 @@
 
 
 <div id="Modal-View" uk-modal>
-
 </div>
 
 @section Scripts{

@@ -1,8 +1,8 @@
 ﻿{
   "dir": "rtl",
   "lang": "fa",
-  "name": "فودستان",
-  "short_name": "فودستان",
+  "name": "مستر فود",
+  "short_name": "مستر فود",
   "display": "standalone",
   "start_url": "/Home/Index",
   "background_color": "#FFAC2F",

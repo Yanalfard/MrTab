@@ -30,11 +30,29 @@ namespace MrTab.Controllers
 
         public async Task<IActionResult> Login()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.Claims.Last().Value == "user")
+                {
+                    Redirect("/User/User/Index");
+                }
+                else if (User.Claims.Last().Value == "author")
+                {
+                    Redirect("/Admin/Home/Index");
+
+                }
+                else if (User.Claims.Last().Value == "admin")
+                {
+                    Redirect("/Admin/Home/Index");
+
+                }
+
+            }
             return await Task.FromResult(View());
         }
 
         [HttpPost]
-        public async Task<IActionResult> LoginAsync(LoginVm login,string ReturnUrl = "/")
+        public async Task<IActionResult> LoginAsync(LoginVm login, string ReturnUrl = "/")
         {
             if (!await _captchaValidator.IsCaptchaPassedAsync(login.Captcha))
             {
@@ -80,7 +98,7 @@ namespace MrTab.Controllers
             return await Task.FromResult(View(login));
         }
 
-       
+
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

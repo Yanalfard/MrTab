@@ -98,6 +98,8 @@ namespace MrTab.Areas.Admin.Controllers
             TblConfig updateConfig4 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainText"));
             TblConfig updateConfig5 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundImage"));
             TblConfig updateConfig6 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundText"));
+            TblConfig updateConfig7 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("UkLiColor"));
+            TblConfig updateConfig8 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("LocationSearchTextSlider"));
             HomeImageTextVm homeVm = new HomeImageTextVm();
             homeVm.MainBanner = updateConfig1.Value;
             homeVm.MainColor = updateConfig2.Value;
@@ -105,6 +107,9 @@ namespace MrTab.Areas.Admin.Controllers
             homeVm.MainText = updateConfig4.Value;
             homeVm.MobileAppBackGroundImage = updateConfig5.Value;
             homeVm.MobileAppBackGroundText = updateConfig6.Value;
+            homeVm.UkLiColor = updateConfig7.Value;
+            homeVm.LocationSearchTextSlider = updateConfig8.Value;
+
             return View(homeVm);
         }
         [HttpPost]
@@ -116,6 +121,9 @@ namespace MrTab.Areas.Admin.Controllers
             TblConfig updateConfig4 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainText"));
             TblConfig updateConfig5 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundImage"));
             TblConfig updateConfig6 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundText"));
+            TblConfig updateConfig7 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("UkLiColor"));
+            TblConfig updateConfig8 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("LocationSearchTextSlider"));
+
             if (updateConfig1 != null)
             {
                 if (MainBanner != null)
@@ -145,6 +153,14 @@ namespace MrTab.Areas.Admin.Controllers
             if (updateConfig2 != null)
             {
                 updateConfig2.Value = homeVm.MainColor;
+            }
+            if (updateConfig7 != null)
+            {
+                updateConfig7.Value = homeVm.UkLiColor;
+            }
+            if (updateConfig8 != null)
+            {
+                updateConfig8.Value = homeVm.LocationSearchTextSlider;
             }
             if (updateConfig3 != null)
             {
