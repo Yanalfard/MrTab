@@ -8,40 +8,45 @@
     <link href="~/css/Pages/Index.min.css" rel="stylesheet" />
 }
 
-<partial name="Hero" model="Model" />
+    <partial name="Hero" model="Model" />
 
-<div class="uk-container">
+    <div class="uk-container">
 
-    <!-- #region Grid -->
-    <div class="grid-categories uk-margin-medium-top">
-        @await Component.InvokeAsync("CategoryGridShowInHomeVm")
+        <!-- #region Grid -->
+        <cache expires-after="@TimeSpan.FromMinutes(15)">
+
+            <div class="grid-categories uk-margin-medium-top">
+                @await Component.InvokeAsync("CategoryGridShowInHomeVm")
+            </div>
+            <!-- #endregion -->
+            @await Component.InvokeAsync("CategoryShowInHomeVm")
+        </cache>
+
     </div>
-    <!-- #endregion -->
-    @await Component.InvokeAsync("CategoryShowInHomeVm")
 
-</div>
+    <!-- #region Parallax -->
 
-<!-- #region Parallax -->
-
-<div style="background-image:url('/Images/Home/MobileApp/@Model.MobileAppBackGroundImage')" class="hideOnStandalone parallax-download uk-margin-medium-top uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex uk-flex-top"
+    <div style="background-image:url('/Images/Home/MobileApp/@Model.MobileAppBackGroundImage')" class="hideOnStandalone parallax-download uk-margin-medium-top uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex uk-flex-top"
      uk-parallax="bgy: -300">
-    <div class="parralax-overlay-blur"></div>
-    <div class="parralax-content uk-width-1-2-at-l uk-width-2-3-at-m uk-width-4-5-at-s column uk-text-center uk-margin-auto uk-margin-auto-vertical">
-        @Html.Raw(Model.MobileAppBackGroundText)
-        @*<h1 class=" uk-margin-auto">دانلود اپلیکیشن</h1>B
-            <p class="uk-margin-left uk-margin-right uk-margin-remove-top">
-                یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه د آنها به نوعی وابسته به متن می‌باشد آنها با استفاد ساختگی، صفحه گرافیکی خود
-            </p>*@
-        <button class="uk-margin-auto-left uk-margin-auto-right btn btn-primary btn-round btn-pwa">
-            <span class="uk-margin-auto-vertical">دانلود</span>
-            <span uk-icon="phone-portrait-outline"></span>
-        </button>
+        <div class="parralax-overlay-blur"></div>
+        <div class="parralax-content uk-width-1-2-at-l uk-width-2-3-at-m uk-width-4-5-at-s column uk-text-center uk-margin-auto uk-margin-auto-vertical">
+            @Html.Raw(Model.MobileAppBackGroundText)
+            @*<h1 class=" uk-margin-auto">دانلود اپلیکیشن</h1>B
+        <p class="uk-margin-left uk-margin-right uk-margin-remove-top">
+        یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه د آنها به نوعی وابسته به متن می‌باشد آنها با استفاد ساختگی، صفحه گرافیکی خود
+        </p>*@
+            <button class="uk-margin-auto-left uk-margin-auto-right btn btn-primary btn-round btn-pwa">
+                <span class="uk-margin-auto-vertical">دانلود</span>
+                <span uk-icon="phone-portrait-outline"></span>
+            </button>
+        </div>
     </div>
-</div>
 
-<!-- #endregion -->
-@await Component.InvokeAsync("VideoInHomeVm")
-@*<div class="uk-container column  uk-margin-medium-top ">
+    <!-- #endregion -->
+    <cache expires-after="@TimeSpan.FromMinutes(15)">
+        @await Component.InvokeAsync("VideoInHomeVm")
+    </cache>
+    @*<div class="uk-container column  uk-margin-medium-top ">
         <h3 class="uk-margin-auto">
             اسکرین شات های اپ موبایل
         </h3>
@@ -136,11 +141,14 @@
 
 
 
-<div class="uk-container">
-    @await Component.InvokeAsync("CategoryShowInHomeSingleVm")
-</div>
+    <cache expires-after="@TimeSpan.FromMinutes(15)">
 
-@section Scripts {
+        <div class="uk-container">
+            @await Component.InvokeAsync("CategoryShowInHomeSingleVm")
+        </div>
+    </cache>
+
+    @section Scripts {
 
     <script>
 

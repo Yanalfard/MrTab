@@ -17,6 +17,8 @@ namespace DataLayer.ViewModel
         [AllowHtml]
         public string MobileAppBackGroundText { get; set; }
         public string UkLiColor { get; set; }
-        public string LocationSearchTextSlider { get; set; }
+        public string TextSlider { get; set; }
+        public string LocationAndSearch { get; set; }
+        public string ImageMenu { get; set; }
     }
 }

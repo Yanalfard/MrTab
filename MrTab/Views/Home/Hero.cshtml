@@ -1,18 +1,32 @@
 ﻿@model HomeImageTextVm
 
 <style>
-    .hero .searcher .category-slider .uk-dotnav li a {
+    .hero .searcher .category-slider .uk-dotnav li a,
+    .hero .uk-position-small * {
         border-color: @Model.UkLiColor;
+        color: @Model.UkLiColor;
     }
 
-    .hero .searcher .category-slider .uk-dotnav li.uk-active a{
+    .hero .searcher .category-slider .uk-dotnav li.uk-active a {
         background-color: @Model.UkLiColor !important;
     }
 
-    .hero *{
-        color: @Model.LocationSearchTextSlider;
+        .hero .searcher .category-slider .uk-dotnav li.uk-active a:hover {
+            background-color: @Model.UkLiColor !important;
+        }
+
+    .hero .uk-slider-items * {
+        color: @Model.TextSlider;
     }
 
+
+    .hero .hero-button * {
+        color: @Model.LocationAndSearch;
+    }
+
+    /*   .hero .uk-position-small * {
+               color: yellow;
+           }*/
     .hero .searcher .hero-button .location-checkbox {
         min-width: 30px !important;
         min-height: 24px;
@@ -59,8 +73,10 @@
             <div class="category-slider uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-scrollspy="cls:uk-animation-fade;delay:2600"
                  uk-slider="autoplay:true;autoplay-interval: 2000">
                 <ul class="uk-slider-items uk-child-width-1-4-at-s uk-child-width-1-4-at-m uk-child-width-1-5-at-l">
+                    <cache expires-after="@TimeSpan.FromMinutes(15)">
 
-                    @await Component.InvokeAsync("CategoryVm")
+                        @await Component.InvokeAsync("CategoryVm")
+                    </cache>
 
                 </ul>
 

@@ -99,13 +99,17 @@
                 }
 
             </div>
-            @*<a class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom"
-            href="https://www.google.com/maps/dir/Current+Location/(@Model.Lat,@Model.Lon" target="_blank">*@
             <a class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom"
-               onclick="showMapInLocation()">
-                <span uk-icon="location-sharp"></span>
+            href="https://www.google.com/maps/dir/Current+Location/(@Model.Lat,@Model.Lon" target="_blank"> <span uk-icon="location-sharp"></span>
                 @Model.Address
             </a>
+          @*  <a class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom"
+               onclick="showMapInLocation()"> *@
+          @*  <a target="_blank" href="https://maps.google.com/maps?q=(@Model.Lat)(@Model.Lon)"
+                   class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom">
+                <span uk-icon="location-sharp"></span>
+                @Model.Address
+            </a> *@
             @if (!string.IsNullOrEmpty(Model.ShortDesc))
             {
                 <a  class="banner-material clickable uk-margin-small-top uk-margin-remove-bottom">
@@ -250,7 +254,7 @@
         @if (!string.IsNullOrEmpty(Model.LongDesc))
         {
             <div class="mat options" uk-scrollspy="cls:uk-animation-fade;delay:100">
-                <h5 class="uk-h4">امکانات</h5>
+                <h5 class="uk-h4">توضیحات</h5>
                 @Model.LongDesc
             </div>
         }

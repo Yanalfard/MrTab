@@ -9,6 +9,7 @@
     <form asp-action="Index" asp-controller="AboutContact" asp-area="Admin" enctype="multipart/form-data" method="post">
         <input type="hidden" asp-for="MainBanner" name="MainBanner"  />
         <input type="hidden" asp-for="MainImage" name="MainImage"  />
+        <input type="hidden" asp-for="ImageMenu" name="ImageMenu"  />
         <input type="hidden" asp-for="MobileAppBackGroundImage" name="MobileAppBackGroundImage"  />
         <div class="card-body">
             <h1> رنگ بنر</h1>
@@ -27,7 +28,14 @@
         <div class="card-body">
             <h1> رنگ وکتور  صفحه اصلی</h1>
             <div class="form-group mx-sm-1 mb-2 text-center">
-                <input type="color" asp-for="LocationSearchTextSlider" name="LocationSearchTextSlider" style="width:200px;height:50px;" />
+                <input type="color" asp-for="TextSlider" name="TextSlider" style="width:200px;height:50px;" />
+                <span class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-body">
+            <h1> رنگ لوکیشن و جستوجو  صفحه اصلی</h1>
+            <div class="form-group mx-sm-1 mb-2 text-center">
+                <input type="color" asp-for="LocationAndSearch" name="LocationAndSearch" style="width:200px;height:50px;" />
                 <span class="text-danger"></span>
             </div>
         </div>
@@ -78,6 +86,29 @@
             </div>
         </div>
         <div class="card-body">
+            <h1> عکس منو</h1>
+            <div class="form-group">
+                <div class="upload-image uk-margin-auto-left">
+                    <label class="title"> عکس منو  <span>(نسبت یک در یک)</span></label>
+                    @if (Model.ImageMenu != null)
+                    {
+                        <img class="preview" src="/Images/Home/Image/@Model.ImageMenu" alt=" @Model.ImageMenu" />
+                    }
+                    else
+                    {
+                        <img class="preview" src="/Images/NoImage.svg" alt="@Model.ImageMenu" />
+                    }
+                    <label class="select">
+                        <span>
+                            فایل انتخاب نشده
+                        </span>
+                        <input type="file" accept="image/*" name="ImageMenu" onchange="imageSelected(this)" />
+                        <span class="text-danger" asp-validation-for="ImageMenu"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
             <h1>متن روی بنر</h1>
             <div class="form-group mx-sm-1 mb-2">
                 <textarea asp-for="MainText" id="MainText" name="MainText" class="form-control form-control-sm"></textarea>
@@ -123,6 +154,7 @@
                 <button class="btn btn-primary" onclick="LoadingRun()">تایید</button>
             </div>
         </div>
+       
     </form>
 
 </div>

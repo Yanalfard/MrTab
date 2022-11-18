@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataLayer.Models;
+using DataLayer.Repository;
 using DataLayer.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Services.Services;
@@ -11,28 +12,37 @@ namespace MrTab.Controllers
 {
     public class HomeController : Controller
     {
+        private IRepository _repository;
+        public HomeController(IRepository repository)
+        {
+            _repository = repository;
+        }
+
         private Core db = new Core();
         public IActionResult Index()
         {
-            TblConfig updateConfig1 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainBanner"));
-            TblConfig updateConfig2 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainColor"));
-            TblConfig updateConfig3 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainImage"));
-            TblConfig updateConfig4 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainText"));
-            TblConfig updateConfig5 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundImage"));
-            TblConfig updateConfig6 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundText"));
-            TblConfig updateConfig7 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("UkLiColor"));
-            TblConfig updateConfig8 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("LocationSearchTextSlider"));
+            return View(_repository.SelectConfigs());
+            //TblConfig updateConfig1 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainBanner"));
+            //TblConfig updateConfig2 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainColor"));
+            //TblConfig updateConfig3 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainImage"));
+            //TblConfig updateConfig4 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainText"));
+            //TblConfig updateConfig5 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundImage"));
+            //TblConfig updateConfig6 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundText"));
+            //TblConfig updateConfig7 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("UkLiColor"));
+            //TblConfig updateConfig8 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("TextSlider"));
+            //TblConfig updateConfig9 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("LocationAndSearch"));
 
-            HomeImageTextVm homeVm = new HomeImageTextVm();
-            homeVm.MainBanner = updateConfig1.Value;
-            homeVm.MainColor = updateConfig2.Value;
-            homeVm.MainImage = updateConfig3.Value;
-            homeVm.MainText = updateConfig4.Value;
-            homeVm.MobileAppBackGroundImage = updateConfig5.Value;
-            homeVm.MobileAppBackGroundText = updateConfig6.Value;
-            homeVm.UkLiColor = updateConfig7.Value;
-            homeVm.LocationSearchTextSlider = updateConfig8.Value;
-            return View(homeVm);
+            //HomeImageTextVm homeVm = new HomeImageTextVm();
+            //homeVm.MainBanner = updateConfig1.Value;
+            //homeVm.MainColor = updateConfig2.Value;
+            //homeVm.MainImage = updateConfig3.Value;
+            //homeVm.MainText = updateConfig4.Value;
+            //homeVm.MobileAppBackGroundImage = updateConfig5.Value;
+            //homeVm.MobileAppBackGroundText = updateConfig6.Value;
+            //homeVm.UkLiColor = updateConfig7.Value;
+            //homeVm.TextSlider = updateConfig8.Value;
+            //homeVm.LocationAndSearch = updateConfig9.Value;
+            //return View(homeVm);
         }
 
         public IActionResult PrivacyPolicy()

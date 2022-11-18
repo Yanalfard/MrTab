@@ -34,19 +34,21 @@ namespace MrTab.Controllers
             {
                 if (User.Claims.Last().Value == "user")
                 {
-                    Redirect("/User/User/Index");
+                    return await Task.FromResult(Redirect("/User/User/Index"));
                 }
                 else if (User.Claims.Last().Value == "author")
                 {
-                    Redirect("/Admin/Home/Index");
-
+                    return await Task.FromResult(Redirect("/Admin/Home/Index"));
                 }
                 else if (User.Claims.Last().Value == "admin")
                 {
-                    Redirect("/Admin/Home/Index");
+                    return await Task.FromResult(Redirect("/Admin/Home/Index"));
 
                 }
-
+                else
+                {
+                    return await Task.FromResult(Redirect("/"));
+                }
             }
             return await Task.FromResult(View());
         }
@@ -54,11 +56,12 @@ namespace MrTab.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginAsync(LoginVm login, string ReturnUrl = "/")
         {
-            if (!await _captchaValidator.IsCaptchaPassedAsync(login.Captcha))
-            {
-                ModelState.AddModelError("TellNo", "ورود غیر مجاز");
-                return View(login);
-            }
+
+            //if (!await _captchaValidator.IsCaptchaPassedAsync(login.Captcha))
+            //{
+            //    ModelState.AddModelError("TellNo", "ورود غیر مجاز");
+            //    return View(login);
+            //}
 
             if (ModelState.IsValid)
             {
@@ -106,22 +109,44 @@ namespace MrTab.Controllers
         }
         public async Task<IActionResult> Register()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.Claims.Last().Value == "user")
+                {
+                    return await Task.FromResult(Redirect("/User/User/Index"));
+                }
+                else if (User.Claims.Last().Value == "author")
+                {
+                    return await Task.FromResult(Redirect("/Admin/Home/Index"));
+                }
+                else if (User.Claims.Last().Value == "admin")
+                {
+                    return await Task.FromResult(Redirect("/Admin/Home/Index"));
+
+                }
+                else
+                {
+                    return await Task.FromResult(Redirect("/"));
+                }
+            }
             return await Task.FromResult(View());
         }
         [HttpPost]
         public async Task<IActionResult> RegisterAsync(RegisterVm register)
         {
-            if (!await _captchaValidator.IsCaptchaPassedAsync(register.Captcha))
-            {
-                ModelState.AddModelError("Name", "ورود غیر مجاز");
-                return View(register);
-            }
+
+            //if (!await _captchaValidator.IsCaptchaPassedAsync(register.Captcha))
+            //{
+            //    ModelState.AddModelError("Name", "ورود غیر مجاز");
+            //    return View(register);
+            //}
             if (ModelState.IsValid)
             {
                 if (!db.User.Get().Any(i => i.TellNo == register.TellNo))
                 {
                     var CodeCreator = Guid.NewGuid().ToString();
-                    string Code = CodeCreator.Substring(CodeCreator.Length - 5);
+                    //   string Code = CodeCreator.Substring(CodeCreator.Length - 5);
+                    string Code = new Random().Next(10000, 99999).ToString();
                     TblUser addUser = new TblUser();
                     addUser.Auth = Code;
                     addUser.RoleId = 0;
@@ -145,6 +170,26 @@ namespace MrTab.Controllers
         }
         public async Task<IActionResult> Validation(string tellNo)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.Claims.Last().Value == "user")
+                {
+                    return await Task.FromResult(Redirect("/User/User/Index"));
+                }
+                else if (User.Claims.Last().Value == "author")
+                {
+                    return await Task.FromResult(Redirect("/Admin/Home/Index"));
+                }
+                else if (User.Claims.Last().Value == "admin")
+                {
+                    return await Task.FromResult(Redirect("/Admin/Home/Index"));
+
+                }
+                else
+                {
+                    return await Task.FromResult(Redirect("/"));
+                }
+            }
             return await Task.FromResult(View(new ActiveVm()
             {
                 Tell = tellNo
@@ -162,7 +207,8 @@ namespace MrTab.Controllers
                     {
                         selectedUser.IsActive = true;
                         var CodeCreator = Guid.NewGuid().ToString();
-                        string Code = CodeCreator.Substring(CodeCreator.Length - 5);
+                        //   string Code = CodeCreator.Substring(CodeCreator.Length - 5);
+                        string Code = new Random().Next(10000, 99999).ToString();
                         selectedUser.Auth = Code;
                         db.User.Save();
                         return await Task.FromResult(Redirect("/Account/Login?Active=true"));
@@ -182,16 +228,36 @@ namespace MrTab.Controllers
 
         public async Task<IActionResult> ForgotPassword()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.Claims.Last().Value == "user")
+                {
+                    return await Task.FromResult(Redirect("/User/User/Index"));
+                }
+                else if (User.Claims.Last().Value == "author")
+                {
+                    return await Task.FromResult(Redirect("/Admin/Home/Index"));
+                }
+                else if (User.Claims.Last().Value == "admin")
+                {
+                    return await Task.FromResult(Redirect("/Admin/Home/Index"));
+
+                }
+                else
+                {
+                    return await Task.FromResult(Redirect("/"));
+                }
+            }
             return await Task.FromResult(View());
         }
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordVm forget)
         {
-            if (!await _captchaValidator.IsCaptchaPassedAsync(forget.Captcha))
-            {
-                ModelState.AddModelError("TellNo", "ورود غیر مجاز");
-                return View(forget);
-            }
+            //if (!await _captchaValidator.IsCaptchaPassedAsync(forget.Captcha))
+            //{
+            //    ModelState.AddModelError("TellNo", "ورود غیر مجاز");
+            //    return View(forget);
+            //}
             if (ModelState.IsValid)
             {
                 if (db.User.Get().Any(i => i.TellNo == forget.TellNo))
@@ -211,6 +277,26 @@ namespace MrTab.Controllers
 
         public async Task<IActionResult> RestorePassword(string tell)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.Claims.Last().Value == "user")
+                {
+                    return await Task.FromResult(Redirect("/User/User/Index"));
+                }
+                else if (User.Claims.Last().Value == "author")
+                {
+                    return await Task.FromResult(Redirect("/Admin/Home/Index"));
+                }
+                else if (User.Claims.Last().Value == "admin")
+                {
+                    return await Task.FromResult(Redirect("/Admin/Home/Index"));
+
+                }
+                else
+                {
+                    return await Task.FromResult(Redirect("/"));
+                }
+            }
             return await Task.FromResult(View(new ActiveVm()
             {
                 Tell = tell
@@ -256,9 +342,11 @@ namespace MrTab.Controllers
                 if (db.User.Get().Any(i => i.TellNo == change.Tell && i.Auth == change.Auth))
                 {
                     TblUser selectedUser = db.User.Get().FirstOrDefault(i => i.TellNo == change.Tell);
+                    selectedUser.IsActive = true;
                     selectedUser.Password = PasswordHelper.EncodePasswordMd5(change.Password);
                     var CodeCreator = Guid.NewGuid().ToString();
-                    string Code = CodeCreator.Substring(CodeCreator.Length - 5);
+                    //  string Code = CodeCreator.Substring(CodeCreator.Length - 5);
+                    string Code = new Random().Next(10000, 99999).ToString();
                     selectedUser.Auth = Code;
                     db.User.Update(selectedUser);
                     db.User.Save();

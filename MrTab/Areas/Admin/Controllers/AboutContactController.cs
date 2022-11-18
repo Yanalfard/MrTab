@@ -99,7 +99,9 @@ namespace MrTab.Areas.Admin.Controllers
             TblConfig updateConfig5 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundImage"));
             TblConfig updateConfig6 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundText"));
             TblConfig updateConfig7 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("UkLiColor"));
-            TblConfig updateConfig8 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("LocationSearchTextSlider"));
+            TblConfig updateConfig8 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("TextSlider"));
+            TblConfig updateConfig9 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("LocationAndSearch"));
+            TblConfig updateConfig10 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("ImageMenu"));
             HomeImageTextVm homeVm = new HomeImageTextVm();
             homeVm.MainBanner = updateConfig1.Value;
             homeVm.MainColor = updateConfig2.Value;
@@ -108,12 +110,14 @@ namespace MrTab.Areas.Admin.Controllers
             homeVm.MobileAppBackGroundImage = updateConfig5.Value;
             homeVm.MobileAppBackGroundText = updateConfig6.Value;
             homeVm.UkLiColor = updateConfig7.Value;
-            homeVm.LocationSearchTextSlider = updateConfig8.Value;
+            homeVm.TextSlider = updateConfig8.Value;
+            homeVm.LocationAndSearch = updateConfig9.Value;
+            homeVm.ImageMenu = updateConfig10.Value;
 
             return View(homeVm);
         }
         [HttpPost]
-        public async Task<IActionResult> Index(HomeImageTextVm homeVm, IFormFile MainBanner, IFormFile MainImage, IFormFile MobileApp)
+        public async Task<IActionResult> Index(HomeImageTextVm homeVm, IFormFile MainBanner, IFormFile MainImage, IFormFile MobileApp, IFormFile ImageMenu)
         {
             TblConfig updateConfig1 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainBanner"));
             TblConfig updateConfig2 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MainColor"));
@@ -122,7 +126,9 @@ namespace MrTab.Areas.Admin.Controllers
             TblConfig updateConfig5 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundImage"));
             TblConfig updateConfig6 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("MobileAppBackGroundText"));
             TblConfig updateConfig7 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("UkLiColor"));
-            TblConfig updateConfig8 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("LocationSearchTextSlider"));
+            TblConfig updateConfig8 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("TextSlider"));
+            TblConfig updateConfig9 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("LocationAndSearch"));
+            TblConfig updateConfig10 = db.Config.Get().FirstOrDefault(i => i.Keyword.Contains("ImageMenu"));
 
             if (updateConfig1 != null)
             {
@@ -160,7 +166,11 @@ namespace MrTab.Areas.Admin.Controllers
             }
             if (updateConfig8 != null)
             {
-                updateConfig8.Value = homeVm.LocationSearchTextSlider;
+                updateConfig8.Value = homeVm.TextSlider;
+            }
+            if (updateConfig9 != null)
+            {
+                updateConfig9.Value = homeVm.LocationAndSearch;
             }
             if (updateConfig3 != null)
             {
@@ -189,6 +199,34 @@ namespace MrTab.Areas.Admin.Controllers
                     }
                 }
                 updateConfig3.Value = homeVm.MainImage;
+            }
+            if (updateConfig10 != null)
+            {
+                if (ImageMenu != null)
+                {
+                    if (updateConfig10.Value != null)
+                    {
+
+                        if (homeVm.ImageMenu != null)
+                        {
+                            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Home/Image/", homeVm.ImageMenu);
+                            if (System.IO.File.Exists(imagePath))
+                            {
+                                System.IO.File.Delete(imagePath);
+                            }
+                        }
+
+                    }
+                    homeVm.ImageMenu = Guid.NewGuid().ToString() + Path.GetExtension(ImageMenu.FileName);
+                    string savePath = Path.Combine(
+                       Directory.GetCurrentDirectory(), "wwwroot/Images/Home/Image/", homeVm.ImageMenu
+                   );
+                    using (var stream = new FileStream(savePath, FileMode.Create))
+                    {
+                        await ImageMenu.CopyToAsync(stream);
+                    }
+                }
+                updateConfig10.Value = homeVm.ImageMenu;
             }
             if (updateConfig4 != null)
             {

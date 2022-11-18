@@ -27,7 +27,12 @@ namespace MrTab.Controllers
         [Route("ViewSingle/{id}/{name?}")]
         public IActionResult ViewSingle(int id, string name)
         {
-            return View(db.Restaurant.GetById(id));
+            if (User.Identity.IsAuthenticated)
+            {
+                return View(db.Restaurant.GetById(id));
+            }
+            return Redirect("/Account/Login");
+
         }
         public async Task<IActionResult> UploadImage(int id)
         {
@@ -78,12 +83,12 @@ namespace MrTab.Controllers
                     );
                     using (var stream = new FileStream(savePath, FileMode.Create))
                     {
-                         files.CopyToAsync(stream);
+                        files.CopyToAsync(stream);
                     }
                     /// #region resize Image
                     ImageConvertor imgResizer = new ImageConvertor();
                     string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Restaurant/Gallery/thumb", uploadImage.Image);
-                     imgResizer.Image_resize(savePath, thumbPath, 200);
+                    imgResizer.Image_resize(savePath, thumbPath, 200);
                     /// #endregion
                     TblImage addImage = new TblImage();
                     addImage.RestaurantId = uploadImage.id;

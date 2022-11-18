@@ -1,3 +1,4 @@
+using DataLayer.Repository;
 using Elmah.Io.AspNetCore;
 using GoogleReCaptcha.V3;
 using GoogleReCaptcha.V3.Interface;
@@ -45,6 +46,7 @@ namespace MrTab
             #endregion
 
 
+            services.AddScoped<IRepository, Repository>();
 
             services.AddElmahIo(o =>
             {
