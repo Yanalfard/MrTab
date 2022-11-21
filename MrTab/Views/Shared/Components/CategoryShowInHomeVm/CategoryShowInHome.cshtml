@@ -18,7 +18,7 @@
             </div>
 
             <ul class="uk-slider-items">
-                @foreach (var j in item.TblRestaurant.Where(i => i.IsValid))
+                @foreach (var j in item.TblRestaurant.Where(i => i.IsValid).OrderByDescending(i=>i.RestaurantId))
                 {
                     <li>
                         <partial name="_RestaurantBlock" model="j" />
